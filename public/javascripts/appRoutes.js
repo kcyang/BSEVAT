@@ -3,6 +3,8 @@
  * This is for angular routes.
  * 여기서 클라이언트에서 올라오는 요청 URL은 아래 내용을 참고하여 보이게 됨.
  */
+'use strict';
+/* global angular */
 angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
     $routeProvider
 

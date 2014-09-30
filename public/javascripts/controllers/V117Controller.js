@@ -5,6 +5,9 @@
  * 여기는 Client side 만 들어 있음.
  * 서버와 연관된 액션은 Service 를 호출하여 사용함.
  */
+'use strict';
+/* global angular */
+
 angular.module('V117Ctrl',[]).controller('V117Controller',function($scope,$log,VATService,$location,ngDialog){
 
     //# 상수정의.

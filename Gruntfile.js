@@ -5,29 +5,17 @@ module.exports = function(grunt) {
     // Show elapsed time at the end
     require('time-grunt')(grunt);
     // Load all grunt tasks
-    require('load-grunt-tasks')(grunt);
+//    require('load-grunt-tasks')(grunt);
 
     // Project configuration.
     grunt.initConfig({
 
-        nodemon: {
-            dev: {
-                script: 'bin/www'
-            }
-        },
-
         // take all the js files and minify them into app.min.js
-        uglify: {
-            build: {
-                files: {
-                    'dist/javascripts/app.min.js': ['public/javascripts/**/*.js', 'public/javascripts/*.js']
-                }
-            }
-        },
         jshint: {
             options: {
                 jshintrc: '.jshintrc',
-                reporter: require('jshint-stylish')
+                reporter: require('jshint-stylish'),
+                globals: { angular : true }
             },
             gruntfile: {
                 src: 'Gruntfile.js'
@@ -42,11 +30,17 @@ module.exports = function(grunt) {
                 src: ['routes/**/*.js']
             },
             angualrfile: {
-                src: ['public/controllers/*.js','public/*.js','public/services/*.js']
+                src: ['public/javascripts/controllers/*.js','public/javascripts/*.js','public/javascripts/services/*.js']
             }
 
         },
-
+        uglify: {
+            build: {
+                files: {
+                    'dist/javascripts/app.min.js': ['public/javascripts/**/*.js', 'public/javascripts/*.js']
+                }
+            }
+        },
         watch: {
             gruntfile: {
                 files: '<%= jshint.gruntfile.src %>',
@@ -70,6 +64,11 @@ module.exports = function(grunt) {
             }
         },
 
+        nodemon: {
+            dev: {
+                script: 'bin/www'
+            }
+        },
         // watch 와 demon 을 동시에 진행하기.
         concurrent: {
             options: {
@@ -79,13 +78,18 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.loadNpmTasks('grunt-nodemon');
+
+
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
+
+    grunt.loadNpmTasks('grunt-nodemon');
     grunt.loadNpmTasks('grunt-concurrent');
     // Default task.
-    grunt.registerTask('default', ['nodemon','jshint','uglify','concurrent']);
+    grunt.option('force', true);
+    grunt.registerTask('default', ['jshint',/*'uglify',*/'concurrent']);
+
 
 
 };

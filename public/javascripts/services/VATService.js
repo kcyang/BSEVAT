@@ -5,6 +5,8 @@
  * $log 클라이언트 콘솔에 찍어주기 위한 객체임.
  *
  */
+'use strict';
+/* global angular */
 angular.module('VATService', []).factory('VATService', ['$http','$log', function($http,$log) {
 
     return {
@@ -15,7 +17,7 @@ angular.module('VATService', []).factory('VATService', ['$http','$log', function
             $http({method: 'GET', url: '/api/'+KEY}).
                 success(function(data,status,headers,config){
                     $log.info('성공적으로 URL로 부터 결과를 받았습니다.');
-                    if(data == 'ERROR'){
+                    if(data === 'ERROR'){
                         callback(true,data);
                     }else{
                         callback(false,data);
@@ -66,6 +68,6 @@ angular.module('VATService', []).factory('VATService', ['$http','$log', function
 
         }
 
-    }
+    };
 
 }]);

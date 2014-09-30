@@ -5,6 +5,8 @@
  * FRONT 의 Main 정의는 이곳에서 진행된다.
  *
  */
+'use strict';
+/* global angular */
 angular.module('BSEVATApp',
     [
         'ngRoute',
