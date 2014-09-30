@@ -1,0 +1,154 @@
+<div class="row">
+    <div class="col-xs-9">
+        <div class="col-xs-2">
+            <a href="/">
+            <button class="btn btn-success" type="button">
+                <span class="glyphicon glyphicon-home"></span>
+            </button>
+            </a>
+        </div>
+        <div class="col-xs-7">
+            <a ng-click="saveDocument()">
+                <button class="btn btn-primary" type="button">
+                    <span class="glyphicon glyphicon-floppy-saved"> 저장하기</span>
+                </button>
+            </a>
+            <a ng-click="createDocument()">
+                <button class="btn btn-warning" type="button">
+                    <span class="glyphicon glyphicon-download-alt"> 자료불러오기</span>
+                </button>
+            </a>
+            <a ng-click="getDocument()">
+                <button class="btn btn-danger" type="button">
+                    <span class="glyphicon glyphicon-refresh"> 다시불러오기</span>
+                </button>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="page-header text-center">
+    <p class="text-primary lead">신용카드매출전표 등 발행금액 집계표</p>
+</div>
+
+<div ng-class="alert_class[status]" ng-bind="alertmessage"></div>
+
+<p>1. 인적사항</p>
+<p></p>
+
+<div class="row">
+    <table class="table">
+        <tbody>
+        <tr>
+            <td>(1) 상호(법인명)</td>
+            <td>
+                <input type="text" class="form-control input-sm" placeholder="(1) 상호(법인명)" ng-model="NAME">
+            </td>
+            <td>(2) 성명 (대표자)</td>
+            <td>
+                <input type="text" class="form-control input-sm" placeholder="(2) 성명 (대표자)">
+            </td>
+        </tr>
+        <tr>
+            <td>(3) 사업장소재지</td>
+            <td>
+                <input type="text" class="form-control input-sm" placeholder="(3) 사업장소재지">
+            </td>
+            <td>(4) 사업자등록번호</td>
+            <td>
+                <input type="text" class="form-control input-sm" placeholder="(4) 사업자등록번호">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<p>2. 신용카드매출전표 등 발행금액 현황</p>
+<p></p>
+
+<div class="row">
+    <table class="table">
+        <thead>
+        <style>
+            th {text-align : center;}
+        </style>
+        <tr>
+            <th>구  분</td>
+            <th>(5) 합 계</td>
+            <th>(6) 신용.직불.<br>
+                기명식 선불카드</th>
+            <th>(7) 현금영수증</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>합  계</td>
+            <td>
+                <input type="number" class="form-control input-sm" placeholder="총 합 계" ng-model="TOTAL_AMOUNT">
+            </td>
+            <td>
+                <input type="number" class="form-control input-sm" placeholder="신용/직불/기명식 선불 합계" ng-change="calc()" ng-model="CARD_TOTAL_AMOUNT">
+            </td>
+            <td>
+                <input type="number" class="form-control input-sm" placeholder="현금영수증 합계" ng-change="calc()" ng-model="CASH_TOTAL_AMOUNT">
+            </td>
+        </tr>
+        <tr>
+            <td>과세 매출분</td>
+            <td>
+                <input type="number" class="form-control input-sm" placeholder="과세 매출분 합계" ng-model="TAX_TOTAL_AMOUNT">
+            </td>
+            <td>
+                <input type="number" class="form-control input-sm" placeholder="신용/직불/기명식 선불 과세분" ng-change="calc()" ng-model="TAX_CARD_AMOUNT">
+            </td>
+            <td>
+                <input type="number" class="form-control input-sm" placeholder="현금영수증 과세분" ng-change="calc()" ng-model="TAX_CASH_AMOUNT">
+            </td>
+        </tr>
+        <tr>
+            <td>면제 매출분</td>
+            <td>
+                <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+            </td>
+            <td>
+                <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+            </td>
+            <td>
+                <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+            </td>
+        </tr>
+        <tr>
+            <td>봉 사 료</td>
+            <td>
+                <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+            </td>
+            <td>
+                <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+            </td>
+            <td>
+                <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<p>3. 신용카드매출전표 등 발행금액(⑤합계) 중 세금계산서(계산서) 교부내역</p>
+<p></p>
+
+<div class="row">
+    <table class="table">
+        <tbody>
+        <tr>
+            <td>(8) 세금계산서<br>
+                교부금액</td>
+            <td>
+                <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+            </td>
+            <td>(9) 계산서<br>
+                교부금액</td>
+            <td>
+                <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
