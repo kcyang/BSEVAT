@@ -1,12 +1,34 @@
 #!/usr/bin/env node
+'use strict';
 /**
  * BACKEND Server 를 시작하는 곳.
  */
+var https = require('https');
 var debug = require('debug')('RestfulBSEVATServer');
 var app = require('../app');
+var fs = require('fs');
+
+process.on('uncaughtException', function(err){
+   console.error('Caught exception: '+ err);
+});
+
+/* SSL
+var options = {
+  key: fs.readFileSync(__dirname+'/private.key'),
+  cert: fs.readFileSync(__dirname+'/private.crt')
+};
+*/
 
 app.set('port', process.env.PORT || 3000);
 
 var server = app.listen(app.get('port'), function() {
   debug('Express server listening on port ' + server.address().port);
 });
+
+
+/* SSL
+ var server = https.createServer(options, app).listen(app.get('port'), function(){
+ console.log("Express server listening on port " + server.address().port);
+ });
+
+*/

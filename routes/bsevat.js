@@ -8,6 +8,7 @@
  * http 정의에 따라, GET / POST / PUT / DELETE 요청을 받고,
  * 결과값을 보내준다. 결과는 HTML/JSON/ETC. 가 가능하다.
  */
+'use strict';
 var express = require('express');
 var router = express.Router();
 

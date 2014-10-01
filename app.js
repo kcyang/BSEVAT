@@ -3,6 +3,7 @@
  * BACKEND 를 정의한다. FRONT 쪽과 헤깔리지 않도록 유의해야 한다.
  * 아래에 정의된 URL 셋팅등은 모두 nodejs 의 것을 따르고 FRONT 의 Angularjs 와 다르다.
  */
+'use strict';
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
@@ -17,6 +18,10 @@ var routes = require('./routes/index');
 
 //bsevat 라우트 파일 정의.
 var bse_routes = require('./routes/bsevat');
+
+//서버 설정파일 읽어놓기. Global 변수 .
+global.serverConfig = require('./config/Server');
+
 
 var app = express();
 
@@ -50,6 +55,10 @@ app.use(function(req, res, next) {
     next(err);
 });
 
+
+//Monitoring
+
+
 // error handlers
 
 // development error handler
@@ -57,7 +66,7 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
-        res.send('ERROR'+err.message);
+        res.send('ERROR['+err.message+']');
 /*
         res.render('error', {
             message: err.message,
@@ -71,7 +80,7 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    res.send('ERROR'+err.message);
+    res.send('ERROR['+err.message+']');
 /*
     res.render('error', {
         message: err.message,
