@@ -15,13 +15,13 @@ module.exports = function(grunt) {
             options: {
                 jshintrc: '.jshintrc',
                 reporter: require('jshint-stylish'),
-                globals: { angular : true }
+                globals: { angular : true, serverConfig : true }
             },
             gruntfile: {
                 src: 'Gruntfile.js'
             },
             lib: {
-                src: ['lib/**/*.js']
+                src: ['lib/**/*.js,*.js']
             },
             test: {
                 src: ['test/**/*.js']

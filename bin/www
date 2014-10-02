@@ -3,10 +3,12 @@
 /**
  * BACKEND Server 를 시작하는 곳.
  */
-var https = require('https');
-var debug = require('debug')('RestfulBSEVATServer');
+/* global serverConfig */
+//var https = require('https');   //for SSL
+//var fs = require('fs');         //for SSL
+var debug = require('debug')('BSEVAT');
 var app = require('../app');
-var fs = require('fs');
+
 
 process.on('uncaughtException', function(err){
    console.error('Caught exception: '+ err);
@@ -19,7 +21,7 @@ var options = {
 };
 */
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || serverConfig.BSE.ports);
 
 var server = app.listen(app.get('port'), function() {
   debug('Express server listening on port ' + server.address().port);

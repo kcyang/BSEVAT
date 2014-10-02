@@ -55,5 +55,5 @@ value_type = "Integer"
 
 #[[V117.Condition]]
 #key = "BSE_VAT Category Code"
-#value = ["S060","S070","S080","S090","S110"]
+#value = ["S060","S070","S080","S090","S100","S110"]
 #value_type = "String"
