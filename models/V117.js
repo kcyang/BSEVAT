@@ -6,4 +6,16 @@ var modelGen = require('../lib/getSchema');
 
 var modelSchema = new modelGen('V117');
 
-module.exports = mongoose.model('V117',modelSchema);
+var rawModel = function(){
+    try{
+        if(mongoose.model('V117')){
+            return mongoose.model('V117');
+        }
+    }catch(e){
+        if(e.name === 'MissingSchemaError'){
+            return mongoose.model('V117',modelSchema);
+        }
+    }
+};
+
+module.exports = rawModel();

@@ -9,10 +9,12 @@
 var debug = require('debug')('BSEVAT');
 var app = require('../app');
 
-
+/* for Product Mode
 process.on('uncaughtException', function(err){
    console.error('Caught exception: '+ err);
 });
+*/
+
 
 /* SSL
 var options = {

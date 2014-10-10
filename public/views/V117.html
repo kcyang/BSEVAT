@@ -41,7 +41,7 @@
         <tr>
             <td>(1) 상호(법인명)</td>
             <td>
-                <input type="text" class="form-control input-sm" placeholder="(1) 상호(법인명)" ng-model="NAME">
+                <input type="text" class="form-control input-sm" placeholder="(1) 상호(법인명)" ng-model="DATA.NAME">
             </td>
             <td>(2) 성명 (대표자)</td>
             <td>
@@ -107,25 +107,25 @@
         <tr>
             <td>면제 매출분</td>
             <td>
-                <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                <input type="text" class="form-control input-sm" placeholder="면제 매출분 합계" ng-model="NOTAX_TOTAL_AMOUNT">
             </td>
             <td>
-                <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                <input type="text" class="form-control input-sm" placeholder="신용/지불/기명식 선불 면제분" ng-change="calc()" ng-model="NOTAX_CARD_AMOUNT">
             </td>
             <td>
-                <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                <input type="text" class="form-control input-sm" placeholder="현금영수증 면제분" ng-change="calc()" ng-model="NOTAX_CASH_AMOUNT">
             </td>
         </tr>
         <tr>
             <td>봉 사 료</td>
             <td>
-                <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                <input type="text" class="form-control input-sm" placeholder="봉사료 합계">
             </td>
             <td>
-                <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                <input type="text" class="form-control input-sm" placeholder="입력하세요!">
             </td>
             <td>
-                <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                <input type="text" class="form-control input-sm" placeholder="입력하세요!">
             </td>
         </tr>
         </tbody>

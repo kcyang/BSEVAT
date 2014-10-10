@@ -6,6 +6,7 @@
 'use strict';
 //서버 설정파일 읽어놓기. Global 변수 .
 global.serverConfig = require('./config/Server');
+global.models = require('./models');
 
 var express = require('express');
 var path = require('path');

@@ -62,7 +62,7 @@ angular.module('V117Ctrl',[]).controller('V117Controller',function($scope,$log,V
         }else{
             //화면 ng-model 에 값 Setting.
             constants.EMPTY = 'false';
-            $scope.NAME = '성공!';
+            $scope.calc();
         }
 
     });
@@ -72,9 +72,11 @@ angular.module('V117Ctrl',[]).controller('V117Controller',function($scope,$log,V
     //화면의 자동계산 되는 로직은 아래에 정의된 데로 실행된다.
 
     $scope.calc = function(){
-
-      $scope.TOTAL_AMOUNT = $scope.CARD_TOTAL_AMOUNT + $scope.CASH_TOTAL_AMOUNT;
-
+        $scope.CARD_TOTAL_AMOUNT = $scope.TAX_CARD_AMOUNT + $scope.NOTAX_CARD_AMOUNT;
+        $scope.CASH_TOTAL_AMOUNT = $scope.TAX_CASH_AMOUNT + $scope.NOTAX_CASH_AMOUNT;
+        $scope.TAX_TOTAL_AMOUNT = $scope.TAX_CARD_AMOUNT + $scope.TAX_CASH_AMOUNT;
+        $scope.NOTAX_TOTAL_AMOUNT = $scope.NOTAX_CARD_AMOUNT + $scope.NOTAX_CASH_AMOUNT;
+        $scope.TOTAL_AMOUNT = $scope.CARD_TOTAL_AMOUNT + $scope.CASH_TOTAL_AMOUNT;
     };
 
     //3. 화면 이벤트 발생 시,
@@ -91,6 +93,7 @@ angular.module('V117Ctrl',[]).controller('V117Controller',function($scope,$log,V
                 controller:'V117Controller',
                 className: 'ngdialog-theme-default ngdialog-theme-custom'
             });
+
         }else{
 
             VATService.create(constants.VATNO,function(err,data){
@@ -100,14 +103,25 @@ angular.module('V117Ctrl',[]).controller('V117Controller',function($scope,$log,V
                 }else{
                     $scope.status = 'Ok';
                     $scope.alertmessage = '성공적으로 생성되었습니다.!';
+                    constants.EMPTY = 'false';
+
+                    var keys = [];
+                    for(var key in data) { if(data.hasOwnProperty(key)){keys.push(key);} }
+
+                    for(var result_key in keys){
+                        if(keys.hasOwnProperty(result_key)){
+                            $scope[keys[result_key]] = data[keys[result_key]];
+                        }
+                    }
+
+                    $scope.calc();
+                    //다 하고, 다시 화면을 Loading.
+                    $scope.progressValue = 100;
+                    ngDialog.close('ngdialog1');
+//                    $location.path('/V117');  #TODO [CHECK] 이걸 해야되 말아야되?
                 }
 
             });
-
-            //다 하고, 다시 화면을 Loading.
-//            $scope.progressValue = 100;
-//            ngDialog.close('ngdialog1');
-            $location.path('/V117');
         }
 
     };
