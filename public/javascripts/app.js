@@ -6,6 +6,7 @@
  *
  */
 'use strict';
+var INIT_YEAR = 2014;  // #TODO
 /* global angular */
 angular.module('BSEVATApp',
     [
@@ -14,6 +15,7 @@ angular.module('BSEVATApp',
         'appRoutes',
         'VATMainCtrl',
         'V117Ctrl',
+        'dialogCtrl',
         'VATService'
     ])
     .run(function($rootScope,$log){

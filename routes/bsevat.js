@@ -35,7 +35,7 @@ router.get('/:KEY', function(req, res) {
 
     }else{
 
-        main.get({VATKEY:req.params.KEY},function(err,data){
+        main.get({KEY:req.params.KEY,VATKEY:req.param['VATKEY']},function(err,data){
             if(err){
                 res.send('ERROR');
             }else{
@@ -53,7 +53,7 @@ router.put('/:KEY', function(req, res) {
 //생성 요청 처리  INSERT
 router.post('/:KEY', function(req, res) {
 
-    console.log('ROUTER [POST]/CREATE KEY['+req.params.KEY+']');
+    console.error('POST 요청을 받았습니다. KEY 값은 [%s]',req.body[0].VATNO);
 
     if(req.params.KEY === null) {
 
@@ -61,7 +61,7 @@ router.post('/:KEY', function(req, res) {
 
     }else{
 
-        main.post({VATKEY:req.params.KEY},function(err,data){
+        main.post({VATKEY:req.params.KEY},req.body[0],function(err,data){
             if(err){
                 res.send('ERROR from Main function,');
             }else{

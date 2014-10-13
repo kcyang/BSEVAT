@@ -12,10 +12,14 @@ angular.module('VATService', []).factory('VATService', ['$http','$log', function
     return {
 
         // call to get all nerds
-        get : function(KEY,callback) {
+        get : function(VATROOTKEY,callback) {
 
-            $http({method: 'GET', url: '/api/'+KEY}).
-                success(function(data,status,headers,config){
+            var KEY = VATROOTKEY.YEAR+VATROOTKEY.VATQT+VATROOTKEY.VATTYPE+VATROOTKEY.VATNO;
+
+            $log.info('GET>>> 요청 값 [%s]',KEY);
+
+            $http({method: 'GET', url: '/api/'+VATROOTKEY.VATNO, params: {VATKEY: KEY}}).
+                success(function(data/*,status,headers,config*/){
                     $log.info('성공적으로 URL로 부터 결과를 받았습니다.');
                     if(data === 'ERROR'){
                         callback(true,data);
@@ -23,24 +27,29 @@ angular.module('VATService', []).factory('VATService', ['$http','$log', function
                         callback(false,data);
                     }
             }).
-                error(function(data,status,headers,config){
+                error(function(data/*,status,headers,config*/){
                     $log.error('통신 에러가 났습니다.[HTTP]');
                     callback(true,data);
 
             });
         },
 
-        // call to POST and create a new geek
-        create : function(KEY,callback) {
+        /**
+         * 신규 데이터를 생성하는 Call
+         * @param KEY 조회 값?
+         * @param VATROOTKEY 입력하기 위한 키값.
+         * @param callback 콜백 함수
+         */
+        create : function(KEY,VATROOTKEY,callback) {
 
-            $http({method: 'POST', url: '/api/'+KEY}).
-                success(function(data,status,headers,config){
-                    $log.info('성공적으로 URL로 부터 결과를 받았습니다.');
+            $http({method: 'POST', url: '/api/'+KEY, data: VATROOTKEY}).
+                success(function(data/*,status,headers,config*/){
+                    $log.info('성공적으로 URL 로 부터 결과를 받았습니다.');
                     $log.info(data);
                     callback(false,data);
 
                 }).
-                error(function(data,status,headers,config){
+                error(function(data/*,status,headers,config*/){
                     $log.error('통신 에러가 났습니다.[HTTP]');
                     $log.error(data);
                     callback(true,data);
@@ -53,13 +62,13 @@ angular.module('VATService', []).factory('VATService', ['$http','$log', function
         update : function(KEY,callback) {
 
             $http({method: 'PUT', url: '/api/'+KEY}).
-                success(function(data,status,headers,config){
+                success(function(data/*,status,headers,config*/){
                     $log.info('성공적으로 URL로 부터 결과를 받았습니다.');
                     $log.info(data);
                     callback(false,data);
 
                 }).
-                error(function(data,status,headers,config){
+                error(function(data/*,status,headers,config*/){
                     $log.error('통신 에러가 났습니다.[HTTP]');
                     $log.error(data);
                     callback(true,data);

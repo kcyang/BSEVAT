@@ -4,7 +4,7 @@ title = "VAT117"
 # 신용카드매출전표 등 발행금액집계표의 화면을 위한 테이블 정의
 # 화면을 구성하게되는 입력폼이나 출력되는 대상을 정하는 것과 동일합니다.
 schema = [
-    ["VATKEY","String"],             #Main Key. << 모든 정의에 들어 있어야 함.
+    ["VATKEY","String","true"],             #Main Key. << 모든 정의에 들어 있어야 함. 세번째 항목은 Key 값 유무.
     ["COMPANY_CODE","String"],       #회사코드
     ["YEAR","String"],               #년도
     ["VATQT","String"],              #신고분기
@@ -25,9 +25,9 @@ schema = [
     ["SVC_TOTAL_AMOUNT","Number"],   #발행금액합계_봉사료(사용자입력)
     ["SVC_CARD_AMOUNT","Number"],    #신용카등등발행금액_봉사료(사용자입력)
     ["SVC_CASH_AMOUNT","Number"],    #현금영수증발행금액_봉사료(사용자입력)
-
     ["TAX_BILL_AMOUNT","Number"],    #세금계산서교부금액(집계표) (사용자입력)
     ["BILL_AMOUNT","Number"]         #계산서교부금액(집계표) (사용자입력)
+
 ]
 
 # 화면상의 계산 식을 위한 공간 / 자동화 하기 위해 고민이 필요함.

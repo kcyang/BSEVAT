@@ -11,7 +11,7 @@
 angular.module('V117Ctrl',[]).controller('V117Controller',function($scope,$log,VATService,$location,ngDialog){
 
     //# 상수정의.
-    var constants = {
+    $scope.constants = {
         'VATNO' : 'V117',  //이 화면의 VAT 번호.
         'EMPTY' : 'true'
     };
@@ -45,15 +45,17 @@ angular.module('V117Ctrl',[]).controller('V117Controller',function($scope,$log,V
     $scope.$on('changeKey',function(event,key){
         //VAT / 상위 값들이 바뀌었을 때 //
         // 값에 자료를 다시 불러와야 함.
+        $log.info('값이 바뀌었습니다.');
+        $location.path('/V117');  //#TODO 반응이 없는건지.. 살펴볼 것.
     });
 
     //최상위 Global 에 현재 VAT 값을 셋팅해 놓는다.(불필요할 때 삭제할 것) @TODO
-    $scope.setVATKey(constants.VATNO);
+    $scope.setVATKey($scope.constants.VATNO);
 
 
     //2-2.
     //처음 화면 실행 시, 데이터를 가져 온다.
-    VATService.get(constants.VATNO,function(err,data){
+    VATService.get($scope.VATROOTKEY[0],function(err,data){
 
         if(err) {
             $log.error(data);
@@ -61,8 +63,19 @@ angular.module('V117Ctrl',[]).controller('V117Controller',function($scope,$log,V
             $scope.alertmessage = '작성하고자 하시는 자료가 만들어 지지 않았습니다. 자료 불러오기를 눌러서 생성해 주세요.!';
         }else{
             //화면 ng-model 에 값 Setting.
-            constants.EMPTY = 'false';
-            $scope.calc();
+            $scope.constants.EMPTY = 'false';
+
+            var keys = [];
+            for(var key in data) { if(data.hasOwnProperty(key)){keys.push(key);} }
+
+            for(var result_key in keys){
+                if(keys.hasOwnProperty(result_key)){
+                    $scope[keys[result_key]] = data[keys[result_key]];
+                }
+            }
+            $scope.calc(); //재계산
+
+            //#TODO 화면에 뿌리기. 화면에 뿌리기. 배열로 통으로 던져주도록.
         }
 
     });
@@ -86,24 +99,26 @@ angular.module('V117Ctrl',[]).controller('V117Controller',function($scope,$log,V
     //#자료불러오기 버튼을 눌렀을 때 실행되는 function.
     $scope.createDocument = function(){
 
-        if(constants.EMPTY === 'false'){
+        if($scope.constants.EMPTY === 'false'){
             //Dialog 띄우기.
             ngDialog.open({
                 template:'../../views/modalDialog.html',
-                controller:'V117Controller',
-                className: 'ngdialog-theme-default ngdialog-theme-custom'
+                controller:'dialogController',
+                className: 'ngdialog-theme-default ngdialog-theme-custom',
+                scope: $scope
             });
 
         }else{
 
-            VATService.create(constants.VATNO,function(err,data){
-
+            //서버로, 새로 데이터를 생성하는 요청을 보내는 곳.
+            VATService.create($scope.constants.VATNO,$scope.VATROOTKEY,function(err,data){
+$log.info($scope.VATROOTKEY[0]);
                 if(err) {
                     $log.error(data);
                 }else{
                     $scope.status = 'Ok';
                     $scope.alertmessage = '성공적으로 생성되었습니다.!';
-                    constants.EMPTY = 'false';
+                    $scope.constants.EMPTY = 'false';
 
                     var keys = [];
                     for(var key in data) { if(data.hasOwnProperty(key)){keys.push(key);} }
@@ -114,10 +129,10 @@ angular.module('V117Ctrl',[]).controller('V117Controller',function($scope,$log,V
                         }
                     }
 
-                    $scope.calc();
-                    //다 하고, 다시 화면을 Loading.
+                    $scope.calc(); //재계산
                     $scope.progressValue = 100;
                     ngDialog.close('ngdialog1');
+
 //                    $location.path('/V117');  #TODO [CHECK] 이걸 해야되 말아야되?
                 }
 
@@ -126,53 +141,40 @@ angular.module('V117Ctrl',[]).controller('V117Controller',function($scope,$log,V
 
     };
 
-    //#자료불러오기 버튼을 눌렀을 때 실행되는 function.
-    $scope.cancelDialog = function(){
-        ngDialog.close('ngdialog1');
-        $log.info('취소했습니다.!!!');
-    };
-
-    //#자료불러오기 버튼을 눌렀을 때 실행되는 function.
-    $scope.confirmDialog = function(){
-        $scope.progressValue = 20;
-        ngDialog.close('ngdialog1');
-        ngDialog.open({
-            template:'../../views/progressDialog.html',
-            controller:'V117Controller',
-            scope: $scope,
-            className: 'ngdialog-theme-default ngdialog-theme-custom'
-        });
-        constants.EMPTY = 'true';
-        $scope.createDocument();
-    };
-
-
-    //#저장하기 버튼을 눌렀을 때 실행되는 function.
+    //#저장하기 버튼을 눌렀을 때 실행되는 function. #TODO @2014-10-14 저장기능 구현.
     $scope.saveDocument = function(){
 
-        VATService.update(constants.VATNO,function(err,data){
+        VATService.update($scope.constants.VATNO,function(err,data){
 
-            if(err) {$log.error(data);}
+            if(err) {
+                $log.error(data);
+
+                $scope.status = 'Error';
+                $scope.alertmessage = '저장하지 못했습니다. 관리자에게 문의하세요!';
+                return;
+            }
 
             $scope.status = 'Ok';
             $scope.alertmessage = '성공적으로 저장되었습니다.!';
-            $scope.NAME = data.NAME;
-
         });
 
     };
 
-    //#다시 작성하기 버튼을 눌렀을 때 실행되는 function.
+    //#다시 작성하기 버튼을 눌렀을 때 실행되는 function. #TODO @2014-10-14 다시 불러오기 기능 구현.
     $scope.getDocument = function(){
 
-        VATService.get(constants.VATNO,function(err,data){
+        VATService.get($scope.constants.VATNO,function(err,data){
 
-            if(err) {$log.error(data);}
+            if(err) {
+                $log.error(data);
+
+                $scope.status = 'Error';
+                $scope.alertmessage = '가져오지 못했습니다. 관리자에게 문의하세요!';
+                return;
+            }
 
             $scope.status = 'Ok';
             $scope.alertmessage = '성공적으로 가져왔습니다.!';
-            $scope.NAME = data.NAME;
-
         });
     };
 
