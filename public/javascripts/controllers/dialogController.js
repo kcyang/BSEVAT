@@ -5,7 +5,7 @@
 'use strict';
 /* global angular */
 
-angular.module('dialogCtrl',[]).controller('dialogController',function($scope,$log,$location,ngDialog){
+angular.module('dialogCtrl',[]).controller('dialogController',function($scope,$log,$location,$route,ngDialog){
     //#자료불러오기 버튼을 눌렀을 때 실행되는 function.
     $scope.cancelDialog = function(){
         ngDialog.close('ngdialog1');
@@ -24,5 +24,11 @@ angular.module('dialogCtrl',[]).controller('dialogController',function($scope,$l
         });
         $scope.constants.EMPTY = 'true';
         $scope.createDocument();
+    };
+    //#확인 버튼을 눌렀을 때 실행되는 function.
+    $scope.reconfirmDialog = function(){
+        ngDialog.close('ngdialog1');
+        //$location.path('/V117');
+        $route.reload();
     };
 });

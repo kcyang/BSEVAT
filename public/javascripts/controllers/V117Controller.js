@@ -8,7 +8,7 @@
 'use strict';
 /* global angular */
 
-angular.module('V117Ctrl',[]).controller('V117Controller',function($scope,$log,VATService,$location,ngDialog){
+angular.module('V117Ctrl',[]).controller('V117Controller',function($scope,$log,VATService,$location,$route,ngDialog){
 
     //# 상수정의.
     $scope.constants = {
@@ -39,6 +39,10 @@ angular.module('V117Ctrl',[]).controller('V117Controller',function($scope,$log,V
     $scope.alertmessage = '금액과 발행 건수등을 검토하시고 저장버튼을 눌러주세요!';
 
 
+    //최상위 Global 에 현재 VAT 값을 셋팅해 놓는다.(불필요할 때 삭제할 것) @TODO
+    $scope.setVATKey($scope.constants.VATNO);  // 이 값이 바뀌어서,
+
+
     //### 다른 영역에서 발생한 이벤트를 등록하는 곳,
     //### 다른 곳에서 'eventName' 으로 발생한 이벤트에서 broadcast or emit 한 이벤트를
     //### 여기서 잡아서 처리해 줄 수 있다.
@@ -46,15 +50,13 @@ angular.module('V117Ctrl',[]).controller('V117Controller',function($scope,$log,V
         //VAT / 상위 값들이 바뀌었을 때 //
         // 값에 자료를 다시 불러와야 함.
         $log.info('값이 바뀌었습니다.');
-        $location.path('/V117');  //#TODO 반응이 없는건지.. 살펴볼 것.
+        //$location.path('/V117');  //#TODO 반응이 없는건지.. 살펴볼 것.
+        $route.reload();
     });
-
-    //최상위 Global 에 현재 VAT 값을 셋팅해 놓는다.(불필요할 때 삭제할 것) @TODO
-    $scope.setVATKey($scope.constants.VATNO);
-
 
     //2-2.
     //처음 화면 실행 시, 데이터를 가져 온다.
+
     VATService.get($scope.VATROOTKEY[0],function(err,data){
 
         if(err) {
@@ -63,18 +65,25 @@ angular.module('V117Ctrl',[]).controller('V117Controller',function($scope,$log,V
             $scope.alertmessage = '작성하고자 하시는 자료가 만들어 지지 않았습니다. 자료 불러오기를 눌러서 생성해 주세요.!';
         }else{
             //화면 ng-model 에 값 Setting.
-            $scope.constants.EMPTY = 'false';
 
-            var keys = [];
-            for(var key in data) { if(data.hasOwnProperty(key)){keys.push(key);} }
+            if(data === 'null'){
+                $scope.status = 'Warning';
+                $scope.alertmessage = '해당 자료가 없습니다. 자료 불러오기를 눌러서 새로 생성하시거나, 다른 기수를 조회하세요.';
+            }else{
+                $scope.status = 'Ok';
+                $scope.alertmessage = '성공적으로 데이터를 가져왔습니다.! 자료를 검토하시고 저장버튼을 눌러주세요.';
+                $scope.constants.EMPTY = 'false';
 
-            for(var result_key in keys){
-                if(keys.hasOwnProperty(result_key)){
-                    $scope[keys[result_key]] = data[keys[result_key]];
+                var keys = [];
+                for(var key in data) { if(data.hasOwnProperty(key)){keys.push(key);} }
+
+                for(var result_key in keys){
+                    if(keys.hasOwnProperty(result_key)){
+                        $scope[keys[result_key]] = data[keys[result_key]];
+                    }
                 }
+                $scope.calc(); //재계산
             }
-            $scope.calc(); //재계산
-
             //#TODO 화면에 뿌리기. 화면에 뿌리기. 배열로 통으로 던져주도록.
         }
 
@@ -112,7 +121,6 @@ angular.module('V117Ctrl',[]).controller('V117Controller',function($scope,$log,V
 
             //서버로, 새로 데이터를 생성하는 요청을 보내는 곳.
             VATService.create($scope.constants.VATNO,$scope.VATROOTKEY,function(err,data){
-$log.info($scope.VATROOTKEY[0]);
                 if(err) {
                     $log.error(data);
                 }else{
@@ -133,7 +141,6 @@ $log.info($scope.VATROOTKEY[0]);
                     $scope.progressValue = 100;
                     ngDialog.close('ngdialog1');
 
-//                    $location.path('/V117');  #TODO [CHECK] 이걸 해야되 말아야되?
                 }
 
             });
@@ -160,22 +167,17 @@ $log.info($scope.VATROOTKEY[0]);
 
     };
 
-    //#다시 작성하기 버튼을 눌렀을 때 실행되는 function. #TODO @2014-10-14 다시 불러오기 기능 구현.
+    //#다시 작성하기 버튼을 눌렀을 때 실행되는 function. #T*ODO @2014-10-14 다시 불러오기 기능 구현. DONE
     $scope.getDocument = function(){
 
-        VATService.get($scope.constants.VATNO,function(err,data){
-
-            if(err) {
-                $log.error(data);
-
-                $scope.status = 'Error';
-                $scope.alertmessage = '가져오지 못했습니다. 관리자에게 문의하세요!';
-                return;
-            }
-
-            $scope.status = 'Ok';
-            $scope.alertmessage = '성공적으로 가져왔습니다.!';
+        //Dialog 띄우기.
+        ngDialog.open({
+            template:'../../views/reopenDialog.html',
+            controller:'dialogController',
+            className: 'ngdialog-theme-default ngdialog-theme-custom',
+            scope: $scope
         });
+
     };
 
 });

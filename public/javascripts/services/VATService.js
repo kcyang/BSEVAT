@@ -16,19 +16,20 @@ angular.module('VATService', []).factory('VATService', ['$http','$log', function
 
             var KEY = VATROOTKEY.YEAR+VATROOTKEY.VATQT+VATROOTKEY.VATTYPE+VATROOTKEY.VATNO;
 
-            $log.info('GET>>> 요청 값 [%s]',KEY);
+//            $log.info('GET>>> 요청 값 [%s]',KEY);
+//            $log.info('GET>>> /api/%s',VATROOTKEY.VATNO);
 
             $http({method: 'GET', url: '/api/'+VATROOTKEY.VATNO, params: {VATKEY: KEY}}).
-                success(function(data/*,status,headers,config*/){
-                    $log.info('성공적으로 URL로 부터 결과를 받았습니다.');
+                success(function(data,status/*,headers,config*/){
+                    $log.info('[GET] 성공적으로 URL 로 부터 결과를 받았습니다.[%s]',status);
                     if(data === 'ERROR'){
                         callback(true,data);
                     }else{
                         callback(false,data);
                     }
             }).
-                error(function(data/*,status,headers,config*/){
-                    $log.error('통신 에러가 났습니다.[HTTP]');
+                error(function(data,status/*,headers,config*/){
+                    $log.error('통신 에러가 났습니다.[%s]',status);
                     callback(true,data);
 
             });

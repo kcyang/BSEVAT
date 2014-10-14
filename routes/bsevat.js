@@ -27,7 +27,8 @@ router.get('/', function(req, res) {
 //가져오는 요청처리  SELECT
 router.get('/:KEY', function(req, res) {
 
-    console.log('ROUTER [GET] KEY['+req.params.KEY+']');
+//    console.log('ROUTER [GET] KEY['+req.params.KEY+']');
+    console.error('ROUTER [GET] KEY['+req.query.VATKEY+']');
 
     if(req.params.KEY === null) {
 
@@ -35,7 +36,7 @@ router.get('/:KEY', function(req, res) {
 
     }else{
 
-        main.get({KEY:req.params.KEY,VATKEY:req.param['VATKEY']},function(err,data){
+        main.get({KEY:req.params.KEY,VATKEY:req.query.VATKEY},function(err,data){
             if(err){
                 res.send('ERROR');
             }else{

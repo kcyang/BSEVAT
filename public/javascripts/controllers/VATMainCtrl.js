@@ -3,7 +3,7 @@
  */
 'use strict';
 /* global angular */
-angular.module('VATMainCtrl',[]).controller('BSEVATController',function($scope,$log){
+angular.module('VATMainCtrl',[]).controller('BSEVATController',function($scope){
 
     $scope.tagline = '여기는 BSE VAT List Main 입니다.';
 
