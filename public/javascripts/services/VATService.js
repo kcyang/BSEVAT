@@ -60,13 +60,18 @@ angular.module('VATService', []).factory('VATService', ['$http','$log', function
         },
 
         // call to POST and create a new geek
-        update : function(KEY,callback) {
+        update : function(KEY,mg,callback) {
 
-            $http({method: 'PUT', url: '/api/'+KEY}).
+            $http({method: 'PUT', url: '/api/'+KEY, data: mg}).
                 success(function(data/*,status,headers,config*/){
                     $log.info('성공적으로 URL로 부터 결과를 받았습니다.');
                     $log.info(data);
-                    callback(false,data);
+
+                    if(data === '0'){
+                        callback(true,data);
+                    }else{
+                        callback(false,data);
+                    }
 
                 }).
                 error(function(data/*,status,headers,config*/){

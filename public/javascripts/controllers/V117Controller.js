@@ -54,7 +54,24 @@ angular.module('V117Ctrl',[]).controller('V117Controller',function($scope,$log,V
         $route.reload();
     });
 
+
     //2-2.
+    //화면상의 계산식을 정의하는 곳. >> 자동화를 해야 하는데.. 고민 중임.
+    //화면의 자동계산 되는 로직은 아래에 정의된 데로 실행된다.
+
+    $scope.calc = function(){
+        $scope.mg.CARD_TOTAL_AMOUNT = $scope.mg.TAX_CARD_AMOUNT + $scope.mg.NOTAX_CARD_AMOUNT + $scope.mg.SVC_CARD_AMOUNT;
+        $scope.mg.CASH_TOTAL_AMOUNT = $scope.mg.TAX_CASH_AMOUNT + $scope.mg.NOTAX_CASH_AMOUNT + $scope.mg.SVC_CASH_AMOUNT;
+
+        $scope.mg.TAX_TOTAL_AMOUNT = $scope.mg.TAX_CARD_AMOUNT + $scope.mg.TAX_CASH_AMOUNT;
+        $scope.mg.NOTAX_TOTAL_AMOUNT = $scope.mg.NOTAX_CARD_AMOUNT + $scope.mg.NOTAX_CASH_AMOUNT;
+        $scope.mg.SVC_TOTAL_AMOUNT = $scope.mg.SVC_CARD_AMOUNT + $scope.mg.SVC_CASH_AMOUNT;
+
+        $scope.mg.TOTAL_AMOUNT = $scope.mg.CARD_TOTAL_AMOUNT + $scope.mg.CASH_TOTAL_AMOUNT;
+    };
+
+
+    //2-3.
     //처음 화면 실행 시, 데이터를 가져 온다.
 
     VATService.get($scope.VATROOTKEY[0],function(err,data){
@@ -74,14 +91,7 @@ angular.module('V117Ctrl',[]).controller('V117Controller',function($scope,$log,V
                 $scope.alertmessage = '성공적으로 데이터를 가져왔습니다.! 자료를 검토하시고 저장버튼을 눌러주세요.';
                 $scope.constants.EMPTY = 'false';
 
-                var keys = [];
-                for(var key in data) { if(data.hasOwnProperty(key)){keys.push(key);} }
-
-                for(var result_key in keys){
-                    if(keys.hasOwnProperty(result_key)){
-                        $scope[keys[result_key]] = data[keys[result_key]];
-                    }
-                }
+                $scope.mg = data;
                 $scope.calc(); //재계산
             }
             //#TODO 화면에 뿌리기. 화면에 뿌리기. 배열로 통으로 던져주도록.
@@ -89,17 +99,6 @@ angular.module('V117Ctrl',[]).controller('V117Controller',function($scope,$log,V
 
     });
 
-    //2-3.
-    //화면상의 계산식을 정의하는 곳. >> 자동화를 해야 하는데.. 고민 중임.
-    //화면의 자동계산 되는 로직은 아래에 정의된 데로 실행된다.
-
-    $scope.calc = function(){
-        $scope.CARD_TOTAL_AMOUNT = $scope.TAX_CARD_AMOUNT + $scope.NOTAX_CARD_AMOUNT;
-        $scope.CASH_TOTAL_AMOUNT = $scope.TAX_CASH_AMOUNT + $scope.NOTAX_CASH_AMOUNT;
-        $scope.TAX_TOTAL_AMOUNT = $scope.TAX_CARD_AMOUNT + $scope.TAX_CASH_AMOUNT;
-        $scope.NOTAX_TOTAL_AMOUNT = $scope.NOTAX_CARD_AMOUNT + $scope.NOTAX_CASH_AMOUNT;
-        $scope.TOTAL_AMOUNT = $scope.CARD_TOTAL_AMOUNT + $scope.CASH_TOTAL_AMOUNT;
-    };
 
     //3. 화면 이벤트 발생 시,
     // 데이터가 없을 때, 데이터를 불러와서 새로운 값을 넣고, 다시 불러오는 Module.
@@ -128,15 +127,7 @@ angular.module('V117Ctrl',[]).controller('V117Controller',function($scope,$log,V
                     $scope.alertmessage = '성공적으로 생성되었습니다.!';
                     $scope.constants.EMPTY = 'false';
 
-                    var keys = [];
-                    for(var key in data) { if(data.hasOwnProperty(key)){keys.push(key);} }
-
-                    for(var result_key in keys){
-                        if(keys.hasOwnProperty(result_key)){
-                            $scope[keys[result_key]] = data[keys[result_key]];
-                        }
-                    }
-
+                    $scope.mg = data;
                     $scope.calc(); //재계산
                     $scope.progressValue = 100;
                     ngDialog.close('ngdialog1');
@@ -150,8 +141,8 @@ angular.module('V117Ctrl',[]).controller('V117Controller',function($scope,$log,V
 
     //#저장하기 버튼을 눌렀을 때 실행되는 function. #TODO @2014-10-14 저장기능 구현.
     $scope.saveDocument = function(){
-
-        VATService.update($scope.constants.VATNO,function(err,data){
+$log.info($scope.mg);
+        VATService.update($scope.constants.VATNO,$scope.mg,function(err,data){
 
             if(err) {
                 $log.error(data);
@@ -160,7 +151,7 @@ angular.module('V117Ctrl',[]).controller('V117Controller',function($scope,$log,V
                 $scope.alertmessage = '저장하지 못했습니다. 관리자에게 문의하세요!';
                 return;
             }
-
+            $log.info('총 %s 건이 저장되었습니다',data);
             $scope.status = 'Ok';
             $scope.alertmessage = '성공적으로 저장되었습니다.!';
         });

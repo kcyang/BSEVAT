@@ -48,7 +48,23 @@ router.get('/:KEY', function(req, res) {
 
 //업데이트 요청 처리  UPDATE
 router.put('/:KEY', function(req, res) {
-    res.send('[PUT]UPDATE 퐁퐁퐁['+req.params.KEY+']');
+
+    console.error('ROUTER [PUT] KEY['+req.body+']');
+
+    if(req.params.KEY === null) {
+
+        res.json('ERROR');
+
+    }else{
+
+        main.put({KEY:req.params.KEY},req.body,function(err,data){
+            if(err){
+                res.send('ERROR');
+            }else{
+                res.json(data);
+            }
+        });
+    }
 });
 
 //생성 요청 처리  INSERT

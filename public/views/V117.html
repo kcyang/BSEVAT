@@ -83,49 +83,49 @@
         <tr>
             <td>합  계</td>
             <td>
-                <input type="number" class="form-control input-sm" placeholder="총 합 계" ng-model="TOTAL_AMOUNT">
+                <input type="number" class="form-control input-sm" placeholder="총 합 계" ng-model="mg.TOTAL_AMOUNT">
             </td>
             <td>
-                <input type="number" class="form-control input-sm" placeholder="신용/직불/기명식 선불 합계" ng-change="calc()" ng-model="CARD_TOTAL_AMOUNT">
+                <input type="number" class="form-control input-sm" placeholder="신용/직불/기명식 선불 합계" ng-change="calc()" ng-model="mg.CARD_TOTAL_AMOUNT">
             </td>
             <td>
-                <input type="number" class="form-control input-sm" placeholder="현금영수증 합계" ng-change="calc()" ng-model="CASH_TOTAL_AMOUNT">
+                <input type="number" class="form-control input-sm" placeholder="현금영수증 합계" ng-change="calc()" ng-model="mg.CASH_TOTAL_AMOUNT">
             </td>
         </tr>
         <tr>
             <td>과세 매출분</td>
             <td>
-                <input type="number" class="form-control input-sm" placeholder="과세 매출분 합계" ng-model="TAX_TOTAL_AMOUNT">
+                <input type="number" class="form-control input-sm" placeholder="과세 매출분 합계" ng-model="mg.TAX_TOTAL_AMOUNT">
             </td>
             <td>
-                <input type="number" class="form-control input-sm" placeholder="신용/직불/기명식 선불 과세분" ng-change="calc()" ng-model="TAX_CARD_AMOUNT">
+                <input type="number" class="form-control input-sm" placeholder="신용/직불/기명식 선불 과세분" ng-change="calc()" ng-model="mg.TAX_CARD_AMOUNT">
             </td>
             <td>
-                <input type="number" class="form-control input-sm" placeholder="현금영수증 과세분" ng-change="calc()" ng-model="TAX_CASH_AMOUNT">
+                <input type="number" class="form-control input-sm" placeholder="현금영수증 과세분" ng-change="calc()" ng-model="mg.TAX_CASH_AMOUNT">
             </td>
         </tr>
         <tr>
             <td>면제 매출분</td>
             <td>
-                <input type="text" class="form-control input-sm" placeholder="면제 매출분 합계" ng-model="NOTAX_TOTAL_AMOUNT">
+                <input type="number" class="form-control input-sm" placeholder="면제 매출분 합계" ng-model="mg.NOTAX_TOTAL_AMOUNT">
             </td>
             <td>
-                <input type="text" class="form-control input-sm" placeholder="신용/지불/기명식 선불 면제분" ng-change="calc()" ng-model="NOTAX_CARD_AMOUNT">
+                <input type="number" class="form-control input-sm" placeholder="신용/지불/기명식 선불 면제분" ng-change="calc()" ng-model="mg.NOTAX_CARD_AMOUNT">
             </td>
             <td>
-                <input type="text" class="form-control input-sm" placeholder="현금영수증 면제분" ng-change="calc()" ng-model="NOTAX_CASH_AMOUNT">
+                <input type="number" class="form-control input-sm" placeholder="현금영수증 면제분" ng-change="calc()" ng-model="mg.NOTAX_CASH_AMOUNT">
             </td>
         </tr>
         <tr>
             <td>봉 사 료</td>
             <td>
-                <input type="text" class="form-control input-sm" placeholder="봉사료 합계">
+                <input type="number" class="form-control input-sm" ng-model="mg.SVC_TOTAL_AMOUNT">
             </td>
             <td>
-                <input type="text" class="form-control input-sm" placeholder="입력하세요!">
+                <input type="number" class="form-control input-sm" ng-change="calc()" ng-model="mg.SVC_CARD_AMOUNT">
             </td>
             <td>
-                <input type="text" class="form-control input-sm" placeholder="입력하세요!">
+                <input type="number" class="form-control input-sm" ng-change="calc()" ng-model="mg.SVC_CASH_AMOUNT">
             </td>
         </tr>
         </tbody>
@@ -141,12 +141,12 @@
             <td>(8) 세금계산서<br>
                 교부금액</td>
             <td>
-                <input type="text" class="form-control input-sm" placeholder="입력하세요!">
+                <input type="text" class="form-control input-sm" placeholder="입력하세요!" ng-change="calc()" ng-model="mg.TAX_BILL_AMOUNT">
             </td>
             <td>(9) 계산서<br>
                 교부금액</td>
             <td>
-                <input type="text" class="form-control input-sm" placeholder="입력하세요!">
+                <input type="text" class="form-control input-sm" placeholder="입력하세요!" ng-change="calc()" ng-model="mg.BILL_AMOUNT">
             </td>
         </tr>
         </tbody>
