@@ -8,7 +8,8 @@
 'use strict';
 /* global angular */
 
-angular.module('V117Ctrl',[]).controller('V117Controller',function($scope,$log,VATService,$location,$route,ngDialog){
+angular.module('V117Ctrl',[])
+    .controller('V117Controller',function($scope,$log,VATService,$location,$route,ngDialog){
 
     //# 상수정의.
     $scope.constants = {
@@ -57,17 +58,19 @@ angular.module('V117Ctrl',[]).controller('V117Controller',function($scope,$log,V
 
     //2-2.
     //화면상의 계산식을 정의하는 곳. >> 자동화를 해야 하는데.. 고민 중임.
-    //화면의 자동계산 되는 로직은 아래에 정의된 데로 실행된다.
+        //화면의 자동계산 되는 로직은 아래에 정의된 데로 실행된다.
 
+        //#TODO 텍스트로 가져온 값을 숫자인 경우, 자동으로 숫자로 변경하는 기능 구현
     $scope.calc = function(){
-        $scope.mg.CARD_TOTAL_AMOUNT = $scope.mg.TAX_CARD_AMOUNT + $scope.mg.NOTAX_CARD_AMOUNT + $scope.mg.SVC_CARD_AMOUNT;
-        $scope.mg.CASH_TOTAL_AMOUNT = $scope.mg.TAX_CASH_AMOUNT + $scope.mg.NOTAX_CASH_AMOUNT + $scope.mg.SVC_CASH_AMOUNT;
+//        $scope.mg.CARD_TOTAL_AMOUNT = Number($scope.mg.TAX_CARD_AMOUNT) + $scope.mg.NOTAX_CARD_AMOUNT + $scope.mg.SVC_CARD_AMOUNT;
+        $scope.mg.CARD_TOTAL_AMOUNT = Number($scope.mg.TAX_CARD_AMOUNT) + Number($scope.mg.NOTAX_CARD_AMOUNT) + Number($scope.mg.SVC_CARD_AMOUNT);
+        $scope.mg.CASH_TOTAL_AMOUNT = Number($scope.mg.TAX_CASH_AMOUNT) + Number($scope.mg.NOTAX_CASH_AMOUNT) + Number($scope.mg.SVC_CASH_AMOUNT);
 
-        $scope.mg.TAX_TOTAL_AMOUNT = $scope.mg.TAX_CARD_AMOUNT + $scope.mg.TAX_CASH_AMOUNT;
-        $scope.mg.NOTAX_TOTAL_AMOUNT = $scope.mg.NOTAX_CARD_AMOUNT + $scope.mg.NOTAX_CASH_AMOUNT;
-        $scope.mg.SVC_TOTAL_AMOUNT = $scope.mg.SVC_CARD_AMOUNT + $scope.mg.SVC_CASH_AMOUNT;
+        $scope.mg.TAX_TOTAL_AMOUNT = Number($scope.mg.TAX_CARD_AMOUNT) + Number($scope.mg.TAX_CASH_AMOUNT);
+        $scope.mg.NOTAX_TOTAL_AMOUNT = Number($scope.mg.NOTAX_CARD_AMOUNT) + Number($scope.mg.NOTAX_CASH_AMOUNT);
+        $scope.mg.SVC_TOTAL_AMOUNT = Number($scope.mg.SVC_CARD_AMOUNT) + Number($scope.mg.SVC_CASH_AMOUNT);
 
-        $scope.mg.TOTAL_AMOUNT = $scope.mg.CARD_TOTAL_AMOUNT + $scope.mg.CASH_TOTAL_AMOUNT;
+        $scope.mg.TOTAL_AMOUNT = Number($scope.mg.CARD_TOTAL_AMOUNT) + Number($scope.mg.CASH_TOTAL_AMOUNT);
     };
 
 
@@ -139,9 +142,9 @@ angular.module('V117Ctrl',[]).controller('V117Controller',function($scope,$log,V
 
     };
 
-    //#저장하기 버튼을 눌렀을 때 실행되는 function. #TODO @2014-10-14 저장기능 구현.
+    //#저장하기 버튼을 눌렀을 때 실행되는 function. #T*ODO @2014-10-14 저장기능 구현. DONE
     $scope.saveDocument = function(){
-$log.info($scope.mg);
+
         VATService.update($scope.constants.VATNO,$scope.mg,function(err,data){
 
             if(err) {

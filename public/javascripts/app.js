@@ -6,7 +6,7 @@
  *
  */
 'use strict';
-var INIT_YEAR = 2014;  // #TODO
+var INIT_YEAR = 2014;  // #TODO 현재 일자 기준으로 이전 기수를 선택. 또는 선택하세요 문구..??
 /* global angular */
 angular.module('BSEVATApp',
     [
@@ -16,7 +16,8 @@ angular.module('BSEVATApp',
         'VATMainCtrl',
         'V117Ctrl',
         'dialogCtrl',
-        'VATService'
+        'VATService',
+        'ui.utils.masks'
     ])
     .run(function($rootScope,$log){
 
