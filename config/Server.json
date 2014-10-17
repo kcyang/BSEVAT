@@ -19,5 +19,9 @@
             "port" : "27017",
             "instance" : "BSEVAT"
         }
+    },
+    "excel":{
+        "template_path": "D:\\",
+        "result_path"  : "D:\\XLSTREAM\\"
     }
 }

@@ -11,7 +11,7 @@ angular.module('VATService', []).factory('VATService', ['$http','$log', function
 
     return {
 
-        // call to get all nerds
+        // call to get
         get : function(VATROOTKEY,callback) {
 
             var KEY = VATROOTKEY.YEAR+VATROOTKEY.VATQT+VATROOTKEY.VATTYPE+VATROOTKEY.VATNO;
@@ -33,6 +33,22 @@ angular.module('VATService', []).factory('VATService', ['$http','$log', function
                     callback(true,data);
 
             });
+        },
+
+        // call to get all nerds
+        excel : function(VATROOTKEY,callback) {
+$log.info('받아온 값은 %s',VATROOTKEY.VATNO);
+            $http({method: 'POST', url: '/api/XLS/'+VATROOTKEY.VATNO, data: VATROOTKEY}).
+                success(function(data,status/*,headers,config*/){
+                    $log.info('[GET] 성공적으로 URL 로 부터 결과를 받았습니다.[%s]',status);
+                    if(data === 'ERROR'){
+                        callback(true,data);
+                    }
+                }).
+                error(function(data,status/*,headers,config*/){
+                    $log.error('통신 에러가 났습니다.[%s]',status);
+                    callback(true,data);
+                });
         },
 
         /**

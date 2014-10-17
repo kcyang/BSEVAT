@@ -174,4 +174,35 @@ angular.module('V117Ctrl',[])
 
     };
 
+    $scope.getExcel = function(){
+
+        //먼저 데이터를 자동으로 저장하고, 진행할 것.
+        VATService.update($scope.constants.VATNO,$scope.mg,function(err,data){
+
+            if(err) {
+                $log.error(data);
+
+                $scope.status = 'Error';
+                $scope.alertmessage = '저장하지 못했습니다. 관리자에게 문의하세요!';
+                return;
+            }
+
+            VATService.excel($scope.VATROOTKEY[0],function(err,data){
+
+                if(err) {
+                    $log.error(data);
+
+                    $scope.status = 'Error';
+                    $scope.alertmessage = 'Excel 을 저장하지 못했습니다. 관리자에게 문의하세요!';
+                    return;
+                }
+                $scope.status = 'Ok';
+                $scope.alertmessage = '성공적으로 Excel 을 저장 했습니다.!';
+            });
+
+        });
+
+
+    }
+
 });

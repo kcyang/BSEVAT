@@ -12,26 +12,35 @@ def stdout(a):
     sys.stdout.write(str(a) + "\\n")
 
 
-def build(filename,document_name):
+def build(filename,document_name,output_path,document_key):
+
+    print " ", filename, "::", document_name,"::", output_path, "::", document_key
 
     try:
-        wb = load_workbook(filename)
+        wb = load_workbook(filename, use_iterators = True)
         ws = wb.active
 
         #DB 연결에 대한 에러처리 Exception 처리
         collection = db_connection(document_name)
 
         #각 값이 없을 때 또는 Exception 처리
-        result = collection.find_one()
+        result = collection.find_one({"VATKEY":document_key})
 
         for items in result.keys():
-            if items == '_id':
+            if items == '_id' or items == '__v':
                 continue
             #items 의 값 Validation 처리
-            ws[items] = result[items]
+            print items, "/", result[items]
+            #if ws.has_key(items):
+            #ws[items] = result[items]
 
-        wb.save('D:\output.xlsx')
+        ws['TAX_CARD_AMOUNT'] = result['TAX_CARD_AMOUNT']
+
+        opath = output_path+document_key+'.xlsx'
+        wb.save(opath)
+
     except:
+        print "Unexpected Error:",sys.exc_info()[0]
         return 1
 
     return 0
@@ -48,9 +57,11 @@ def db_connection(document_name):
         return 1
 
 
+# 메인 함수.
 if __name__ == "__main__":
     filename = sys.argv[1]
-    document_name = sys.argv[2]
-    stdout(build(filename,document_name))
+    output_path = sys.argv[2]
+    document_name = sys.argv[3]
+    document_key = sys.argv[4]
+    stdout(build(filename,document_name,output_path,document_key))
     sys.exit(0)
-

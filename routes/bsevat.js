@@ -46,6 +46,34 @@ router.get('/:KEY', function(req, res) {
     }
 });
 
+/**
+ * Excel 을 내려받게 해주는 Function,
+ * Header 설정하고, XLS 로 내려가게 한다.
+ *
+ */
+router.post('/XLS/:KEY', function(req, res) {
+
+    console.error('ROUTER [post::EXCEL] KEY['+ req.params.KEY +']');
+
+    if(req.params.KEY === null) {
+
+        res.json('ERROR');
+
+    }else{
+console.error(req.body);
+        main.excel({VATKEY:req.params.KEY}, req.body,function(err,excelpath){
+            if(err){
+                res.send('ERROR');
+            }else{
+                res.setHeader('Content-Type', 'application/vnd.openxmlformats');
+                res.setHeader("Content-Disposition", "attachment; filename=" + "Report.xlsx");
+                fs.createReadStream(excelpath).pipe(res);
+                res.end();
+            }
+        });
+    }
+});
+
 //업데이트 요청 처리  UPDATE
 router.put('/:KEY', function(req, res) {
 
