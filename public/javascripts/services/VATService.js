@@ -40,7 +40,7 @@ angular.module('VATService', []).factory('VATService', ['$http','$log', function
 $log.info('받아온 값은 %s',VATROOTKEY.VATNO);
             $http({method: 'POST', url: '/api/XLS/'+VATROOTKEY.VATNO, data: VATROOTKEY}).
                 success(function(data,status/*,headers,config*/){
-                    $log.info('[GET] 성공적으로 URL 로 부터 결과를 받았습니다.[%s]',status);
+                    $log.info('[GET] URL 로 부터 결과를 받았습니다.[%s]',status);
                     if(data === 'ERROR'){
                         callback(true,data);
                     }

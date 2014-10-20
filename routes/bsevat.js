@@ -9,6 +9,7 @@
  * 결과값을 보내준다. 결과는 HTML/JSON/ETC. 가 가능하다.
  */
 'use strict';
+//var fs = require('fs');
 var express = require('express');
 var router = express.Router();
 
@@ -60,15 +61,27 @@ router.post('/XLS/:KEY', function(req, res) {
         res.json('ERROR');
 
     }else{
-console.error(req.body);
         main.excel({VATKEY:req.params.KEY}, req.body,function(err,excelpath){
             if(err){
                 res.send('ERROR');
             }else{
+                /*
                 res.setHeader('Content-Type', 'application/vnd.openxmlformats');
                 res.setHeader("Content-Disposition", "attachment; filename=" + "Report.xlsx");
-                fs.createReadStream(excelpath).pipe(res);
+                var fileStream = fs.createReadStream(excelpath);
+                fileStream.pipe(res);
                 res.end();
+                */
+                console.log('엑셀은 여기에서 다운로드 됩니다...>>>> '+excelpath);
+                //#TODO 파일다운로드 여기서 시작할 것....20141020
+                //res.sendfile(excelpath);
+                /*
+                res.download(excelpath,req.params.KEY+'.xlsx',function(err){
+                    if(err){
+                        console.error('엑셀을 다운로드 하는 중에 에러 발생..',err);
+                    }
+                });
+                */
             }
         });
     }
