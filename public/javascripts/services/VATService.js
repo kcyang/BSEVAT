@@ -34,23 +34,38 @@ angular.module('VATService', []).factory('VATService', ['$http','$log', function
 
             });
         },
-
+/*
         // call to get all nerds
         excel : function(VATROOTKEY,callback) {
 $log.info('받아온 값은 %s',VATROOTKEY.VATNO);
             $http({method: 'POST', url: '/api/XLS/'+VATROOTKEY.VATNO, data: VATROOTKEY}).
-                success(function(data,status/*,headers,config*/){
-                    $log.info('[GET] URL 로 부터 결과를 받았습니다.[%s]',status);
+                success(function(data,status){
+                    $log.info('[POST] URL 로 부터 결과를 받았습니다.[%s]',status);
                     if(data === 'ERROR'){
                         callback(true,data);
                     }
                 }).
-                error(function(data,status/*,headers,config*/){
+                error(function(data,status){
                     $log.error('통신 에러가 났습니다.[%s]',status);
                     callback(true,data);
                 });
         },
-
+*/
+        // call to get all nerds
+        excel : function(VATROOTKEY,callback) {
+            $log.info('받아온 값은 %s',VATROOTKEY.VATNO);
+            $http({method: 'GET', url: '/api/XLS/'+VATROOTKEY.VATNO, params: VATROOTKEY}).
+                success(function(data,status){
+                    $log.info('[POST] URL 로 부터 결과를 받았습니다.[%s]',status);
+                    if(data === 'ERROR'){
+                        callback(true,data);
+                    }
+                }).
+                error(function(data,status){
+                    $log.error('통신 에러가 났습니다.[%s]',status);
+                    callback(true,data);
+                });
+        },
         /**
          * 신규 데이터를 생성하는 Call
          * @param KEY 조회 값?

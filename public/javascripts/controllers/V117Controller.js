@@ -9,6 +9,17 @@
 /* global angular */
 
 angular.module('V117Ctrl',[])
+    /*
+    .directive('file-down', function () {
+        return {
+            restrict: 'A',
+            link: function(scope, element, attrs) {
+                var href = element.href;
+                element.attr("target", "_blank");
+            }
+        };
+    })
+    */
     .controller('V117Controller',function($scope,$log,VATService,$location,$route,ngDialog){
 
     //# 상수정의.

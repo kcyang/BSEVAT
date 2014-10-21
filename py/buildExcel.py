@@ -35,7 +35,7 @@ openpyxl 모듈을 이용해서, template 을 읽은 후에 값을 넣고
 결과 path 를 보내준다.
 '''
 def build(filename,document_name,output_path,document_key):
-    #print filename, '::', document_name, '::', output_path, '::', document_key
+    print filename, '::', document_name, '::', output_path, '::', document_key
     try:
 
         json_ = get_json_obj(document_name)

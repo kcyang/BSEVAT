@@ -52,7 +52,7 @@ router.get('/:KEY', function(req, res) {
  * Header 설정하고, XLS 로 내려가게 한다.
  *
  */
-router.post('/XLS/:KEY', function(req, res) {
+router.get('/XLS/:KEY', function(req, res) {
 
     console.error('ROUTER [post::EXCEL] KEY['+ req.params.KEY +']');
 
@@ -61,7 +61,7 @@ router.post('/XLS/:KEY', function(req, res) {
         res.json('ERROR');
 
     }else{
-        main.excel({VATKEY:req.params.KEY}, req.body,function(err,excelpath){
+        main.excel({VATKEY:req.params.KEY}, req.query,function(err,excelpath){
             if(err){
                 res.send('ERROR');
             }else{
@@ -73,15 +73,24 @@ router.post('/XLS/:KEY', function(req, res) {
                 res.end();
                 */
                 console.log('엑셀은 여기에서 다운로드 됩니다...>>>> '+excelpath);
-                //#TODO 파일다운로드 여기서 시작할 것....20141020
-                //res.sendfile(excelpath);
-                /*
+
+                res.sendFile(excelpath, function(err){
+                    if(err){
+                        console.error('엑셀을 다운로드 하는 중에 에러 발생..',err);
+                    }else{
+                        console.info('엑셀파일이 내려갔어야 하는데..');
+                    }
+                });
+/*
                 res.download(excelpath,req.params.KEY+'.xlsx',function(err){
                     if(err){
                         console.error('엑셀을 다운로드 하는 중에 에러 발생..',err);
+                    }else{
+                        console.info('엑셀파일이 내려갔어야 하는데..');
                     }
                 });
-                */
+*/
+
             }
         });
     }
