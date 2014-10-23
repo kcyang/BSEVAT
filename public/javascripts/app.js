@@ -6,7 +6,8 @@
  *
  */
 'use strict';
-var INIT_YEAR = 2014;  // #TODO 현재 일자 기준으로 이전 기수를 선택. 또는 선택하세요 문구..??
+
+var INIT_YEAR = 2014;
 /* global angular */
 angular.module('BSEVATApp',
     [
@@ -83,22 +84,38 @@ angular.module('BSEVATApp',
         var selectedYear = {};
         var selectedVatqt = {};
 
+        /**
+         * 연도를 자동 생성하는 곳.
+         * 초기 셋업 연도를 기준으로 6년간 셋업하도록 설정.
+         */
         for(var i = 0 ; i < 6 ; i++){
             var year_item = {};
             year_item.name = INIT_YEAR+i;
             year_item.value = INIT_YEAR+i;
-            if(year_item.name === curr_year) {selectedYear = year_item;}
+            if(year_item.name === curr_year) {
+                if(curr_month > 1 && curr_month < 4){
+                    //현재 월이, 1월에서 3월까지면, 전년도 신고임.
+                    selectedYear = INIT_YEAR+ i -1 ;
+                }else{
+                    //나머지는 현재 년도를 선택하도록 한다.
+                    selectedYear = year_item;
+                }
+            }
             year_options.push(year_item);
         }
 
+        /**
+         * 현재 날짜를 보고, 신고대상 분기를 디폴트로 선택하게 하는 곳.
+         * 항상, 신고하는 달의 이전 분기를 선택하도록 하였음.
+         */
         if(curr_month > 1 && curr_month < 4){
-            selectedVatqt = vatqt_options[0];
-        }else if(curr_month > 3 && curr_month < 7){
-            selectedVatqt = vatqt_options[1];
-        }else if(curr_month > 6 && curr_month < 10){
-            selectedVatqt = vatqt_options[2];
-        }else if(curr_month > 9 && curr_month <= 12){
             selectedVatqt = vatqt_options[3];
+        }else if(curr_month > 3 && curr_month < 7){
+            selectedVatqt = vatqt_options[0];
+        }else if(curr_month > 6 && curr_month < 10){
+            selectedVatqt = vatqt_options[1];
+        }else if(curr_month > 9 && curr_month <= 12){
+            selectedVatqt = vatqt_options[2];
         }
 
         //프로그램 내부의 값에 넣어주기.

@@ -34,31 +34,32 @@ angular.module('VATService', []).factory('VATService', ['$http','$log', function
 
             });
         },
+
+        // 엑셀 다운로드 기능.
+        excel : function(VATROOTKEY,callback) {
+            /**
+             * 엑셀을 서버로부터 받아올 때, responseType 을 꼭 'blob' 로 지정해야 한다.
+             * 이는 3일간의 삽질의 결과임.
+             * 그렇지 않으면, 다른 형태로 Encoding 된 결과물을 받아보게 된다.
+             * Internet Explorer / Chrome 에서 동작 확인완료.
+             */
+
+            $http({method: 'GET', url: '/api/XLS/'+VATROOTKEY.VATNO, responseType: 'blob', params: VATROOTKEY}).
+                success(function(data/*,status*/){
 /*
-        // call to get all nerds
-        excel : function(VATROOTKEY,callback) {
-$log.info('받아온 값은 %s',VATROOTKEY.VATNO);
-            $http({method: 'POST', url: '/api/XLS/'+VATROOTKEY.VATNO, data: VATROOTKEY}).
-                success(function(data,status){
-                    $log.info('[POST] URL 로 부터 결과를 받았습니다.[%s]',status);
-                    if(data === 'ERROR'){
-                        callback(true,data);
-                    }
-                }).
-                error(function(data,status){
-                    $log.error('통신 에러가 났습니다.[%s]',status);
-                    callback(true,data);
-                });
-        },
+                    var element = angular.element('<a/>');
+                    element.attr({
+                        href: 'data:attachment/vnd.ms-excel,'+ data,
+                        target: '_blank',
+                        download: VATROOTKEY.VATNO+'.xlsx'
+                    })[0].click();
 */
-        // call to get all nerds
-        excel : function(VATROOTKEY,callback) {
-            $log.info('받아온 값은 %s',VATROOTKEY.VATNO);
-            $http({method: 'GET', url: '/api/XLS/'+VATROOTKEY.VATNO, params: VATROOTKEY}).
-                success(function(data,status){
-                    $log.info('[POST] URL 로 부터 결과를 받았습니다.[%s]',status);
+                    $log.info('[GET] URL 로 부터 결과를 받았습니다.');
+
                     if(data === 'ERROR'){
                         callback(true,data);
+                    }else{
+                        callback(false,data);
                     }
                 }).
                 error(function(data,status){

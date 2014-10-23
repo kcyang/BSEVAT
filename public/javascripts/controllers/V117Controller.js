@@ -7,20 +7,8 @@
  */
 'use strict';
 /* global angular */
-
 angular.module('V117Ctrl',[])
-    /*
-    .directive('file-down', function () {
-        return {
-            restrict: 'A',
-            link: function(scope, element, attrs) {
-                var href = element.href;
-                element.attr("target", "_blank");
-            }
-        };
-    })
-    */
-    .controller('V117Controller',function($scope,$log,VATService,$location,$route,ngDialog){
+    .controller('V117Controller',function($scope,$log,$window,VATService,$location,$route,ngDialog){
 
     //# 상수정의.
     $scope.constants = {
@@ -58,7 +46,7 @@ angular.module('V117Ctrl',[])
     //### 다른 영역에서 발생한 이벤트를 등록하는 곳,
     //### 다른 곳에서 'eventName' 으로 발생한 이벤트에서 broadcast or emit 한 이벤트를
     //### 여기서 잡아서 처리해 줄 수 있다.
-    $scope.$on('changeKey',function(event,key){
+    $scope.$on('changeKey',function(/*event,key*/){
         //VAT / 상위 값들이 바뀌었을 때 //
         // 값에 자료를 다시 불러와야 함.
         $log.info('값이 바뀌었습니다.');
@@ -71,9 +59,7 @@ angular.module('V117Ctrl',[])
     //화면상의 계산식을 정의하는 곳. >> 자동화를 해야 하는데.. 고민 중임.
         //화면의 자동계산 되는 로직은 아래에 정의된 데로 실행된다.
 
-        //#TODO 텍스트로 가져온 값을 숫자인 경우, 자동으로 숫자로 변경하는 기능 구현
     $scope.calc = function(){
-//        $scope.mg.CARD_TOTAL_AMOUNT = Number($scope.mg.TAX_CARD_AMOUNT) + $scope.mg.NOTAX_CARD_AMOUNT + $scope.mg.SVC_CARD_AMOUNT;
         $scope.mg.CARD_TOTAL_AMOUNT = Number($scope.mg.TAX_CARD_AMOUNT) + Number($scope.mg.NOTAX_CARD_AMOUNT) + Number($scope.mg.SVC_CARD_AMOUNT);
         $scope.mg.CASH_TOTAL_AMOUNT = Number($scope.mg.TAX_CASH_AMOUNT) + Number($scope.mg.NOTAX_CASH_AMOUNT) + Number($scope.mg.SVC_CASH_AMOUNT);
 
@@ -108,7 +94,6 @@ angular.module('V117Ctrl',[])
                 $scope.mg = data;
                 $scope.calc(); //재계산
             }
-            //#TODO 화면에 뿌리기. 화면에 뿌리기. 배열로 통으로 던져주도록.
         }
 
     });
@@ -207,13 +192,21 @@ angular.module('V117Ctrl',[])
                     $scope.alertmessage = 'Excel 을 저장하지 못했습니다. 관리자에게 문의하세요!';
                     return;
                 }
+
+                /**
+                 * Excel File 을 저장하는 곳, type 을 Excel 로 지정하여 저장합니다.
+                 *
+                 */
+                saveAs(new Blob([data],{type:"application/vnd.ms-excel;charset=euc-kr"}), "신용카드매출전표 등 발행금액 집계표.xlsx");
+
                 $scope.status = 'Ok';
                 $scope.alertmessage = '성공적으로 Excel 을 저장 했습니다.!';
+
             });
 
         });
 
 
-    }
+    };
 
 });

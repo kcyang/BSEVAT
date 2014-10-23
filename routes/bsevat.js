@@ -9,6 +9,7 @@
  * 결과값을 보내준다. 결과는 HTML/JSON/ETC. 가 가능하다.
  */
 'use strict';
+
 //var fs = require('fs');
 var express = require('express');
 var router = express.Router();
@@ -22,7 +23,7 @@ var main = require('../lib/execRequests');
 
 // 뭔가 의미 없는 Function,
 router.get('/', function(req, res) {
-    res.send('[GET] without KEY 퐁퐁퐁');
+    res.send('[GET] 넌 지금 삽질한 거야..');
 });
 
 //가져오는 요청처리  SELECT
@@ -61,26 +62,33 @@ router.get('/XLS/:KEY', function(req, res) {
         res.json('ERROR');
 
     }else{
-        main.excel({VATKEY:req.params.KEY}, req.query,function(err,excelpath){
+        main.excel({VATKEY:req.params.KEY}, /*req.body,*/req.query,function(err,excelpath){
             if(err){
                 res.send('ERROR');
             }else{
-                /*
-                res.setHeader('Content-Type', 'application/vnd.openxmlformats');
-                res.setHeader("Content-Disposition", "attachment; filename=" + "Report.xlsx");
+/*
+                //res.setHeader('Content-Type', 'application/vnd.openxmlformats');
+                res.setHeader('Content-Type', 'application/octet-stream');
+                res.setHeader("Content-Disposition", "attachment;");
                 var fileStream = fs.createReadStream(excelpath);
                 fileStream.pipe(res);
-                res.end();
-                */
+*/
                 console.log('엑셀은 여기에서 다운로드 됩니다...>>>> '+excelpath);
 
-                res.sendFile(excelpath, function(err){
+                var options = {
+                    headers: {
+                        'x-timestamp' : Date.now(),
+                        'x-sent' : true
+                    }
+                };
+                res.sendFile(excelpath, options, function(err){
                     if(err){
                         console.error('엑셀을 다운로드 하는 중에 에러 발생..',err);
                     }else{
                         console.info('엑셀파일이 내려갔어야 하는데..');
                     }
                 });
+
 /*
                 res.download(excelpath,req.params.KEY+'.xlsx',function(err){
                     if(err){
@@ -90,7 +98,6 @@ router.get('/XLS/:KEY', function(req, res) {
                     }
                 });
 */
-
             }
         });
     }
