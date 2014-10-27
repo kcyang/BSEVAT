@@ -21,9 +21,9 @@ var main = require('../lib/execRequests');
 /* GET home page. */
 // 아래 url은 http://localhost:3000/api/ 임.
 
-// 뭔가 의미 없는 Function,
+// 기본, 회사정보를 내려 보내 줌.
 router.get('/', function(req, res) {
-    res.send('[GET] 넌 지금 삽질한 거야..');
+    res.json(companyConfig);
 });
 
 //가져오는 요청처리  SELECT
@@ -66,14 +66,6 @@ router.get('/XLS/:KEY', function(req, res) {
             if(err){
                 res.send('ERROR');
             }else{
-/*
-                //res.setHeader('Content-Type', 'application/vnd.openxmlformats');
-                res.setHeader('Content-Type', 'application/octet-stream');
-                res.setHeader("Content-Disposition", "attachment;");
-                var fileStream = fs.createReadStream(excelpath);
-                fileStream.pipe(res);
-*/
-                console.log('엑셀은 여기에서 다운로드 됩니다...>>>> '+excelpath);
 
                 var options = {
                     headers: {
@@ -88,7 +80,6 @@ router.get('/XLS/:KEY', function(req, res) {
                         console.info('엑셀파일이 내려갔어야 하는데..');
                     }
                 });
-
 /*
                 res.download(excelpath,req.params.KEY+'.xlsx',function(err){
                     if(err){

@@ -4,18 +4,34 @@
  * BACKEND Server 를 시작하는 곳.
  */
 /* global serverConfig */
-//var https = require('https');   //for SSL
-//var fs = require('fs');         //for SSL
+
+/**
+ * SSL 서버를 사용하기 위해서는 아래 주석을 빼서 사용해야 한다.
+ * for SSL
+  */
+/*
+var https = require('https');   //for SSL
+var fs = require('fs');         //for SSL
+*/
+
 var debug = require('debug')('BSEVAT');
 var app = require('../app');
 
-/* for Product Mode
+/**
+ * Production 환경에서는 오류가 나도 서비스가 멈추면 안되기 때문에,
+ * 아래 주석을 빼서, 서비스가 죽지 않도록 한다.
+ */
+/*
 process.on('uncaughtException', function(err){
    console.error('Caught exception: '+ err);
 });
 */
 
 
+/**
+ * SSL Key & 인증서를 정의하는 곳으로, key 값을 읽어들이도록 한다.
+ * SSL 이 아닌 경우에는 빼도록 할 것.
+ */
 /* SSL
 var options = {
   key: fs.readFileSync(__dirname+'/private.key'),
@@ -23,14 +39,26 @@ var options = {
 };
 */
 
+/**
+ * Express Server 의 포트를 지정하는 곳. / Config 에서 설정한 Port를 읽도록 한다.
+ * 기본은 3000 번.
+ */
 app.set('port', process.env.PORT || serverConfig.BSE.ports);
 
+/**
+ * 서버를 시작합니다.
+ *
+ */
 var server = app.listen(app.get('port'), function() {
   debug('Express server listening on port ' + server.address().port);
 });
 
 
-/* SSL
+/**
+ *  SSL용 서버를 시작하는 곳.
+ *  #TODO Config 에 옵션을 SSL 을 주고, 선택하도록 할 것.
+ */
+/*
  var server = https.createServer(options, app).listen(app.get('port'), function(){
  console.log("Express server listening on port " + server.address().port);
  });
