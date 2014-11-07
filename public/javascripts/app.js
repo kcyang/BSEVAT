@@ -20,7 +20,7 @@ angular.module('BSEVATApp',
         'VATService',
         'ui.utils.masks'
     ])
-    .run(function($rootScope,$log){
+    .run(function($rootScope,$log,VATService){
 
         //초기에 실행할 초기 이벤트나 값 초기화 셋업 등등을 실행한다.
         //VAT 모든 영역에서 사용할 VAT Key를 셋업한다.
@@ -30,7 +30,22 @@ angular.module('BSEVATApp',
             VATTYPE:'',
             VATNO:''
         }];
+        /**
+         * 회사 정보를 담아두는 JSON 선언,
+         * @type {{}}
+         */
+        $rootScope.COMPANY = {};
 
+        /**
+         * 서버에서 기본 회사 정보를 가져옴.
+         */
+        VATService.getCompany(function(err,data){
+            if(err) {
+                $log.error(data);
+            }else{
+                $rootScope.COMPANY = data;
+            }
+        });
         //키값을 셋하는 펑션 // 값이 변하면, 모든 놈들에게 바뀌었다고 때린다.
         $rootScope.setKey = function(key){
 

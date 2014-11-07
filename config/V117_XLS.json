@@ -15,5 +15,9 @@
     "SVC_CARD_AMOUNT":"M14",
     "SVC_CASH_AMOUNT":"R14",
     "TAX_BILL_AMOUNT":"H16",
-    "BILL_AMOUNT":"R16"
+    "BILL_AMOUNT":"R16",
+    "company_name":"F7",
+    "name":"Q7",
+    "company_address":"F8",
+    "vat_code":"Q8"
 }

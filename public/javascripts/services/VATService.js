@@ -35,6 +35,25 @@ angular.module('VATService', []).factory('VATService', ['$http','$log', function
             });
         },
 
+        getCompany : function(callback) {
+
+
+            $http({method: 'GET', url: '/api/'}).
+                success(function(data,status/*,headers,config*/){
+                    $log.info('[GET] 성공적으로 URL 로 부터 결과를 받았습니다.[%s]',status);
+                    if(data === 'ERROR'){
+                        callback(true,data);
+                    }else{
+                        callback(false,data);
+                    }
+                }).
+                error(function(data,status/*,headers,config*/){
+                    $log.error('통신 에러가 났습니다.[%s]',status);
+                    callback(true,data);
+
+                });
+        },
+
         // 엑셀 다운로드 기능.
         excel : function(VATROOTKEY,callback) {
             /**

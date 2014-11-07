@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script src="file:///C:\Users\BSE-Chris\WebstormProjects\V164\editablegrid-2.0.1.js"></script>
+    <link rel="stylesheet" href="file:///C:\Users\BSE-Chris\WebstormProjects\V164\editablegrid-2.0.1.css" type="text/css" media="screen">
+
+    <style>
+        body { font-family:'lucida grande', tahoma, verdana, arial, sans-serif; font-size:11px; }
+        h1 { font-size: 15px; }
+        a { color: #548dc4; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        table.testgrid { border-collapse: collapse; border: 1px solid #CCB; width: 800px; }
+        table.testgrid td, table.testgrid th { padding: 5px; border: 1px solid #E0E0E0; }
+        table.testgrid th { background: #E5E5E5; text-align: left; }
+    </style>
+    <title>매출처별 세금계산서 합계표</title>
+
+    <script>
+        window.onload = function() {
+            editableGrid = new EditableGrid("DemoGridAttach");
+
+            // we build and load the metadata in Javascript
+            editableGrid.load({ metadata: [
+                { name: "name", datatype: "string", editable: true },
+                { name: "firstname", datatype: "string", editable: true },
+                { name: "age", datatype: "integer", editable: true },
+                { name: "height", datatype: "double(m,2)", editable: true },
+                { name: "country", datatype: "string", editable: true, values:
+                { 'Europe': { "be" : "Belgium", "fr" : "France", "uk" : "Great-Britain", "nl": "Nederland"},
+                    'America': { "br" : "Brazil", "ca": "Canada", "us" : "USA" },
+                    'Africa': { "ng" : "Nigeria", "za": "South-Africa", "zw" : "Zimbabwe" }
+                }
+                },
+                { name: "email", datatype: "email", editable: true },
+                { name: "freelance", datatype: "boolean", editable: true },
+                { name: "lastvisit", datatype: "date", editable: true }
+            ]});
+
+            // then we attach to the HTML table and render it
+            editableGrid.attachToHTMLTable('htmlgrid');
+            editableGrid.renderGrid();
+        }
+    </script>
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="grid.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <!--
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      -->
+     <script src="file:///C:\Users\BSE-Chris\WebstormProjects\V164\html5shiv.js"></script>
+     <script src="file:///C:\Users\BSE-Chris\WebstormProjects\V164\respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="page-header text-center">
+            <p class="text-primary lead">매출처별 세금계산서 합계표</p>
+        </div>
+
+        <p>1. 제출자 인적사항</p>
+
+        <div class="row">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>사업자등록번호</td>
+                        <td>
+                            <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                        </td>
+                        <td>상호 (법인명)</td>
+                        <td>
+                            <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>성명 (대표자)</td>
+                        <td>
+                            <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                        </td>
+                        <td>사업장소재지</td>
+                        <td>
+                            <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>거래기간</td>
+                        <td>
+                            <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                        </td>
+                        <td>작성일자</td>
+                        <td>
+                            <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p>2. 매출세금계산서 총합계</p>
+        <div class="row">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>구   분</td>
+                        <td></td>
+                        <td>매출처수</td>
+                        <td>매 수</td>
+                        <td>공급가액</td>
+                        <td>세 액</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>합  계</th>
+                        <td></td>
+                        <td>
+                            <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th rowspan="3">과세기간 종료일 다음달 11일까지 <br>전송된 전자세금계산서 발급분</th>
+                        <td>사업자등록번호 <br>발급분</td>
+                        <td>
+                            <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>주민등록번호 <br>발행분</td>
+                        <td>
+                            <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>소   계</td>
+                        <td>
+                            <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                        </td>
+                    </tr>
+                    <tr>
+                    <th rowspan="3">위 전자세금계산서 외의<br> 발급분</th>
+                    <td>사업자등록번호<br> 발급분</td>
+                    <td>
+                        <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                    </td>
+                    </tr>
+                    <tr>
+                        <td>주민등록번호 <br>발행분</td>
+                        <td>
+                            <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>소 계</td>
+                        <td>
+                            <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p>3. 과세기간 종료일 다음달 11일까지 전송된 전자세금계산서 외 발급분 매출처별 명세<br>(합계금액으로 적음)</p>
+        <table id="htmlgrid" class="testgrid">
+                    <tr>
+                        <th>NAME</th>
+                        <th>FIRSTNAME</th>
+                        <th>AGE</th>
+                        <th>HEIGHT</th>
+                        <th>COUNTRY</th>
+                        <th>EMAIL</th>
+                        <th>FREELANCE</th>
+                        <th>LAST VISIT</th>
+                    </tr>
+                    <tr id="R1">
+                        <td>Duke</td>
+                        <td>Patience</td>
+                        <td>33</td>
+                        <td>1.842</td>
+                        <td>uk</td>
+                        <td>patience.duke@gmail.com</td>
+                        <td>false</td>
+                        <td>11/12/2002</td>
+                    </tr>
+                    <tr id="R2">
+                        <td>Rogers</td>
+                        <td>Denise</td>
+                        <td>59</td>
+                        <td>1.627</td>
+                        <td>us</td>
+                        <td>rogers.d@gmail.com</td>
+                        <td></td>
+                        <td>07/05/2003</td>
+                    </tr>
+                    <tr id="R3">
+                        <td>Dujardin</td>
+                        <td>Antoine</td>
+                        <td>21</td>
+                        <td>1.73</td>
+                        <td>fr</td>
+                        <td>felix.compton@yahoo.fr</td>
+                        <td>true</td>
+                        <td>21/02/1999</td>
+                    </tr>
+                    <tr id="R4">
+                        <td>Conway</td>
+                        <td>Coby</td>
+                        <td>47</td>
+                        <td>1.96</td>
+                        <td>za</td>
+                        <td>coby@conwayinc.com</td>
+                        <td>true</td>
+                        <td>01/12/2007</td>
+                    </tr>
+                    <tr id="R5">
+                        <td>Shannon</td>
+                        <td>Rana</td>
+                        <td>24</td>
+                        <td>1.56</td>
+                        <td>nl</td>
+                        <td>ranna.shannon@hotmail.com</td>
+                        <td>false</td>
+                        <td>07/10/2009</td>
+                    </tr>
+                    <tr id="R6">
+                        <td>Benton</td>
+                        <td>Jasmine</td>
+                        <td>61</td>
+                        <td>1.71</td>
+                        <td>ca</td>
+                        <td>jasmine.benton@yahoo.com</td>
+                        <td>false</td>
+                        <td>13/01/2009</td>
+                    </tr>
+                    <tr id="R7">
+                        <td>Belletoise</td>
+                        <td>André</td>
+                        <td>31</td>
+                        <td>1.84</td>
+                        <td>be</td>
+                        <td>belletoise@kiloutou.be</td>
+                        <td>true</td>
+                        <td></td>
+                    </tr>
+                    <tr id="R8">
+                        <td>Santa-Maria</td>
+                        <td>Martin</td>
+                        <td>37</td>
+                        <td>1.80</td>
+                        <td>br</td>
+                        <td>martin.sm@gmail.com</td>
+                        <td>false</td>
+                        <td>12/06/1995</td>
+                    </tr>
+                    <tr id="R9">
+                        <td>Dieumerci</td>
+                        <td>Amédé</td>
+                        <td>37</td>
+                        <td>1.81</td>
+                        <td>ng</td>
+                        <td>dieumerci@gmail.com</td>
+                        <td>true</td>
+                        <td>05/07/2009</td>
+                    </tr>
+                    <tr id="R10">
+                        <td>Morin</td>
+                        <td>Wanthus</td>
+                        <td>46</td>
+                        <td>1.77</td>
+                        <td>zw</td>
+                        <td>morin.x@yahoo.html.com</td>
+                        <td>false</td>
+                        <td>4/3/2004</td>
+                    </tr>
+            </table>
+        </div>
+    </body>
+</html>
+    <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="file:///C:\Users\BSE-Chris\WebstormProjects\V164\jquery-1.10.2.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="file:///C:\Users\BSE-Chris\WebstormProjects\V164\editablegrid-2.0.1.js"></script>
+
+
