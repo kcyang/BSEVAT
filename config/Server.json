@@ -9,8 +9,8 @@
         "nav":{
             "ip" : "nav.bsecamp.net",
             "port" : "1433",
-            "instance" : "VAT",
-            "company" : "KIMEX",
+            "instance" : "BSE-LIVE-NO-DELETE",
+            "company" : "VAT TEST",
             "vat_table" : "B_KoreanVAT Entry",
             "user" : "sa",
             "password": "bse0706!@#$"

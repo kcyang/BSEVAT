@@ -1,0 +1,23 @@
+{
+    "TOTAL_AMOUNT":"H11",
+    "CARD_TOTAL_AMOUNT":"M11",
+    "CASH_TOTAL_AMOUNT":"R11",
+
+    "TAX_TOTAL_AMOUNT":"H12",
+    "TAX_CARD_AMOUNT":"M12",
+    "TAX_CASH_AMOUNT":"R12",
+
+    "NOTAX_TOTAL_AMOUNT":"H13",
+    "NOTAX_CARD_AMOUNT":"M13",
+    "NOTAX_CASH_AMOUNT":"R13",
+
+    "SVC_TOTAL_AMOUNT":"H14",
+    "SVC_CARD_AMOUNT":"M14",
+    "SVC_CASH_AMOUNT":"R14",
+    "TAX_BILL_AMOUNT":"H16",
+    "BILL_AMOUNT":"R16",
+    "company_name":"F7",
+    "name":"Q7",
+    "company_address":"F8",
+    "vat_code":"Q8"
+}

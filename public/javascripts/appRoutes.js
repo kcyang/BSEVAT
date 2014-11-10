@@ -15,7 +15,11 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
         templateUrl: 'views/vathome.html',
         controller: 'BSEVATController'
     })
-
+    // V104 - 매출처 세금계산서 합계표
+    .when('/V104', {
+        templateUrl: 'views/V104.html',
+        controller: 'V104Controller'
+    })
     // V117
     .when('/V117', {
         templateUrl: 'views/V117.html',

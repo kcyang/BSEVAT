@@ -1,18 +1,18 @@
 /**
  * [Angularjs]
- * V117 화면을 읽어올 때 실행됨.
+ * V104 화면을 읽어올 때 실행됨.
  * 화면상의 컨트롤은 모두 여기서 진행됨.
  * 여기는 Client side 만 들어 있음.
  * 서버와 연관된 액션은 Service 를 호출하여 사용함.
  */
 'use strict';
 /* global angular */
-angular.module('V117Ctrl',[])
-    .controller('V117Controller',function($scope,$log,$window,VATService,$location,$route,ngDialog){
+angular.module('V104Ctrl',['ngGrid'])
+    .controller('V104Controller',function($scope,$log,$window,VATService,$location,$route,ngDialog){
 
     //# 상수정의.
     $scope.constants = {
-        'VATNO' : 'V117',  //이 화면의 VAT 번호.
+        'VATNO' : 'V104',  //이 화면의 VAT 번호.
         'EMPTY' : 'true'
     };
 
@@ -60,6 +60,7 @@ angular.module('V117Ctrl',[])
         //화면의 자동계산 되는 로직은 아래에 정의된 데로 실행된다.
 
     $scope.calc = function(){
+/*
         $scope.mg.CARD_TOTAL_AMOUNT = Number($scope.mg.TAX_CARD_AMOUNT) + Number($scope.mg.NOTAX_CARD_AMOUNT) + Number($scope.mg.SVC_CARD_AMOUNT);
         $scope.mg.CASH_TOTAL_AMOUNT = Number($scope.mg.TAX_CASH_AMOUNT) + Number($scope.mg.NOTAX_CASH_AMOUNT) + Number($scope.mg.SVC_CASH_AMOUNT);
 
@@ -68,6 +69,7 @@ angular.module('V117Ctrl',[])
         $scope.mg.SVC_TOTAL_AMOUNT = Number($scope.mg.SVC_CARD_AMOUNT) + Number($scope.mg.SVC_CASH_AMOUNT);
 
         $scope.mg.TOTAL_AMOUNT = Number($scope.mg.CARD_TOTAL_AMOUNT) + Number($scope.mg.CASH_TOTAL_AMOUNT);
+*/
     };
 
 
@@ -206,6 +208,29 @@ angular.module('V117Ctrl',[])
 
         });
 
+
     };
+
+    /**
+     * ngGrid Sample.
+     *
+     */
+    $scope.myData = [
+        {name: "양양", age: 40},
+        {name: "오오", age: 41},
+        {name: "Chris", age: 30}
+    ];
+    $scope.gridOptions = {
+        data: 'myData',
+        multiSelect : false,
+        enableRowSelection : false,
+        showSelectionCheckbox : false,
+        showFooter: false
+    };
+        /*
+        * multiSelect : false
+        * pinnable : false
+        * resizable : false
+        * */
 
 });

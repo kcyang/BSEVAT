@@ -16,6 +16,7 @@ angular.module('BSEVATApp',
         'appRoutes',
         'VATMainCtrl',
         'V117Ctrl',
+        'V104Ctrl',
         'dialogCtrl',
         'VATService',
         'ui.utils.masks'
