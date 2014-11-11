@@ -70,6 +70,11 @@ value_type = "Integer"
 
 [[V104.Condition]]
 key = "BSE_VAT Category Code"
-value = ""
+value = "S130"
 value_type = "String"
 
+[[V104.Sub]]
+key = "BSE_VAT Category Code"
+query = "SELECT [BSE_Category Code]
+         FROM [#Company$B_VAT Category]
+         WHERE [BSE_VAT Total Report] = 1"
