@@ -36,7 +36,7 @@ angular.module('V104Ctrl',['ngGrid'])
     //2-1.
     //화면상의 메시지 - 초기에는 안내 메시지를 전달 한다.
     $scope.status = 'Info';
-    $scope.alertmessage = '금액과 발행 건수등을 검토하시고 저장버튼을 눌러주세요!';
+    $scope.alertmessage = '금액과 발행 건수등을 검토하세요!';
 
 
     //최상위 Global 에 현재 VAT 값을 셋팅해 놓는다.(불필요할 때 삭제할 것) @TODO
@@ -60,16 +60,21 @@ angular.module('V104Ctrl',['ngGrid'])
         //화면의 자동계산 되는 로직은 아래에 정의된 데로 실행된다.
 
     $scope.calc = function(){
-/*
-        $scope.mg.CARD_TOTAL_AMOUNT = Number($scope.mg.TAX_CARD_AMOUNT) + Number($scope.mg.NOTAX_CARD_AMOUNT) + Number($scope.mg.SVC_CARD_AMOUNT);
-        $scope.mg.CASH_TOTAL_AMOUNT = Number($scope.mg.TAX_CASH_AMOUNT) + Number($scope.mg.NOTAX_CASH_AMOUNT) + Number($scope.mg.SVC_CASH_AMOUNT);
 
-        $scope.mg.TAX_TOTAL_AMOUNT = Number($scope.mg.TAX_CARD_AMOUNT) + Number($scope.mg.TAX_CASH_AMOUNT);
-        $scope.mg.NOTAX_TOTAL_AMOUNT = Number($scope.mg.NOTAX_CARD_AMOUNT) + Number($scope.mg.NOTAX_CASH_AMOUNT);
-        $scope.mg.SVC_TOTAL_AMOUNT = Number($scope.mg.SVC_CARD_AMOUNT) + Number($scope.mg.SVC_CASH_AMOUNT);
+        $scope.mg.ELEC_TOT_SALES_CNT = Number($scope.mg.ELEC_BUS_SALES_CNT) + Number($scope.mg.ELEC_PSN_SALES_CNT);
+        $scope.mg.ELEC_TOT_SALES_QTY = Number($scope.mg.ELEC_BUS_SALES_QTY) + Number($scope.mg.ELEC_PSN_SALES_QTY);
+        $scope.mg.ELEC_TOT_SALES_ACT_AMT = Number($scope.mg.ELEC_BUS_SALES_ACT_AMT) + Number($scope.mg.ELEC_PSN_SALES_ACT_AMT);
+        $scope.mg.ELEC_TOT_SALES_TAX_AMT = Number($scope.mg.ELEC_BUS_SALES_TAX_AMT) + Number($scope.mg.ELEC_PSN_SALES_TAX_AMT);
 
-        $scope.mg.TOTAL_AMOUNT = Number($scope.mg.CARD_TOTAL_AMOUNT) + Number($scope.mg.CASH_TOTAL_AMOUNT);
-*/
+        $scope.mg.NON_ELEC_TOT_SALES_CNT = Number($scope.mg.NON_ELEC_BUS_SALES_CNT) + Number($scope.mg.NON_ELEC_PSN_SALES_CNT);
+        $scope.mg.NON_ELEC_TOT_SALES_QTY = Number($scope.mg.NON_ELEC_BUS_SALES_QTY) + Number($scope.mg.NON_ELEC_PSN_SALES_QTY);
+        $scope.mg.NON_ELEC_TOT_SALES_ACT_AMT = Number($scope.mg.NON_ELEC_BUS_SALES_ACT_AMT) + Number($scope.mg.NON_ELEC_PSN_SALES_ACT_AMT);
+        $scope.mg.NON_ELEC_TOT_SALES_TAX_AMT = Number($scope.mg.NON_ELEC_BUS_SALES_TAX_AMT) + Number($scope.mg.NON_ELEC_PSN_SALES_TAX_AMT);
+
+        $scope.mg.TOTAL_SALES_CNT = Number($scope.mg.ELEC_TOT_SALES_CNT) + Number($scope.mg.NON_ELEC_TOT_SALES_CNT);
+        $scope.mg.TOTAL_SALES_QTY = Number($scope.mg.ELEC_TOT_SALES_QTY) + Number($scope.mg.NON_ELEC_TOT_SALES_QTY);
+        $scope.mg.TOTAL_SALES_ACT_AMT = Number($scope.mg.ELEC_TOT_SALES_ACT_AMT) + Number($scope.mg.NON_ELEC_TOT_SALES_ACT_AMT);
+        $scope.mg.TOTAL_SALES_TAX_AMT = Number($scope.mg.ELEC_TOT_SALES_TAX_AMT) + Number($scope.mg.NON_ELEC_TOT_SALES_TAX_AMT);
     };
 
 
@@ -90,7 +95,7 @@ angular.module('V104Ctrl',['ngGrid'])
                 $scope.alertmessage = '해당 자료가 없습니다. 자료 불러오기를 눌러서 새로 생성하시거나, 다른 기수를 조회하세요.';
             }else{
                 $scope.status = 'Ok';
-                $scope.alertmessage = '성공적으로 데이터를 가져왔습니다.! 자료를 검토하시고 저장버튼을 눌러주세요.';
+                $scope.alertmessage = '성공적으로 데이터를 가져왔습니다.! 자료를 검토하세요.';
                 $scope.constants.EMPTY = 'false';
 
                 $scope.mg = data;
@@ -139,7 +144,8 @@ angular.module('V104Ctrl',['ngGrid'])
         }
 
     };
-
+/**
+ * 저장하기 기능은 필요없음.
     //#저장하기 버튼을 눌렀을 때 실행되는 function. #T*ODO @2014-10-14 저장기능 구현. DONE
     $scope.saveDocument = function(){
 
@@ -158,7 +164,7 @@ angular.module('V104Ctrl',['ngGrid'])
         });
 
     };
-
+*/
     //#다시 작성하기 버튼을 눌렀을 때 실행되는 function. #T*ODO @2014-10-14 다시 불러오기 기능 구현. DONE
     $scope.getDocument = function(){
 

@@ -8,19 +8,9 @@
             </a>
         </div>
         <div class="col-xs-11">
-            <a ng-click="saveDocument()">
-                <button class="btn btn-primary" type="button">
-                    <span class="glyphicon glyphicon-floppy-saved"> 저장하기</span>
-                </button>
-            </a>
             <a ng-click="createDocument()">
                 <button class="btn btn-warning" type="button">
                     <span class="glyphicon glyphicon-download-alt"> 자료불러오기</span>
-                </button>
-            </a>
-            <a ng-click="getDocument()">
-                <button class="btn btn-danger" type="button">
-                    <span class="glyphicon glyphicon-refresh"> 다시불러오기</span>
                 </button>
             </a>
             <a target="_self" ng-click="getExcel()">
@@ -98,107 +88,107 @@
                 <th>합  계</th>
                 <td></td>
                 <td>
-                    <input type="text" class="form-control input-sm" placeholder="Placeholder text" readonly  ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-model="mg.TOTAL_SALES_CNT" readonly  ui-number-mask="0"/>
                 </td>
                 <td>
-                    <input type="text" class="form-control input-sm" placeholder="Placeholder text" readonly  ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-model="mg.TOTAL_SALES_QTY" readonly  ui-number-mask="0"/>
                 </td>
                 <td>
-                    <input type="text" class="form-control input-sm" placeholder="Placeholder text" readonly  ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-model="mg.TOTAL_SALES_ACT_AMT" readonly  ui-number-mask="0"/>
                 </td>
                 <td>
-                    <input type="text" class="form-control input-sm" placeholder="Placeholder text" readonly  ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-model="mg.TOTAL_SALES_TAX_AMT" readonly  ui-number-mask="0"/>
                 </td>
             </tr>
             <tr>
                 <th rowspan="3">과세기간 종료일 다음달 11일까지 <br>전송된 전자세금계산서 발급분</br></th>
                 <td>사업자등록번호 <br>발급분</br></td>
                 <td>
-                    <input type="text" class="form-control input-sm" placeholder="Placeholder text" readonly  ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-model="mg.ELEC_BUS_SALES_CNT" readonly  ui-number-mask="0"/>
                 </td>
                 <td>
-                    <input type="text" class="form-control input-sm" placeholder="Placeholder text" readonly  ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-model="mg.ELEC_BUS_SALES_QTY" readonly  ui-number-mask="0"/>
                 </td>
                 <td>
-                    <input type="text" class="form-control input-sm" placeholder="Placeholder text" readonly  ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-model="mg.ELEC_BUS_SALES_ACT_AMT" readonly  ui-number-mask="0"/>
                 </td>
                 <td>
-                    <input type="text" class="form-control input-sm" placeholder="Placeholder text" readonly  ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-model="mg.ELEC_BUS_SALES_TAX_AMT" readonly  ui-number-mask="0"/>
                 </td>
             </tr>
             <tr>
                 <td>주민등록번호 <br>발행분</br></td>
                 <td>
-                    <input type="text" class="form-control input-sm" placeholder="Placeholder text" readonly  ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-model="mg.ELEC_PSN_SALES_CNT" readonly  ui-number-mask="0"/>
                 </td>
                 <td>
-                    <input type="text" class="form-control input-sm" placeholder="Placeholder text" readonly  ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-model="mg.ELEC_PSN_SALES_QTY" readonly  ui-number-mask="0"/>
                 </td>
                 <td>
-                    <input type="text" class="form-control input-sm" placeholder="Placeholder text" readonly  ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-model="mg.ELEC_PSN_SALES_ACT_AMT" readonly  ui-number-mask="0"/>
                 </td>
                 <td>
-                    <input type="text" class="form-control input-sm" placeholder="Placeholder text" readonly  ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-model="mg.ELEC_PSN_SALES_TAX_AMT" readonly  ui-number-mask="0"/>
                 </td>
             </tr>
             <tr>
                 <td>소   계</td>
                 <td>
-                    <input type="text" class="form-control input-sm" placeholder="Placeholder text" readonly  ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-model="mg.ELEC_TOT_SALES_CNT" readonly  ui-number-mask="0"/>
                 </td>
                 <td>
-                    <input type="text" class="form-control input-sm" placeholder="Placeholder text" readonly  ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-model="mg.ELEC_TOT_SALES_QTY" readonly  ui-number-mask="0"/>
                 </td>
                 <td>
-                    <input type="text" class="form-control input-sm" placeholder="Placeholder text" readonly  ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-model="mg.ELEC_TOT_SALES_ACT_AMT" readonly  ui-number-mask="0"/>
                 </td>
                 <td>
-                    <input type="text" class="form-control input-sm" placeholder="Placeholder text" readonly  ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-model="mg.ELEC_TOT_SALES_TAX_AMT" readonly  ui-number-mask="0"/>
                 </td>
             </tr>
             <th rowspan="3">위 전자세금계산서 외의<br> 발급분</br></th>
             <td>사업자등록번호<br> 발급분</br></td>
             <td>
-                <input type="text" class="form-control input-sm" placeholder="Placeholder text" readonly  ui-number-mask="0"/>
+                <input type="text" class="form-control input-sm text-right" ng-model="mg.NON_ELEC_BUS_SALES_CNT" readonly  ui-number-mask="0"/>
             </td>
             <td>
-                <input type="text" class="form-control input-sm" placeholder="Placeholder text" readonly  ui-number-mask="0"/>
+                <input type="text" class="form-control input-sm text-right" ng-model="mg.NON_ELEC_BUS_SALES_QTY" readonly  ui-number-mask="0"/>
             </td>
             <td>
-                <input type="text" class="form-control input-sm" placeholder="Placeholder text" readonly  ui-number-mask="0"/>
+                <input type="text" class="form-control input-sm text-right" ng-model="mg.NON_ELEC_BUS_SALES_ACT_AMT" readonly  ui-number-mask="0"/>
             </td>
             <td>
-                <input type="text" class="form-control input-sm" placeholder="Placeholder text" readonly  ui-number-mask="0"/>
+                <input type="text" class="form-control input-sm text-right" ng-model="mg.NON_ELEC_BUS_SALES_TAX_AMT" readonly  ui-number-mask="0"/>
             </td>
             </tr>
             <tr>
                 <td>주민등록번호 <br>발행분</br></td>
                 <td>
-                    <input type="text" class="form-control input-sm" placeholder="Placeholder text" readonly  ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-model="mg.NON_ELEC_PSN_SALES_CNT" readonly  ui-number-mask="0"/>
                 </td>
                 <td>
-                    <input type="text" class="form-control input-sm" placeholder="Placeholder text" readonly  ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-model="mg.NON_ELEC_PSN_SALES_QTY" readonly  ui-number-mask="0"/>
                 </td>
                 <td>
-                    <input type="text" class="form-control input-sm" placeholder="Placeholder text" readonly  ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-model="mg.NON_ELEC_PSN_SALES_ACT_AMT" readonly  ui-number-mask="0"/>
                 </td>
                 <td>
-                    <input type="text" class="form-control input-sm" placeholder="Placeholder text" readonly  ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-model="mg.NON_ELEC_PSN_SALES_TAX_AMT" readonly  ui-number-mask="0"/>
                 </td>
             </tr>
             <tr>
                 <td>소 계</td>
                 <td>
-                    <input type="text" class="form-control input-sm" placeholder="Placeholder text" readonly  ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-model="mg.NON_ELEC_TOT_SALES_CNT" readonly  ui-number-mask="0"/>
                 </td>
                 <td>
-                    <input type="text" class="form-control input-sm" placeholder="Placeholder text" readonly  ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-model="mg.NON_ELEC_TOT_SALES_QTY" readonly  ui-number-mask="0"/>
                 </td>
                 <td>
-                    <input type="text" class="form-control input-sm" placeholder="Placeholder text" readonly  ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-model="mg.NON_ELEC_TOT_SALES_ACT_AMT" readonly  ui-number-mask="0"/>
                 </td>
                 <td>
-                    <input type="text" class="form-control input-sm" placeholder="Placeholder text" readonly  ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-model="mg.NON_ELEC_TOT_SALES_TAX_AMT" readonly  ui-number-mask="0"/>
                 </td>
             </tr>
         </tbody>

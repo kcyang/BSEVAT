@@ -14,34 +14,40 @@ schema = [
     ["TOTAL_SALES_QTY","Number"],             #매출세금계산서 총합계-매수 합계
     ["TOTAL_SALES_ACT_AMT","Number"],         #매출세금계산서 총합계-공급가액 합계
     ["TOTAL_SALES_TAX_AMT","Number"],         #매출세금계산서 총합계-세액 합계
+
     ["ELEC_BUS_SALES_CNT","Number"],          #매출세금계산서 총합계-전자세금계산서발급분-사업자등록번호 발급분-매출처수
     ["ELEC_BUS_SALES_QTY","Number"],          #매출세금계산서 총합계-전자세금계산서발급분-사업자등록번호 발급분-매수
     ["ELEC_BUS_SALES_ACT_AMT","Number"],      #매출세금계산서 총합계-전자세금계산서발급분-사업자등록번호 발급분-공급가액
     ["ELEC_BUS_SALES_TAX_AMT","Number"],      #매출세금계산서 총합계-전자세금계산서발급분-사업자등록번호 발급분-세액
+
     ["ELEC_PSN_SALES_CNT","Number"],          #매출세금계산서 총합계-전자세금계산서발급분-주민등록번호 발급분-매출처수
     ["ELEC_PSN_SALES_QTY","Number"],          #매출세금계산서 총합계-전자세금계산서발급분-주민등록번호 발급분-매수
     ["ELEC_PSN_SALES_ACT_AMT","Number"],      #매출세금계산서 총합계-전자세금계산서발급분-주민등록번호 발급분-공급가액
     ["ELEC_PSN_SALES_TAX_AMT","Number"],      #매출세금계산서 총합계-전자세금계산서발급분-주민등록번호 발급분-세액
+
     ["ELEC_TOT_SALES_CNT","Number"],          #매출세금계산서 총합계-전자세금계산서발급분-소계-매출처수
     ["ELEC_TOT_SALES_QTY","Number"],          #매출세금계산서 총합계-전자세금계산서발급분-소계-매수
     ["ELEC_TOT_SALES_ACT_AMT","Number"],      #매출세금계산서 총합계-전자세금계산서발급분-소계-공급가액
     ["ELEC_TOT_SALES_TAX_AMT","Number"],      #매출세금계산서 총합계-전자세금계산서발급분-소계-세액
+
     ["NON_ELEC_BUS_SALES_CNT","Number"],      #매출세금계산서 총합계-전자세금계산서외 발급분-사업자등록번호 발급분-매출처수
     ["NON_ELEC_BUS_SALES_QTY","Number"],      #매출세금계산서 총합계-전자세금계산서외 발급분-사업자등록번호 발급분-매수
     ["NON_ELEC_BUS_SALES_ACT_AMT","Number"],  #매출세금계산서 총합계-전자세금계산서외 발급분-사업자등록번호 발급분-공급가액
     ["NON_ELEC_BUS_SALES_TAX_AMT","Number"],  #매출세금계산서 총합계-전자세금계산서외 발급분-사업자등록번호 발급분-세액
+
     ["NON_ELEC_PSN_SALES_CNT","Number"],      #매출세금계산서 총합계-전자세금계산서외 발급분-주민등록번호 발급분-매출처수
     ["NON_ELEC_PSN_SALES_QTY","Number"],      #매출세금계산서 총합계-전자세금계산서외 발급분-주민등록번호 발급분-매수
     ["NON_ELEC_PSN_SALES_ACT_AMT","Number"],  #매출세금계산서 총합계-전자세금계산서외 발급분-주민등록번호 발급분-공급가액
     ["NON_ELEC_PSN_SALES_TAX_AMT","Number"],  #매출세금계산서 총합계-전자세금계산서외 발급분-주민등록번호 발급분-세액
+
     ["NON_ELEC_TOT_SALES_CNT","Number"],      #매출세금계산서 총합계-전자세금계산서외 발급분-소계-매출처수
     ["NON_ELEC_TOT_SALES_QTY","Number"],      #매출세금계산서 총합계-전자세금계산서외 발급분-소계-매수
     ["NON_ELEC_TOT_SALES_ACT_AMT","Number"],  #매출세금계산서 총합계-전자세금계산서외 발급분-소계-공급가액
     ["NON_ELEC_TOT_SALES_TAX_AMT","Number"],  #매출세금계산서 총합계-전자세금계산서외 발급분-소계-세액
     [
         ["NON_ELEC_NO","Number"],             #전자세금계산서외 발급분에 대한 매출처별 명세-일련번호
-        ["NON_ELEC_BUS_NO","Number"],         #전자세금계산서외 발급분에 대한 매출처별 명세-사업자등록번호
-        ["NON_ELEC_BUS_NAME","Number"],       #전자세금계산서외 발급분에 대한 매출처별 명세-상호(법인명)
+        ["NON_ELEC_BUS_NO","String"],         #전자세금계산서외 발급분에 대한 매출처별 명세-사업자등록번호
+        ["NON_ELEC_BUS_NAME","String"],       #전자세금계산서외 발급분에 대한 매출처별 명세-상호(법인명)
         ["NON_ELEC_QTY","Number"],            #전자세금계산서외 발급분에 대한 매출처별 명세-매수
         ["NON_ELEC_ACT_AMT","Number"],        #전자세금계산서외 발급분에 대한 매출처별 명세-공급가액
         ["NON_ELEC_TAX_AMT","Number"],        #전자세금계산서외 발급분에 대한 매출처별 명세-세액
@@ -59,7 +65,12 @@ calc = [
 # V104 (신용카드매출전표등 수령금액 합계표)에서 사용 할 MSSQL 컬럼명을 입력합니다.
 Entries = [
 "BSE_VAT Category Code",
-"BSE_Editable Tot Total Amount"
+"BSE_Pay_Bill CorpIndv Type",
+"BSE_ETAX Complete issue",
+"BSE_Editable Tot Total Amount",
+"BSE_Editable Tot VAT Amount",
+"BSE_VAT Registration No_",
+"BSE_VAT Name"
 ]
 
 # NAV 쿼리를위한 조건을 입력합니다.
@@ -67,11 +78,6 @@ Entries = [
 key = "BSE_VAT Type"
 value = "1"
 value_type = "Integer"
-
-[[V104.Condition]]
-key = "BSE_VAT Category Code"
-value = "S130"
-value_type = "String"
 
 [[V104.Sub]]
 key = "BSE_VAT Category Code"
