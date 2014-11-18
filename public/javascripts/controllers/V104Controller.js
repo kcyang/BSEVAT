@@ -99,6 +99,7 @@ angular.module('V104Ctrl',['ngGrid'])
                 $scope.constants.EMPTY = 'false';
 
                 $scope.mg = data;
+                $scope.myData = data.SUB;
                 $scope.calc(); //재계산
             }
         }
@@ -134,6 +135,7 @@ angular.module('V104Ctrl',['ngGrid'])
                     $scope.constants.EMPTY = 'false';
 
                     $scope.mg = data;
+                    $scope.myData = data.SUB;
                     $scope.calc(); //재계산
                     $scope.progressValue = 100;
                     ngDialog.close('ngdialog1');
@@ -221,17 +223,26 @@ angular.module('V104Ctrl',['ngGrid'])
      * ngGrid Sample.
      *
      */
+/*
     $scope.myData = [
         {name: "양양", age: 40},
         {name: "오오", age: 41},
         {name: "Chris", age: 30}
     ];
+*/
     $scope.gridOptions = {
         data: 'myData',
         multiSelect : false,
         enableRowSelection : false,
         showSelectionCheckbox : false,
-        showFooter: false
+        showFooter: false,
+        columnDefs: [
+            {field:'NON_ELEC_BUS_NO', displayName:'사업자등록번호'},
+            {field:'NON_ELEC_BUS_NAME', displayName:'상호(법인명)'},
+            {field:'NON_ELEC_QTY', displayName:'매수',cellFilter:'number', cellClass:'price'},
+            {field:'NON_ELEC_ACT_AMT', displayName:'공급가액',cellFilter:'number:0', cellClass:'price'},
+            {field:'NON_ELEC_TAX_AMT', displayName:'세액', cellFilter:'number:0', cellClass:'price'}
+        ]
     };
         /*
         * multiSelect : false

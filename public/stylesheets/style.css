@@ -13,3 +13,7 @@ a {
   width: 960px;
   height: 300px
 }
+
+.price {
+  text-align: right;
+}
