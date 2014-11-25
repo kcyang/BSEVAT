@@ -99,7 +99,7 @@ angular.module('V104Ctrl',['ngGrid'])
                 $scope.constants.EMPTY = 'false';
 
                 $scope.mg = data;
-                $scope.myData = data.SUB;
+                $scope.myData = data.SUB;  //Grid 데이터입력.
                 $scope.calc(); //재계산
             }
         }
@@ -135,7 +135,7 @@ angular.module('V104Ctrl',['ngGrid'])
                     $scope.constants.EMPTY = 'false';
 
                     $scope.mg = data;
-                    $scope.myData = data.SUB;
+                    $scope.myData = data.SUB;  //Grid 데이터입력.
                     $scope.calc(); //재계산
                     $scope.progressValue = 100;
                     ngDialog.close('ngdialog1');
@@ -220,16 +220,9 @@ angular.module('V104Ctrl',['ngGrid'])
     };
 
     /**
-     * ngGrid Sample.
+     * ngGrid
      *
      */
-/*
-    $scope.myData = [
-        {name: "양양", age: 40},
-        {name: "오오", age: 41},
-        {name: "Chris", age: 30}
-    ];
-*/
     $scope.gridOptions = {
         data: 'myData',
         multiSelect : false,
