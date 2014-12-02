@@ -1,0 +1,48 @@
+{
+    "TOTAL_PURCH_CNT" : "H12",
+    "TOTAL_PURCH_QTY" : "J12",
+    "TOTAL_PURCH_ACT_AMT" :"K12",
+    "TOTAL_PURCH_TAX_AMT":"R12",
+
+    "ELEC_BUS_PURCH_CNT" : "H13",
+    "ELEC_BUS_PURCH_QTY" : "J13",
+    "ELEC_BUS_PURCH_ACT_AMT" : "K13",
+    "ELEC_BUS_PURCH_TAX_AMT":"R13",
+
+    "ELEC_PSN_PURCH_CNT" : "H14",
+    "ELEC_PSN_PURCH_QTY" : "J14",
+    "ELEC_PSN_PURCH_ACT_AMT" : "K14",
+    "ELEC_PSN_PURCH_TAX_AMT":"R14",
+
+    "ELEC_TOT_PURCH_CNT" : "H15",
+    "ELEC_TOT_PURCH_QTY" : "J15",
+    "ELEC_TOT_PURCH_ACT_AMT" : "K15",
+    "ELEC_TOT_PURCH_TAX_AMT":"R15",
+
+    "NON_ELEC_BUS_PURCH_CNT" : "H16",
+    "NON_ELEC_BUS_PURCH_QTY" : "J16",
+    "NON_ELEC_BUS_PURCH_ACT_AMT" : "K16",
+    "NON_ELEC_BUS_PURCH_TAX_AMT":"R16",
+
+    "NON_ELEC_PSN_PURCH_CNT" : "H17",
+    "NON_ELEC_PSN_PURCH_QTY" : "J17",
+    "NON_ELEC_PSN_PURCH_ACT_AMT" : "K17",
+    "NON_ELEC_PSN_PURCH_TAX_AMT":"R17",
+
+    "NON_ELEC_TOT_PURCH_CNT" : "H18",
+    "NON_ELEC_TOT_PURCH_QTY" : "J18",
+    "NON_ELEC_TOT_PURCH_ACT_AMT" : "K18",
+    "NON_ELEC_TOT_PURCH_TAX_AMT":"R18",
+
+    "NON_ELEC_NO" : "C23",
+    "NON_ELEC_BUS_NO" : "F23",
+    "NON_ELEC_BUS_NAME" : "J23",
+    "NON_ELEC_QTY" : "K23",
+    "NON_ELEC_ACT_AMT" : "R23",
+    "NON_ELEC_TAX_AMT":"W23",
+
+    "company_name":"F7",
+    "name":"Q7",
+    "company_address":"F8",
+    "vat_code":"Q8"
+}

@@ -1,0 +1,91 @@
+# V141 수출실적명세서
+title = "VAT141"
+[V141]
+# 수출실적명세서의 화면을 위한 테이블 정의
+# 화면을 구성하게되는 입력폼이나 출력되는 대상을 정하는 것과 동일합니다.
+schema = [
+
+            ["VATKEY","String","true"],             #Main Key. << 모든 정의에 들어 있어야 함. 세번째 항목은 Key 값 유무.
+            ["COMPANY_CODE","String"],       #회사코드
+            ["YEAR","String"],               #년도
+            ["VATQT","String"],              #신고분기
+            ["VATRPTTYPE","String"],         #신고타입
+            ["TOTAL_CNT","Number"],          #총 건수
+            ["TOTAL_CURRENCY_AMOUNT","Number"], #총 외화금액 합계
+            ["TOTAL_AMOUNT","Number"], #총 원화금액 합계
+            ["REMARK_1","String"], #비고 1
+            ["REMARK_2","String"], #비고 2
+            ["REMARK_3","String"], #비고 3
+
+            ["JAE_CNT_TOTAL","Number"],  #재화 건수 합계
+            ["JAE_CURRENCY_AMOUNT_TOTAL","Number"],  #재화 외화금액 합계
+            ["JAE_AMOUNT_TOTAL","Number"],  #재화 원화금액 합계
+            ["ETC_CNT_TOTAL","Number"],  #기타 건수 합계
+
+            ["ETC_CURRENCY_AMOUNT_TOTAL","Number"],           #기타 외화금액 합계
+            ["ETC_AMOUNT_TOTAL","Number"],           #기타 원화금액 합계
+            ["EXPORT_FLAG","String"],             #신고구분
+            ["Status","String"],         #상태
+            ["Start_DATE","String"],         #시작일자
+            ["End_DATE","String"],           #종료일자
+            ["VAT_Missing","String"],        #부가세 미싱
+
+   [
+        ["COMPANY_CODE","String"],       #회사코드
+        ["YEAR","String"],               #년도
+        ["DATA_TYPE","Number"],          #기수
+        ["FORM_CD","String"],            #서식코드
+        ["EXPORT FLAG","String"],             #신고구분
+        ["SEQN","String"],            #일련번호
+        ["BUSINESS NO","String"],        #사업자등록번호
+        ["EXPORT SEQN","String"],          #수출일련번호
+        ["EXPORT REPORT NO","String"],         #수출신고번호
+        ["SHIP_DATE","String"],          #선적일자
+        ["CURRENCY CODE","String"],          #수출통화코드
+        ["EXCHANGE RATE","Number"],          #환율
+        ["CURRENCY AMOUNT","Number"],          #외화금액
+        ["AMOUNT","Number"],          #원화금액
+   ]
+]
+
+# 화면상의 계산 식을 위한 공간 / 자동화 하기 위해 고민이 필요함.
+calc = [
+["TOTAL_AMOUNT","(CARD_TOTAL_AMOUNT+CASH_TOTAL_AMOUNT-XXX)/YYY*ZZZ"]
+]
+
+# MSSQL의 NAV Table DocumentVATEntry 에서 가져올 대상을 지정합니다. (SQL 컬럼명을 지정합니다.)
+# V141 에서 사용 할 MSSQL 컬럼명을 입력합니다.
+Entries = [
+"BSE_VAT Type",  ##부가세 유형
+"BSE_Closing ", ##마감 여부
+"BSE_VAT Category Code", ##부가세 카테고리 코드
+"BSE_ZeroRating Type", ## 1. 재화수출 2.영세율
+"BSE_Export Declaration No", ##수출신고번호
+"BSE_Date of Shipment", ##선적일자
+"BSE_Currency Code", ##통화코드
+"BSE_Currency Factor", ##환율
+"BSE_Amonut(FCY)", ##외화금액
+"BSE_Amount(LCY)", ##원화금액
+]
+
+# NAV 쿼리를위한 조건을 입력합니다.
+[[V141.Condition]]
+key = "BSE_VAT Type"
+value = "1"
+value_type = "Integer"
+
+[[V141.Condition]]
+key = "BSE_Closing"
+value = "1"
+value_type = "Integer"
+
+[[V141.Condition]]
+key = "BSE_VAT Category Code"
+value = ["S130"]
+value_type = "String"
+
+[[V141.Sub]]
+key = "BSE_VAT Category Code"
+query = "SELECT [BSE_Category Code]
+         FROM [#Company$B_VAT Category]
+         WHERE [BSE_ZeroRating] = 1"

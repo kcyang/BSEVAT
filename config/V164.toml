@@ -1,0 +1,83 @@
+# V164 신용카드매출전표등수취명세서
+title = "VAT164"
+[V164]
+# 매출처별 세금계산서 합계표의 화면을 위한 테이블 정의
+# 화면을 구성하게되는 입력폼이나 출력되는 대상을 정하는 것과 동일합니다.
+schema = [
+    ["VATKEY","String","true"],             #Main Key. << 모든 정의에 들어 있어야 함. 세번째 항목은 Key 값 유무.
+    ["COMPANY_CODE","String"],       #회사코드
+    ["YEAR","String"],               #년도
+    ["VATQT","String"],              #신고분기
+    ["VATRPTTYPE","String"],         #신고타입
+
+    ["CASH COUNT","Number"],                   #현금영수증 건수
+    ["CASH AMOUNT TOTAL","Number"],                   #현금영수증 공급가액 합계
+    ["CASH TAX TOTAL","Number"],                   #현금영수증 세액 합계
+    ["DRIVER COUNT","Number"],                   #화물운전자복지카드 건수
+    ["DRIVER AMOUNT TOTAL","Number"],                   #화물운전자복지카드 공급가액 합계
+    ["DRIVER TAX TOTAL","Number"],                   #화물운전자복지카드 세액 합계
+    ["BUSINESS CARD COUNT","Number"],                   #사업용신용카드 건수
+    ["BUSINESS CARD AMOUNT TOTAL","Number"],                   #사업용신용카드 공급가액 합계
+    ["BUSINESS CARD TAX TOTAL","Number"],                   #사업용신용카드 세액 합계
+    ["CARD COUNT","Number"],                   #기타 신용카드 건수
+    ["CARD AMOUNT TOTAL","Number"],                   #기타 신용카드 공급가액 합계
+    ["CARD TAX TOTAL","Number"],                   #기타 신용카드 세액 합계
+    ["FA CASH COUNT","Number"],                   #고정자산 현금영수증 건수
+    ["FA CASH AMOUNT TOTAL","Number"],                   #고정자산 현금영수증 공급가액 합계
+    ["FA CASH TAX TOTAL","Number"],                   #고정자산 현금영수증 세액 합계
+    ["FA DRIVER COUNT","Number"],                   #고정자산 화물운전자복지카드 건수
+    ["FA DRIVER AMOUNT TOTAL","Number"],                   #고정자산 화물운전자복지카드 공급가액 합계
+    ["FA DRIVER TAX TOTAL","Number"],                   #고정자산 화물운전자복지카드 세액 합계
+    ["FA BUSINESS CARD COUNT","Number"],                   #고정자산 사업용신용카드 건수
+    ["FA BUSINESS CARD AMOUNT TOTAL","Number"],                   #고정자산 사업용신용카드 공급가액 합계
+    ["FA BUSINESS CARD TAX TOTAL","Number"],                   #고정자산 사업용신용카드 세액 합계
+    ["FA CARD COUNT","Number"],                   #고정자산 기타 신용카드 건수
+    ["FA CARD AMOUNT TOTAL","Number"],                   #고정자산 기타 신용카드 공급가액 합계
+    ["FA CARD TAX TOTAL","Number"],                   #고정자산 기타 신용카드 세액 합계
+    ["CARD TYPE","String"],                   #카드구분
+
+
+
+    [
+      ["SEQN","Number"],                   #일련번호
+      ["CARD NUMBER","String"],                   #카드회원번호
+      ["BUSINESS NO","String"],                   #공급자(가맹점)사업자등록번호
+      ["BUSINESS NAME","String"],                   #가맹점 상호
+      ["SUPPLY AMOUNT","Number"],                   #공급가액
+      ["TAX AMOUNT","Number"],                   #세액
+      ["MISSED","String"],                   #누락구분
+      ["CATEGORY CODE","String"],                   #계산서 유형 코드
+      ["CATEGORY Name","String"],                   #계산서 유형 명
+      ["CNT","Number"],                   #거래건수
+    ]
+
+]
+
+# 화면상의 계산 식을 위한 공간 / 자동화 하기 위해 고민이 필요함.
+calc = [
+["TOTAL_AMOUNT","(CARD_TOTAL_AMOUNT+CASH_TOTAL_AMOUNT-XXX)/YYY*ZZZ"]
+]
+
+# MSSQL의 NAV Table DocumentVATEntry 에서 가져올 대상을 지정합니다. (SQL 컬럼명을 지정합니다.)
+# V164 (신용카드매출전표등수취명세서)에서 사용 할 MSSQL 컬럼명을 입력합니다.
+Entries = [
+"BSE_VAT Category Code",
+"BSE_Pay_Bill CorpIndv Type",
+"BSE_ETAX Complete issue",
+"BSE_Editable Tot Total Amount",
+"BSE_Editable Tot VAT Amount",
+"BSE_VAT Registration No_",
+"BSE_VAT Name"
+]
+
+# NAV 쿼리를위한 조건을 입력합니다.
+[[V164.Condition]]
+key = "BSE_VAT Type"
+value = "1"
+value_type = "Integer"
+
+[[V164.Sub]]
+key = "BSE_VAT Category Code"
+query = "SELECT [BSE_Category Code]
+         FROM [#Company$B_VAT Category]
+         WHERE [BSE_VAT Total Report] = 1"

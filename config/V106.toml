@@ -1,0 +1,97 @@
+# V106 영세율첨부서류세출명세서
+title = "VAT106"
+[V106]
+# 영세율첨부서류세출명세서의 화면을 위한 테이블 정의
+# 화면을 구성하게되는 입력폼이나 출력되는 대상을 정하는 것과 동일합니다.
+schema = [
+    ["VATKEY","String","true"],             #Main Key. << 모든 정의에 들어 있어야 함. 세번째 항목은 Key 값 유무.
+    ["COMPANY_CODE","String"],       #회사코드
+    ["YEAR","String"],               #년도
+    ["VATQT","String"],              #신고분기
+    ["VATRPTTYPE","String"],         #신고타입
+
+    ["TOT_INTRO_FOR_AMT","Number"],  #당기제출금액 합계 (외화)
+    ["TOT_INTRO_WON_AMT","Number"],  #당기제출금액 합계 (원화)
+    ["TOT_SINGO_FOR_AMT","Number"],  #당기신고해당분 합계 (외화)
+    ["TOT_SINGO_WON_AMT","Number"],  #당기신고해당분 합계 (원화)
+
+    ["SAU_CODE","Number"],           #제출사유코드
+    ["SAU_MEMO","String"],           #제출사유
+    ["Status","String"],             #상태
+
+    ["Start DATE","String"],         #시작일자
+    ["End DATE","String"],           #종료일자
+    ["VAT Missing","String"],        #부가세 미싱
+[
+    ["DATA_TYPE","Number"],          #기수
+    ["FORM_CD","String"],            #서식코드
+    ["DOC_SEQ","String"],            #일련번호
+    ["DOC_NAME","String"],           #서류명
+    ["ISSUE_MAN","String"],          #발급자
+    ["ISSUE_DATE","String"],         #발급일자
+    ["SHIP_DATE","String"],          #선적일자
+    ["CURRENCY CODE","Number"],      #통화코드
+    ["EXCHANGE RATE","Number"],      #환율
+    ["THIS_INTRO_FOR_AMT","Number"],  #당기제출금액(외화)
+    ["THIS_INTRO_WON_AMT","Number"],  #당기제출금액(원화)
+    ["THIS_SINGO_FOR_AMT","Number"],  #당기신고해당분(외화)
+    ["THIS_SINGO_WON_AMT","Number"],  #당기신고해당분(원화)
+    ["SAU_CODE","String"],           #제출사유코드
+    ["SAU_MEMO","String"],           #제출사유
+    ["Status","String"],             #상태
+    ["Document VAT No.","String"],   #문서부가세 번호
+    ["Posted Invoice No.","String"],  #전기된 송장 번호
+    ["Document Type","String"],      #문서유형
+    ["REMARK","String"],             #비고
+]
+
+
+]
+
+# 화면상의 계산 식을 위한 공간 / 자동화 하기 위해 고민이 필요함.
+calc = [
+["TOTAL_AMOUNT","(CARD_TOTAL_AMOUNT+CASH_TOTAL_AMOUNT-XXX)/YYY*ZZZ"]
+]
+
+# MSSQL의 NAV Table DocumentVATEntry 에서 가져올 대상을 지정합니다. (SQL 컬럼명을 지정합니다.)
+# V106 에서 사용 할 MSSQL 컬럼명을 입력합니다.
+Entries = [
+"BSE_VAT Category Code",
+"BSE_Editable Tot Total Amount",
+"BSE_Document Name",
+"BSE_Document Issuing Officer",
+"BSE_Document Issuing Date",
+"BSE_Date of Shipment",
+"BSE_Currency Code",
+"BSE_Currency Factor",
+"BSE_Amonut(FCY)",
+"BSE_Amount(LCY)"
+
+]
+
+# NAV 쿼리를위한 조건을 입력합니다.
+[[V106.Condition]]
+key = "BSE_VAT Type"
+value = "1"
+value_type = "Integer"
+
+[[V106.Condition]]
+key = "BSE_VAT Category Code"
+value = ["S130"]
+value_type = "String"
+
+[[V106.Condition]]
+key = "BSE_Closing"
+value = "1"
+value_type = "Integer"
+
+[[V106.Condition]]
+key = "BSE_ZeroRating Type"
+value = "2"
+value_type = "Integer"
+
+[[V106.Sub]]
+key = "BSE_VAT Category Code"
+query = "SELECT [BSE_Category Code]
+         FROM [#Company$B_VAT Category]
+         WHERE [BSE_ZeroRating Type] = 2"
