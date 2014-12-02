@@ -18,7 +18,7 @@ angular.module('dialogCtrl',[]).controller('dialogController',function($scope,$l
         ngDialog.close('ngdialog1');
         ngDialog.open({
             template:'../../views/progressDialog.html',
-            controller:'V117Controller',
+            controller:$scope.constants.VATNO+'Controller',
             scope: $scope,
             className: 'ngdialog-theme-default ngdialog-theme-custom'
         });
