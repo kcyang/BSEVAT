@@ -28,7 +28,8 @@ var bse_routes = require('./routes/bsevat');
 var app = express();
 
 //#TODO Mongoose 관련 내용은 추 후 또 정리
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://'+serverConfig.servers.mongo.ip+'/'+serverConfig.servers.mongo.instance,
+    {server: { poolSize: 3 }});
 
 //CORS 기능 셋업. (로컬에서 XHR - Cross Http Requests 가능하게)
 //이는 로컬에서 AngularJS client 에서 express restful api 를 호출이 가능하게 하기 위함이다.

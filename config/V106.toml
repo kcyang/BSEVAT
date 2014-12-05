@@ -23,25 +23,17 @@ schema = [
     ["End DATE","String"],           #종료일자
     ["VAT Missing","String"],        #부가세 미싱
 [
-    ["DATA_TYPE","Number"],          #기수
-    ["FORM_CD","String"],            #서식코드
     ["DOC_SEQ","String"],            #일련번호
     ["DOC_NAME","String"],           #서류명
     ["ISSUE_MAN","String"],          #발급자
-    ["ISSUE_DATE","String"],         #발급일자
-    ["SHIP_DATE","String"],          #선적일자
-    ["CURRENCY CODE","Number"],      #통화코드
+    ["ISSUE_DATE","Date"],         #발급일자
+    ["SHIP_DATE","Date"],          #선적일자
+    ["CURRENCY CODE","String"],      #통화코드
     ["EXCHANGE RATE","Number"],      #환율
     ["THIS_INTRO_FOR_AMT","Number"],  #당기제출금액(외화)
     ["THIS_INTRO_WON_AMT","Number"],  #당기제출금액(원화)
     ["THIS_SINGO_FOR_AMT","Number"],  #당기신고해당분(외화)
     ["THIS_SINGO_WON_AMT","Number"],  #당기신고해당분(원화)
-    ["SAU_CODE","String"],           #제출사유코드
-    ["SAU_MEMO","String"],           #제출사유
-    ["Status","String"],             #상태
-    ["Document VAT No.","String"],   #문서부가세 번호
-    ["Posted Invoice No.","String"],  #전기된 송장 번호
-    ["Document Type","String"],      #문서유형
     ["REMARK","String"],             #비고
 ]
 

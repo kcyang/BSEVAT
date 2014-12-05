@@ -7,7 +7,92 @@
  */
 'use strict';
 /* global angular */
+var DocMap = {
+    '0' : '',
+    '1' : '수출신고필증',
+    '2' : '인보이스',
+    '3' : '외국환매입증명서',
+    '4' : '내국신용장',
+    '5' : '구매확인서'
+};
+
 angular.module('V106Ctrl',['ngGrid'])
+/*
+    .directive('categoryHeader', function() {
+        function link(scope, element, attrs) {
+
+            // create cols as soon as $gridscope is avavilable
+            // grids in tabs with lazy loading come later, so we need to
+            // setup a watcher
+            scope.$watch('categoryHeader.$gridScope', function(gridScope, oldVal) {
+                if (!gridScope) {
+                    return;
+                }
+                // setup listener for scroll events to sync categories with table
+                var viewPort = scope.categoryHeader.$gridScope.domAccessProvider.grid.$viewport[0];
+                var headerContainer = scope.categoryHeader.$gridScope.domAccessProvider.grid.$headerContainer[0];
+
+                // watch out, this line usually works, but not always, because under certains conditions
+                // headerContainer.clientHeight is 0
+                // unclear how to fix this. a workaround is to set a constant value that equals your row height
+                scope.headerRowHeight=  headerContainer.clientHeight;
+
+                angular.element(viewPort).bind("scroll", function() {
+                    // copy total width to compensate scrollbar width
+                    $(element).find(".categoryHeaderScroller")
+                        .width($(headerContainer).find(".ngHeaderScroller").width());
+                    $(element).find(".ngHeaderContainer")
+                        .scrollLeft($(this).scrollLeft());
+                });
+
+                // setup listener for table changes to update categories
+                scope.categoryHeader.$gridScope.$on('ngGridEventColumns', function(event, reorderedColumns) {
+                    createCategories(event, reorderedColumns);
+                });
+            });
+            var createCategories = function(event, cols) {
+                scope.categories = [];
+                var lastDisplayName = "";
+                var totalWidth = 0;
+                var left = 0;
+                angular.forEach(cols, function(col, key) {
+                    if (!col.visible) {
+                        return;
+                    }
+                    totalWidth += col.width;
+                    var displayName = (typeof(col.colDef.categoryDisplayName) === "undefined") ?
+                        "\u00A0" : col.colDef.categoryDisplayName;
+                    if (displayName !== lastDisplayName) {
+                        scope.categories.push({
+                            displayName: lastDisplayName,
+                            width: totalWidth - col.width,
+                            left: left
+                        });
+                        left += (totalWidth - col.width);
+                        totalWidth = col.width;
+                        lastDisplayName = displayName;
+                    }
+                });
+                if (totalWidth > 0) {
+                    scope.categories.push({
+                        displayName: lastDisplayName,
+                        width: totalWidth,
+                        left: left
+                    });
+                }
+            };
+            createCategories(null, scope.categoryHeader.$gridScope.columns);
+        }
+        return {
+            scope: {
+                categoryHeader: '='
+            },
+            restrict: 'EA',
+            templateUrl: '../../views/category_header.html',
+            link: link
+        };
+    })
+*/
     .controller('V106Controller',function($scope,$log,$window,VATService,$location,$route,ngDialog){
 
     //# 상수정의.
@@ -54,7 +139,6 @@ angular.module('V106Ctrl',['ngGrid'])
         $route.reload();
     });
 
-
     //2-2.
     //화면상의 계산식을 정의하는 곳. >> 자동화를 해야 하는데.. 고민 중임.
         //화면의 자동계산 되는 로직은 아래에 정의된 데로 실행된다.
@@ -72,7 +156,22 @@ angular.module('V106Ctrl',['ngGrid'])
         */
     };
 
-
+        /**
+         * 그리드의 값을 바꿔치기 해야하는 경우,
+         * 아래와 같은 형식으로 받은 데이터의 값을 바꿔줌.
+         */
+    $scope.updateGrid = function(){
+        if($scope.myData === 'undefined'){
+        }else{
+            if($scope.myData.length > 0){
+                for(var doc in $scope.myData){
+                    if($scope.myData.hasOwnProperty(doc)){
+                        $scope.myData[doc].DOC_NAME = DocMap[$scope.myData[doc].DOC_NAME];
+                    }
+                }
+            }
+        }
+    };
     //2-3.
     //처음 화면 실행 시, 데이터를 가져 온다.
 
@@ -94,7 +193,9 @@ angular.module('V106Ctrl',['ngGrid'])
                 $scope.constants.EMPTY = 'false';
 
                 $scope.mg = data;
+                $scope.myData = data.SUB;  //Grid 데이터입력.
                 $scope.calc(); //재계산
+                $scope.updateGrid();
             }
         }
 
@@ -129,7 +230,9 @@ angular.module('V106Ctrl',['ngGrid'])
                     $scope.constants.EMPTY = 'false';
 
                     $scope.mg = data;
+                    $scope.myData = data.SUB;  //Grid 데이터입력.
                     $scope.calc(); //재계산
+                    $scope.updateGrid();
                     $scope.progressValue = 100;
                     ngDialog.close('ngdialog1');
 
@@ -211,18 +314,26 @@ angular.module('V106Ctrl',['ngGrid'])
 
     };
 
+//headerRowHeight: 64,
         $scope.gridOptions = {
             data: 'myData',
+            columnDefs: [
+                {field:'DOC_NAME', displayName:'서류명'},
+                {field:'ISSUE_MAN', displayName:'발급자'},
+                {field:'ISSUE_DATE', displayName:'발급일자',cellFilter:'date:\'yyyy-MM-dd\''},
+                {field:'SHIP_DATE', displayName:'선적일자',cellFilter:'date:\'yyyy-MM-dd\''},
+                {field:'CURRENCY CODE', displayName:'통화코드', width: 80},
+                {field:'EXCHANGE RATE', displayName:'환율',cellFilter:'number:2', cellClass:'price', width: 80},
+                {field:'THIS_INTRO_FOR_AMT', displayName:'제출(외화)',cellFilter:'number:2', cellClass:'price'},
+                {field:'THIS_INTRO_WON_AMT', displayName:'제출(원화)',cellFilter:'number:0', cellClass:'price'},
+                {field:'THIS_SINGO_FOR_AMT', displayName:'신고(외화)',cellFilter:'number:2', cellClass:'price'},
+                {field:'THIS_SINGO_WON_AMT', displayName:'신고(원화)',cellFilter:'number:0', cellClass:'price'}
+            ],
             multiSelect : false,
             enableRowSelection : false,
             showSelectionCheckbox : false,
-            showFooter: false,
-            columnDefs: [
-                {field:'BSE_Document Name', displayName:'서류명'},
-                {field:'BSE_Document Issuing Officer', displayName:'발급자'},
-                {field:'BSE_Document Issuing Date', displayName:'발급일자',cellFilter:'date', cellClass:'price'},
-                {field:'BSE_Date of Shipment', displayName:'선적일자',cellFilter:'date', cellClass:'price'},
-                {field:'BSE_Currency Code', displayName:'통화코드'}
-            ]
+            footerVisible: false,
+            showColumnMenu: false
         };
+
 });

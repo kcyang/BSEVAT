@@ -140,6 +140,7 @@ def build(filename, document_name, output_path, document_key, limit_no, page_no)
 
         #DB 연결에 대한 에러처리 Exception 처리
         collection = db_connection(document_name.lower())
+
         #Mongo 에서 데이터를 가져오는 구문.
         result = collection.find_one({"VATKEY": document_key})
 
@@ -150,6 +151,7 @@ def build(filename, document_name, output_path, document_key, limit_no, page_no)
 
             # 엑셀을 읽어온다.
             wb = load_workbook(filename)
+            print "5"
             # 워크시트를 가져온다. (기본은 첫번째 시트를..)
             ws = wb.worksheets[0]
 
