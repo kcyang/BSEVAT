@@ -235,12 +235,13 @@ angular.module('V105-1Ctrl',['ngGrid'])
         multiSelect : false,
         enableRowSelection : false,
         showSelectionCheckbox : false,
-        showFooter: false,
+        footerVisible: false,
+        showColumnMenu: false,
         columnDefs: [
             {field:'NON_ELEC_BUS_NO', displayName:'사업자등록번호'},
             {field:'NON_ELEC_BUS_NAME', displayName:'상호(법인명)'},
             {field:'NON_ELEC_QTY', displayName:'매수',cellFilter:'number', cellClass:'price'},
-            {field:'NON_ELEC_ACT_AMT', displayName:'공급가액',cellFilter:'number:0', cellClass:'price'},
+            {field:'NON_ELEC_ACT_AMT', displayName:'매입금액',cellFilter:'number:0', cellClass:'price'},
 
         ]
     };

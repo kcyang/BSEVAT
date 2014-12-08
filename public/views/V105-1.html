@@ -60,11 +60,11 @@
                     <tr>
                         <td>거래기간</td>
                         <td>
-                            <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                            <input type="text" class="form-control input-sm">
                         </td>
                         <td>작성일자</td>
                         <td>
-                            <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                            <input type="text" class="form-control input-sm">
                         </td>
                     </tr>
                 </tbody>
@@ -78,11 +78,10 @@
                     tr {text-align : center;}
                 </style>
                     <tr>
-                        <td>구   분</td>
+                        <td class="col-md-4">구   분</td>
                         <td>매입처수</td>
                         <td>매 수</td>
                         <td>매입(수입)금액</td>
-                        <td>비 고</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -97,12 +96,9 @@
                         <td>
                             <input type="text" class="form-control input-sm" ng-model="mg.TOTAL_PURCH_ACT_AMT" readonly  ui-number-mask="0"/>
                         </td>
-                        <td>
-                            <input type="text" class="form-control input-sm" placeholder="Placeholder text">
-                        </td>
                     </tr>
                     <tr>
-                        <td>사업자등록번호 발행분</td>
+                        <td>과세기간 종료일 다음달 11일까지 전송된 <br>전자계산서 발급받은분</td>
                         <td>
                             <input type="text" class="form-control input-sm text-right" ng-model="mg.ELEC_BUS_PURCH_CNT" readonly  ui-number-mask="0"/>
                         </td>
@@ -112,12 +108,9 @@
                         <td>
                             <input type="text" class="form-control input-sm text-right" ng-model="mg.ELEC_BUS_PURCH_ACT_AMT" readonly  ui-number-mask="0"/>
                         </td>
-                        <td>
-                            <input type="text" class="form-control input-sm" placeholder="Placeholder text">
-                        </td>
                     </tr>
                     <tr>
-                        <td>주민등록번호 발행분</td>
+                        <td>위 전자계산서 외의 발급받은분</td>
                         <td>
                             <input type="text" class="form-control input-sm text-right" ng-model="mg.ELEC_PSN_PURCH_CNT" readonly  ui-number-mask="0"/>
                         </td>
@@ -126,9 +119,6 @@
                         </td>
                         <td>
                             <input type="text" class="form-control input-sm text-right" ng-model="mg.ELEC_PSN_PURCH_ACT_AMT" readonly  ui-number-mask="0"/>
-                        </td>
-                        <td>
-                            <input type="text" class="form-control input-sm" placeholder="Placeholder text">
                         </td>
                     </tr>
                 </tbody>

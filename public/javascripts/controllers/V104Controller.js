@@ -228,7 +228,8 @@ angular.module('V104Ctrl',['ngGrid'])
         multiSelect : false,
         enableRowSelection : false,
         showSelectionCheckbox : false,
-        showFooter: false,
+        footerVisible: false,
+        showColumnMenu: false,
         columnDefs: [
             {field:'NON_ELEC_BUS_NO', displayName:'사업자등록번호'},
             {field:'NON_ELEC_BUS_NAME', displayName:'상호(법인명)'},

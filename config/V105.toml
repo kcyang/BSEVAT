@@ -15,30 +15,30 @@ schema = [
    ["TOTAL_PURCH_ACT_AMT","Number"],         #매입세금계산서 총합계-공급가액 합계
    ["TOTAL_PURCH_TAX_AMT","Number"],         #매입세금계산서 총합계-세액 합계
 
-   ["ELEC_BUS_PURCH_CNT","Number"],          #매입세금계산서 총합계-전자세금계산서발급분-사업자등록번호 발급분-매입처수
-   ["ELEC_BUS_PURCH_QTY","Number"],          #매입세금계산서 총합계-전자세금계산서발급분-사업자등록번호 발급분-매수
-   ["ELEC_BUS_PURCH_ACT_AMT","Number"],      #매입세금계산서 총합계-전자세금계산서발급분-사업자등록번호 발급분-공급가액
-   ["ELEC_BUS_PURCH_TAX_AMT","Number"],      #매입세금계산서 총합계-전자세금계산서발급분-사업자등록번호 발급분-세액
+   ["ELEC_BUS_PURCH_CNT","Number"],          #매입세금계산서 -전자세금계산서발급분-사업자등록번호 발급분-매입처수
+   ["ELEC_BUS_PURCH_QTY","Number"],          #매입세금계산서 -전자세금계산서발급분-사업자등록번호 발급분-매수
+   ["ELEC_BUS_PURCH_ACT_AMT","Number"],      #매입세금계산서 -전자세금계산서발급분-사업자등록번호 발급분-공급가액
+   ["ELEC_BUS_PURCH_TAX_AMT","Number"],      #매입세금계산서 -전자세금계산서발급분-사업자등록번호 발급분-세액
 
-   ["ELEC_PSN_PURCH_CNT","Number"],          #매입세금계산서 총합계-전자세금계산서발급분-주민등록번호 발급분-매입처수
-   ["ELEC_PSN_PURCH_QTY","Number"],          #매입세금계산서 총합계-전자세금계산서발급분-주민등록번호 발급분-매수
-   ["ELEC_PSN_PURCH_ACT_AMT","Number"],      #매입세금계산서 총합계-전자세금계산서발급분-주민등록번호 발급분-공급가액
-   ["ELEC_PSN_PURCH_TAX_AMT","Number"],      #매입세금계산서 총합계-전자세금계산서발급분-주민등록번호 발급분-세액
+   ["ELEC_PSN_PURCH_CNT","Number"],          #매입세금계산서 -전자세금계산서발급분-주민등록번호 발급분-매입처수
+   ["ELEC_PSN_PURCH_QTY","Number"],          #매입세금계산서 -전자세금계산서발급분-주민등록번호 발급분-매수
+   ["ELEC_PSN_PURCH_ACT_AMT","Number"],      #매입세금계산서 -전자세금계산서발급분-주민등록번호 발급분-공급가액
+   ["ELEC_PSN_PURCH_TAX_AMT","Number"],      #매입세금계산서 -전자세금계산서발급분-주민등록번호 발급분-세액
 
    ["ELEC_TOT_PURCH_CNT","Number"],          #매입세금계산서 총합계-전자세금계산서발급분-소계-매입처수
    ["ELEC_TOT_PURCH_QTY","Number"],          #매입세금계산서 총합계-전자세금계산서발급분-소계-매수
    ["ELEC_TOT_PURCH_ACT_AMT","Number"],      #매입세금계산서 총합계-전자세금계산서발급분-소계-공급가액
    ["ELEC_TOT_PURCH_TAX_AMT","Number"],      #매입세금계산서 총합계-전자세금계산서발급분-소계-세액
 
-   ["NON_ELEC_BUS_PURCH_CNT","Number"],      #매입세금계산서 총합계-전자세금계산서외 발급분-사업자등록번호 발급분-매입처수
-   ["NON_ELEC_BUS_PURCH_QTY","Number"],      #매입세금계산서 총합계-전자세금계산서외 발급분-사업자등록번호 발급분-매수
-   ["NON_ELEC_BUS_PURCH_ACT_AMT","Number"],  #매입세금계산서 총합계-전자세금계산서외 발급분-사업자등록번호 발급분-공급가액
-   ["NON_ELEC_BUS_PURCH_TAX_AMT","Number"],  #매입세금계산서 총합계-전자세금계산서외 발급분-사업자등록번호 발급분-세액
+   ["NON_ELEC_BUS_PURCH_CNT","Number"],      #매입세금계산서 -전자세금계산서외 발급분-사업자등록번호 발급분-매입처수
+   ["NON_ELEC_BUS_PURCH_QTY","Number"],      #매입세금계산서 -전자세금계산서외 발급분-사업자등록번호 발급분-매수
+   ["NON_ELEC_BUS_PURCH_ACT_AMT","Number"],  #매입세금계산서 -전자세금계산서외 발급분-사업자등록번호 발급분-공급가액
+   ["NON_ELEC_BUS_PURCH_TAX_AMT","Number"],  #매입세금계산서 -전자세금계산서외 발급분-사업자등록번호 발급분-세액
 
-   ["NON_ELEC_PSN_PURCH_CNT","Number"],      #매입세금계산서 총합계-전자세금계산서외 발급분-주민등록번호 발급분-매입처수
-   ["NON_ELEC_PSN_PURCH_QTY","Number"],      #매입세금계산서 총합계-전자세금계산서외 발급분-주민등록번호 발급분-매수
-   ["NON_ELEC_PSN_PURCH_ACT_AMT","Number"],  #매입세금계산서 총합계-전자세금계산서외 발급분-주민등록번호 발급분-공급가액
-   ["NON_ELEC_PSN_PURCH_TAX_AMT","Number"],  #매입세금계산서 총합계-전자세금계산서외 발급분-주민등록번호 발급분-세액
+   ["NON_ELEC_PSN_PURCH_CNT","Number"],      #매입세금계산서 -전자세금계산서외 발급분-주민등록번호 발급분-매입처수
+   ["NON_ELEC_PSN_PURCH_QTY","Number"],      #매입세금계산서 -전자세금계산서외 발급분-주민등록번호 발급분-매수
+   ["NON_ELEC_PSN_PURCH_ACT_AMT","Number"],  #매입세금계산서 -전자세금계산서외 발급분-주민등록번호 발급분-공급가액
+   ["NON_ELEC_PSN_PURCH_TAX_AMT","Number"],  #매입세금계산서 -전자세금계산서외 발급분-주민등록번호 발급분-세액
 
    ["NON_ELEC_TOT_PURCH_CNT","Number"],      #매입세금계산서 총합계-전자세금계산서외 발급분-소계-매입처수
    ["NON_ELEC_TOT_PURCH_QTY","Number"],      #매입세금계산서 총합계-전자세금계산서외 발급분-소계-매수

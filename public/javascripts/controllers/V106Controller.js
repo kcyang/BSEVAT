@@ -166,7 +166,9 @@ angular.module('V106Ctrl',['ngGrid'])
             if($scope.myData.length > 0){
                 for(var doc in $scope.myData){
                     if($scope.myData.hasOwnProperty(doc)){
-                        $scope.myData[doc].DOC_NAME = DocMap[$scope.myData[doc].DOC_NAME];
+                        if(DocMap.hasOwnProperty($scope.myData[doc].DOC_NAME)) {
+                            $scope.myData[doc].DOC_NAME = DocMap[$scope.myData[doc].DOC_NAME];
+                        }
                     }
                 }
             }

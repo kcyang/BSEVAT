@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# 오류처리 및 코드를 최대한 최적화 할 것.
+
 import sys
 
 sys.path.append(r'C:\Python27\Lib')
@@ -29,7 +29,7 @@ def get_next(orig_number, row_cnt):
     result_array = [string, str(number)]
 
     next_number = ''.join(result_array)
-
+    print 'Next Number is [%s]' % next_number
     return next_number
 
 '''
@@ -56,9 +56,8 @@ def set_sub_sheet(workbook, sub_array, json_info, limit_number, one_page_number)
     '''#1. sub array 의 것을 하나씩 빼내면서, '''
     for sub_items in sub_array:
         '''#2. 꺼낸 한 개의 Record 에서 Field 하나 씩 꺼냄. '''
-        '''** 행의 수가 첫 번째 페이지를 넘겼을 때, '''
-        print row_cnt
-        print limit_number
+        '''행의 수가 첫 번째 페이지를 넘겼을 때, '''
+
         if row_cnt >= limit_number:
             if row_cnt > (limit_number+one_page_number*page_cnt):
                 new_page = True
@@ -81,12 +80,21 @@ def set_sub_sheet(workbook, sub_array, json_info, limit_number, one_page_number)
 
         else:
             '''행의 수가 첫 번째 페이지를 넘기지 않을 때 또는 첫번째에 해당되는 값은'''
+
             for sub_key in sub_items.keys():
                 if sub_key == '_id' or sub_key == '__v':
                     continue
                 #설정파일에 array 의 key 가 있으면...
+                '''
+                _sub_key = ['_', sub_key]
+                next_sub_key = ''.join(_sub_key)
+
+                if next_sub_key in json_info:
+                    ws[get_next(json_info[next_sub_key], row_cnt)] = sub_items[sub_key]
+                '''
                 if sub_key in json_info:
                     ws[get_next(json_info[sub_key], row_cnt)] = sub_items[sub_key]
+
 
         row_cnt += 1
 
@@ -194,7 +202,8 @@ def build(filename, document_name, output_path, document_key, limit_no, page_no)
 def db_connection(document_name):
     try:
         client = pymongo.MongoClient()
-        db = client.test
+        # 현재는 기본으로 BSEVAT를 사용하도록 , 후에 값을 받아서 연결하도록 할 것.(#TODO)
+        db = client.BSEVAT
         collection = db[document_name]
 
         return collection

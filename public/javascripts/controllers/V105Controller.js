@@ -77,7 +77,6 @@ angular.module('V105Ctrl',['ngGrid'])
         $scope.mg.TOTAL_PURCH_TAX_AMT = Number($scope.mg.ELEC_TOT_PURCH_TAX_AMT) + Number($scope.mg.NON_ELEC_TOT_PURCH_TAX_AMT);
     };
 
-
     //2-3.
     //처음 화면 실행 시, 데이터를 가져 온다.
 
@@ -146,27 +145,6 @@ angular.module('V105Ctrl',['ngGrid'])
         }
 
     };
-/**
- * 저장하기 기능은 필요없음.
-    //#저장하기 버튼을 눌렀을 때 실행되는 function. #T*ODO @2014-10-14 저장기능 구현. DONE
-    $scope.saveDocument = function(){
-
-        VATService.update($scope.constants.VATNO,$scope.mg,function(err,data){
-
-            if(err) {
-                $log.error(data);
-
-                $scope.status = 'Error';
-                $scope.alertmessage = '저장하지 못했습니다. 관리자에게 문의하세요!';
-                return;
-            }
-            $log.info('총 %s 건이 저장되었습니다',data);
-            $scope.status = 'Ok';
-            $scope.alertmessage = '성공적으로 저장되었습니다.!';
-        });
-
-    };
-*/
     //#다시 작성하기 버튼을 눌렀을 때 실행되는 function. #T*ODO @2014-10-14 다시 불러오기 기능 구현. DONE
     $scope.getDocument = function(){
 
@@ -219,23 +197,13 @@ angular.module('V105Ctrl',['ngGrid'])
 
     };
 
-    /**
-     * ngGrid Sample.
-     *
-     */
-/*
-    $scope.myData = [
-        {name: "양양", age: 40},
-        {name: "오오", age: 41},
-        {name: "Chris", age: 30}
-    ];
-*/
     $scope.gridOptions = {
         data: 'myData',
         multiSelect : false,
         enableRowSelection : false,
         showSelectionCheckbox : false,
-        showFooter: false,
+        footerVisible: false,
+        showColumnMenu: false,
         columnDefs: [
             {field:'NON_ELEC_BUS_NO', displayName:'사업자등록번호'},
             {field:'NON_ELEC_BUS_NAME', displayName:'상호(법인명)'},
@@ -244,10 +212,5 @@ angular.module('V105Ctrl',['ngGrid'])
             {field:'NON_ELEC_TAX_AMT', displayName:'세액', cellFilter:'number:0', cellClass:'price'}
         ]
     };
-        /*
-        * multiSelect : false
-        * pinnable : false
-        * resizable : false
-        * */
 
 });

@@ -15,14 +15,14 @@ schema = [
     ["TOTAL_SALES_ACT_AMT","Number"],         #매출계산서 총합계-공급가액 합계
 
 
-    ["ELEC_BUS_SALES_CNT","Number"],          #매출계산서 총합계-전자세금계산서발급분-사업자등록번호 발급분-매출처수
-    ["ELEC_BUS_SALES_QTY","Number"],          #매출계산서 총합계-전자세금계산서발급분-사업자등록번호 발급분-매수
+    ["ELEC_BUS_SALES_CNT","Number"],          #매출계산서 전자세금계산서발급분-사업자등록번호 발급분-매출처수
+    ["ELEC_BUS_SALES_QTY","Number"],          #매출계산서 전자세금계산서발급분-사업자등록번호 발급분-매수
     ["ELEC_BUS_SALES_ACT_AMT","Number"],      #매출계산서 총합계-전자세금계산서발급분-사업자등록번호 발급분-공급가액
 
 
-    ["ELEC_PSN_SALES_CNT","Number"],          #매출계산서 총합계-전자세금계산서발급분-주민등록번호 발급분-매출처수
-    ["ELEC_PSN_SALES_QTY","Number"],          #매출계산서 총합계-전자세금계산서발급분-주민등록번호 발급분-매수
-    ["ELEC_PSN_SALES_ACT_AMT","Number"],      #매출계산서 총합계-전자세금계산서발급분-주민등록번호 발급분-공급가액
+    ["ELEC_PSN_SALES_CNT","Number"],          #매출계산서 전자세금계산서발급분-주민등록번호 발급분-매출처수
+    ["ELEC_PSN_SALES_QTY","Number"],          #매출계산서 전자세금계산서발급분-주민등록번호 발급분-매수
+    ["ELEC_PSN_SALES_ACT_AMT","Number"],      #매출계산서 전자세금계산서발급분-주민등록번호 발급분-공급가액
 
 
     ["ELEC_TOT_SALES_CNT","Number"],          #매출계산서 총합계-전자세금계산서발급분-소계-매출처수
