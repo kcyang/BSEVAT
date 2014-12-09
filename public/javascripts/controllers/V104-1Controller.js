@@ -146,27 +146,7 @@ angular.module('V104-1Ctrl',['ngGrid'])
         }
 
     };
-/**
- * 저장하기 기능은 필요없음.
-    //#저장하기 버튼을 눌렀을 때 실행되는 function. #T*ODO @2014-10-14 저장기능 구현. DONE
-    $scope.saveDocument = function(){
 
-        VATService.update($scope.constants.VATNO,$scope.mg,function(err,data){
-
-            if(err) {
-                $log.error(data);
-
-                $scope.status = 'Error';
-                $scope.alertmessage = '저장하지 못했습니다. 관리자에게 문의하세요!';
-                return;
-            }
-            $log.info('총 %s 건이 저장되었습니다',data);
-            $scope.status = 'Ok';
-            $scope.alertmessage = '성공적으로 저장되었습니다.!';
-        });
-
-    };
-*/
     //#다시 작성하기 버튼을 눌렀을 때 실행되는 function. #T*ODO @2014-10-14 다시 불러오기 기능 구현. DONE
     $scope.getDocument = function(){
 
@@ -239,8 +219,8 @@ angular.module('V104-1Ctrl',['ngGrid'])
         columnDefs: [
             {field:'NON_ELEC_BUS_NO', displayName:'사업자등록번호'},
             {field:'NON_ELEC_BUS_NAME', displayName:'상호(법인명)'},
-            {field:'NON_ELEC_QTY', displayName:'매수',cellFilter:'number', cellClass:'price'},
-            {field:'NON_ELEC_ACT_AMT', displayName:'공급가액',cellFilter:'number:0', cellClass:'price'}
+            {field:'NON_ELEC_QTY', displayName:'매수',cellFilter:'number:0', cellClass:'price'},
+            {field:'NON_ELEC_ACT_AMT', displayName:'매출(수입)금액',cellFilter:'number:0', cellClass:'price'}
         ]
     };
         /*

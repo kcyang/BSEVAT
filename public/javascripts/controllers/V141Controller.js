@@ -64,7 +64,7 @@ angular.module('V141Ctrl',['ngGrid'])
 
         $scope.mg.TOTAL_CNT = Number($scope.mg.JAE_CNT_TOTAL) + Number($scope.mg.ETC_CNT_TOTAL);
         $scope.mg.TOTAL_CURRENCY_AMOUNT = Number($scope.mg.JAE_CURRENCY_AMOUNT_TOTAL) + Number($scope.mg.ETC_CURRENCY_AMOUNT_TOTAL);
-        $scope.mg.TOTAL_AMOUNT = Number($scope.mg.JAE_CNT_TOTAL) + Number($scope.mg.ETC_CURRENCY_AMOUNT_TOTAL);
+        $scope.mg.TOTAL_AMOUNT = Number($scope.mg.JAE_AMOUNT_TOTAL) + Number($scope.mg.ETC_AMOUNT_TOTAL);
         /*
                 $scope.mg.CARD_TOTAL_AMOUNT = Number($scope.mg.TAX_CARD_AMOUNT) + Number($scope.mg.NOTAX_CARD_AMOUNT) + Number($scope.mg.SVC_CARD_AMOUNT);
                 $scope.mg.CASH_TOTAL_AMOUNT = Number($scope.mg.TAX_CASH_AMOUNT) + Number($scope.mg.NOTAX_CASH_AMOUNT) + Number($scope.mg.SVC_CASH_AMOUNT);
@@ -99,6 +99,7 @@ angular.module('V141Ctrl',['ngGrid'])
                 $scope.constants.EMPTY = 'false';
 
                 $scope.mg = data;
+                $scope.myData = data.SUB;
                 $scope.calc(); //재계산
             }
         }
@@ -134,6 +135,7 @@ angular.module('V141Ctrl',['ngGrid'])
                     $scope.constants.EMPTY = 'false';
 
                     $scope.mg = data;
+                    $scope.myData = data.SUB;
                     $scope.calc(); //재계산
                     $scope.progressValue = 100;
                     ngDialog.close('ngdialog1');
@@ -219,20 +221,20 @@ angular.module('V141Ctrl',['ngGrid'])
 
 
      $scope.gridOptions = {
-            data: 'myData',
-            multiSelect : false,
-            enableRowSelection : false,
-            showSelectionCheckbox : false,
-            showFooter: false,
-            columnDefs: [  //여기서, 필드명을 바꿔주고,
-                {field:'EXPORT REPORT NO', displayName:'수출신고번호'},
-                {field:'SHIP_DATE', displayName:'선(기)적 일자'},
-                //여기에 cellFilter 를 사용해서 변경함.
-                {field:'CURRENCY CODE', displayName:'통화코드',cellFilter:'number', cellClass:'price'},
-                {field:'EXCHANGE RATE', displayName:'환율',cellFilter:'number:0', cellClass:'price'},
-                {field:'CURRENCY AMOUNT', displayName:'외화금액', cellFilter:'number:0', cellClass:'price'},
-                {field:'AMOUNT', displayName:'원화금액', cellFilter:'number:0', cellClass:'price'}
-            ]
+        data: 'myData',
+         multiSelect : false,
+         enableRowSelection : false,
+         showSelectionCheckbox : false,
+         footerVisible: false,
+         showColumnMenu: false,
+        columnDefs: [  //여기서, 필드명을 바꿔주고,
+            {field:'EXPORT REPORT NO', displayName:'수출신고번호'},
+            {field:'SHIP_DATE', displayName:'선(기)적 일자',cellFilter:'date:\'yyyy-MM-dd\''},
+            {field:'CURRENCY CODE', displayName:'통화코드'},
+            {field:'EXCHANGE RATE', displayName:'환율',cellFilter:'number:2', cellClass:'price'},
+            {field:'CURRENCY AMOUNT', displayName:'외화금액', cellFilter:'number:2', cellClass:'price'},
+            {field:'AMOUNT', displayName:'원화금액', cellFilter:'number:0', cellClass:'price'}
+        ]
         };
     });
         /*

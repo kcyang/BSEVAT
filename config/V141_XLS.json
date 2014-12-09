@@ -2,25 +2,39 @@
     "TOTAL_CNT" : "F11",
     "TOTAL_CURRENCY_AMOUNT": "I11",
     "TOTAL_AMOUNT" : "P11",
+
     "REMARK_1" : "W11",
     "REMARK_2" : "W13",
     "REMARK_3" : "W15",
+
     "JAE_CNT_TOTAL" : "F13",
     "JAE_CURRENCY_AMOUNT_TOTAL" : "I13",
     "JAE_AMOUNT_TOTAL" : "P13",
+
     "ETC_CNT_TOTAL" : "F15",
     "ETC_CURRENCY_AMOUNT_TOTAL" : "I15",
     "ETC_AMOUNT_TOTAL" : "P15",
+
     "EXPORT REPORT NO" : "D20",
     "SHIP_DATE" : "J20",
     "CURRENCY CODE" : "L20",
     "EXCHANGE RATE" : "N20",
     "CURRENCY AMOUNT" : "Q20",
     "AMOUNT" : "V20",
+
+    "_EXPORT REPORT NO" : "D9",
+    "_SHIP_DATE" : "J9",
+    "_CURRENCY CODE" : "L9",
+    "_EXCHANGE RATE" : "N9",
+    "_CURRENCY AMOUNT" : "Q9",
+    "_AMOUNT" : "V9",
+
     "vat_code" : "F6",
     "company_name":"S6",
     "name":"F7",
     "company_address":"S7",
     "bus_type" : "F8",
-    "bus_class" : "S8"
+    "bus_class" : "S8",
+    "limit_no":"28",
+    "page_no":"37"
 }

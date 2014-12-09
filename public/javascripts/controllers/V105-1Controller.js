@@ -61,19 +61,9 @@ angular.module('V105-1Ctrl',['ngGrid'])
 
     $scope.calc = function(){
 
-        $scope.mg.ELEC_TOT_PURCH_CNT = Number($scope.mg.ELEC_BUS_PURCH_CNT) + Number($scope.mg.ELEC_PSN_PURCH_CNT);
-        $scope.mg.ELEC_TOT_PURCH_QTY = Number($scope.mg.ELEC_BUS_PURCH_QTY) + Number($scope.mg.ELEC_PSN_PURCH_QTY);
-        $scope.mg.ELEC_TOT_PURCH_ACT_AMT = Number($scope.mg.ELEC_BUS_PURCH_ACT_AMT) + Number($scope.mg.ELEC_PSN_PURCH_ACT_AMT);
-
-
-        $scope.mg.NON_ELEC_TOT_PURCH_CNT = Number($scope.mg.NON_ELEC_BUS_PURCH_CNT) + Number($scope.mg.NON_ELEC_PSN_PURCH_CNT);
-        $scope.mg.NON_ELEC_TOT_PURCH_QTY = Number($scope.mg.NON_ELEC_BUS_PURCH_QTY) + Number($scope.mg.NON_ELEC_PSN_PURCH_QTY);
-        $scope.mg.NON_ELEC_TOT_PURCH_ACT_AMT = Number($scope.mg.NON_ELEC_BUS_PURCH_ACT_AMT) + Number($scope.mg.NON_ELEC_PSN_PURCH_ACT_AMT);
-
-
-        $scope.mg.TOTAL_PURCH_CNT = Number($scope.mg.ELEC_TOT_PURCH_CNT) + Number($scope.mg.NON_ELEC_TOT_PURCH_CNT);
-        $scope.mg.TOTAL_PURCH_QTY = Number($scope.mg.ELEC_TOT_PURCH_QTY) + Number($scope.mg.NON_ELEC_TOT_PURCH_QTY);
-        $scope.mg.TOTAL_PURCH_ACT_AMT = Number($scope.mg.ELEC_TOT_PURCH_ACT_AMT) + Number($scope.mg.NON_ELEC_TOT_PURCH_ACT_AMT);
+        $scope.mg.TOTAL_PURCH_CNT = Number($scope.mg.ELEC_BUS_PURCH_CNT) + Number($scope.mg.ELEC_PSN_PURCH_CNT);
+        $scope.mg.TOTAL_PURCH_QTY = Number($scope.mg.ELEC_BUS_PURCH_QTY) + Number($scope.mg.ELEC_PSN_PURCH_QTY);
+        $scope.mg.TOTAL_PURCH_ACT_AMT = Number($scope.mg.ELEC_BUS_PURCH_ACT_AMT) + Number($scope.mg.ELEC_PSN_PURCH_ACT_AMT);
 
     };
 
