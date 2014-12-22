@@ -146,9 +146,7 @@ angular.module('V164Ctrl',['ngGrid'])
         }
 
     };
-/**
- * 저장하기 기능은 필요없음.
-    //#저장하기 버튼을 눌렀을 때 실행되는 function. #T*ODO @2014-10-14 저장기능 구현. DONE
+    //#저장하기 버튼을 눌렀을 때 실행되는 function.
     $scope.saveDocument = function(){
 
         VATService.update($scope.constants.VATNO,$scope.mg,function(err,data){
@@ -166,7 +164,7 @@ angular.module('V164Ctrl',['ngGrid'])
         });
 
     };
-*/
+
     //#다시 작성하기 버튼을 눌렀을 때 실행되는 function. #T*ODO @2014-10-14 다시 불러오기 기능 구현. DONE
     $scope.getDocument = function(){
 
@@ -207,7 +205,7 @@ angular.module('V164Ctrl',['ngGrid'])
                  * Excel File 을 저장하는 곳, type 을 Excel 로 지정하여 저장합니다.
                  *
                  */
-                saveAs(new Blob([data],{type:"application/vnd.ms-excel;charset=euc-kr"}), "신용카드매출전표 등 발행금액 집계표.xlsx");
+                saveAs(new Blob([data],{type:"application/vnd.ms-excel;charset=euc-kr"}), "신용카드매출전표등 수령명세서.xlsx");
 
                 $scope.status = 'Ok';
                 $scope.alertmessage = '성공적으로 Excel 을 저장 했습니다.!';
@@ -219,35 +217,20 @@ angular.module('V164Ctrl',['ngGrid'])
 
     };
 
-    /**
-     * ngGrid Sample.
-     *
-     */
-/*
-    $scope.myData = [
-        {name: "양양", age: 40},
-        {name: "오오", age: 41},
-        {name: "Chris", age: 30}
-    ];
-*/
     $scope.gridOptions = {
         data: 'myData',
         multiSelect : false,
         enableRowSelection : false,
         showSelectionCheckbox : false,
-        showFooter: false,
+        footerVisible: false,
+        showColumnMenu: false,
         columnDefs: [
-            {field:'NON_ELEC_BUS_NO', displayName:'사업자등록번호'},
-            {field:'NON_ELEC_BUS_NAME', displayName:'상호(법인명)'},
-            {field:'NON_ELEC_QTY', displayName:'매수',cellFilter:'number', cellClass:'price'},
-            {field:'NON_ELEC_ACT_AMT', displayName:'공급가액',cellFilter:'number:0', cellClass:'price'},
-            {field:'NON_ELEC_TAX_AMT', displayName:'세액', cellFilter:'number:0', cellClass:'price'}
+            {field:'CARD NUMBER', displayName:'카드회원번호'},
+            {field:'BUSINESS NO', displayName:'사업자등록번호'},
+            {field:'CNT', displayName:'거래건수',cellFilter:'number', cellClass:'price'},
+            {field:'SUPPLY AMOUNT', displayName:'공급가액',cellFilter:'number:0', cellClass:'price'},
+            {field:'TAX AMOUNT', displayName:'세액', cellFilter:'number:0', cellClass:'price'}
         ]
     };
-        /*
-        * multiSelect : false
-        * pinnable : false
-        * resizable : false
-        * */
 
 });

@@ -17,6 +17,13 @@ angular.module('V141Ctrl',['ngGrid'])
     };
 
     $scope.progressValue = 0;
+
+    $scope.SINGO = [
+        {'value': '1' , 'text': '1개월분'},
+        {'value': '2' , 'text': '2개월분'},
+        {'value': '3' , 'text': '3개월분'},
+        {'value': '4' , 'text': '4~6개월분'}
+    ];
     //1. 개요
     //여기서 해당 Page 의 값을 가져와서, ng-model 에 집어 넣는다.
     //해당 값이 없다면, 없다는 메시지를 보여주면 된다.
@@ -61,20 +68,10 @@ angular.module('V141Ctrl',['ngGrid'])
 
     $scope.calc = function(){
 
-
         $scope.mg.TOTAL_CNT = Number($scope.mg.JAE_CNT_TOTAL) + Number($scope.mg.ETC_CNT_TOTAL);
         $scope.mg.TOTAL_CURRENCY_AMOUNT = Number($scope.mg.JAE_CURRENCY_AMOUNT_TOTAL) + Number($scope.mg.ETC_CURRENCY_AMOUNT_TOTAL);
         $scope.mg.TOTAL_AMOUNT = Number($scope.mg.JAE_AMOUNT_TOTAL) + Number($scope.mg.ETC_AMOUNT_TOTAL);
-        /*
-                $scope.mg.CARD_TOTAL_AMOUNT = Number($scope.mg.TAX_CARD_AMOUNT) + Number($scope.mg.NOTAX_CARD_AMOUNT) + Number($scope.mg.SVC_CARD_AMOUNT);
-                $scope.mg.CASH_TOTAL_AMOUNT = Number($scope.mg.TAX_CASH_AMOUNT) + Number($scope.mg.NOTAX_CASH_AMOUNT) + Number($scope.mg.SVC_CASH_AMOUNT);
 
-                $scope.mg.TAX_TOTAL_AMOUNT = Number($scope.mg.TAX_CARD_AMOUNT) + Number($scope.mg.TAX_CASH_AMOUNT);
-                $scope.mg.NOTAX_TOTAL_AMOUNT = Number($scope.mg.NOTAX_CARD_AMOUNT) + Number($scope.mg.NOTAX_CASH_AMOUNT);
-                $scope.mg.SVC_TOTAL_AMOUNT = Number($scope.mg.SVC_CARD_AMOUNT) + Number($scope.mg.SVC_CASH_AMOUNT);
-
-                $scope.mg.TOTAL_AMOUNT = Number($scope.mg.CARD_TOTAL_AMOUNT) + Number($scope.mg.CASH_TOTAL_AMOUNT);
-        */
     };
 
 
@@ -237,9 +234,5 @@ angular.module('V141Ctrl',['ngGrid'])
         ]
         };
     });
-        /*
-        * multiSelect : false
-        * pinnable : false
-        * resizable : false
-        * */
+
 

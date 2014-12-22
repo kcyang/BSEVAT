@@ -43,11 +43,14 @@
     <div class="container">
 
         <div ng-class="alert_class[status]" ng-bind="alertmessage"></div>
-
-        <p>※ 관리번호</p>
-        <input type="text" class="form-control input-sm" width="30px" placeholder="Placeholder text">
-        <p></p>
-        <p></p>
+        <div class="row">
+            <div class="col-xs-6">※ 관리번호<input type="text" class="form-control input-sm" width="30px" placeholder="관리번호"></div>
+            <div class="col-xs-6">신고구분<br>
+                <select class="form-control input-sm" ng-model="mg.EXPORT_FLAG" ng-options="obj.value as obj.text for obj in SINGO">
+                    <option value="">--선택하세요--</option>
+                </select>
+            </div>
+        </div>
         <p>1. 제출자 인적사항</p>
         <p></p>
 
@@ -92,7 +95,7 @@
                         </td>
                         <td>(8) 작성일자</td>
                         <td>
-                            <input type="text" class="form-control input-sm" placeholder="작성일자">
+                            <input type="date" class="form-control input-sm" placeholder="작성일자" ng-model="mg.Document_DATE">
                         </td>
                     </tr>
 
@@ -120,13 +123,13 @@
                             <input type="text" class="form-control input-sm text-right" placeholder="건 수"  ng-model="mg.TOTAL_CNT" ui-number-mask="0" readonly/>
                         </td>
                         <td>
-                            <input type="text" class="form-control input-sm text-right" placeholder="외화금액"  ng-model="mg.TOTAL_CURRENCY_AMOUNT" ui-number-mask="0" readonly/>
+                            <input type="text" class="form-control input-sm text-right" placeholder="외화금액"  ng-model="mg.TOTAL_CURRENCY_AMOUNT" ui-number-mask="2" readonly/>
                         </td>
                         <td>
                             <input type="text" class="form-control input-sm text-right" placeholder="원화금액"  ng-model="mg.TOTAL_AMOUNT" ui-number-mask="0" readonly/>
                         </td>
                         <td>
-                            <input type="text" class="form-control input-sm" placeholder="비고">
+                            <input type="text" class="form-control input-sm" placeholder="비고" ng-model="mg.REMARK_TOTAL">
                         </td>
                     </tr>
                     <tr>
@@ -135,28 +138,28 @@
                             <input type="text" class="form-control input-sm text-right" placeholder="건 수"  ng-model="mg.JAE_CNT_TOTAL" ui-number-mask="0" readonly/>
                         </td>
                         <td>
-                            <input type="text" class="form-control input-sm text-right" placeholder="외화금액"  ng-model="mg.JAE_CURRENCY_AMOUNT_TOTAL" ui-number-mask="0" readonly/>
+                            <input type="text" class="form-control input-sm text-right" placeholder="외화금액"  ng-model="mg.JAE_CURRENCY_AMOUNT_TOTAL" ui-number-mask="2" readonly/>
                         </td>
                         <td>
                             <input type="text" class="form-control input-sm text-right" placeholder="원화금액"  ng-model="mg.JAE_AMOUNT_TOTAL" ui-number-mask="0" readonly/>
                         </td>
                         <td>
-                            <input type="text" class="form-control input-sm" placeholder="비고">
+                            <input type="text" class="form-control input-sm" placeholder="비고" ng-model="mg.REMARK_JAE">
                         </td>
                     </tr>
                     <tr>
                         <td>기타영세율적용</td>
                         <td>
-                            <input type="text" class="form-control input-sm text-right" placeholder="건 수"  ng-model="mg.ETC_CNT_TOTAL" ui-number-mask="0" />
+                            <input type="text" class="form-control input-sm text-right" placeholder="건 수"  ng-change="calc()" ng-model="mg.ETC_CNT_TOTAL" ui-number-mask="0" />
                         </td>
                         <td>
-                            <input type="text" class="form-control input-sm text-right" placeholder="외화금액" ng-model="mg.ETC_CURRENCY_AMOUNT_TOTAL" ui-number-mask="0" />
+                            <input type="text" class="form-control input-sm text-right" placeholder="외화금액" ng-change="calc()" ng-model="mg.ETC_CURRENCY_AMOUNT_TOTAL" ui-number-mask="2" />
                         </td>
                         <td>
-                            <input type="text" class="form-control input-sm text-right" placeholder="원화금액"  ng-model="mg.ETC_AMOUNT_TOTAL" ui-number-mask="0" />
+                            <input type="text" class="form-control input-sm text-right" placeholder="원화금액"  ng-change="calc()" ng-model="mg.ETC_AMOUNT_TOTAL" ui-number-mask="0" />
                         </td>
                         <td>
-                            <input type="text" class="form-control input-sm" placeholder="비고">
+                            <input type="text" class="form-control input-sm" placeholder="비고"  ng-model="mg.REMARK_ETC">
                         </td>
                     </tr>
                 </tbody>

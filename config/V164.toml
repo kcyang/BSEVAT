@@ -54,9 +54,6 @@ schema = [
 ]
 
 # 화면상의 계산 식을 위한 공간 / 자동화 하기 위해 고민이 필요함.
-calc = [
-["TOTAL_AMOUNT","(CARD_TOTAL_AMOUNT+CASH_TOTAL_AMOUNT-XXX)/YYY*ZZZ"]
-]
 
 # MSSQL의 NAV Table DocumentVATEntry 에서 가져올 대상을 지정합니다. (SQL 컬럼명을 지정합니다.)
 # V164 (신용카드매출전표등수취명세서)에서 사용 할 MSSQL 컬럼명을 입력합니다.
@@ -64,6 +61,7 @@ Entries = [
 "BSE_VAT Category Code",
 "BSE_Pay_Bill CorpIndv Type",
 "BSE_ETAX Complete issue",
+"BSE_Credit Card Number",
 "BSE_Editable Tot Total Amount",
 "BSE_Editable Tot VAT Amount",
 "BSE_VAT Registration No_",
@@ -73,11 +71,13 @@ Entries = [
 # NAV 쿼리를위한 조건을 입력합니다.
 [[V164.Condition]]
 key = "BSE_VAT Type"
-value = "1"
+value = "0"
 value_type = "Integer"
 
-[[V164.Sub]]
+[[V164.Condition]]
 key = "BSE_VAT Category Code"
-query = "SELECT [BSE_Category Code]
-         FROM [#Company$B_VAT Category]
-         WHERE [BSE_VAT Total Report] = 1"
+value = [
+"P180","P190","P200","P211","P212","P213","P214","P311","P312","P313","P314","P321","P322","P323","P324","P220",
+"P230","P240","P251","P252","P253","P254","P261","P262","P331","P332","P333","P334","P341","P342","P343","P344"
+]
+value_type = "String"

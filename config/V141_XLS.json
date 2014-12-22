@@ -3,9 +3,9 @@
     "TOTAL_CURRENCY_AMOUNT": "I11",
     "TOTAL_AMOUNT" : "P11",
 
-    "REMARK_1" : "W11",
-    "REMARK_2" : "W13",
-    "REMARK_3" : "W15",
+    "REMARK_TOTAL" : "W11",
+    "REMARK_JAE" : "W13",
+    "REMARK_ETC" : "W15",
 
     "JAE_CNT_TOTAL" : "F13",
     "JAE_CURRENCY_AMOUNT_TOTAL" : "I13",

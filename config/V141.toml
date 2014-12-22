@@ -15,9 +15,9 @@ schema = [
             ["TOTAL_CURRENCY_AMOUNT","Number"], #총 외화금액 합계
             ["TOTAL_AMOUNT","Number"], #총 원화금액 합계
 
-            ["REMARK_1","String"], #비고 1
-            ["REMARK_2","String"], #비고 2
-            ["REMARK_3","String"], #비고 3
+            ["REMARK_TOTAL","String"], #비고 1
+            ["REMARK_JAE","String"], #비고 2
+            ["REMARK_ETC","String"], #비고 3
 
             ["JAE_CNT_TOTAL","Number"],  #재화 건수 합계
             ["JAE_CURRENCY_AMOUNT_TOTAL","Number"],  #재화 외화금액 합계
@@ -31,6 +31,7 @@ schema = [
             ["Status","String"],         #상태
             ["Start_DATE","Date"],         #시작일자
             ["End_DATE","Date"],           #종료일자
+            ["Document_DATE","Date"],      #작성일
             ["VAT_Missing","String"],        #부가세 미싱
 
    [

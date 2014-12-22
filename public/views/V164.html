@@ -145,64 +145,50 @@
         </div>
         <p>3. 기타 신용.직불카드 및 기명식선불카드 매출전표 수취금액 합계</p>
         <p></p>
+        <!--
+                <div class="row">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th rowspan="2">일련<br>번호</th>
+                            <th rowspan="2">(10)<br> 카드회원번호</th>
+                            <th rowspan="2">(11)<br> 공급자(가맹점)<br>
+                                사업자등록번호</th>
+                            <th colspan="3"> (12) 기타 신용카드 등 거래내역 합계</th>
+                        </tr>
 
-        <div class="row">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th rowspan="2">일련<br>번호</th>
-                    <th rowspan="2">(10)<br> 카드회원번호</th>
-                    <th rowspan="2">(11)<br> 공급자(가맹점)<br>
-                        사업자등록번호</th>
-                    <th colspan="3"> (12) 기타 신용카드 등 거래내역 합계</th>
-                </tr>
-                <tr>
-                    <th>거래건수</th>
-                    <th>공급가액</th>
-                    <th>세 액</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>
-                        <input type="text" class="form-control input-sm" placeholder="Placeholder text">
-                    </td>
-                    <td>
-                        <input type="text" class="form-control input-sm" placeholder="Placeholder text">
-                    </td>
-                    <td>
-                        <input type="text" class="form-control input-sm" placeholder="Placeholder text">
-                    </td>
-                    <td>
-                        <input type="text" class="form-control input-sm" placeholder="Placeholder text">
-                    </td>
-                    <td>
-                        <input type="text" class="form-control input-sm" placeholder="Placeholder text">
-                    </td>
-                    <td>
-                        <input type="text" class="form-control input-sm" placeholder="Placeholder text">
-                    </td>
-                </tr>
-                </tbody>
+                        <tr>
+                            <th>거래건수</th>
+                            <th>공급가액</th>
+                            <th>세 액</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control input-sm" placeholder="Placeholder text">
+                            </td>
+                        </tr>
+                        </tbody>
+
             </table>
         </div>
-    <!-- /container -->
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="editablegrid-2.0.1.js"></script>
-
-
-
-
-
-
-
-
-</body>
-
-</html>
+        //-->
+        <div class="row">
+            <div class="gridStyle" ng-grid="gridOptions"></div>
+        </div>
