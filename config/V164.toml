@@ -10,44 +10,47 @@ schema = [
     ["VATQT","String"],              #신고분기
     ["VATRPTTYPE","String"],         #신고타입
 
-    ["CASH COUNT","Number"],                   #현금영수증 건수
-    ["CASH AMOUNT TOTAL","Number"],                   #현금영수증 공급가액 합계
-    ["CASH TAX TOTAL","Number"],                   #현금영수증 세액 합계
-    ["DRIVER COUNT","Number"],                   #화물운전자복지카드 건수
-    ["DRIVER AMOUNT TOTAL","Number"],                   #화물운전자복지카드 공급가액 합계
-    ["DRIVER TAX TOTAL","Number"],                   #화물운전자복지카드 세액 합계
-    ["BUSINESS CARD COUNT","Number"],                   #사업용신용카드 건수
-    ["BUSINESS CARD AMOUNT TOTAL","Number"],                   #사업용신용카드 공급가액 합계
-    ["BUSINESS CARD TAX TOTAL","Number"],                   #사업용신용카드 세액 합계
-    ["CARD COUNT","Number"],                   #기타 신용카드 건수
-    ["CARD AMOUNT TOTAL","Number"],                   #기타 신용카드 공급가액 합계
-    ["CARD TAX TOTAL","Number"],                   #기타 신용카드 세액 합계
-    ["FA CASH COUNT","Number"],                   #고정자산 현금영수증 건수
-    ["FA CASH AMOUNT TOTAL","Number"],                   #고정자산 현금영수증 공급가액 합계
-    ["FA CASH TAX TOTAL","Number"],                   #고정자산 현금영수증 세액 합계
-    ["FA DRIVER COUNT","Number"],                   #고정자산 화물운전자복지카드 건수
-    ["FA DRIVER AMOUNT TOTAL","Number"],                   #고정자산 화물운전자복지카드 공급가액 합계
-    ["FA DRIVER TAX TOTAL","Number"],                   #고정자산 화물운전자복지카드 세액 합계
-    ["FA BUSINESS CARD COUNT","Number"],                   #고정자산 사업용신용카드 건수
-    ["FA BUSINESS CARD AMOUNT TOTAL","Number"],                   #고정자산 사업용신용카드 공급가액 합계
-    ["FA BUSINESS CARD TAX TOTAL","Number"],                   #고정자산 사업용신용카드 세액 합계
-    ["FA CARD COUNT","Number"],                   #고정자산 기타 신용카드 건수
-    ["FA CARD AMOUNT TOTAL","Number"],                   #고정자산 기타 신용카드 공급가액 합계
-    ["FA CARD TAX TOTAL","Number"],                   #고정자산 기타 신용카드 세액 합계
-    ["CARD TYPE","String"],                   #카드구분
+    ["TOTAL_COUNT","Number"],                   #합계 건수
+    ["TOTAL_AMOUNT","Number"],                   #공급가액 합계
+    ["TOTAL_TAX","Number"],                   #세액 합계
+    ["CASH_COUNT","Number"],                   #현금영수증 건수
+    ["CASH_AMOUNT_TOTAL","Number"],                   #현금영수증 공급가액 합계
+    ["CASH_TAX_TOTAL","Number"],                   #현금영수증 세액 합계
+    ["DRIVER_COUNT","Number"],                   #화물운전자복지카드 건수
+    ["DRIVER_AMOUNT_TOTAL","Number"],                   #화물운전자복지카드 공급가액 합계
+    ["DRIVER_TAX_TOTAL","Number"],                   #화물운전자복지카드 세액 합계
+    ["BUSINESS_CARD_COUNT","Number"],                   #사업용신용카드 건수
+    ["BUSINESS_CARD_AMOUNT_TOTAL","Number"],                   #사업용신용카드 공급가액 합계
+    ["BUSINESS_CARD_TAX_TOTAL","Number"],                   #사업용신용카드 세액 합계
+    ["CARD_COUNT","Number"],                   #기타 신용카드 건수
+    ["CARD_AMOUNT_TOTAL","Number"],                   #기타 신용카드 공급가액 합계
+    ["CARD_TAX_TOTAL","Number"],                   #기타 신용카드 세액 합계
+    ["FA_CASH_COUNT","Number"],                   #고정자산 현금영수증 건수
+    ["FA_CASH_AMOUNT_TOTAL","Number"],                   #고정자산 현금영수증 공급가액 합계
+    ["FA_CASH_TAX_TOTAL","Number"],                   #고정자산 현금영수증 세액 합계
+    ["FA_DRIVER_COUNT","Number"],                   #고정자산 화물운전자복지카드 건수
+    ["FA_DRIVER_AMOUNT_TOTAL","Number"],                   #고정자산 화물운전자복지카드 공급가액 합계
+    ["FA_DRIVER_TAX_TOTAL","Number"],                   #고정자산 화물운전자복지카드 세액 합계
+    ["FA_BUSINESS_CARD_COUNT","Number"],                   #고정자산 사업용신용카드 건수
+    ["FA_BUSINESS_CARD_AMOUNT_TOTAL","Number"],                   #고정자산 사업용신용카드 공급가액 합계
+    ["FA_BUSINESS_CARD_TAX_TOTAL","Number"],                   #고정자산 사업용신용카드 세액 합계
+    ["FA_CARD_COUNT","Number"],                   #고정자산 기타 신용카드 건수
+    ["FA_CARD_AMOUNT_TOTAL","Number"],                   #고정자산 기타 신용카드 공급가액 합계
+    ["FA_CARD_TAX_TOTAL","Number"],                   #고정자산 기타 신용카드 세액 합계
+    ["CARD_TYPE","String"],                   #카드구분
 
 
 
     [
       ["SEQN","Number"],                   #일련번호
-      ["CARD NUMBER","String"],                   #카드회원번호
-      ["BUSINESS NO","String"],                   #공급자(가맹점)사업자등록번호
-      ["BUSINESS NAME","String"],                   #가맹점 상호
-      ["SUPPLY AMOUNT","Number"],                   #공급가액
-      ["TAX AMOUNT","Number"],                   #세액
+      ["CARD_NUMBER","String"],                   #카드회원번호
+      ["BUSINESS_NO","String"],                   #공급자(가맹점)사업자등록번호
+      ["BUSINESS_NAME","String"],                   #가맹점 상호
+      ["SUPPLY_AMOUNT","Number"],                   #공급가액
+      ["TAX_AMOUNT","Number"],                   #세액
       ["MISSED","String"],                   #누락구분
-      ["CATEGORY CODE","String"],                   #계산서 유형 코드
-      ["CATEGORY Name","String"],                   #계산서 유형 명
+      ["CATEGORY_CODE","String"],                   #계산서 유형 코드
+      ["CATEGORY_Name","String"],                   #계산서 유형 명
       ["CNT","Number"],                   #거래건수
     ]
 

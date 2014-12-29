@@ -15,7 +15,6 @@ angular.module('V164Ctrl',['ngGrid'])
         'VATNO' : 'V164',  //이 화면의 VAT 번호.
         'EMPTY' : 'true'
     };
-
     $scope.progressValue = 0;
     //1. 개요
     //여기서 해당 Page 의 값을 가져와서, ng-model 에 집어 넣는다.
@@ -60,7 +59,7 @@ angular.module('V164Ctrl',['ngGrid'])
         //화면의 자동계산 되는 로직은 아래에 정의된 데로 실행된다.
 
     $scope.calc = function(){
-
+/*
         $scope.mg.ELEC_TOT_SALES_CNT = Number($scope.mg.ELEC_BUS_SALES_CNT) + Number($scope.mg.ELEC_PSN_SALES_CNT);
         $scope.mg.ELEC_TOT_SALES_QTY = Number($scope.mg.ELEC_BUS_SALES_QTY) + Number($scope.mg.ELEC_PSN_SALES_QTY);
         $scope.mg.ELEC_TOT_SALES_ACT_AMT = Number($scope.mg.ELEC_BUS_SALES_ACT_AMT) + Number($scope.mg.ELEC_PSN_SALES_ACT_AMT);
@@ -75,6 +74,7 @@ angular.module('V164Ctrl',['ngGrid'])
         $scope.mg.TOTAL_SALES_QTY = Number($scope.mg.ELEC_TOT_SALES_QTY) + Number($scope.mg.NON_ELEC_TOT_SALES_QTY);
         $scope.mg.TOTAL_SALES_ACT_AMT = Number($scope.mg.ELEC_TOT_SALES_ACT_AMT) + Number($scope.mg.NON_ELEC_TOT_SALES_ACT_AMT);
         $scope.mg.TOTAL_SALES_TAX_AMT = Number($scope.mg.ELEC_TOT_SALES_TAX_AMT) + Number($scope.mg.NON_ELEC_TOT_SALES_TAX_AMT);
+*/
     };
 
 
@@ -216,21 +216,42 @@ angular.module('V164Ctrl',['ngGrid'])
 
 
     };
-
+//TODO 여기서부터 시작합시다...2014-12-19
     $scope.gridOptions = {
         data: 'myData',
-        multiSelect : false,
-        enableRowSelection : false,
-        showSelectionCheckbox : false,
-        footerVisible: false,
-        showColumnMenu: false,
+        multiSelect: false,
+        enableCellEdit: true,
         columnDefs: [
-            {field:'CARD NUMBER', displayName:'카드회원번호'},
-            {field:'BUSINESS NO', displayName:'사업자등록번호'},
+            {field:'CARD_NUMBER', displayName:'카드회원번호'},
+            {field:'BUSINESS_NO', displayName:'사업자등록번호'},
+            {field:'BUSINESS_NAME', displayName:'사업자명'},
             {field:'CNT', displayName:'거래건수',cellFilter:'number', cellClass:'price'},
-            {field:'SUPPLY AMOUNT', displayName:'공급가액',cellFilter:'number:0', cellClass:'price'},
-            {field:'TAX AMOUNT', displayName:'세액', cellFilter:'number:0', cellClass:'price'}
+            {field:'SUPPLY_AMOUNT', displayName:'공급가액',cellFilter:'number:0', cellClass:'price'},
+            {field:'TAX_AMOUNT', displayName:'세액', cellFilter:'number:0', cellClass:'price'}
         ]
     };
 
+    $scope.addItem = function() {
+        var dataLength = $scope.myData.push({
+            'CARD_NUMBER': $scope.N_CARD_NUMBER,
+            'BUSINESS_NO': $scope.N_BUSINESS_NO,
+            'BUSINESS_NAME': $scope.N_BUSINESS_NAME,
+            'CNT': $scope.N_CNT,
+            'SUPPLY_AMOUNT': $scope.N_SUPPLY_AMOUNT,
+            'TAX_AMOUNT': $scope.N_TAX_AMOUNT
+        });
+
+        $log.info('%s',dataLength);
+        //$scope.gridOptions.selectRow(dataLength-1, true);
+        var grid = $scope.gridOptions.ngGrid;
+        grid.$viewport.scrollTop(grid.rowMap[dataLength] * grid.config.rowHeight);
+        //$scope.gridOptions.selectedItems(dataLength-1, true);
+        //$scope.gridOptions.selectItem(dataLength-1, true);
+        $scope.N_CARD_NUMBER = '';
+        $scope.N_BUSINESS_NO = '';
+        $scope.N_BUSINESS_NAME = '';
+        $scope.N_CNT = '';
+        $scope.N_SUPPLY_AMOUNT = '';
+        $scope.N_TAX_AMOUNT = '';
+    };
 });
