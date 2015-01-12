@@ -48,7 +48,9 @@ def stdout(a):
 
 def set_sub_sheet(workbook, sub_array, json_info, limit_number, one_page_number):
     print len(sub_array)
+    print 'limit_number[%s] one_page_number[%s]' % (limit_number,one_page_number)
     ws = workbook.worksheets[0]
+    curr_ws = workbook.worksheets[1]
     row_cnt = 0
     page_cnt = 1
     new_page = False
@@ -58,16 +60,28 @@ def set_sub_sheet(workbook, sub_array, json_info, limit_number, one_page_number)
         '''#2. 꺼낸 한 개의 Record 에서 Field 하나 씩 꺼냄. '''
         '''행의 수가 첫 번째 페이지를 넘겼을 때, '''
 
+        '''현재 행이 첫번째 장의 최대수에 도달하면, '''
         if row_cnt >= limit_number:
-            if row_cnt > (limit_number+one_page_number*page_cnt):
+
+            '''현재 행의 수가 (첫번째 장 갯수 + 두번째 장의 갯수*시트갯수)보다 크면'''
+            if row_cnt >= (limit_number+one_page_number*page_cnt):
+                page_cnt += 1
                 new_page = True
 
+            '''첫 페이지는 이미 만들어져 있음. 그 것은 그대로 가고, '''
             if page_cnt > 1 and new_page:
+                print '새로운 페이지가 만들어 집니다.[%s]' % page_cnt
                 workbook.add_sheet(workbook.worksheets[1], page_cnt)
-                new_page = False
-                page_cnt += 1
+                curr_ws = workbook.worksheets[page_cnt]
+                curr_ws.title = ''.join(str(page_cnt))
 
-            curr_ws = workbook.worksheets[page_cnt]
+                new_page = False
+
+
+            #curr_ws = workbook.worksheets[page_cnt]
+
+
+            print 'Worksheet_name[%s]' % curr_ws
 
             for sub_key in sub_items.keys():
                 if sub_key == '_id' or sub_key == '__v':
@@ -76,7 +90,11 @@ def set_sub_sheet(workbook, sub_array, json_info, limit_number, one_page_number)
                 next_sub_key = ''.join(_sub_key)
 
                 if next_sub_key in json_info:
-                    curr_ws[get_next(json_info[next_sub_key], row_cnt-limit_number)] = sub_items[sub_key]
+                    #print 'row_cnt[%s]' % row_cnt
+                    #print 'sub_items w sub_key = [%s][%s]' % (sub_key,sub_items[sub_key])
+                    #TODO 여기서 부터 진행할 것... 시트가 추가가 안됨. (레퍼런스 문제일 수 있음.)
+                    print '[%s] [%s] = %s' % (json_info[next_sub_key],(row_cnt-(limit_number+(one_page_number*(page_cnt-1)))),sub_items[sub_key])
+                    curr_ws[get_next(json_info[next_sub_key], row_cnt-(limit_number+(one_page_number*(page_cnt-1))))] = sub_items[sub_key]
 
         else:
             '''행의 수가 첫 번째 페이지를 넘기지 않을 때 또는 첫번째에 해당되는 값은'''
