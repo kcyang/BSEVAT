@@ -42,12 +42,8 @@ schema = [
     ["f_g","Number"],  #제주특별자치도 면세품판매장에서 판매하거나 제주특별자치도
                        # 면세품판매장에 공급하는 물품
     ["g_a","Number"],  #조세특례제한법 및 그 밖의 법률에 따른 영세율 적용 공급실적 합계 (계산값)
-    ["h_a","Number"],  #영세율 적용 공급실적 총 합계 (11)+(12) (계산값)
-
+    ["h_a","Number"]  #영세율 적용 공급실적 총 합계 (11)+(12) (계산값)
 ]
-
-# 화면상의 계산 식을 위한 공간 / 자동화 하기 위해 고민이 필요함.
-calc = []
 
 # MSSQL의 NAV Table DocumentVATEntry 에서 가져올 대상을 지정합니다. (SQL 컬럼명을 지정합니다.)
 # V177에서 사용 할 MSSQL 컬럼명을 입력합니다.
@@ -68,9 +64,9 @@ value = "1"
 value_type = "Integer"
 
 [[V177.Condition]]
-#key = "BSE_VAT Category Code"
-#value = ["S130"]
-#value_type = "String"
+key = "BSE_VAT Category Code"
+value = ["S130"]
+value_type = "String"
 
 [[V177.Condition]]
 key = "BSE_Document Name"

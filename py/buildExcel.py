@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import sys
+import sys, traceback
 
 sys.path.append(r'C:\Python27\Lib')
 sys.path.append(r'C:\Python27\Lib\site-packages')
@@ -10,13 +10,13 @@ from openpyxl import load_workbook
 import json
 import os
 import re
+import copy
 
 '''
 엑셀 셀값에서 다음 값을 가져오는 Function,
 이 Function 은 오직 Excel 로만 사용할 것.
 이유는 RegExp 방식이 앞이 알파벳임을 가정한 것임.
 '''
-
 
 def get_next(orig_number, row_cnt):
 
@@ -29,13 +29,12 @@ def get_next(orig_number, row_cnt):
     result_array = [string, str(number)]
 
     next_number = ''.join(result_array)
-    print 'Next Number is [%s]' % next_number
+    #print 'Next Number is [%s]' % next_number
     return next_number
 
 '''
 콘솔에 값을 찍어주는 함수
 '''
-
 
 def stdout(a):
     sys.stdout.write(str(a))
@@ -45,10 +44,8 @@ def stdout(a):
 페이지를 복사해서 기존 WorkBook 에 넣는 모듈.
 '''
 
-
 def set_sub_sheet(workbook, sub_array, json_info, limit_number, one_page_number):
-    print len(sub_array)
-    print 'limit_number[%s] one_page_number[%s]' % (limit_number,one_page_number)
+    #print 'limit_number[%s] one_page_number[%s]' % (limit_number,one_page_number)
     ws = workbook.worksheets[0]
     curr_ws = workbook.worksheets[1]
     row_cnt = 0
@@ -70,18 +67,13 @@ def set_sub_sheet(workbook, sub_array, json_info, limit_number, one_page_number)
 
             '''첫 페이지는 이미 만들어져 있음. 그 것은 그대로 가고, '''
             if page_cnt > 1 and new_page:
-                print '새로운 페이지가 만들어 집니다.[%s]' % page_cnt
-                workbook.add_sheet(workbook.worksheets[1], page_cnt)
+                ws_copy = copy.deepcopy(workbook.worksheets[1])
+                workbook.add_sheet(ws_copy, page_cnt)
                 curr_ws = workbook.worksheets[page_cnt]
                 curr_ws.title = ''.join(str(page_cnt))
-
                 new_page = False
 
-
-            #curr_ws = workbook.worksheets[page_cnt]
-
-
-            print 'Worksheet_name[%s]' % curr_ws
+            #print 'Worksheet_name[%s]' % curr_ws
 
             for sub_key in sub_items.keys():
                 if sub_key == '_id' or sub_key == '__v':
@@ -90,29 +82,15 @@ def set_sub_sheet(workbook, sub_array, json_info, limit_number, one_page_number)
                 next_sub_key = ''.join(_sub_key)
 
                 if next_sub_key in json_info:
-                    #print 'row_cnt[%s]' % row_cnt
-                    #print 'sub_items w sub_key = [%s][%s]' % (sub_key,sub_items[sub_key])
-                    #TODO 여기서 부터 진행할 것... 시트가 추가가 안됨. (레퍼런스 문제일 수 있음.)
-                    print '[%s] [%s] = %s' % (json_info[next_sub_key],(row_cnt-(limit_number+(one_page_number*(page_cnt-1)))),sub_items[sub_key])
                     curr_ws[get_next(json_info[next_sub_key], row_cnt-(limit_number+(one_page_number*(page_cnt-1))))] = sub_items[sub_key]
 
         else:
             '''행의 수가 첫 번째 페이지를 넘기지 않을 때 또는 첫번째에 해당되는 값은'''
-
             for sub_key in sub_items.keys():
                 if sub_key == '_id' or sub_key == '__v':
                     continue
-                #설정파일에 array 의 key 가 있으면...
-                '''
-                _sub_key = ['_', sub_key]
-                next_sub_key = ''.join(_sub_key)
-
-                if next_sub_key in json_info:
-                    ws[get_next(json_info[next_sub_key], row_cnt)] = sub_items[sub_key]
-                '''
                 if sub_key in json_info:
                     ws[get_next(json_info[sub_key], row_cnt)] = sub_items[sub_key]
-
 
         row_cnt += 1
 
@@ -227,7 +205,6 @@ def db_connection(document_name):
         return collection
     except pymongo.errors.ConnectionFailure, e:
         return 1
-
 
 # 메인 함수.
 if __name__ == "__main__":

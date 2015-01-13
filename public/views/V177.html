@@ -18,11 +18,12 @@
                          <span class="glyphicon glyphicon-download-alt"> 자료불러오기</span>
                      </button>
                  </a>
-                 <a ng-click="getDocument()">
+<!--                 <a ng-click="getDocument()">
                      <button class="btn btn-danger" type="button">
                          <span class="glyphicon glyphicon-refresh"> 다시불러오기</span>
                      </button>
                  </a>
+//-->
                  <a target="_self" ng-click="getExcel()">
                      <button class="btn btn-primary" type="button">
                          <span class="glyphicon glyphicon-stats"> 엑셀내보내기</span>
@@ -102,31 +103,31 @@
                             제1호</td>
                         <td>직접수출(대행수출 포함)</td>
                         <td>
-                            <input type="text" class="form-control input-sm" placeholder="사용자 입력" ng-change="calc()" ng-model="mg.a_a" ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.a_a" ui-number-mask="0"/>
                         </td>
                     </tr>
                     <tr>
                         <td>중계무역.위탁판매.외국인도 또는 위탁가공무역 방식의 수출</td>
                         <td>
-                            <input type="text" class="form-control input-sm" placeholder="사용자 입력" ng-change="calc()" ng-model="mg.a_b" ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.a_b" ui-number-mask="0"/>
                         </td>
                     </tr>
                     <tr>
                         <td>내국신용장.구매확인서에 의하여 공급하는 재화</td>
                         <td>
-                            <input type="text" class="form-control input-sm" placeholder="Placeholder text" ng-change="calc()" ng-model="mg.a_c" ui-number-mask="0" readonly/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.a_c" ui-number-mask="0" readonly/>
                         </td>
                     </tr>
                     <tr>
                         <td>한국국제협력단 및 한국국제보건의료재단에 공긍하는 해외반출용 재화</td>
                         <td>
-                            <input type="text" class="form-control input-sm" placeholder="사용자 입력" ng-change="calc()" ng-model="mg.a_d" ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.a_d" ui-number-mask="0"/>
                         </td>
                     </tr>
                     <tr>
                         <td>수탁가공무역 수출용으로 공급하는 재화</td>
                         <td>
-                            <input type="text" class="form-control input-sm" placeholder="사용자 입력" ng-change="calc()" ng-model="mg.a_e" ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.a_e" ui-number-mask="0"/>
                         </td>
                     </tr>
                     <tr>
@@ -134,7 +135,7 @@
                             제2호</td>
                         <td>국외에서 제공하는 용역</td>
                         <td>
-                            <input type="text" class="form-control input-sm"  placeholder="사용자 입력" ng-change="calc()" ng-model="mg.b_a" ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right"  ng-change="calc()" ng-model="mg.b_a" ui-number-mask="0"/>
                         </td>
                     </tr>
                     <tr>
@@ -142,13 +143,13 @@
                             제3호</td>
                         <td>선박.항공기에 의한 외국항행용역</td>
                         <td>
-                            <input type="text" class="form-control input-sm" placeholder="사용자 입력" ng-change="calc()" ng-model="mg.c_a" ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.c_a" ui-number-mask="0"/>
                         </td>
                     </tr>
                     <tr>
                         <td>국제복합운송계약에 의한 외국항행용역</td>
                         <td>
-                            <input type="text" class="form-control input-sm" placeholder="사용자 입력" ng-change="calc()" ng-model="mg.c_b" ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.c_b" ui-number-mask="0"/>
                         </td>
                     </tr>
                     <tr>
@@ -156,59 +157,59 @@
                             제4호</td>
                         <td>국내에서 비거주자.외국법인에게 공급되는 재화 또는 용역</td>
                         <td>
-                            <input type="text" class="form-control input-sm" placeholder="사용자 입력" ng-change="calc()" ng-model="mg.d_a" ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.d_a" ui-number-mask="0"/>
                         </td>
                     </tr>
                     <tr>
                         <td>수출재화임가공용역</td>
                         <td>
-                            <input type="text" class="form-control input-sm" placeholder="사용자 입력" ng-change="calc()" ng-model="mg.d_b" ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.d_b" ui-number-mask="0"/>
                         </td>
                     </tr>
                     <tr>
                         <td>외국항행 선박.항공기 등에 공급하는 재화 또는 용역</td>
                         <td>
-                            <input type="text" class="form-control input-sm" placeholder="사용자 입력" ng-change="calc()" ng-model="mg.d_c" ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.d_c" ui-number-mask="0"/>
                         </td>
                     </tr>
                     <tr>
                         <td>국내 주재 외교공관, 영사기관, 국제연합과 이에 준하는 국제기구,<br>
                             국제연합군 또는 미국군에게 공급하는 재화 또는 용역</td>
                         <td>
-                            <input type="text" class="form-control input-sm" placeholder="사용자 입력" ng-change="calc()" ng-model="mg.d_d" ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.d_d" ui-number-mask="0"/>
                         </td>
                     </tr>
                     <tr>
                         <td>「관광진흥법」 에 따른 일반여행업자 또는 외국인전용 관광기념품<br>
                             판매업자가 외국인관광객에게 공급하는 관광알선용역 또는 관광기념품</td>
                         <td>
-                            <input type="text" class="form-control input-sm" placeholder="사용자 입력" ng-change="calc()" ng-model="mg.d_e" ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.d_e" ui-number-mask="0"/>
                         </td>
                     </tr>
                     <tr>
                         <td>외국인전용판매장 또는 주한외국군인 등의 전용 유흥음식접에서<br>
                             공급하는 재화 또는 용역</td>
                         <td>
-                            <input type="text" class="form-control input-sm" placeholder="사용자 입력" ng-change="calc()" ng-model="mg.d_f" ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.d_f" ui-number-mask="0"/>
                         </td>
                     </tr>
                     <tr>
                         <td>외교관 등에게 공급하는 재화 또는 용역</td>
                         <td>
-                            <input type="text" class="form-control input-sm" placeholder="사용자 입력" ng-change="calc()" ng-model="mg.d_g" ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.d_g" ui-number-mask="0"/>
                         </td>
                     </tr>
                     <tr>
                         <td>외국인환자 유치용역</td>
                         <td>
-                            <input type="text" class="form-control input-sm" placeholder="사용자 입력" ng-change="calc()" ng-model="mg.d_h" ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.d_h" ui-number-mask="0"/>
                         </td>
                     </tr>
 
                     <tr>
                         <td colspan="3">(11) 부가가치세법에 따른 영세율 적용 공급실적 합계</td>
                         <td>
-                            <input type="text" class="form-control input-sm" placeholder="사용자 입력" ng-change="calc()" ng-model="mg.e_a" readonly ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.e_a" readonly ui-number-mask="0"/>
                         </td>
                     </tr>
                     <tr>
@@ -217,7 +218,7 @@
                             제1호.제2호</td>
                         <td>방위산업물자 및 군부대 등에 공급하는 석유류</td>
                         <td>
-                            <input type="text" class="form-control input-sm" placeholder="사용자 입력" ng-change="calc()" ng-model="mg.f_a" ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.f_a" ui-number-mask="0"/>
                         </td>
                     </tr>
                     <tr>
@@ -225,7 +226,7 @@
                             제3호</td>
                         <td>도시철도건설용역</td>
                         <td>
-                            <input type="text" class="form-control input-sm" placeholder="사용자 입력" ng-change="calc()" ng-model="mg.f_b" ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.f_b" ui-number-mask="0"/>
                         </td>
                     </tr>
                     <tr>
@@ -233,7 +234,7 @@
                             제3호의2</td>
                         <td>국가.지방자치단체에 공급하는 사회기반시설 등</td>
                         <td>
-                            <input type="text" class="form-control input-sm" placeholder="사용자 입력" ng-change="calc()" ng-model="mg.f_c" ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.f_c" ui-number-mask="0"/>
                         </td>
                     </tr>
                     <tr>
@@ -241,7 +242,7 @@
                             제4호</td>
                         <td>장애인용 부장구 및 장애인용 정보통신기기 등</td>
                         <td>
-                            <input type="text" class="form-control input-sm" placeholder="사용자 입력" ng-change="calc()" ng-model="mg.f_d" ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.f_d" ui-number-mask="0"/>
                         </td>
                     </tr>
                     <tr>
@@ -249,14 +250,14 @@
                             제5호.제6호</td>
                         <td>농.어민 등에게 공급하는 농업용.축산업용.임업용 또는 어업용 기자재</td>
                         <td>
-                            <input type="text" class="form-control input-sm" placeholder="사용자 입력" ng-change="calc()" ng-model="mg.f_e" ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.f_e" ui-number-mask="0"/>
                         </td>
                     </tr>
                     <tr>
                         <td>제107조</td>
                         <td>외국인관광객 등에게 공급하는 재화</td>
                         <td>
-                            <input type="text" class="form-control input-sm" placeholder="사용자 입력" ng-change="calc()" ng-model="mg.f_f" ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.f_f" ui-number-mask="0"/>
                         </td>
                     </tr>
                     <tr>
@@ -264,19 +265,19 @@
                         <td>제주특별자치도 면세품판매장에서 판매하거나 제주특별자치도<br>
                             면세품판매장에 공급하는 물품</td>
                         <td>
-                            <input type="text" class="form-control input-sm" placeholder="사용자 입력" ng-change="calc()" ng-model="mg.f_g" ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.f_g" ui-number-mask="0"/>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="3">(12) 조세특례제한법 및 그 밖의 법률에 따른 영세율 적용 공급실적 합계</td>
                         <td>
-                            <input type="text" class="form-control input-sm" placeholder="사용자 입력" ng-change="calc()" ng-model="mg.g_a" readonly ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.g_a" readonly ui-number-mask="0"/>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="3">(13) 영세율 적용  공급실적 총 합계 (11)+(12)</td>
                         <td>
-                            <input type="text" class="form-control input-sm" placeholder="사용자 입력" ng-change="calc()" ng-model="mg.h_a" readonly ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.h_a" readonly ui-number-mask="0"/>
                         </td>
                     </tr>
                 </tbody>

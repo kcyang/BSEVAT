@@ -24,6 +24,10 @@
     "f_g":"T46",
     "g_a":"T48",
     "h_a":"T49",
-    "company_address":"F8",
-    "vat_code":"Q8"
+    "company_name":"F8",
+    "vat_code":"Q8",
+    "name":"F9",
+    "company_address":"Q9",
+    "limit_no":"0",
+    "page_no":"0"
 }
