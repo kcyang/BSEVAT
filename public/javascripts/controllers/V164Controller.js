@@ -220,14 +220,15 @@ angular.module('V164Ctrl',['ngGrid'])
     $scope.gridOptions = {
         data: 'myData',
         multiSelect: false,
+        enableCellSelection: true,
         enableCellEdit: true,
         columnDefs: [
             {field:'CARD_NUMBER', displayName:'카드회원번호'},
             {field:'BUSINESS_NO', displayName:'사업자등록번호'},
             {field:'BUSINESS_NAME', displayName:'사업자명'},
-            {field:'CNT', displayName:'거래건수',cellFilter:'number', cellClass:'price'},
-            {field:'SUPPLY_AMOUNT', displayName:'공급가액',cellFilter:'number:0', cellClass:'price'},
-            {field:'TAX_AMOUNT', displayName:'세액', cellFilter:'number:0', cellClass:'price'}
+            {field:'CNT', displayName:'거래건수',cellFilter:'number', cellClass:'price', enableCellEdit: true},
+            {field:'SUPPLY_AMOUNT', displayName:'공급가액',cellFilter:'number:0', cellClass:'price', enableCellEdit: true},
+            {field:'TAX_AMOUNT', displayName:'세액', cellFilter:'number:0', cellClass:'price', enableCellEdit: true}
         ]
     };
 
@@ -242,9 +243,12 @@ angular.module('V164Ctrl',['ngGrid'])
         });
 
         $log.info('%s',dataLength);
+        //$scope.gridOptions.selectRow(20, true);
+        //$scope.gridOptions.ngGrid.focus();
         //$scope.gridOptions.selectRow(dataLength-1, true);
-        var grid = $scope.gridOptions.ngGrid;
-        grid.$viewport.scrollTop(grid.rowMap[dataLength] * grid.config.rowHeight);
+        //var grid = $scope.gridOptions.ngGrid;
+        //grid.focus();
+        //grid.$viewport.scrollTop(grid.rowMap[dataLength] * grid.config.rowHeight);
         //$scope.gridOptions.selectedItems(dataLength-1, true);
         //$scope.gridOptions.selectItem(dataLength-1, true);
         $scope.N_CARD_NUMBER = '';
@@ -254,4 +258,5 @@ angular.module('V164Ctrl',['ngGrid'])
         $scope.N_SUPPLY_AMOUNT = '';
         $scope.N_TAX_AMOUNT = '';
     };
+
 });

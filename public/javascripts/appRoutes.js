@@ -15,6 +15,24 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
         templateUrl: 'views/vathome.html',
         controller: 'BSEVATController'
     })
+        // V101 - 일반 과세자 부가가치세 신고서
+        .when('/V101', {
+            templateUrl: 'views/V101.html',
+            controller: 'V101Controller'
+        })
+/*
+        // V101 - 일반 과세자 부가가치세 신고서
+        .when('/V101_1', {
+            templateUrl: 'views/V101_1.html',
+            controller: 'V101Controller'
+        })
+*/
+        // V101 - 일반 과세자 부가가치세 신고서
+        .when('/V101_2', {
+            templateUrl: 'views/V101_2.html',
+            controller: 'V101Controller'
+        })
+
         // V104 - 매출처 세금계산서 합계표
         .when('/V104', {
             templateUrl: 'views/V104.html',
