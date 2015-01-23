@@ -1,0 +1,124 @@
+# V153 공제받지못할 매입세액
+title = "VAT153"
+[V153]
+# 수출실적명세서의 화면을 위한 테이블 정의
+# 화면을 구성하게되는 입력폼이나 출력되는 대상을 정하는 것과 동일합니다.
+schema = [
+
+            ["VATKEY","String","true"],             #Main Key. << 모든 정의에 들어 있어야 함. 세번째 항목은 Key 값 유무.
+            ["COMPANY_CODE","String"],       #회사코드
+            ["YEAR","String"],               #년도
+            ["VATQT","String"],              #신고분기
+            ["VATRPTTYPE","String"],         #신고타입
+
+            ["PURCH_TAX_1_CNT","Number"],       #매입세액 불공제 사유-필요적기재사항누락 - 매수
+            ["PURCH_TAX_2_CNT","Number"],       #매입세액 불공제 사유-사업과직접관련없는 지출 - 매수
+            ["PURCH_TAX_3_CNT","Number"],       #매입세액 불공제 사유-비영업용소형승용자동차구입,유지 및 임차 - 매수
+            ["PURCH_TAX_4_CNT","Number"],       #매입세액 불공제 사유-접대비 및 이와 유사한 비용관련 - 매수
+            ["PURCH_TAX_5_CNT","Number"],       #매입세액 불공제 사유-면세사업등 관련 - 매수
+            ["PURCH_TAX_6_CNT","Number"],       #매입세액 불공제 사유-토지의 자본적 지출관련 - 매수
+            ["PURCH_TAX_7_CNT","Number"],       #매입세액 불공제 사유-사업자등록 전 매입세액 - 매수
+            ["PURCH_TAX_8_CNT","Number"],       #매입세액 불공제 사유-금구리 스크랩거래계좌미사용관련매입세액 - 매수
+            ["PURCH_TAX_TOTAL_CNT","Number"],   #매입세액 불공제 사유-총 - 매수
+            ["PURCH_TAX_1_AMT","Number"],       #매입세액 불공제 사유-필요적기재사항누락 - 세금계산서 공급가액
+            ["PURCH_TAX_2_AMT","Number"],       #매입세액 불공제 사유-사업과직접관련없는 지출 - 세금계산서 공급가액
+            ["PURCH_TAX_3_AMT","Number"],       #매입세액 불공제 사유-비영업용소형승용자동차구입,유지 및 임차 - 세금계산서 공급가액
+            ["PURCH_TAX_4_AMT","Number"],       #매입세액 불공제 사유-접대비 및 이와 유사한 비용관련 - 세금계산서 공급가액
+            ["PURCH_TAX_5_AMT","Number"],       #매입세액 불공제 사유-면세사업등 관련 - 세금계산서 공급가액
+            ["PURCH_TAX_6_AMT","Number"],       #매입세액 불공제 사유-토지의 자본적 지출관련 - 세금계산서 공급가액
+            ["PURCH_TAX_7_AMT","Number"],       #매입세액 불공제 사유-사업자등록 전 매입세액 - 세금계산서 공급가액
+            ["PURCH_TAX_8_AMT","Number"],       #매입세액 불공제 사유-금구리 스크랩거래계좌미사용관련매입세액 - 세금계산서 공급가액
+            ["PURCH_TAX_TOTAL_AMT","Number"],   #매입세액 불공제 사유-총 - 세금계산서 공급가액
+            ["PURCH_TAX_1_TAX","Number"],       #매입세액 불공제 사유-필요적기재사항누락 - 매입세액
+            ["PURCH_TAX_2_TAX","Number"],       #매입세액 불공제 사유-사업과직접관련없는 지출 - 매입세액
+            ["PURCH_TAX_3_TAX","Number"],       #매입세액 불공제 사유-비영업용소형승용자동차구입,유지 및 임차 - 매입세액
+            ["PURCH_TAX_4_TAX","Number"],       #매입세액 불공제 사유-접대비 및 이와 유사한 비용관련 - 매입세액
+            ["PURCH_TAX_5_TAX","Number"],       #매입세액 불공제 사유-면세사업등 관련 - 매입세액
+            ["PURCH_TAX_6_TAX","Number"],       #매입세액 불공제 사유-토지의 자본적 지출관련 - 매입세액
+            ["PURCH_TAX_7_TAX","Number"],       #매입세액 불공제 사유-사업자등록 전 매입세액 - 매입세액
+            ["PURCH_TAX_8_TAX","Number"],       #매입세액 불공제 사유-금구리 스크랩거래계좌미사용관련매입세액 - 매입세액
+            ["PURCH_TAX_TOTAL_TAX","Number"],   #매입세액 불공제 사유-총- - 매입세액
+            ["PURCH_AN_1_ACT","Number"],        #공통매입세액안분계산명세-공급가액
+            ["PURCH_AN_2_ACT","Number"],        #공통매입세액안분계산명세-공급가액
+            ["PURCH_AN_3_ACT","Number"],        #공통매입세액안분계산명세-공급가액
+            ["PURCH_AN_4_ACT","Number"],        #공통매입세액안분계산명세-공급가액
+            ["PURCH_AN_5_ACT","Number"],        #공통매입세액안분계산명세-공급가액
+            ["PURCH_AN_TOTAL_ACT","Number"],        #공통매입세액안분계산명세-공급가액-총
+            ["PURCH_AN_1_TAX","Number"],        #공통매입세액안분계산명세-세액
+            ["PURCH_AN_2_TAX","Number"],        #공통매입세액안분계산명세-세액
+            ["PURCH_AN_3_TAX","Number"],        #공통매입세액안분계산명세-세액
+            ["PURCH_AN_4_TAX","Number"],        #공통매입세액안분계산명세-세액
+            ["PURCH_AN_5_TAX","Number"],        #공통매입세액안분계산명세-세액
+            ["PURCH_AN_TOTAL_TAX","Number"],        #공통매입세액안분계산명세-세액-총
+            ["PURCH_AN_1_AMT","Number"],        #공통매입세액안분계산명세-총공급가액
+            ["PURCH_AN_2_AMT","Number"],        #공통매입세액안분계산명세-총공급가액
+            ["PURCH_AN_3_AMT","Number"],        #공통매입세액안분계산명세-총공급가액
+            ["PURCH_AN_4_AMT","Number"],        #공통매입세액안분계산명세-총공급가액
+            ["PURCH_AN_5_AMT","Number"],        #공통매입세액안분계산명세-총공급가액
+            ["PURCH_AN_TOTAL_AMT","Number"],        #공통매입세액안분계산명세-총공급가액-총
+            ["PURCH_AN_1_NOTAX","Number"],        #공통매입세액안분계산명세-면세공급가액등
+            ["PURCH_AN_2_NOTAX","Number"],        #공통매입세액안분계산명세-면세공급가액등
+            ["PURCH_AN_3_NOTAX","Number"],        #공통매입세액안분계산명세-면세공급가액등
+            ["PURCH_AN_4_NOTAX","Number"],        #공통매입세액안분계산명세-면세공급가액등
+            ["PURCH_AN_5_NOTAX","Number"],        #공통매입세액안분계산명세-면세공급가액등
+            ["PURCH_AN_TOTAL_NOTAX","Number"],        #공통매입세액안분계산명세-면세공급가액등-총
+            ["PURCH_AN_1_BULTAX","Number"],        #공통매입세액안분계산명세-불공제매입세액
+            ["PURCH_AN_2_BULTAX","Number"],        #공통매입세액안분계산명세-불공제매입세액
+            ["PURCH_AN_3_BULTAX","Number"],        #공통매입세액안분계산명세-불공제매입세액
+            ["PURCH_AN_4_BULTAX","Number"],        #공통매입세액안분계산명세-불공제매입세액
+            ["PURCH_AN_5_BULTAX","Number"],        #공통매입세액안분계산명세-불공제매입세액
+            ["PURCH_AN_TOTAL_BULTAX","Number"],        #공통매입세액안분계산명세-불공제매입세액-총
+            ["PURCH_COM_1_TAX","Number"],       #공통매입세액의정산명세-총공통매입세액
+            ["PURCH_COM_2_TAX","Number"],       #공통매입세액의정산명세-총공통매입세액
+            ["PURCH_COM_TOTAL_TAX","Number"],       #공통매입세액의정산명세-총공통매입세액 -총
+            ["PURCH_COM_1_RATE","Number"],       #공통매입세액의정산명세-면세사업등확정비율
+            ["PURCH_COM_2_RATE","Number"],       #공통매입세액의정산명세-면세사업등확정비율
+            ["PURCH_COM_TOTAL_RATE","Number"],       #공통매입세액의정산명세-면세사업등확정비율-총
+            ["PURCH_COM_1_BULTOT","Number"],       #공통매입세액의정산명세-불공제매입세액총액
+            ["PURCH_COM_2_BULTOT","Number"],       #공통매입세액의정산명세-불공제매입세액총액
+            ["PURCH_COM_TOTAL_BULTOT","Number"],       #공통매입세액의정산명세-불공제매입세액총액-총
+            ["PURCH_COM_1_BULTAX","Number"],       #공통매입세액의정산명세-기불공제매입세액
+            ["PURCH_COM_2_BULTAX","Number"],       #공통매입세액의정산명세-기불공제매입세액
+            ["PURCH_COM_TOTAL_BULTAX","Number"],       #공통매입세액의정산명세-기불공제매입세액-총
+            ["PURCH_COM_1_GONTAX","Number"],       #공통매입세액의정산명세-가산또는공제되는매입세액
+            ["PURCH_COM_2_GONTAX","Number"],       #공통매입세액의정산명세-가산또는공제되는매입세액
+            ["PURCH_COM_TOTAL_GONTAX","Number"],       #공통매입세액의정산명세-가산또는공제되는매입세액-총
+            ["PURCH_ASST_1_TAX","Number"],      #납부세액또는환급세액재계산명세- 해당재화의매입세액
+            ["PURCH_ASST_2_TAX","Number"],      #납부세액또는환급세액재계산명세- 해당재화의매입세액
+            ["PURCH_ASST_TOTAL_TAX","Number"],      #납부세액또는환급세액재계산명세- 해당재화의매입세액-총
+            ["PURCH_NEG_1_RATE","Number"],      #납부세액또는환급세액재계산명세-경감률
+            ["PURCH_NEG_2_RATE","Number"],      #납부세액또는환급세액재계산명세-경감률
+            ["PURCH_NEG_TOTAL_RATE","Number"],      #납부세액또는환급세액재계산명세-경감률-총
+            ["PURCH_POS_1_RATE","Number"],      #납부세액또는환급세액재계산명세-증가또는감소된면세공급가액비율
+            ["PURCH_POS_2_RATE","Number"],      #납부세액또는환급세액재계산명세-증가또는감소된면세공급가액비율
+            ["PURCH_POS_TOTAL_RATE","Number"],      #납부세액또는환급세액재계산명세-증가또는감소된면세공급가액비율-총
+            ["PURCH_GON_1_TAX","Number"],      #납부세액또는환급세액재계산명세-가산또는공제되는매입세액
+            ["PURCH_GON_2_TAX","Number"],      #납부세액또는환급세액재계산명세-가산또는공제되는매입세액
+            ["PURCH_GON_TOTAL_TAX","Number"]      #납부세액또는환급세액재계산명세-가산또는공제되는매입세액-총
+
+]
+
+# 화면상의 계산 식을 위한 공간 / 자동화 하기 위해 고민이 필요함.
+calc = [
+["TOTAL_AMOUNT","(CARD_TOTAL_AMOUNT+CASH_TOTAL_AMOUNT-XXX)/YYY*ZZZ"]
+]
+
+# MSSQL의 NAV Table DocumentVATEntry 에서 가져올 대상을 지정합니다. (SQL 컬럼명을 지정합니다.)
+# V153 에서 사용 할 MSSQL 컬럼명을 입력합니다.
+Entries = [
+"BSE_VAT Type",  ##부가세 유형
+"BSE_VAT Category Code", ##부가세 카테고리 코드
+"BSE_Editable Tot Total Amount",    ##공급가액
+"BSE_Editable Tot VAT Amount"       ##세액
+]
+
+# NAV 쿼리를위한 조건을 입력합니다.
+[[V153.Condition]]
+key = "BSE_VAT Type"
+value = "0"
+value_type = "Integer"
+
+[[V153.Condition]]
+key = "BSE_Closing"
+value = "1"
+value_type = "Integer"

@@ -1,22 +1,30 @@
 /**
+ * 공제받지 못할 매입세액 #TODO 아직 하지 않았음.
  * [Angularjs]
- * V101 화면을 읽어올 때 실행됨.
+ * V153 화면을 읽어올 때 실행됨.
  * 화면상의 컨트롤은 모두 여기서 진행됨.
  * 여기는 Client side 만 들어 있음.
  * 서버와 연관된 액션은 Service 를 호출하여 사용함.
  */
 'use strict';
 /* global angular */
-angular.module('V101Ctrl',[])
-    .controller('V101Controller',function($scope,$log,$window,VATService,$location,$route,ngDialog){
+angular.module('V153Ctrl',['ngGrid'])
+    .controller('V153Controller',function($scope,$log,$window,VATService,$location,$route,ngDialog){
 
         //# 상수정의.
         $scope.constants = {
-            'VATNO' : 'V101',  //이 화면의 VAT 번호.
+            'VATNO' : 'V153',  //이 화면의 VAT 번호.
             'EMPTY' : 'true'
         };
 
         $scope.progressValue = 0;
+
+        $scope.SINGO = [
+            {'value': '1' , 'text': '1개월분'},
+            {'value': '2' , 'text': '2개월분'},
+            {'value': '3' , 'text': '3개월분'},
+            {'value': '4' , 'text': '4~6개월분'}
+        ];
         //1. 개요
         //여기서 해당 Page 의 값을 가져와서, ng-model 에 집어 넣는다.
         //해당 값이 없다면, 없다는 메시지를 보여주면 된다.
@@ -50,6 +58,7 @@ angular.module('V101Ctrl',[])
             //VAT / 상위 값들이 바뀌었을 때 //
             // 값에 자료를 다시 불러와야 함.
             $log.info('값이 바뀌었습니다.');
+
             $route.reload();
         });
 
@@ -60,10 +69,70 @@ angular.module('V101Ctrl',[])
 
         $scope.calc = function(){
 
-        };
-        $scope.setVAT = function(viewKey){
-            $log.log(viewKey);
-            $scope.setVATKey(viewKey);
+            $scope.mg.PURCH_TAX_TOTAL_CNT = Number($scope.mg.PURCH_TAX_1_CNT) + Number($scope.mg.PURCH_TAX_2_CNT)+ Number($scope.mg.PURCH_TAX_3_CNT)
+            + Number($scope.mg.PURCH_TAX_4_CNT)+ Number($scope.mg.PURCH_TAX_5_CNT)+ Number($scope.mg.PURCH_TAX_6_CNT)+ Number($scope.mg.PURCH_TAX_7_CNT)
+            + Number($scope.mg.PURCH_TAX_8_CNT);
+            $scope.mg.PURCH_TAX_TOTAL_AMT = Number($scope.mg.PURCH_TAX_1_AMT) + Number($scope.mg.PURCH_TAX_2_AMT)+ Number($scope.mg.PURCH_TAX_3_AMT)
+            + Number($scope.mg.PURCH_TAX_4_AMT)+ Number($scope.mg.PURCH_TAX_5_AMT)+ Number($scope.mg.PURCH_TAX_6_AMT)+ Number($scope.mg.PURCH_TAX_7_AMT)
+            + Number($scope.mg.PURCH_TAX_8_AMT);
+            $scope.mg.PURCH_TAX_TOTAL_TAX = Number($scope.mg.PURCH_TAX_1_TAX) + Number($scope.mg.PURCH_TAX_2_TAX)+ Number($scope.mg.PURCH_TAX_3_TAX)
+            + Number($scope.mg.PURCH_TAX_4_TAX)+ Number($scope.mg.PURCH_TAX_5_TAX)+ Number($scope.mg.PURCH_TAX_6_TAX)+ Number($scope.mg.PURCH_TAX_7_TAX)
+            + Number($scope.mg.PURCH_TAX_8_TAX);
+
+            if(Number($scope.mg.PURCH_AN_1_TAX) == 0 || Number($scope.mg.PURCH_AN_1_AMT) ==0){
+                $scope.mg.PURCH_AN_1_BULTAX = 0;
+            }else{
+                $scope.mg.PURCH_AN_1_BULTAX = Number($scope.mg.PURCH_AN_1_TAX) * (Number($scope.mg.PURCH_AN_1_NOTAX)/Number($scope.mg.PURCH_AN_1_AMT));
+            }
+            if(Number($scope.mg.PURCH_AN_2_TAX) == 0 || Number($scope.mg.PURCH_AN_2_AMT) ==0){
+                $scope.mg.PURCH_AN_2_BULTAX = 0;
+            }else{
+                $scope.mg.PURCH_AN_2_BULTAX = Number($scope.mg.PURCH_AN_2_TAX) * (Number($scope.mg.PURCH_AN_2_NOTAX)/Number($scope.mg.PURCH_AN_2_AMT));
+            }
+            if(Number($scope.mg.PURCH_AN_3_TAX) == 0 || Number($scope.mg.PURCH_AN_3_AMT) ==0){
+                $scope.mg.PURCH_AN_3_BULTAX = 0;
+            }else{
+                $scope.mg.PURCH_AN_3_BULTAX = Number($scope.mg.PURCH_AN_3_TAX) * (Number($scope.mg.PURCH_AN_3_NOTAX)/Number($scope.mg.PURCH_AN_3_AMT));
+            }
+            if(Number($scope.mg.PURCH_AN_4_TAX) == 0 || Number($scope.mg.PURCH_AN_4_AMT) ==0){
+                $scope.mg.PURCH_AN_4_BULTAX = 0;
+            }else{
+                $scope.mg.PURCH_AN_4_BULTAX = Number($scope.mg.PURCH_AN_4_TAX) * (Number($scope.mg.PURCH_AN_4_NOTAX)/Number($scope.mg.PURCH_AN_4_AMT));
+            }
+            if(Number($scope.mg.PURCH_AN_5_TAX) == 0 || Number($scope.mg.PURCH_AN_5_AMT) ==0){
+                $scope.mg.PURCH_AN_5_BULTAX = 0;
+            }else{
+                $scope.mg.PURCH_AN_5_BULTAX = Number($scope.mg.PURCH_AN_5_TAX) * (Number($scope.mg.PURCH_AN_5_NOTAX)/Number($scope.mg.PURCH_AN_5_AMT));
+            }
+
+            $scope.mg.PURCH_AN_TOTAL_ACT = Number($scope.mg.PURCH_AN_1_ACT) + Number($scope.mg.PURCH_AN_2_ACT)+ Number($scope.mg.PURCH_AN_3_ACT)
+            + Number($scope.mg.PURCH_AN_4_ACT)+ Number($scope.mg.PURCH_AN_5_ACT);
+            $scope.mg.PURCH_AN_TOTAL_TAX = Number($scope.mg.PURCH_AN_1_TAX) + Number($scope.mg.PURCH_AN_2_TAX)+ Number($scope.mg.PURCH_AN_3_TAX)
+            + Number($scope.mg.PURCH_AN_4_TAX)+ Number($scope.mg.PURCH_AN_5_TAX);
+            $scope.mg.PURCH_AN_TOTAL_AMT = Number($scope.mg.PURCH_AN_1_AMT) + Number($scope.mg.PURCH_AN_2_AMT)+ Number($scope.mg.PURCH_AN_3_AMT)
+            + Number($scope.mg.PURCH_AN_4_AMT)+ Number($scope.mg.PURCH_AN_5_AMT);
+            $scope.mg.PURCH_AN_TOTAL_NOTAX = Number($scope.mg.PURCH_AN_1_NOTAX) + Number($scope.mg.PURCH_AN_2_NOTAX)+ Number($scope.mg.PURCH_AN_3_NOTAX)
+            + Number($scope.mg.PURCH_AN_4_NOTAX)+ Number($scope.mg.PURCH_AN_5_NOTAX);
+            $scope.mg.PURCH_AN_TOTAL_BULTAX = Number($scope.mg.PURCH_AN_1_BULTAX) + Number($scope.mg.PURCH_AN_2_BULTAX)+ Number($scope.mg.PURCH_AN_3_BULTAX)
+            + Number($scope.mg.PURCH_AN_4_BULTAX)+ Number($scope.mg.PURCH_AN_5_BULTAX);
+
+            $scope.mg.PURCH_COM_1_BULTOT = Number($scope.mg.PURCH_COM_1_TAX) * Number($scope.mg.PURCH_COM_1_RATE);
+            $scope.mg.PURCH_COM_2_BULTOT = Number($scope.mg.PURCH_COM_2_TAX) * Number($scope.mg.PURCH_COM_2_RATE);
+
+            $scope.mg.PURCH_COM_TOTAL_TAX = Number($scope.mg.PURCH_COM_1_TAX) + Number($scope.mg.PURCH_COM_2_TAX);
+            $scope.mg.PURCH_COM_TOTAL_RATE = Number($scope.mg.PURCH_COM_1_RATE) + Number($scope.mg.PURCH_COM_2_RATE);
+            $scope.mg.PURCH_COM_TOTAL_BULTOT = Number($scope.mg.PURCH_COM_1_BULTOT) + Number($scope.mg.PURCH_COM_2_BULTOT);
+            $scope.mg.PURCH_COM_TOTAL_BULTAX = Number($scope.mg.PURCH_COM_1_BULTAX) + Number($scope.mg.PURCH_COM_2_BULTAX);
+            $scope.mg.PURCH_COM_TOTAL_GONTAX = Number($scope.mg.PURCH_COM_1_GONTAX) + Number($scope.mg.PURCH_COM_2_GONTAX);
+
+            $scope.mg.PURCH_GON_1_TAX = Number($scope.mg.PURCH_ASST_1_TAX) * Number($scope.mg.PURCH_NEG_1_RATE) * Number($scope.mg.PURCH_POS_1_RATE);
+            $scope.mg.PURCH_GON_2_TAX = Number($scope.mg.PURCH_ASST_2_TAX) * Number($scope.mg.PURCH_NEG_2_RATE) * Number($scope.mg.PURCH_POS_2_RATE);
+
+            $scope.mg.PURCH_ASST_TOTAL_TAX = Number($scope.mg.PURCH_ASST_1_TAX) + Number($scope.mg.PURCH_ASST_2_TAX);
+            $scope.mg.PURCH_NEG_TOTAL_RATE = Number($scope.mg.PURCH_NEG_1_RATE) + Number($scope.mg.PURCH_NEG_2_RATE);
+            $scope.mg.PURCH_POS_TOTAL_RATE = Number($scope.mg.PURCH_POS_1_RATE) + Number($scope.mg.PURCH_POS_2_RATE);
+            $scope.mg.PURCH_GON_TOTAL_TAX = Number($scope.mg.PURCH_GON_1_TAX) + Number($scope.mg.PURCH_GON_2_TAX);
+
         };
 
 
@@ -88,6 +157,7 @@ angular.module('V101Ctrl',[])
                     $scope.constants.EMPTY = 'false';
 
                     $scope.mg = data;
+                    $scope.myData = data.SUB;
                     $scope.calc(); //재계산
                 }
             }
@@ -123,6 +193,7 @@ angular.module('V101Ctrl',[])
                         $scope.constants.EMPTY = 'false';
 
                         $scope.mg = data;
+                        $scope.myData = data.SUB;
                         $scope.calc(); //재계산
                         $scope.progressValue = 100;
                         ngDialog.close('ngdialog1');
@@ -152,7 +223,7 @@ angular.module('V101Ctrl',[])
             });
 
         };
-/*
+
         //#다시 작성하기 버튼을 눌렀을 때 실행되는 function. #T*ODO @2014-10-14 다시 불러오기 기능 구현. DONE
         $scope.getDocument = function(){
 
@@ -165,7 +236,7 @@ angular.module('V101Ctrl',[])
             });
 
         };
-*/
+
         $scope.getExcel = function(){
 
             //먼저 데이터를 자동으로 저장하고, 진행할 것.
@@ -193,7 +264,7 @@ angular.module('V101Ctrl',[])
                      * Excel File 을 저장하는 곳, type 을 Excel 로 지정하여 저장합니다.
                      *
                      */
-                    saveAs(new Blob([data],{type:"application/vnd.ms-excel;charset=euc-kr"}), "일반과세자 부가가치세신고서.xlsx");
+                    saveAs(new Blob([data],{type:"application/vnd.ms-excel;charset=euc-kr"}), "공제받지못할매입세액.xlsx");
 
                     $scope.status = 'Ok';
                     $scope.alertmessage = '성공적으로 Excel 을 저장 했습니다.!';
@@ -205,6 +276,25 @@ angular.module('V101Ctrl',[])
 
         };
 
-
-
+/*
+        $scope.gridOptions = {
+            data: 'myData',
+            multiSelect : false,
+            enableRowSelection : false,
+            showSelectionCheckbox : false,
+            footerVisible: false,
+            showColumnMenu: false,
+            columnDefs: [  //여기서, 필드명을 바꿔주고,
+                {field:'EXPORT REPORT NO', displayName:'수출신고번호'},
+                {field:'SHIP_DATE', displayName:'선(기)적 일자',cellFilter:'date:\'yyyy-MM-dd\''},
+                {field:'CURRENCY CODE', displayName:'통화코드'},
+                {field:'EXCHANGE RATE', displayName:'환율',cellFilter:'number:2', cellClass:'price'},
+                {field:'CURRENCY AMOUNT', displayName:'외화금액', cellFilter:'number:2', cellClass:'price'},
+                {field:'AMOUNT', displayName:'원화금액', cellFilter:'number:0', cellClass:'price'}
+            ]
+        };
+*/
     });
+
+
+

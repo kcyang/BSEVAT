@@ -18,6 +18,7 @@ angular.module('BSEVATApp',
         'V101Ctrl',
         'V117Ctrl',
         'V104Ctrl',
+        'V153Ctrl',
         'V104-1Ctrl',
         'V105Ctrl',
         'V105-1Ctrl',
@@ -83,7 +84,7 @@ angular.module('BSEVATApp',
         };
 
     })
-    .controller('VATMainController',['$rootScope','$scope',function($rootScope,$scope){
+    .controller('VATMainController',['$rootScope','$scope','$log',function($rootScope,$scope,$log){
 
         //세부/하부 화면과 별도로 글로벌하게 컨트롤 할 것들에 대한 정의.
 
@@ -118,9 +119,9 @@ angular.module('BSEVATApp',
             year_item.name = INIT_YEAR+i;
             year_item.value = INIT_YEAR+i;
             if(year_item.name === curr_year) {
-                if(curr_month > 1 && curr_month < 4){
+                if(curr_month >= 1 && curr_month < 4){
                     //현재 월이, 1월에서 3월까지면, 전년도 신고임.
-                    selectedYear = INIT_YEAR+ i -1 ;
+                    selectedYear = INIT_YEAR+ i -1;
                 }else{
                     //나머지는 현재 년도를 선택하도록 한다.
                     selectedYear = year_item;
@@ -133,7 +134,7 @@ angular.module('BSEVATApp',
          * 현재 날짜를 보고, 신고대상 분기를 디폴트로 선택하게 하는 곳.
          * 항상, 신고하는 달의 이전 분기를 선택하도록 하였음.
          */
-        if(curr_month > 1 && curr_month < 4){
+        if(curr_month >= 1 && curr_month < 4){
             selectedVatqt = vatqt_options[3];
         }else if(curr_month > 3 && curr_month < 7){
             selectedVatqt = vatqt_options[0];

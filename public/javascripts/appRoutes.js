@@ -20,19 +20,16 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
             templateUrl: 'views/V101.html',
             controller: 'V101Controller'
         })
-/*
-        // V101 - 일반 과세자 부가가치세 신고서
-        .when('/V101_1', {
-            templateUrl: 'views/V101_1.html',
-            controller: 'V101Controller'
-        })
-*/
         // V101 - 일반 과세자 부가가치세 신고서
         .when('/V101_2', {
             templateUrl: 'views/V101_2.html',
             controller: 'V101Controller'
         })
-
+        // V153 - 공제받지 못할 매입세액
+        .when('/V153', {
+            templateUrl: 'views/V153.html',
+            controller: 'V153Controller'
+        })
         // V104 - 매출처 세금계산서 합계표
         .when('/V104', {
             templateUrl: 'views/V104.html',
@@ -83,15 +80,6 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
             templateUrl: 'views/V117.html',
             controller: 'V117Controller'
         });
-/**
- * 여기 아래로 하나씩 추가할 것.
- * /
-    // V117
-    .when('/VXXX', {
-        templateUrl: 'views/VXXX.html',
-        controller: 'VXXXController'
-    });
-*/
     $locationProvider.html5Mode(true);
 
 }]);
