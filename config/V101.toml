@@ -1,0 +1,225 @@
+# V101 일반과세자 부가가치세 신고서
+title = "VAT101"
+[V101]
+# 매출처별 세금계산서 합계표의 화면을 위한 테이블 정의
+# 화면을 구성하게되는 입력폼이나 출력되는 대상을 정하는 것과 동일합니다.
+schema = [
+    ["VATKEY","String","true"],             #Main Key. << 모든 정의에 들어 있어야 함. 세번째 항목은 Key 값 유무.
+    ["COMPANY_CODE","String"],       #회사코드
+    ["YEAR","String"],               #년도
+    ["VATQT","String"],              #신고분기
+    ["VATRPTTYPE","String"],         #신고타입
+
+["GS_TAX_INVOICED_AMT","Number"],       #1. 과세_세금계산서 발급분 금액
+["GS_TAX_INVOICED_TAX","Number"],       #1. 과세_세금계산서 발급분 세액
+["GS_VEND_TAX_INV_AMT","Number"],       # 과세_매입자발행 세금계산서 금액
+["GS_VEND_TAX_INV_TAX","Number"],       # 과세_매입자발행 세금계산서 세액
+["GS_CR_CASH_AMT","Number"],        #과세_신용카드.현금영수증 발행분 금액
+["GS_CR_CASH_TAX","Number"],        #과세_신용카드.현금영수증 발행분 세액
+["GS_ETC_AMT","Number"],        #과세_기타 금액
+["GS_ETC_TAX","Number"],        #과세_기타 세액
+["GS_ZR_TAX_INV_AMT","Number"],     #영세율_세금계산서 발급분 금액
+["GS_ZR_TAX_INV_TAX","Number"],     #영세율_세금계산서 발급분 세액
+["GS_ZR_ETC_AMT","Number"],     #영세율_기타 금액
+["GS_ZR_ETC_TAX","Number"],     #영세율_기타 세액
+["GS_PREARG_SIN_AMT","Number"],     #예정신고누락분 금액
+["GS_PREARG_SIN_TAX","Number"],     #예정신고누락분 세액
+["GS_BADDEPT_AMT","Number"],        #대손세액 가감 금액
+["GS_BADDEPT_TAX","Number"],        #대손세액 가감 세액
+["GS_STD_AMT","Number"],        #과세표준매출세액_합계 금액
+["GS_STD_TAX","Number"],        #과세표준매출세액_합계 세액
+["PR_TAX_INV_GEN_AMT","Number"],    #매입세액_세금계산서_일반매입 금액
+["PR_TAX_INV_GEN_TAX","Number"],    #매입세액_세금계산서_일반매입 세액
+["PR_TAX_INV_FIXED_AMT","Number"],  #매입세액_세금계산서_고정자산매입 금액
+["PR_TAX_INV_FIXED_TAX","Number"],  #매입세액_세금계산서_고정자산매입 세액
+["PR_TAX_INV_MIN_AMT","Number"],    #매입세액_예정신고누락분 금액
+["PR_TAX_INV_MIN_TAX","Number"],    #매입세액_예정신고누락분 세액
+["PR_TAX_INVOICED_AMT","Number"],   #매입세액_매입자발행세금계산서 금액
+["PR_TAX_INVOICED_TAX","Number"],   #매입세액_매입자발행세금계산서 세액
+
+["PR_TAX_ETC_AMT","Number"],        #매입세액_그밖의공제매입세액 금액
+["PR_TAX_ETC_TAX","Number"],        #매입세액_그밖의공제매입세액 세액
+["PR_TAX_TOT_AMT","Number"],        #매입세액_합계 금액
+["PR_TAX_TOT_TAX","Number"],        #매입세액_합계 세액
+["PR_TAX_CALC_AMT","Number"],       #매입세액_차감계 금액
+["PR_TAX_CALC_TAX","Number"],       #매입세액_차감계 세액
+["NAPBU_TAX","Number"],             #납부세액
+["REDU_ETC_TAX","Number"],          #경감공제세액_그밖의경감공제세액 세액
+["REDU_CREDIT_AMT","Number"],       #경감공제세액_신용카드매출전표등발행공제 금액
+["REDU_CREDIT_TAX","Number"],       #경감공제세액_신용카드매출전표등발행공제 세액
+["REDU_TOT_AMT","Number"],          #경감공제세액_합계 금액
+["REDU_TOT_TAX","Number"],          #경감공제세액_합계 세액
+["REFUND_AMT","Number"],            #예정신고미환급세액 금액
+["REFUND_TAX","Number"],            #예정신고미환급세액 세액
+["NOTICED_AMT","Number"],           #예정고지세액 금액
+["NOTICED_TAX","Number"],           #예정고지세액 세액
+["REPORTED_DAE_TAXED_TAX","Number"],    #사업양수자의 대리납부 기납부세액
+["REPORTED_SPE_TAXED_TAX","Number"],    #매입자납부특례 기납부 세액
+["ADD_TAX_TOT_AMT","Number"],       #가산세액계 금액
+["ADD_TAX_TOT_TAX","Number"],       #가산세액계 세액
+["RED_ADD_NAPBU_TAX","Number"],     #차감.가감하여납부할 세액
+["TOTAL_NAPBU_TAX","Number"],       #총괄납부사업자가납부할세액
+["BANK_NAME","String"],             #거래은행
+["BANK_SUBSI","String"],            #은행지점
+["BANK_KONTO","String"],            #계좌번호
+["CLOSE_DATE","Date"],            #폐업일
+["CLOSE_REPORT","String"],          #폐업사유
+["TAX_STD_BUS_NAME_1","String"],    #과세표준명세 업태 I - 업태명
+["TAX_STD_BUS_ITEM_1","String"],    #과세표준명세 업태 I - 업태종목
+["TAX_STD_BUS_PROD_1","String"],    #과세표준명세 업태 I - 생산요소
+["TAX_STD_BUS_CODE_1","String"],    #과세표준명세 업태 I - 업종코드
+["TAX_STD_BUS_AMT_1","Number"],     #과세표준명세 업태 I - 금액
+["TAX_STD_BUS_NAME_2","String"],   #과세표준명세 업태 II - 업태명
+["TAX_STD_BUS_ITEM_2","String"],   #과세표준명세 업태 II - 업태종목
+["TAX_STD_BUS_PROD_2","String"],   #과세표준명세 업태 II - 생산요소
+["TAX_STD_BUS_CODE_2","String"],   #과세표준명세 업태 II - 업종코드
+["TAX_STD_BUS_AMT_2","Number"],     #과세표준명세 업태 II - 금액
+["TAX_STD_BUS_NAME_3","String"],    #과세표준명세 업태 III - 업태명
+["TAX_STD_BUS_ITEM_3","String"],    #과세표준명세 업태 III - 업태종목
+["TAX_STD_BUS_PROD_3","String"],    #과세표준명세 업태 III - 생산요소
+["TAX_STD_BUS_CODE_3","String"],    #과세표준명세 업태 III - 업종코드
+["TAX_STD_BUS_AMT_3","Number"],     #과세표준명세 업태 III - 금액
+["TAX_STD_BUS_ITEM_4","String"],    #과세표준명세 업태 IV - 업태종목
+["TAX_STD_BUS_PROD_4","String"],    #과세표준명세 업태 IV - 생산요소
+["TAX_STD_BUS_CODE_4","String"],    #과세표준명세 업태 IV - 업종코드
+["TAX_STD_BUS_AMT_4","Number"],     #과세표준명세 업태 IV - 금액
+["TAX_STD_BUS_ITEM_5","String"],    #과세표준명세 업태 V - 업태종목
+["TAX_STD_BUS_PROD_5","String"],    #과세표준명세 업태 V - 생산요소
+["TAX_STD_BUS_CODE_5","String"],    #과세표준명세 업태 V - 업종코드
+["TAX_STD_BUS_AMT_5","Number"],     #과세표준명세 업태 V - 금액
+["BADSINGO_SALES_GS_TAX_AMT","Number"], #예정신고누락분 - 매출-과세-세금계산서-금액
+["BADSINGO_SALES_GS_TAX_TAX","Number"], #예정신고누락분 - 매출-과세-세금계산서-세액
+["BADSINGO_SALES_GS_ETC_AMT","Number"], #예정신고누락분 - 매출-과세-기타-금액
+["BADSINGO_SALES_GS_ETC_TAX","Number"], #예정신고누락분 - 매출-과세-기타-세액
+["BADSINGO_SALES_ZR_AMT","Number"], #예정신고누락분 - 매출-영세율-금액
+["BADSINGO_SALES_ZR_TAX","Number"], #예정신고누락분 - 매출-영세율-세액
+["BADSINGO_SALES_ZR_ECT_AMT","Number"],#예정신고누락분 - 매출-영세율-기타-금액
+["BADSINGO_SALES_ZR_ECT_TAX","Number"], #예정신고누락분 - 매출-영세율-기타-세액
+["BADSINGO_SALES_ZR_TOT_AMT","Number"], #예정신고누락분 - 매출-합계-금액
+["BADSINGO_SALES_ZR_TOT_TAX","Number"], #예정신고누락분 - 매출-합계-세액
+["BADSINGO_PURCH_TAX_AMT","Number"],    #예정신고누락분 - 매입-세금계산서-금액
+["BADSINGO_PURCH_TAX_TAX","Number"],    #예정신고누락분 - 매입-세금계산서-세액
+["BADSINGO_PURCH_ETC_AMT","Number"],    #예정신고누락분 - 매입-그밖의 공제-금액
+["BADSINGO_PURCH_ETC_TAX","Number"],    #예정신고누락분 - 매입-그밖의 공제-세액
+["BADSINGO_PURCH_TOT_AMT","Number"],    #예정신고누락분 - 매입-합계-금액
+["BADSINGO_PURCH_TOT_TAX","Number"],    #예정신고누락분 - 매입-합계-세액
+["ETCGONJE_CRD_GEN_AMT","Number"],  #그밖의 공제매입세액-신용카드매출수령-일반매입-금액
+["ETCGONJE_CRD_GEN_TAX","Number"],  #그밖의 공제매입세액-신용카드매출수령-일반매입-세액
+["ETCGONJE_CRD_FIXED_AMT","Number"],    #그밖의 공제매입세액-신용카드매출수령-고정자산-금액
+["ETCGONJE_CRD_FIXED_TAX","Number"],    #그밖의 공제매입세액-신용카드매출수령-고정자산-세액
+["ETCGONJE_EJ_PURCH_AMT","Number"], #그밖의 공제매입세액-의제매입세액-금액
+["ETCGONJE_EJ_PURCH_TAX","Number"], #그밖의 공제매입세액-의제매입세액-세액
+["ETCGONJE_RECY_PURCH_AMT","Number"],   #그밖의 공제매입세액-재활용폐저원매입-금액
+["ETCGONJE_RECY_PURCH_TAX","Number"],   #그밖의 공제매입세액-재활용폐저원매입-세액
+["ETCGONJE_GJBUS_PURCH_TAX","Number"],  #그밖의 공제매입세액-과세자업전환매입-세액
+["ETCGONJE_INV_PURCH_TAX","Number"],    #그밖의 공제매입세액-재고매입-세액
+["ETCGONJE_BDS_PURCH_TAX","Number"],    #그밖의 공제매입세액-변제대손-세액
+["ETCGONJE_FOREIGN_PURCH_TAX","Number"],    #그밖의 공제매입세액-외국관광객환급-세액
+["ETCGONJE_TOTAL_AMT","Number"],    #그밖의 공제매입세액-합계-금액
+["ETCGONJE_TOTAL_TAX","Number"],    #그밖의 공제매입세액-합계-세액
+["BADGONJE_BAD_AMT","Number"],  #공제받지못할매입-공제받지못할매입-금액
+["BADGONJE_BAD_TAX","Number"],  #공제받지못할매입-공제받지못할매입-세액
+["BADGONJE_GEN_NOTAX_AMT","Number"],    #공제받지못할매입-공통매입세액 면세사업-금액
+["BADGONJE_GEN_NOTAX_TAX","Number"],    #공제받지못할매입-공통매입세액 면세사업-세액
+["BADGONJE_DAESON_AMT","Number"],   #공제받지못할매입-대손처분받은세액-금액
+["BADGONJE_DAESON_TAX","Number"],   #공제받지못할매입-대손처분받은세액-세액
+["BADGONJE_TOTAL_AMT","Number"],    #공제받지못할매입-합계-금액
+["BADGONJE_TOTAL_TAX","Number"],    #공제받지못할매입-합계-세액
+["ETCKG_ELECSINGO_TAX","Number"],   #기타경감공제세액-전자신고세액공제-세액
+["ETCKG_ELECBALGUP_TAX","Number"],  #기타경감공제세액-전자세금계산서발급세액-세액
+["ETCKG_TAXI_TAX","Number"],    #기타경감공제세액-택시운송사업자경감세액-세액
+["ETCKG_CASH_TAX","Number"],    #기타경감공제세액-현금영수증사업자세액공제-세액
+["ETCKG_ETC_TAX","Number"], #기타경감공제세액-기타-세액
+["ETCKG_TOTAL_TAX","Number"],   #기타경감공제세액-합계-세액
+["GS_NOBUS_AMT","Number"],  #가산세명세-사업자미등록-금액
+["GS_NOBUS_TAX","Number"],  #가산세명세-사업자미등록-세액
+["GS_TAXINV_DELYBAL_AMT","Number"], #가산세명세-세금계산서-지연발급-금액
+["GS_TAXINV_DELYBAL_TAX","Number"], #가산세명세-세금계산서-지연발급-세액
+["GS_TAXINV_DELYSUC_AMT","Number"], #가산세명세-세금계산서-지연수취-금액
+["GS_TAXINV_DELYSUC_TAX","Number"], #가산세명세-세금계산서-지연수취-세액
+["GS_TAXINV_NOBALGUP_AMT","Number"],    #가산세명세-세금계산서-미발급-금액
+["GS_TAXINV_NOBALGUP_TAX","Number"],    #가산세명세-세금계산서-미발급-세액
+["GS_ETAX_DELYBAL_AMT","Number"],   #가산세명세-전자세금계산서-지연전송-금액
+["GS_ETAX_DELYBAL_TAX","Number"],   #가산세명세-전자세금계산서-지연전송-세액
+["GS_ETAX_NOSEND_AMT","Number"],    #가산세명세-전자세금계산서-미전송-금액
+["GS_ETAX_NOSEND_TAX","Number"],    #가산세명세-전자세금계산서-미전송-세액
+["GS_TAXHAP_BADSEND_AMT","Number"], #가산세명세-세금계산서합계표-제출불성실-금액
+["GS_TAXHAP_BADSEND_TAX","Number"], #가산세명세-세금계산서합계표-제출불성실-세액
+["GS_TAXHAP_DELYSNED_AMT","Number"],    #가산세명세-세금계산서합계표-지연제출-금액
+["GS_TAXHAP_DELYSNED_TAX","Number"],    #가산세명세-세금계산서합계표-지연제출-세액
+["GS_BADSINGO_NOSIN_GEN_AMT","Number"], #가산세명세-신고불성실-무신고-일반-금액
+["GS_BADSINGO_NOSIN_GEN_TAX","Number"], #가산세명세-신고불성실-무신고-일반-세액
+["GS_BADSINGO_NOSIN_BAD_AMT","Number"], #가산세명세-신고불성실-무신고-부당-금액
+["GS_BADSINGO_NOSIN_BAD_TAX","Number"], #가산세명세-신고불성실-무신고-부당-세액
+["GS_BADSINGO_GSCG_GEN_AMT","Number"],  #가산세명세-신고불성실-과소초과환급-일반-금액
+["GS_BADSINGO_GSCG_GEN_TAX","Number"],  #가산세명세-신고불성실-과소초과환급-일반-세액
+["GS_BADSINGO_GSCG_BAD_AMT","Number"],  #가산세명세-신고불성실-과소초과환급-부당-금액
+["GS_BADSINGO_GSCG_BAD_TAX","Number"],  #가산세명세-신고불성실-과소초과환급-부당-세액
+["GS_BADNAPBU_AMT","Number"],   #가산세명세-납부불성실-금액
+["GS_BADNAPBU_TAX","Number"],   #가산세명세-납부불성실-세액
+["GS_ZEROGSSTDBADSINGO_AMT","Number"],  #가산세명세-영세율과세표준신고불성실-금액
+["GS_ZEROGSSTDBADSINGO_TAX","Number"],  #가산세명세-영세율과세표준신고불성실-세액
+["GS_CASHSALEBAD_AMT","Number"],    #가산세명세-현금매출명세서불성실-금액
+["GS_CASHSALEBAD_TAX","Number"],    #가산세명세-현금매출명세서불성실-세액
+["GS_BUDONGRENTBAD_AMT","Number"],  #가산세명세-부동산임대송금가액명세서불성실-금액
+["GS_BUDONGRENTBAD_TAX","Number"],  #가산세명세-부동산임대송금가액명세서불성실-세액
+["GS_PURCHSPECIAL_KONTO_AMT","Number"], #가산세명세-매입자납부특례-거래계좌미사용-금액
+["GS_PURCHSPECIAL_KONTO_TAX","Number"], #가산세명세-매입자납부특례-거래계좌미사용-세액
+["GS_PURCHSPECIAL_DELYKONTO_AMT","Number"], #가산세명세-매입자납부특례-거래계좌지연입금-금액
+["GS_PURCHSPECIAL_DELYKONTO_TAX","Number"], #가산세명세-매입자납부특례-거래계좌지연입금-세액
+["GS_TOTAL_TAX","Number"],  #가산세명세-합계-세액
+["TAXFREE_BUS_TYPE_1","String"],    #면세사업수입금액-업태 1
+["TAXFREE_BUS_ITEM_1","String"],    #면세사업수입금액-종목 1
+["TAXFREE_BUS_AMT_1","Number"],     #면세사업수입금액-금액 1
+["TAXFREE_BUS_TYPE_2","String"],    #면세사업수입금액-업태 2
+["TAXFREE_BUS_ITEM_2","String"],    #면세사업수입금액-종목 2
+["TAXFREE_BUS_AMT_2","Number"],     #면세사업수입금액-금액 2
+["TAXFREE_BUS_ITEM_3","String"],    #면세사업수입금액-업태 3
+["TAXFREE_BUS_CODE_3","String"],    #면세사업수입금액-종목 3
+["TAXFREE_BUS_AMT_3","Number"],     #면세사업수입금액-금액 3
+["TAXFREE_BUS_TOTAL_AMT","Number"], #면세사업수입금액-세액합계
+["INVOICE_GYOBU_AMT","Number"],     #계산서교부금액
+["INVOICE_SUCHI_AMT","Number"]      #계산서수취금액
+
+]
+
+# 화면상의 계산 식을 위한 공간 / 자동화 하기 위해 고민이 필요함.
+calc = [
+["TOTAL_AMOUNT","(CARD_TOTAL_AMOUNT+CASH_TOTAL_AMOUNT-XXX)/YYY*ZZZ"]
+]
+
+# MSSQL의 NAV Table DocumentVATEntry 에서 가져올 대상을 지정합니다. (SQL 컬럼명을 지정합니다.)
+# V101 에서 사용 할 MSSQL 컬럼명을 입력합니다.
+Entries = [
+"BSE_VAT Date",
+"BSE_VAT Type",
+"BSE_VAT Category Code",
+"BSE_ETAX Complete issue",
+"BSE_Editable Tot Total Amount",
+"BSE_Editable Tot VAT Amount",
+"BSE_VAT Missing"
+]
+
+# NAV 쿼리를위한 조건을 입력합니다.
+#[[V101.Condition]]
+#key = "BSE_VAT Type"
+#value = "0"
+#value_type = "Integer"
+
+#[[V101.Sub]]
+#key = "BSE_VAT Category Code"
+#query = "SELECT [BSE_Category Code]
+#         FROM [#Company$B_VAT Category]
+#         WHERE [BSE_VAT Total Report] = 1"
+#임시로 넣은 UNION 구문, 위 Entries 와 동일한 순서로 넣어줘야 됨.
+[[V101.UNION]]
+query="
+UNION ALL
+SELECT [BSE_VAT Date],
+       [BSE_VAT Type],
+       [BSE_VAT Category Code],
+       [BSE_ETAX Complete issue],
+       [BSE_Editable Tot Total Amount],
+       [BSE_Editable Tot VAT Amount],
+       [BSE_VAT Missing]
+"

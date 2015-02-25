@@ -118,16 +118,18 @@ angular.module('BSEVATApp',
             var year_item = {};
             year_item.name = INIT_YEAR+i;
             year_item.value = INIT_YEAR+i;
-            if(year_item.name === curr_year) {
-                if(curr_month >= 1 && curr_month < 4){
-                    //현재 월이, 1월에서 3월까지면, 전년도 신고임.
-                    selectedYear = INIT_YEAR+ i -1;
-                }else{
-                    //나머지는 현재 년도를 선택하도록 한다.
-                    selectedYear = year_item;
-                }
-            }
             year_options.push(year_item);
+        }
+
+        if(curr_month >= 1 && curr_month < 4){
+            //현재 월이, 1월에서 3월까지면, 전년도 신고임.
+            var tmp_preyear = {};
+            tmp_preyear.name = curr_year-1;
+            tmp_preyear.value = curr_year-1;
+            selectedYear = tmp_preyear;
+        }else{
+            //나머지는 현재 년도를 선택하도록 한다.
+            selectedYear = year_item;
         }
 
         /**

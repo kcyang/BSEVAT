@@ -8,6 +8,13 @@ a {
   color: #00B7FF;
 }
 */
+/*
+.container 는 반응 기능을 끄는 태그임.
+*/
+.container {
+  width: 970px;
+  max-width: none !important;
+}
 .gridStyle {
   border: 1px solid rgb(212,212,212);
   width: 960px;

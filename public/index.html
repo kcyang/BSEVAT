@@ -58,9 +58,9 @@
         <h3 class="text-muted">BSEVAT</h3>
     </div>
 
-    <div class="jumbotron" ng-controller="VATMainController">
+    <div class="page-header" ng-controller="VATMainController">
         <p class="lead"><span class="glyphicon glyphicon-book"></span> BSE VAT 1.0</p>
-        <p class="lead">BSE VAT 1.0 버전입니다. 아래 신고할 분기를 선택하세요.</p>
+        <!-- <p class="lead">BSE VAT 1.0 버전입니다. 아래 신고할 분기를 선택하세요.</p> //-->
         <div class="row">
             <div class="col-xs-2">
                 <select ng-model="YEAR" class="form-control btn-primary" ng-options="year.name for year in years" ng-change="updateVATKey()">
@@ -79,10 +79,11 @@
                 </select>
             </div>
 //-->
+<!--
             <div class="col-xs-5">
                 <div class="alert alert-success" role="alert" ng-bind="vatmessage"></div>
             </div>
-
+//-->
         </div>
     </div>
 
