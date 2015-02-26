@@ -28,6 +28,7 @@ schema = [
 ["GS_BADDEPT_TAX","Number"],        #대손세액 가감 세액
 ["GS_STD_AMT","Number"],        #과세표준매출세액_합계 금액
 ["GS_STD_TAX","Number"],        #과세표준매출세액_합계 세액
+
 ["PR_TAX_INV_GEN_AMT","Number"],    #매입세액_세금계산서_일반매입 금액
 ["PR_TAX_INV_GEN_TAX","Number"],    #매입세액_세금계산서_일반매입 세액
 ["PR_TAX_INV_FIXED_AMT","Number"],  #매입세액_세금계산서_고정자산매입 금액
@@ -87,18 +88,25 @@ schema = [
 ["TAX_STD_BUS_PROD_5","String"],    #과세표준명세 업태 V - 생산요소
 ["TAX_STD_BUS_CODE_5","String"],    #과세표준명세 업태 V - 업종코드
 ["TAX_STD_BUS_AMT_5","Number"],     #과세표준명세 업태 V - 금액
+
 ["BADSINGO_SALES_GS_TAX_AMT","Number"], #예정신고누락분 - 매출-과세-세금계산서-금액
 ["BADSINGO_SALES_GS_TAX_TAX","Number"], #예정신고누락분 - 매출-과세-세금계산서-세액
+
 ["BADSINGO_SALES_GS_ETC_AMT","Number"], #예정신고누락분 - 매출-과세-기타-금액
 ["BADSINGO_SALES_GS_ETC_TAX","Number"], #예정신고누락분 - 매출-과세-기타-세액
+
 ["BADSINGO_SALES_ZR_AMT","Number"], #예정신고누락분 - 매출-영세율-금액
 ["BADSINGO_SALES_ZR_TAX","Number"], #예정신고누락분 - 매출-영세율-세액
+
 ["BADSINGO_SALES_ZR_ECT_AMT","Number"],#예정신고누락분 - 매출-영세율-기타-금액
 ["BADSINGO_SALES_ZR_ECT_TAX","Number"], #예정신고누락분 - 매출-영세율-기타-세액
+
 ["BADSINGO_SALES_ZR_TOT_AMT","Number"], #예정신고누락분 - 매출-합계-금액
 ["BADSINGO_SALES_ZR_TOT_TAX","Number"], #예정신고누락분 - 매출-합계-세액
+
 ["BADSINGO_PURCH_TAX_AMT","Number"],    #예정신고누락분 - 매입-세금계산서-금액
 ["BADSINGO_PURCH_TAX_TAX","Number"],    #예정신고누락분 - 매입-세금계산서-세액
+
 ["BADSINGO_PURCH_ETC_AMT","Number"],    #예정신고누락분 - 매입-그밖의 공제-금액
 ["BADSINGO_PURCH_ETC_TAX","Number"],    #예정신고누락분 - 매입-그밖의 공제-세액
 ["BADSINGO_PURCH_TOT_AMT","Number"],    #예정신고누락분 - 매입-합계-금액
@@ -139,8 +147,10 @@ schema = [
 ["GS_TAXINV_DELYSUC_TAX","Number"], #가산세명세-세금계산서-지연수취-세액
 ["GS_TAXINV_NOBALGUP_AMT","Number"],    #가산세명세-세금계산서-미발급-금액
 ["GS_TAXINV_NOBALGUP_TAX","Number"],    #가산세명세-세금계산서-미발급-세액
+
 ["GS_ETAX_DELYBAL_AMT","Number"],   #가산세명세-전자세금계산서-지연전송-금액
 ["GS_ETAX_DELYBAL_TAX","Number"],   #가산세명세-전자세금계산서-지연전송-세액
+
 ["GS_ETAX_NOSEND_AMT","Number"],    #가산세명세-전자세금계산서-미전송-금액
 ["GS_ETAX_NOSEND_TAX","Number"],    #가산세명세-전자세금계산서-미전송-세액
 ["GS_TAXHAP_BADSEND_AMT","Number"], #가산세명세-세금계산서합계표-제출불성실-금액
@@ -211,6 +221,7 @@ Entries = [
 #query = "SELECT [BSE_Category Code]
 #         FROM [#Company$B_VAT Category]
 #         WHERE [BSE_VAT Total Report] = 1"
+
 #임시로 넣은 UNION 구문, 위 Entries 와 동일한 순서로 넣어줘야 됨.
 [[V101.UNION]]
 query="
