@@ -24,22 +24,23 @@
                 </button>
             </a>
         </div>
+        <div class="col-xs-11">
+            <ul class="nav nav-tabs">
+                <li role="presentation" class="active"><a href="/V101">
+                    <button class="btn btn-success" type="button" ng-click="setVAT('V101')">
+                        <span class="glyphicon glyphicon-pencil"> 신고서 I</span>
+                    </button>
+                    </a>
+                </li>
+                <li role="presentation"><a href="/V101_2">
+                    <button class="btn btn-default" type="button" ng-click="setVAT('V101_2')">
+                        <span class="glyphicon glyphicon-pencil"> 신고서 II</span>
+                    </button>
+                </a></li>
+            </ul>
+        </div>
     </div>
 </div>
-<ul class="nav nav-tabs">
-    <li role="presentation" class="active"><a href="/V101">
-        <button class="btn btn-success" type="button" ng-click="setVAT('V101')">
-            <span class="glyphicon glyphicon-pencil"> 신고서 I</span>
-        </button>
-        </a>
-    </li>
-    <li role="presentation"><a href="/V101_2">
-        <button class="btn btn-default" type="button" ng-click="setVAT('V101_2')">
-            <span class="glyphicon glyphicon-pencil"> 신고서 II</span>
-        </button>
-    </a></li>
-</ul>
-
 <div class="container">
     <div class="page-header text-center">
         <p class="text-primary lead">일반과세자 부가가치세 신고서 I</p>
@@ -487,7 +488,7 @@
                     <input type="text" class="form-control input-sm" ng-model="mg.TAX_STD_BUS_CODE_2">
                 </td>
                 <td>
-                    <input type="text" class="form-control input-sm" ng-model="mg.TAX_STD_BUS_AMT_2" ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-model="mg.TAX_STD_BUS_AMT_2" ui-number-mask="0"/>
                 </td>
             </tr>
             <tr>
@@ -505,7 +506,7 @@
                     <input type="text" class="form-control input-sm" ng-model="mg.TAX_STD_BUS_CODE_3">
                 </td>
                 <td>
-                    <input type="text" class="form-control input-sm" ng-model="mg.TAX_STD_BUS_AMT_3" ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-model="mg.TAX_STD_BUS_AMT_3" ui-number-mask="0"/>
                 </td>
             </tr>
             <tr>

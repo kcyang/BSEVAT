@@ -59,7 +59,19 @@ angular.module('V101Ctrl',[])
         //화면의 자동계산 되는 로직은 아래에 정의된 데로 실행된다.
 
         $scope.calc = function(){
+            $scope.mg.ELEC_TOT_SALES_CNT = Number($scope.mg.ELEC_BUS_SALES_CNT) + Number($scope.mg.ELEC_PSN_SALES_CNT);
+            $scope.mg.ELEC_TOT_SALES_QTY = Number($scope.mg.ELEC_BUS_SALES_QTY) + Number($scope.mg.ELEC_PSN_SALES_QTY);
+            $scope.mg.ELEC_TOT_SALES_ACT_AMT = Number($scope.mg.ELEC_BUS_SALES_ACT_AMT) + Number($scope.mg.ELEC_PSN_SALES_ACT_AMT);
 
+
+            $scope.mg.NON_ELEC_TOT_SALES_CNT = Number($scope.mg.NON_ELEC_BUS_SALES_CNT) + Number($scope.mg.NON_ELEC_PSN_SALES_CNT);
+            $scope.mg.NON_ELEC_TOT_SALES_QTY = Number($scope.mg.NON_ELEC_BUS_SALES_QTY) + Number($scope.mg.NON_ELEC_PSN_SALES_QTY);
+            $scope.mg.NON_ELEC_TOT_SALES_ACT_AMT = Number($scope.mg.NON_ELEC_BUS_SALES_ACT_AMT) + Number($scope.mg.NON_ELEC_PSN_SALES_ACT_AMT);
+
+
+            $scope.mg.TOTAL_SALES_CNT = Number($scope.mg.ELEC_TOT_SALES_CNT) + Number($scope.mg.NON_ELEC_TOT_SALES_CNT);
+            $scope.mg.TOTAL_SALES_QTY = Number($scope.mg.ELEC_TOT_SALES_QTY) + Number($scope.mg.NON_ELEC_TOT_SALES_QTY);
+            $scope.mg.TOTAL_SALES_ACT_AMT = Number($scope.mg.ELEC_TOT_SALES_ACT_AMT) + Number($scope.mg.NON_ELEC_TOT_SALES_ACT_AMT);
         };
         $scope.setVAT = function(viewKey){
             $log.log(viewKey);
