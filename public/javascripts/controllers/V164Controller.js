@@ -49,7 +49,6 @@ angular.module('V164Ctrl',['ngGrid'])
         //VAT / 상위 값들이 바뀌었을 때 //
         // 값에 자료를 다시 불러와야 함.
         $log.info('값이 바뀌었습니다.');
-        //$location.path('/V117');  //#TODO 반응이 없는건지.. 살펴볼 것.
         $route.reload();
     });
 
@@ -59,22 +58,37 @@ angular.module('V164Ctrl',['ngGrid'])
         //화면의 자동계산 되는 로직은 아래에 정의된 데로 실행된다.
 
     $scope.calc = function(){
-/*
-        $scope.mg.ELEC_TOT_SALES_CNT = Number($scope.mg.ELEC_BUS_SALES_CNT) + Number($scope.mg.ELEC_PSN_SALES_CNT);
-        $scope.mg.ELEC_TOT_SALES_QTY = Number($scope.mg.ELEC_BUS_SALES_QTY) + Number($scope.mg.ELEC_PSN_SALES_QTY);
-        $scope.mg.ELEC_TOT_SALES_ACT_AMT = Number($scope.mg.ELEC_BUS_SALES_ACT_AMT) + Number($scope.mg.ELEC_PSN_SALES_ACT_AMT);
-        $scope.mg.ELEC_TOT_SALES_TAX_AMT = Number($scope.mg.ELEC_BUS_SALES_TAX_AMT) + Number($scope.mg.ELEC_PSN_SALES_TAX_AMT);
+        $scope.mg.GE_TOTAL_COUNT = Number($scope.mg.GE_CASH_COUNT) + Number($scope.mg.GE_DRIVER_COUNT)
+        + Number($scope.mg.GE_BUSINESS_CARD_COUNT) + Number($scope.mg.GE_CARD_COUNT);
+        $scope.mg.GE_TOTAL_AMOUNT = Number($scope.mg.GE_CASH_AMOUNT_TOTAL) + Number($scope.mg.GE_DRIVER_AMOUNT_TOTAL)
+        + Number($scope.mg.GE_BUSINESS_CARD_AMOUNT_TOTAL) + Number($scope.mg.GE_CARD_AMOUNT_TOTAL);
+        $scope.mg.GE_TOTAL_TAX = Number($scope.mg.GE_CASH_TAX_TOTAL) + Number($scope.mg.GE_DRIVER_TAX_TOTAL)
+        + Number($scope.mg.GE_BUSINESS_CARD_TAX_TOTAL) + Number($scope.mg.GE_CARD_TAX_TOTAL);
 
-        $scope.mg.NON_ELEC_TOT_SALES_CNT = Number($scope.mg.NON_ELEC_BUS_SALES_CNT) + Number($scope.mg.NON_ELEC_PSN_SALES_CNT);
-        $scope.mg.NON_ELEC_TOT_SALES_QTY = Number($scope.mg.NON_ELEC_BUS_SALES_QTY) + Number($scope.mg.NON_ELEC_PSN_SALES_QTY);
-        $scope.mg.NON_ELEC_TOT_SALES_ACT_AMT = Number($scope.mg.NON_ELEC_BUS_SALES_ACT_AMT) + Number($scope.mg.NON_ELEC_PSN_SALES_ACT_AMT);
-        $scope.mg.NON_ELEC_TOT_SALES_TAX_AMT = Number($scope.mg.NON_ELEC_BUS_SALES_TAX_AMT) + Number($scope.mg.NON_ELEC_PSN_SALES_TAX_AMT);
+        $scope.mg.FA_TOTAL_COUNT = Number($scope.mg.FA_CASH_COUNT) + Number($scope.mg.FA_DRIVER_COUNT)
+        + Number($scope.mg.FA_BUSINESS_CARD_COUNT) + Number($scope.mg.FA_CARD_COUNT);
+        $scope.mg.FA_TOTAL_AMOUNT = Number($scope.mg.FA_CASH_AMOUNT_TOTAL) + Number($scope.mg.FA_DRIVER_AMOUNT_TOTAL)
+        + Number($scope.mg.FA_BUSINESS_CARD_AMOUNT_TOTAL) + Number($scope.mg.FA_CARD_AMOUNT_TOTAL);
+        $scope.mg.FA_TOTAL_TAX = Number($scope.mg.FA_CASH_TAX_TOTAL) + Number($scope.mg.FA_DRIVER_TAX_TOTAL)
+        + Number($scope.mg.FA_BUSINESS_CARD_TAX_TOTAL) + Number($scope.mg.FA_CARD_TAX_TOTAL);
 
-        $scope.mg.TOTAL_SALES_CNT = Number($scope.mg.ELEC_TOT_SALES_CNT) + Number($scope.mg.NON_ELEC_TOT_SALES_CNT);
-        $scope.mg.TOTAL_SALES_QTY = Number($scope.mg.ELEC_TOT_SALES_QTY) + Number($scope.mg.NON_ELEC_TOT_SALES_QTY);
-        $scope.mg.TOTAL_SALES_ACT_AMT = Number($scope.mg.ELEC_TOT_SALES_ACT_AMT) + Number($scope.mg.NON_ELEC_TOT_SALES_ACT_AMT);
-        $scope.mg.TOTAL_SALES_TAX_AMT = Number($scope.mg.ELEC_TOT_SALES_TAX_AMT) + Number($scope.mg.NON_ELEC_TOT_SALES_TAX_AMT);
-*/
+        $scope.mg.TOTAL_COUNT = Number($scope.mg.GE_TOTAL_COUNT) + Number($scope.mg.FA_TOTAL_COUNT);
+        $scope.mg.TOTAL_AMOUNT = Number($scope.mg.GE_TOTAL_AMOUNT) + Number($scope.mg.FA_TOTAL_AMOUNT);
+        $scope.mg.TOTAL_TAX = Number($scope.mg.GE_TOTAL_TAX) + Number($scope.mg.FA_TOTAL_TAX);
+
+        $scope.mg.CASH_COUNT = Number($scope.mg.GE_CASH_COUNT) + Number($scope.mg.FA_CASH_COUNT);
+        $scope.mg.CASH_AMOUNT_TOTAL = Number($scope.mg.GE_CASH_AMOUNT_TOTAL) + Number($scope.mg.FA_CASH_AMOUNT_TOTAL);
+        $scope.mg.CASH_TAX_TOTAL = Number($scope.mg.GE_CASH_TAX_TOTAL) + Number($scope.mg.FA_CASH_TAX_TOTAL);
+        $scope.mg.DRIVER_COUNT = Number($scope.mg.GE_DRIVER_COUNT) + Number($scope.mg.FA_DRIVER_COUNT);
+        $scope.mg.DRIVER_AMOUNT_TOTAL = Number($scope.mg.GE_DRIVER_AMOUNT_TOTAL) + Number($scope.mg.FA_DRIVER_AMOUNT_TOTAL);
+        $scope.mg.DRIVER_TAX_TOTAL = Number($scope.mg.GE_DRIVER_TAX_TOTAL) + Number($scope.mg.FA_DRIVER_TAX_TOTAL);
+        $scope.mg.BUSINESS_CARD_COUNT = Number($scope.mg.GE_BUSINESS_CARD_COUNT) + Number($scope.mg.FA_BUSINESS_CARD_COUNT);
+        $scope.mg.BUSINESS_CARD_AMOUNT_TOTAL = Number($scope.mg.GE_BUSINESS_CARD_AMOUNT_TOTAL) + Number($scope.mg.FA_BUSINESS_CARD_AMOUNT_TOTAL);
+        $scope.mg.BUSINESS_CARD_TAX_TOTAL = Number($scope.mg.GE_BUSINESS_CARD_TAX_TOTAL) + Number($scope.mg.FA_BUSINESS_CARD_TAX_TOTAL);
+        $scope.mg.CARD_COUNT = Number($scope.mg.GE_CARD_COUNT) + Number($scope.mg.FA_CARD_COUNT);
+        $scope.mg.CARD_AMOUNT_TOTAL = Number($scope.mg.GE_CARD_AMOUNT_TOTAL) + Number($scope.mg.FA_CARD_AMOUNT_TOTAL);
+        $scope.mg.CARD_TAX_TOTAL = Number($scope.mg.GE_CARD_TAX_TOTAL) + Number($scope.mg.FA_CARD_TAX_TOTAL);
+
     };
 
 
@@ -179,7 +193,7 @@ angular.module('V164Ctrl',['ngGrid'])
     };
 
     $scope.getExcel = function(){
-
+        $scope.calc(); //재계산
         //먼저 데이터를 자동으로 저장하고, 진행할 것.
         VATService.update($scope.constants.VATNO,$scope.mg,function(err,data){
 

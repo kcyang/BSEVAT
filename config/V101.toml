@@ -42,6 +42,10 @@ schema = [
 ["PR_TAX_ETC_TAX","Number"],        #매입세액_그밖의공제매입세액 세액
 ["PR_TAX_TOT_AMT","Number"],        #매입세액_합계 금액
 ["PR_TAX_TOT_TAX","Number"],        #매입세액_합계 세액
+
+["PR_TAX_BADGONJE_TOT_AMT","Number"],        #매입세액_공제받지못할매입세액금액
+["PR_TAX_BADGONJE_TOT_TAX","Number"],        #매입세액_공제받지못할매입세액세액
+
 ["PR_TAX_CALC_AMT","Number"],       #매입세액_차감계 금액
 ["PR_TAX_CALC_TAX","Number"],       #매입세액_차감계 세액
 ["NAPBU_TAX","Number"],             #납부세액

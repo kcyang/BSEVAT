@@ -50,7 +50,6 @@ angular.module('V112Ctrl',['ngGrid'])
         //VAT / 상위 값들이 바뀌었을 때 //
         // 값에 자료를 다시 불러와야 함.
         $log.info('값이 바뀌었습니다.');
-        //$location.path('/V117');  //#TODO 반응이 없는건지.. 살펴볼 것.
         $route.reload();
     });
 
@@ -61,20 +60,23 @@ angular.module('V112Ctrl',['ngGrid'])
 
     $scope.calc = function(){
 
-        $scope.mg.ELEC_TOT_SALES_CNT = Number($scope.mg.ELEC_BUS_SALES_CNT) + Number($scope.mg.ELEC_PSN_SALES_CNT);
-        $scope.mg.ELEC_TOT_SALES_QTY = Number($scope.mg.ELEC_BUS_SALES_QTY) + Number($scope.mg.ELEC_PSN_SALES_QTY);
-        $scope.mg.ELEC_TOT_SALES_ACT_AMT = Number($scope.mg.ELEC_BUS_SALES_ACT_AMT) + Number($scope.mg.ELEC_PSN_SALES_ACT_AMT);
-        $scope.mg.ELEC_TOT_SALES_TAX_AMT = Number($scope.mg.ELEC_BUS_SALES_TAX_AMT) + Number($scope.mg.ELEC_PSN_SALES_TAX_AMT);
+        $scope.mg.DS_REPAY_TAX_1 = (Number($scope.mg.DS_REPAY_AMT_1)/110)*10;
+        $scope.mg.DS_REPAY_TAX_2 = (Number($scope.mg.DS_REPAY_AMT_2)/110)*10;
+        $scope.mg.DS_REPAY_TAX_3 = (Number($scope.mg.DS_REPAY_AMT_3)/110)*10;
+        $scope.mg.DS_REPAY_TAX_4 = (Number($scope.mg.DS_REPAY_AMT_4)/110)*10;
+        $scope.mg.DS_REPAY_TAX_5 = (Number($scope.mg.DS_REPAY_AMT_5)/110)*10;
 
-        $scope.mg.NON_ELEC_TOT_SALES_CNT = Number($scope.mg.NON_ELEC_BUS_SALES_CNT) + Number($scope.mg.NON_ELEC_PSN_SALES_CNT);
-        $scope.mg.NON_ELEC_TOT_SALES_QTY = Number($scope.mg.NON_ELEC_BUS_SALES_QTY) + Number($scope.mg.NON_ELEC_PSN_SALES_QTY);
-        $scope.mg.NON_ELEC_TOT_SALES_ACT_AMT = Number($scope.mg.NON_ELEC_BUS_SALES_ACT_AMT) + Number($scope.mg.NON_ELEC_PSN_SALES_ACT_AMT);
-        $scope.mg.NON_ELEC_TOT_SALES_TAX_AMT = Number($scope.mg.NON_ELEC_BUS_SALES_TAX_AMT) + Number($scope.mg.NON_ELEC_PSN_SALES_TAX_AMT);
+        $scope.mg.BJ_REPAY_TAX_1 = (Number($scope.mg.BJ_REPAY_AMT_1)/110)*10;
+        $scope.mg.BJ_REPAY_TAX_2 = (Number($scope.mg.BJ_REPAY_AMT_2)/110)*10;
+        $scope.mg.BJ_REPAY_TAX_3 = (Number($scope.mg.BJ_REPAY_AMT_3)/110)*10;
+        $scope.mg.BJ_REPAY_TAX_4 = (Number($scope.mg.BJ_REPAY_AMT_4)/110)*10;
+        $scope.mg.BJ_REPAY_TAX_5 = (Number($scope.mg.BJ_REPAY_AMT_5)/110)*10;
 
-        $scope.mg.TOTAL_SALES_CNT = Number($scope.mg.ELEC_TOT_SALES_CNT) + Number($scope.mg.NON_ELEC_TOT_SALES_CNT);
-        $scope.mg.TOTAL_SALES_QTY = Number($scope.mg.ELEC_TOT_SALES_QTY) + Number($scope.mg.NON_ELEC_TOT_SALES_QTY);
-        $scope.mg.TOTAL_SALES_ACT_AMT = Number($scope.mg.ELEC_TOT_SALES_ACT_AMT) + Number($scope.mg.NON_ELEC_TOT_SALES_ACT_AMT);
-        $scope.mg.TOTAL_SALES_TAX_AMT = Number($scope.mg.ELEC_TOT_SALES_TAX_AMT) + Number($scope.mg.NON_ELEC_TOT_SALES_TAX_AMT);
+        $scope.mg.DS_REPAY_AMT_TOTAL = Number($scope.mg.DS_REPAY_AMT_1)+Number($scope.mg.DS_REPAY_AMT_2)+Number($scope.mg.DS_REPAY_AMT_3)+Number($scope.mg.DS_REPAY_AMT_4)+Number($scope.mg.DS_REPAY_AMT_5);
+        $scope.mg.DS_REPAY_TAX_TOTAL = Number($scope.mg.DS_REPAY_TAX_1)+Number($scope.mg.DS_REPAY_TAX_2)+Number($scope.mg.DS_REPAY_TAX_3)+Number($scope.mg.DS_REPAY_TAX_4)+Number($scope.mg.DS_REPAY_TAX_5);
+        $scope.mg.BJ_REPAY_AMT_TOTAL = Number($scope.mg.BJ_REPAY_AMT_1)+Number($scope.mg.BJ_REPAY_AMT_2)+Number($scope.mg.BJ_REPAY_AMT_3)+Number($scope.mg.BJ_REPAY_AMT_4)+Number($scope.mg.BJ_REPAY_AMT_5);
+        $scope.mg.BJ_REPAY_TAX_TOTAL = Number($scope.mg.BJ_REPAY_TAX_1)+Number($scope.mg.BJ_REPAY_TAX_2)+Number($scope.mg.BJ_REPAY_TAX_3)+Number($scope.mg.BJ_REPAY_TAX_4)+Number($scope.mg.BJ_REPAY_TAX_5);
+
     };
 
 
@@ -93,6 +95,7 @@ angular.module('V112Ctrl',['ngGrid'])
             if(data === 'null'){
                 $scope.status = 'Warning';
                 $scope.alertmessage = '해당 자료가 없습니다. 자료 불러오기를 눌러서 새로 생성하시거나, 다른 기수를 조회하세요.';
+                $scope.createDocument();
             }else{
                 $scope.status = 'Ok';
                 $scope.alertmessage = '성공적으로 데이터를 가져왔습니다.! 자료를 검토하세요.';
@@ -112,6 +115,7 @@ angular.module('V112Ctrl',['ngGrid'])
     // 웹 화면에서 이벤트가 발생했을 때, 할 일을 아래에 정의한다.
 
     //#자료불러오기 버튼을 눌렀을 때 실행되는 function.
+
     $scope.createDocument = function(){
 
         if($scope.constants.EMPTY === 'false'){
@@ -131,7 +135,7 @@ angular.module('V112Ctrl',['ngGrid'])
                     $log.error(data);
                 }else{
                     $scope.status = 'Ok';
-                    $scope.alertmessage = '성공적으로 생성되었습니다.!';
+                    $scope.alertmessage = '데이터를 입력하세요.!';
                     $scope.constants.EMPTY = 'false';
 
                     $scope.mg = data;
@@ -146,8 +150,8 @@ angular.module('V112Ctrl',['ngGrid'])
         }
 
     };
-/**
- * 저장하기 기능은 필요없음.
+
+
     //#저장하기 버튼을 눌렀을 때 실행되는 function. #T*ODO @2014-10-14 저장기능 구현. DONE
     $scope.saveDocument = function(){
 
@@ -160,13 +164,14 @@ angular.module('V112Ctrl',['ngGrid'])
                 $scope.alertmessage = '저장하지 못했습니다. 관리자에게 문의하세요!';
                 return;
             }
+
             $log.info('총 %s 건이 저장되었습니다',data);
             $scope.status = 'Ok';
             $scope.alertmessage = '성공적으로 저장되었습니다.!';
         });
 
     };
-*/
+
     //#다시 작성하기 버튼을 눌렀을 때 실행되는 function. #T*ODO @2014-10-14 다시 불러오기 기능 구현. DONE
     $scope.getDocument = function(){
 
@@ -207,47 +212,13 @@ angular.module('V112Ctrl',['ngGrid'])
                  * Excel File 을 저장하는 곳, type 을 Excel 로 지정하여 저장합니다.
                  *
                  */
-                saveAs(new Blob([data],{type:"application/vnd.ms-excel;charset=euc-kr"}), "신용카드매출전표 등 발행금액 집계표.xlsx");
+                saveAs(new Blob([data],{type:"application/vnd.ms-excel;charset=euc-kr"}), "대손세액공제신고서.xlsx");
 
                 $scope.status = 'Ok';
                 $scope.alertmessage = '성공적으로 Excel 을 저장 했습니다.!';
 
             });
-
         });
-
-
     };
-
-    /**
-     * ngGrid Sample.
-     *
-     */
-/*
-    $scope.myData = [
-        {name: "양양", age: 40},
-        {name: "오오", age: 41},
-        {name: "Chris", age: 30}
-    ];
-*/
-    $scope.gridOptions = {
-        data: 'myData',
-        multiSelect : false,
-        enableRowSelection : false,
-        showSelectionCheckbox : false,
-        showFooter: false,
-        columnDefs: [
-            {field:'NON_ELEC_BUS_NO', displayName:'사업자등록번호'},
-            {field:'NON_ELEC_BUS_NAME', displayName:'상호(법인명)'},
-            {field:'NON_ELEC_QTY', displayName:'매수',cellFilter:'number', cellClass:'price'},
-            {field:'NON_ELEC_ACT_AMT', displayName:'공급가액',cellFilter:'number:0', cellClass:'price'},
-            {field:'NON_ELEC_TAX_AMT', displayName:'세액', cellFilter:'number:0', cellClass:'price'}
-        ]
-    };
-        /*
-        * multiSelect : false
-        * pinnable : false
-        * resizable : false
-        * */
 
 });

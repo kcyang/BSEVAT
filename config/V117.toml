@@ -25,6 +25,7 @@ schema = [
     ["SVC_TOTAL_AMOUNT","Number"],   #발행금액합계_봉사료(사용자입력)
     ["SVC_CARD_AMOUNT","Number"],    #신용카등등발행금액_봉사료(사용자입력)
     ["SVC_CASH_AMOUNT","Number"],    #현금영수증발행금액_봉사료(사용자입력)
+
     ["TAX_BILL_AMOUNT","Number"],    #세금계산서교부금액(집계표) (사용자입력)
     ["BILL_AMOUNT","Number"]         #계산서교부금액(집계표) (사용자입력)
 
@@ -39,7 +40,8 @@ calc = [
 # V164 (신용카드매출전표등 수령금액 합계표)에서 사용 할 MSSQL 컬럼명을 입력합니다.
 Entries = [
 "BSE_VAT Category Code",
-"BSE_Editable Tot Total Amount"
+"BSE_Editable Tot Total Amount",
+"BSE_Payment Credit Card"
 ]
 
 # NAV 쿼리를위한 조건을 입력합니다.

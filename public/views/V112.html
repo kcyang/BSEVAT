@@ -8,9 +8,9 @@
             </a>
         </div>
         <div class="col-xs-11">
-            <a ng-click="createDocument()">
-                <button class="btn btn-warning" type="button">
-                    <span class="glyphicon glyphicon-download-alt"> 자료불러오기</span>
+            <a ng-click="saveDocument()">
+                <button class="btn btn-primary" type="button">
+                    <span class="glyphicon glyphicon-floppy-saved"> 저장하기</span>
                 </button>
             </a>
             <a target="_self" ng-click="getExcel()">
@@ -29,7 +29,8 @@
         <div class="page-header text-center">
             <p class="text-primary lead">대손세액공제(변제)신고서</p>
         </div>
-
+        <div ng-class="alert_class[status]" ng-bind="alertmessage"></div>
+<!--
         <p>1. 사업자</p>
 
         <div class="row">
@@ -58,6 +59,7 @@
                 </tbody>
             </table>
         </div>
+//-->
         <p>2. 대손세액 계산신고 내용</p>
         <div class="row">
             <table class="table">
@@ -79,6 +81,162 @@
                         <th>등록번호</th>
                     </tr>
 
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.DS_REPAY_DATE_1">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.DS_REPAY_AMT_1" ui-number-mask="0"/>
+                    </td>
+                    <td>
+                        10/100
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.DS_REPAY_TAX_1" ui-number-mask="0"/>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.DS_RGST_NAME_1">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.DS_REPRE_NAME_1">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.DS_RGST_NO_1">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.DS_REMARK_1">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.DS_REPAY_DATE_2">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.DS_REPAY_AMT_2" ui-number-mask="0"/>
+                    </td>
+                    <td>
+                        10/110
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.DS_REPAY_TAX_2" ui-number-mask="0"/>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.DS_RGST_NAME_2">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.DS_REPRE_NAME_2">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.DS_RGST_NO_2">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.DS_REMARK_2">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.DS_REPAY_DATE_3">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.DS_REPAY_AMT_3" ui-number-mask="0"/>
+                    </td>
+                    <td>
+                        10/110
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.DS_REPAY_TAX_3" ui-number-mask="0"/>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.DS_RGST_NAME_3">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.DS_REPRE_NAME_3">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.DS_RGST_NO_3">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.DS_REMARK_3">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.DS_REPAY_DATE_4">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.DS_REPAY_AMT_4" ui-number-mask="0"/>
+                    </td>
+                    <td>
+                        10/110
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.DS_REPAY_TAX_4" ui-number-mask="0"/>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.DS_RGST_NAME_4">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.DS_REPRE_NAME_4">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.DS_RGST_NO_4">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.DS_REMARK_4">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.DS_REPAY_DATE_5">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.DS_REPAY_AMT_5" ui-number-mask="0"/>
+                    </td>
+                    <td>
+                        10/110
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.DS_REPAY_TAX_5" ui-number-mask="0"/>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.DS_RGST_NAME_5">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.DS_REPRE_NAME_5">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.DS_RGST_NO_5">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.DS_REMARK_5">
+                    </td>
+                </tr>
+                </tbody>
+                <thead>
+                <tr>
+                    <td>
+                        합 계
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm text-right" ng-model="mg.DS_REPAY_AMT_TOTAL" readonly ui-number-mask="0"/>
+                    </td>
+                    <td>
+                        10/110
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm text-right" ng-model="mg.DS_REPAY_TAX_TOTAL" readonly ui-number-mask="0"/>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
                 </thead>
             </table>
         </div>
@@ -104,6 +262,162 @@
                     <th>등록번호</th>
                 </tr>
 
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.BJ_REPAY_DATE_1">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.BJ_REPAY_AMT_1" ui-number-mask="0"/>
+                    </td>
+                    <td>
+                        10/110
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.BJ_REPAY_TAX_1" ui-number-mask="0"/>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.BJ_RGST_NAME_1">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.BJ_REPRE_NAME_1">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.BJ_RGST_NO_1">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.BJ_REMARK_1">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.BJ_REPAY_DATE_2">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.BJ_REPAY_AMT_2" ui-number-mask="0"/>
+                    </td>
+                    <td>
+                        10/110
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.BJ_REPAY_TAX_2" ui-number-mask="0"/>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.BJ_RGST_NAME_2">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.BJ_REPRE_NAME_2">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.BJ_RGST_NO_2">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.BJ_REMARK_2">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.BJ_REPAY_DATE_3">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.BJ_REPAY_AMT_3" ui-number-mask="0"/>
+                    </td>
+                    <td>
+                        10/110
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.BJ_REPAY_TAX_3" ui-number-mask="0"/>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.BJ_RGST_NAME_3">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.BJ_REPRE_NAME_3">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.BJ_RGST_NO_3">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.BJ_REMARK_3">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.BJ_REPAY_DATE_4">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.BJ_REPAY_AMT_4" ui-number-mask="0"/>
+                    </td>
+                    <td>
+                        10/110
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.BJ_REPAY_TAX_4" ui-number-mask="0"/>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.BJ_RGST_NAME_4">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.BJ_REPRE_NAME_4">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.BJ_RGST_NO_4">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.BJ_REMARK_4">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.BJ_REPAY_DATE_5">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.BJ_REPAY_AMT_5" ui-number-mask="0"/>
+                    </td>
+                    <td>
+                        10/110
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.BJ_REPAY_TAX_5" ui-number-mask="0"/>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.BJ_RGST_NAME_5">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.BJ_REPRE_NAME_5">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.BJ_RGST_NO_5">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="mg.BJ_REMARK_5">
+                    </td>
+                </tr>
+                </tbody>
+                <thead>
+                <tr>
+                    <td>
+                        합 계
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm text-right" ng-model="mg.BJ_REPAY_AMT_TOTAL" readonly ui-number-mask="0"/>
+                    </td>
+                    <td>
+                        10/110
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm text-right" ng-model="mg.BJ_REPAY_TAX_TOTAL" readonly ui-number-mask="0"/>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
                 </thead>
             </table>
         </div>

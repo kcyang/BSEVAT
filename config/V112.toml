@@ -12,22 +12,95 @@ schema = [
 
     ["REPAY_AMT_TOT","Number"],      #금액 합계
     ["REPAY_TAX_TOT","Number"],      #세액 합계
-    ["D1_REPAY_AMT_TOT","Number"],   #대손금액 합계
-    ["D1_REPAY_TAX_TOT","Number"],   #대손세액 합계
-    ["D2_REPAY_AMT_TOT","Number"],   #변제금액 합계
-    ["D2_REPAY_TAX_TOT","Number"],   #변제세액 합계
     ["REPAY_CD","String"],           #대손구분(D1:대손발생,D2:대손변제)
-    ["SEQN","Number"],               #일련번호
-    ["REPAY_DATE","String"],         #일자
-    ["REPAY_AMT","Number"],          #금액
-    ["DC_RATE","String"],            #공제율
-    ["REPAY_TAX","Number"],          #세액
-    ["RGST_NAME","String"],          #법인명(상호)
-    ["REPRE_NAME","String"],         #성명(대표자명)
-    ["RGST_NO","String"],            #등록번호(사업자번호 Or 주민번호)
-    ["REMARK","String"],             #사유
-    ["RGST_TYPE,"String"]            #등록번호 구분(C:사업자번호 Or P:주민등록번호)
 
+    ["DS_REPAY_DATE_1","String"],         #일자
+    ["DS_REPAY_AMT_1","Number"],          #금액
+    ["DS_DC_RATE_1","String"],            #공제율
+    ["DS_REPAY_TAX_1","Number"],          #세액
+    ["DS_RGST_NAME_1","String"],          #법인명(상호)
+    ["DS_REPRE_NAME_1","String"],         #성명(대표자명)
+    ["DS_RGST_NO_1","String"],            #등록번호(사업자번호 Or 주민번호)
+    ["DS_REMARK_1","String"],             #사유
+    ["DS_REPAY_DATE_2","String"],         #일자
+    ["DS_REPAY_AMT_2","Number"],          #금액
+    ["DS_DC_RATE_2","String"],            #공제율
+    ["DS_REPAY_TAX_2","Number"],          #세액
+    ["DS_RGST_NAME_2","String"],          #법인명(상호)
+    ["DS_REPRE_NAME_2","String"],         #성명(대표자명)
+    ["DS_RGST_NO_2","String"],            #등록번호(사업자번호 Or 주민번호)
+    ["DS_REMARK_2","String"],             #사유
+    ["DS_REPAY_DATE_3","String"],         #일자
+    ["DS_REPAY_AMT_3","Number"],          #금액
+    ["DS_DC_RATE_3","String"],            #공제율
+    ["DS_REPAY_TAX_3","Number"],          #세액
+    ["DS_RGST_NAME_3","String"],          #법인명(상호)
+    ["DS_REPRE_NAME_3","String"],         #성명(대표자명)
+    ["DS_RGST_NO_3","String"],            #등록번호(사업자번호 Or 주민번호)
+    ["DS_REMARK_3","String"],             #사유
+    ["DS_REPAY_DATE_4","String"],         #일자
+    ["DS_REPAY_AMT_4","Number"],          #금액
+    ["DS_DC_RATE_4","String"],            #공제율
+    ["DS_REPAY_TAX_4","Number"],          #세액
+    ["DS_RGST_NAME_4","String"],          #법인명(상호)
+    ["DS_REPRE_NAME_4","String"],         #성명(대표자명)
+    ["DS_RGST_NO_4","String"],            #등록번호(사업자번호 Or 주민번호)
+    ["DS_REMARK_4","String"],             #사유
+    ["DS_REPAY_DATE_5","String"],         #일자
+    ["DS_REPAY_AMT_5","Number"],          #금액
+    ["DS_DC_RATE_5","String"],            #공제율
+    ["DS_REPAY_TAX_5","Number"],          #세액
+    ["DS_RGST_NAME_5","String"],          #법인명(상호)
+    ["DS_REPRE_NAME_5","String"],         #성명(대표자명)
+    ["DS_RGST_NO_5","String"],            #등록번호(사업자번호 Or 주민번호)
+    ["DS_REMARK_5","String"],             #사유
+
+    ["DS_REPAY_AMT_TOTAL","Number"],   #대손금액 합계
+    ["DS_REPAY_TAX_TOTAL","Number"],   #대손세액 합계
+    ["BJ_REPAY_AMT_TOTAL","Number"],   #변제금액 합계
+    ["BJ_REPAY_TAX_TOTAL","Number"],   #변제세액 합계
+
+
+    ["BJ_REPAY_DATE_1","String"],         #일자
+    ["BJ_REPAY_AMT_1","Number"],          #금액
+    ["BJ_DC_RATE_1","String"],            #공제율
+    ["BJ_REPAY_TAX_1","Number"],          #세액
+    ["BJ_RGST_NAME_1","String"],          #법인명(상호)
+    ["BJ_REPRE_NAME_1","String"],         #성명(대표자명)
+    ["BJ_RGST_NO_1","String"],            #등록번호(사업자번호 Or 주민번호)
+    ["BJ_REMARK_1","String"],             #사유
+    ["BJ_REPAY_DATE_2","String"],         #일자
+    ["BJ_REPAY_AMT_2","Number"],          #금액
+    ["BJ_DC_RATE_2","String"],            #공제율
+    ["BJ_REPAY_TAX_2","Number"],          #세액
+    ["BJ_RGST_NAME_2","String"],          #법인명(상호)
+    ["BJ_REPRE_NAME_2","String"],         #성명(대표자명)
+    ["BJ_RGST_NO_2","String"],            #등록번호(사업자번호 Or 주민번호)
+    ["BJ_REMARK_2","String"],             #사유
+    ["BJ_REPAY_DATE_3","String"],         #일자
+    ["BJ_REPAY_AMT_3","Number"],          #금액
+    ["BJ_DC_RATE_3","String"],            #공제율
+    ["BJ_REPAY_TAX_3","Number"],          #세액
+    ["BJ_RGST_NAME_3","String"],          #법인명(상호)
+    ["BJ_REPRE_NAME_3","String"],         #성명(대표자명)
+    ["BJ_RGST_NO_3","String"],            #등록번호(사업자번호 Or 주민번호)
+    ["BJ_REMARK_3","String"],             #사유
+    ["BJ_REPAY_DATE_4","String"],         #일자
+    ["BJ_REPAY_AMT_4","Number"],          #금액
+    ["BJ_DC_RATE_4","String"],            #공제율
+    ["BJ_REPAY_TAX_4","Number"],          #세액
+    ["BJ_RGST_NAME_4","String"],          #법인명(상호)
+    ["BJ_REPRE_NAME_4","String"],         #성명(대표자명)
+    ["BJ_RGST_NO_4","String"],            #등록번호(사업자번호 Or 주민번호)
+    ["BJ_REMARK_4","String"],             #사유
+    ["BJ_REPAY_DATE_5","String"],         #일자
+    ["BJ_REPAY_AMT_5","Number"],          #금액
+    ["BJ_DC_RATE_5","String"],            #공제율
+    ["BJ_REPAY_TAX_5","Number"],          #세액
+    ["BJ_RGST_NAME_5","String"],          #법인명(상호)
+    ["BJ_REPRE_NAME_5","String"],         #성명(대표자명)
+    ["BJ_RGST_NO_5","String"],            #등록번호(사업자번호 Or 주민번호)
+    ["BJ_REMARK_5","String"],             #사유
 ]
 
 # 화면상의 계산 식을 위한 공간 / 자동화 하기 위해 고민이 필요함.
@@ -38,23 +111,17 @@ calc = [
 # MSSQL의 NAV Table DocumentVATEntry 에서 가져올 대상을 지정합니다. (SQL 컬럼명을 지정합니다.)
 # V112 (대손세액공제(변제)신고서)에서 사용 할 MSSQL 컬럼명을 입력합니다.
 Entries = [
-"BSE_VAT Category Code",
-"BSE_Pay_Bill CorpIndv Type",
-"BSE_ETAX Complete issue",
-"BSE_Editable Tot Total Amount",
-"BSE_Editable Tot VAT Amount",
-"BSE_VAT Registration No_",
 "BSE_VAT Name"
 ]
 
 # NAV 쿼리를위한 조건을 입력합니다.
-[[V112.Condition]]
-key = "BSE_VAT Type"
-value = "1"
-value_type = "Integer"
+#[[V112.Condition]]
+#key = "BSE_VAT Type"
+#value = "1"
+#value_type = "Integer"
 
-[[V112.Sub]]
-key = "BSE_VAT Category Code"
-query = "SELECT [BSE_Category Code]
-         FROM [#Company$B_VAT Category]
-         WHERE [BSE_VAT Total Report] = 1"
+#[[V112.Sub]]
+#key = "BSE_VAT Category Code"
+#query = "SELECT [BSE_Category Code]
+#         FROM [#Company$B_VAT Category]
+#         WHERE [BSE_VAT Total Report] = 1"

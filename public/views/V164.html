@@ -35,7 +35,7 @@
 
         <p>1. 제출자 인적사항</p>
         <p></p>
-
+<!--
         <div class="row">
             <table class="table">
                 <tbody>
@@ -62,7 +62,7 @@
                 </tbody>
             </table>
         </div>
-
+//-->
         <p>2. 신용카드매출전표 등 발행금액 현황</p>
         <p></p>
 
@@ -72,8 +72,15 @@
                 <style>
                     th {text-align : center;}
                 </style>
+                <tr>
+                    <th rowspan="2">구  분</th>
+                    <th colspan="3">일반매입</th>
+                    <th colspan="3">고정자산</th>
+                </tr>
                     <tr>
-                        <th>구  분</th>
+                        <th>거래건수</th>
+                        <th>공급가액</th>
+                        <th>세 액</th>
                         <th>거래건수</th>
                         <th>공급가액</th>
                         <th>세 액</th>
@@ -83,61 +90,112 @@
                     <tr>
                         <td>(5) 합  계</td>
                         <td>
-                            <input type="text" class="form-control input-sm text-right" ng-model="mg.TOTAL_COUNT" readonly ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-model="mg.GE_TOTAL_COUNT" readonly ui-number-mask="0"/>
                         </td>
                         <td>
-                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.TOTAL_AMOUNT" readonly ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-model="mg.GE_TOTAL_AMOUNT" readonly ui-number-mask="0"/>
                         </td>
                         <td>
-                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.TOTAL_TAX" readonly ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-model="mg.GE_TOTAL_TAX" readonly ui-number-mask="0"/>
                         </td>
+
+                        <td>
+                            <input type="text" class="form-control input-sm text-right" ng-model="mg.FA_TOTAL_COUNT" readonly ui-number-mask="0"/>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control input-sm text-right" ng-model="mg.FA_TOTAL_AMOUNT" readonly ui-number-mask="0"/>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control input-sm text-right" ng-model="mg.FA_TOTAL_TAX" readonly ui-number-mask="0"/>
+                        </td>
+
                     </tr>
                     <tr>
                         <td>(6) 현금영수증</td>
                         <td>
-                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.CASH_COUNT" readonly ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.GE_CASH_COUNT" readonly ui-number-mask="0"/>
                         </td>
                         <td>
-                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.CASH_AMOUNT_TOTAL" readonly ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.GE_CASH_AMOUNT_TOTAL" readonly ui-number-mask="0"/>
                         </td>
                         <td>
-                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.CASH_TAX_TOTAL" readonly ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.GE_CASH_TAX_TOTAL" readonly ui-number-mask="0"/>
+                        </td>
+
+                        <td>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.FA_CASH_COUNT" readonly ui-number-mask="0"/>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.FA_CASH_AMOUNT_TOTAL" readonly ui-number-mask="0"/>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.FA_CASH_TAX_TOTAL" readonly ui-number-mask="0"/>
                         </td>
                     </tr>
                     <tr>
                         <td>(7) 화물운전자복지카드</td>
                         <td>
-                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.DRIVER_COUNT" readonly ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.GE_DRIVER_COUNT" readonly ui-number-mask="0"/>
                         </td>
                         <td>
-                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.DRIVER_AMOUNT_TOTAL" readonly ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.GE_DRIVER_AMOUNT_TOTAL" readonly ui-number-mask="0"/>
                         </td>
                         <td>
-                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.DRIVER_TAX_TOTAL" readonly ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.GE_DRIVER_TAX_TOTAL" readonly ui-number-mask="0"/>
+                        </td>
+
+                        <td>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.FA_DRIVER_COUNT" readonly ui-number-mask="0"/>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.FA_DRIVER_AMOUNT_TOTAL" readonly ui-number-mask="0"/>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.FA_DRIVER_TAX_TOTAL" readonly ui-number-mask="0"/>
                         </td>
                     </tr>
                     <tr>
                         <td>(8) 사업용 신용카드</td>
                         <td>
-                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.BUSINESS_CARD_COUNT" readonly ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.GE_BUSINESS_CARD_COUNT" readonly ui-number-mask="0"/>
                         </td>
                         <td>
-                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.BUSINESS_CARD_AMOUNT_TOTAL" readonly ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.GE_BUSINESS_CARD_AMOUNT_TOTAL" readonly ui-number-mask="0"/>
                         </td>
                         <td>
-                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.BUSINESS_CARD_TAX_TOTAL" readonly ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.GE_BUSINESS_CARD_TAX_TOTAL" readonly ui-number-mask="0"/>
+                        </td>
+
+                        <td>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.FA_BUSINESS_CARD_COUNT" readonly ui-number-mask="0"/>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.FA_BUSINESS_CARD_AMOUNT_TOTAL" readonly ui-number-mask="0"/>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.FA_BUSINESS_CARD_TAX_TOTAL" readonly ui-number-mask="0"/>
                         </td>
                     </tr>
                     <tr>
                         <td>(9) 기타 신용카드</td>
                         <td>
-                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.CARD_COUNT" readonly ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.GE_CARD_COUNT" readonly ui-number-mask="0"/>
                         </td>
                         <td>
-                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.CARD_AMOUNT_TOTAL" readonly ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.GE_CARD_AMOUNT_TOTAL" readonly ui-number-mask="0"/>
                         </td>
                         <td>
-                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.CARD_TAX_TOTAL" readonly ui-number-mask="0"/>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.GE_CARD_TAX_TOTAL" readonly ui-number-mask="0"/>
+                        </td>
+
+                        <td>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.FA_CARD_COUNT" readonly ui-number-mask="0"/>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.FA_CARD_AMOUNT_TOTAL" readonly ui-number-mask="0"/>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control input-sm text-right" ng-change="calc()" ng-model="mg.FA_CARD_TAX_TOTAL" readonly ui-number-mask="0"/>
                         </td>
                     </tr>
                 </tbody>
@@ -147,13 +205,8 @@
         <p></p>
         <div class="row">
             <div class="gridStyle" ng-grid="gridOptions"></div>
-<!--
-            <button class="btn btn-warning" type="button" ng-click="addItem()">
-                <span class="glyphicon glyphicon-plus"></span>
-            </button>
-//-->
         </div>
-
+<!--
         <div class="row">
             <table class="table">
                 <thead>
@@ -193,3 +246,4 @@
                 <span class="glyphicon glyphicon-plus"></span>
             </button>
         </div>
+//-->

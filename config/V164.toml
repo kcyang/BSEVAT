@@ -13,6 +13,25 @@ schema = [
     ["TOTAL_COUNT","Number"],                   #합계 건수
     ["TOTAL_AMOUNT","Number"],                   #공급가액 합계
     ["TOTAL_TAX","Number"],                   #세액 합계
+
+    ["GE_TOTAL_COUNT","Number"],                   #합계 건수
+    ["GE_TOTAL_AMOUNT","Number"],                   #공급가액 합계
+    ["GE_TOTAL_TAX","Number"],                   #세액 합계
+
+    ["GE_CASH_COUNT","Number"],                   #현금영수증 건수
+    ["GE_CASH_AMOUNT_TOTAL","Number"],                   #현금영수증 공급가액 합계
+    ["GE_CASH_TAX_TOTAL","Number"],                   #현금영수증 세액 합계
+    ["GE_DRIVER_COUNT","Number"],                   #화물운전자복지카드 건수
+    ["GE_DRIVER_AMOUNT_TOTAL","Number"],                   #화물운전자복지카드 공급가액 합계
+    ["GE_DRIVER_TAX_TOTAL","Number"],                   #화물운전자복지카드 세액 합계
+    ["GE_BUSINESS_CARD_COUNT","Number"],                   #사업용신용카드 건수
+    ["GE_BUSINESS_CARD_AMOUNT_TOTAL","Number"],                   #사업용신용카드 공급가액 합계
+    ["GE_BUSINESS_CARD_TAX_TOTAL","Number"],                   #사업용신용카드 세액 합계
+    ["GE_CARD_COUNT","Number"],                   #기타 신용카드 건수
+    ["GE_CARD_AMOUNT_TOTAL","Number"],                   #기타 신용카드 공급가액 합계
+    ["GE_CARD_TAX_TOTAL","Number"],                   #기타 신용카드 세액 합계
+
+
     ["CASH_COUNT","Number"],                   #현금영수증 건수
     ["CASH_AMOUNT_TOTAL","Number"],                   #현금영수증 공급가액 합계
     ["CASH_TAX_TOTAL","Number"],                   #현금영수증 세액 합계
@@ -25,18 +44,27 @@ schema = [
     ["CARD_COUNT","Number"],                   #기타 신용카드 건수
     ["CARD_AMOUNT_TOTAL","Number"],                   #기타 신용카드 공급가액 합계
     ["CARD_TAX_TOTAL","Number"],                   #기타 신용카드 세액 합계
+
+    ["FA_TOTAL_COUNT","Number"],                   #합계 건수
+    ["FA_TOTAL_AMOUNT","Number"],                   #공급가액 합계
+    ["FA_TOTAL_TAX","Number"],                   #세액 합계
+
     ["FA_CASH_COUNT","Number"],                   #고정자산 현금영수증 건수
     ["FA_CASH_AMOUNT_TOTAL","Number"],                   #고정자산 현금영수증 공급가액 합계
     ["FA_CASH_TAX_TOTAL","Number"],                   #고정자산 현금영수증 세액 합계
+
     ["FA_DRIVER_COUNT","Number"],                   #고정자산 화물운전자복지카드 건수
     ["FA_DRIVER_AMOUNT_TOTAL","Number"],                   #고정자산 화물운전자복지카드 공급가액 합계
     ["FA_DRIVER_TAX_TOTAL","Number"],                   #고정자산 화물운전자복지카드 세액 합계
+
     ["FA_BUSINESS_CARD_COUNT","Number"],                   #고정자산 사업용신용카드 건수
     ["FA_BUSINESS_CARD_AMOUNT_TOTAL","Number"],                   #고정자산 사업용신용카드 공급가액 합계
     ["FA_BUSINESS_CARD_TAX_TOTAL","Number"],                   #고정자산 사업용신용카드 세액 합계
+
     ["FA_CARD_COUNT","Number"],                   #고정자산 기타 신용카드 건수
     ["FA_CARD_AMOUNT_TOTAL","Number"],                   #고정자산 기타 신용카드 공급가액 합계
     ["FA_CARD_TAX_TOTAL","Number"],                   #고정자산 기타 신용카드 세액 합계
+
     ["CARD_TYPE","String"],                   #카드구분
 
 
