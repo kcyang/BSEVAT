@@ -8,20 +8,12 @@
 'use strict';
 /* global angular */
 angular.module('V101Ctrl',[])
-    .controller('V101Controller',function($scope,$log,$window,VATService,$location,$route,ngDialog){
+    .controller('V101Controller',function($scope,$log,$window,VATService,$location,$route,$q,ngDialog){
 
         //# 상수정의.
         $scope.constants = {
             'VATNO' : 'V101',  //이 화면의 VAT 번호.
             'EMPTY' : 'true'
-        };
-
-        //대손세액공제 금액을 가져오기 위한 KEY
-        $scope.V112KEY = {
-            YEAR:$scope.VATROOTKEY[0].YEAR,
-            VATQT:$scope.VATROOTKEY[0].VATQT,
-            VATTYPE:$scope.VATROOTKEY[0].VATTYPE,
-            VATNO:'V112'
         };
 
         $scope.progressValue = 0;
@@ -145,6 +137,37 @@ angular.module('V101Ctrl',[])
             //예정신고누락분 - 매입 합계
             $scope.mg.BADSINGO_PURCH_TOT_AMT = Number($scope.mg.BADSINGO_PURCH_TAX_AMT) + Number($scope.mg.BADSINGO_PURCH_ETC_AMT);
             $scope.mg.BADSINGO_PURCH_TOT_TAX = Number($scope.mg.BADSINGO_PURCH_TAX_TAX) + Number($scope.mg.BADSINGO_PURCH_ETC_TAX);
+
+            //그밖의 공제매입세액 합계
+            $scope.mg.ETCGONJE_TOTAL_AMT = Number($scope.mg.ETCGONJE_CRD_GEN_AMT) + Number($scope.mg.ETCGONJE_CRD_FIXED_AMT)
+            + Number($scope.mg.ETCGONJE_EJ_PURCH_AMT) + Number($scope.mg.ETCGONJE_RECY_PURCH_AMT);
+            $scope.mg.ETCGONJE_TOTAL_TAX = Number($scope.mg.ETCGONJE_CRD_GEN_TAX) + Number($scope.mg.ETCGONJE_CRD_FIXED_TAX)
+            + Number($scope.mg.ETCGONJE_EJ_PURCH_TAX) + Number($scope.mg.ETCGONJE_RECY_PURCH_TAX)
+            + Number($scope.mg.ETCGONJE_GJBUS_PURCH_TAX) + Number($scope.mg.ETCGONJE_INV_PURCH_TAX)
+            + Number($scope.mg.ETCGONJE_BDS_PURCH_TAX) + Number($scope.mg.ETCGONJE_FOREIGN_PURCH_TAX);
+
+            //공제받지못할매입 합계
+            $scope.mg.BADGONJE_TOTAL_AMT = Number($scope.mg.BADGONJE_BAD_AMT) + Number($scope.mg.BADGONJE_GEN_NOTAX_AMT)
+            + Number($scope.mg.BADGONJE_DAESON_AMT);
+            $scope.mg.BADGONJE_TOTAL_TAX = Number($scope.mg.BADGONJE_BAD_TAX) + Number($scope.mg.BADGONJE_GEN_NOTAX_TAX)
+            + Number($scope.mg.BADGONJE_DAESON_TAX);
+
+            //기타경감공제세액 - 합계
+            $scope.mg.ETCKG_TOTAL_TAX = Number($scope.mg.ETCKG_ELECSINGO_TAX) + Number($scope.mg.ETCKG_ELECBALGUP_TAX)
+            + Number($scope.mg.ETCKG_TAXI_TAX) + Number($scope.mg.ETCKG_CASH_TAX) + Number($scope.mg.ETCKG_ETC_TAX);
+
+            //가산세 명세 - 합계
+            $scope.mg.GS_TOTAL_TAX = Number($scope.mg.GS_NOBUS_TAX) + Number($scope.mg.GS_TAXINV_DELYBAL_TAX) +Number($scope.mg.GS_TAXINV_DELYSUC_TAX)
+            +Number($scope.mg.GS_TAXINV_NOBALGUP_TAX) +Number($scope.mg.GS_ETAX_DELYBAL_TAX) +Number($scope.mg.GS_ETAX_NOSEND_TAX)
+            +Number($scope.mg.GS_TAXHAP_BADSEND_TAX) +Number($scope.mg.GS_TAXHAP_DELYSNED_TAX) +Number($scope.mg.GS_BADSINGO_NOSIN_GEN_TAX)
+            +Number($scope.mg.GS_BADSINGO_NOSIN_BAD_TAX) +Number($scope.mg.GS_BADSINGO_GSCG_GEN_TAX) +Number($scope.mg.GS_BADSINGO_GSCG_BAD_TAX)
+            +Number($scope.mg.GS_BADNAPBU_TAX) + Number($scope.mg.GS_ZEROGSSTDBADSINGO_TAX) + Number($scope.mg.GS_CASHSALEBAD_TAX)
+            +Number($scope.mg.GS_BUDONGRENTBAD_TAX) +Number($scope.mg.GS_PURCHSPECIAL_KONTO_TAX) +Number($scope.mg.GS_PURCHSPECIAL_DELYKONTO_TAX);
+
+            //면세사업수입금액 - 합계
+            $scope.mg.TAXFREE_BUS_TOTAL_AMT = Number($scope.mg.TAXFREE_BUS_AMT_1) + Number($scope.mg.TAXFREE_BUS_AMT_2)
+            + Number($scope.mg.TAXFREE_BUS_AMT_3);
+
         };
         $scope.setVAT = function(viewKey){
             $log.log(viewKey);
@@ -196,32 +219,17 @@ angular.module('V101Ctrl',[])
                 });
 
             }else{
-
-                //서버로, 새로 데이터를 생성하는 요청을 보내는 곳.
                 VATService.create($scope.constants.VATNO,$scope.VATROOTKEY,function(err,data){
                     if(err) {
                         $log.error(data);
                     }else{
+                        $scope.mg = data;
                         $scope.status = 'Ok';
                         $scope.alertmessage = '성공적으로 생성되었습니다.!';
                         $scope.constants.EMPTY = 'false';
-
-                        $scope.mg = data;
-
-                        //대손세액공제금액 > 최초에 생성할 때, 가져오게 된다.
-                        VATService.get($scope.V112KEY,function(err_,v112_data){
-                            if(err_) {
-                                $log.error(v112_data);
-                            }else{
-                                $scope.mg.GS_BADDEPT_AMT = v112_data.BJ_REPAY_AMT_TOTAL - v112_data.DS_REPAY_AMT_TOTAL;
-                                $scope.mg.GS_BADDEPT_TAX = v112_data.BJ_REPAY_TAX_TOTAL - v112_data.DS_REPAY_TAX_TOTAL;
-                            }
-                        });
-
                         $scope.calc(); //재계산
                         $scope.progressValue = 100;
                         ngDialog.close('ngdialog1');
-
                     }
 
                 });

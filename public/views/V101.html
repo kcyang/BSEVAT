@@ -233,24 +233,24 @@
                 <td>일반매입</td>
                 <td>(10)</td>
                 <td>
-                    <input type="text" class="form-control input-sm text-right" ng-model="mg.PR_TAX_INV_GEN_AMT" ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-change = "calc()" ng-model="mg.PR_TAX_INV_GEN_AMT" ui-number-mask="0"/>
                 </td>
                 <td>
                 </td>
                 <td>
-                    <input type="text" class="form-control input-sm text-right" ng-model="mg.PR_TAX_INV_GEN_TAX" ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-change = "calc()" ng-model="mg.PR_TAX_INV_GEN_TAX" ui-number-mask="0"/>
                 </td>
             </tr>
             <tr>
                 <td>고정자산매입</td>
                 <td>(11)</td>
                 <td>
-                    <input type="text" class="form-control input-sm text-right" ng-model="mg.PR_TAX_INV_FIXED_AMT" ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-change = "calc()" ng-model="mg.PR_TAX_INV_FIXED_AMT" ui-number-mask="0"/>
                 </td>
                 <td>
                 </td>
                 <td>
-                    <input type="text" class="form-control input-sm text-right" ng-model="mg.PR_TAX_INV_FIXED_TAX" ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-change = "calc()" ng-model="mg.PR_TAX_INV_FIXED_TAX" ui-number-mask="0"/>
                 </td>
             </tr>
             <tr>
@@ -269,12 +269,12 @@
                 <td colspan="2">매입자발행 세금계산서</td>
                 <td>(13)</td>
                 <td>
-                    <input type="text" class="form-control input-sm text-right" ng-model="mg.PR_TAX_INVOICED_AMT" ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-change = "calc()" ng-model="mg.PR_TAX_INVOICED_AMT" ui-number-mask="0"/>
                 </td>
                 <td>
                 </td>
                 <td>
-                    <input type="text" class="form-control input-sm text-right" ng-model="mg.PR_TAX_INVOICED_TAX" ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-change = "calc()" ng-model="mg.PR_TAX_INVOICED_TAX" ui-number-mask="0"/>
                 </td>
             </tr>
             <tr>
@@ -346,12 +346,12 @@
                 <td colspan="2">신용카드매출전표등 발행공제 등</td>
                 <td>(19)</td>
                 <td>
-                    <input type="text" class="form-control input-sm text-right" ng-model="mg.REDU_CREDIT_AMT" ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-change = "calc()" ng-model="mg.REDU_CREDIT_AMT" ui-number-mask="0"/>
                 </td>
                 <td>
                 </td>
                 <td>
-                    <input type="text" class="form-control input-sm text-right" ng-model="mg.REDU_CREDIT_TAX" ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-change = "calc()" ng-model="mg.REDU_CREDIT_TAX" ui-number-mask="0"/>
                 </td>
             </tr>
             <tr>
@@ -369,11 +369,11 @@
                 <td colspan="3">예정신고 미환급 세액</td>
                 <td>(21)</td>
                 <td>
-                    <input type="text" class="form-control input-sm text-right" ng-model="mg.REFUND_AMT" ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-change = "calc()" ng-model="mg.REFUND_AMT" ui-number-mask="0"/>
                 </td>
                 <td>(마)</td>
                 <td>
-                    <input type="text" class="form-control input-sm text-right" ng-model="mg.REFUND_TAX" ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-change = "calc()" ng-model="mg.REFUND_TAX" ui-number-mask="0"/>
                 </td>
             </tr>
             <tr>
@@ -393,7 +393,7 @@
                 <td bgcolor=#a9a9a9></td>
                 <td>(사)</td>
                 <td>
-                    <input type="text" class="form-control input-sm text-right" ng-model="mg.REPORTED_DAE_TAXED_TAX" ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-change = "calc()" ng-model="mg.REPORTED_DAE_TAXED_TAX" ui-number-mask="0"/>
                 </td>
             </tr>
             <tr>
@@ -402,7 +402,7 @@
                 <td bgcolor=#a9a9a9></td>
                 <td>(아)</td>
                 <td>
-                    <input type="text" class="form-control input-sm text-right" ng-model="mg.REPORTED_SPE_TAXED_TAX" ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-change = "calc()" ng-model="mg.REPORTED_SPE_TAXED_TAX" ui-number-mask="0"/>
                 </td>
             </tr>
             <tr>
@@ -426,7 +426,7 @@
                 <td colspan="5">총괄 납부 사업자가 납부할 세액 (환급받을 세액)</td>
                 <td></td>
                 <td>
-                    <input type="text" class="form-control input-sm text-right" ng-model="mg.TOTAL_NAPBU_TAX" ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-model="mg.TOTAL_NAPBU_TAX" readonly ui-number-mask="0"/>
                 </td>
             </tr>
             <tr>
@@ -499,7 +499,7 @@
                     <input type="text" class="form-control input-sm" ng-model="mg.TAX_STD_BUS_CODE_2">
                 </td>
                 <td>
-                    <input type="text" class="form-control input-sm text-right" ng-model="mg.TAX_STD_BUS_AMT_2" ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-change = "calc()" ng-model="mg.TAX_STD_BUS_AMT_2" ui-number-mask="0"/>
                 </td>
             </tr>
             <tr>
@@ -517,7 +517,7 @@
                     <input type="text" class="form-control input-sm" ng-model="mg.TAX_STD_BUS_CODE_3">
                 </td>
                 <td>
-                    <input type="text" class="form-control input-sm text-right" ng-model="mg.TAX_STD_BUS_AMT_3" ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-change = "calc()" ng-model="mg.TAX_STD_BUS_AMT_3" ui-number-mask="0"/>
                 </td>
             </tr>
             <tr>
@@ -533,7 +533,7 @@
                     <input type="text" class="form-control input-sm" ng-model="mg.TAX_STD_BUS_CODE_4">
                 </td>
                 <td>
-                    <input type="text" class="form-control input-sm text-right" ng-model="mg.TAX_STD_BUS_AMT_4" ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-change = "calc()" ng-model="mg.TAX_STD_BUS_AMT_4" ui-number-mask="0"/>
                 </td>
             </tr>
             <tr>

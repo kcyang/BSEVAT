@@ -143,6 +143,7 @@ schema = [
 ["ETCKG_CASH_TAX","Number"],    #기타경감공제세액-현금영수증사업자세액공제-세액
 ["ETCKG_ETC_TAX","Number"], #기타경감공제세액-기타-세액
 ["ETCKG_TOTAL_TAX","Number"],   #기타경감공제세액-합계-세액
+
 ["GS_NOBUS_AMT","Number"],  #가산세명세-사업자미등록-금액
 ["GS_NOBUS_TAX","Number"],  #가산세명세-사업자미등록-세액
 ["GS_TAXINV_DELYBAL_AMT","Number"], #가산세명세-세금계산서-지연발급-금액
@@ -151,10 +152,8 @@ schema = [
 ["GS_TAXINV_DELYSUC_TAX","Number"], #가산세명세-세금계산서-지연수취-세액
 ["GS_TAXINV_NOBALGUP_AMT","Number"],    #가산세명세-세금계산서-미발급-금액
 ["GS_TAXINV_NOBALGUP_TAX","Number"],    #가산세명세-세금계산서-미발급-세액
-
 ["GS_ETAX_DELYBAL_AMT","Number"],   #가산세명세-전자세금계산서-지연전송-금액
 ["GS_ETAX_DELYBAL_TAX","Number"],   #가산세명세-전자세금계산서-지연전송-세액
-
 ["GS_ETAX_NOSEND_AMT","Number"],    #가산세명세-전자세금계산서-미전송-금액
 ["GS_ETAX_NOSEND_TAX","Number"],    #가산세명세-전자세금계산서-미전송-세액
 ["GS_TAXHAP_BADSEND_AMT","Number"], #가산세명세-세금계산서합계표-제출불성실-금액
@@ -181,7 +180,9 @@ schema = [
 ["GS_PURCHSPECIAL_KONTO_TAX","Number"], #가산세명세-매입자납부특례-거래계좌미사용-세액
 ["GS_PURCHSPECIAL_DELYKONTO_AMT","Number"], #가산세명세-매입자납부특례-거래계좌지연입금-금액
 ["GS_PURCHSPECIAL_DELYKONTO_TAX","Number"], #가산세명세-매입자납부특례-거래계좌지연입금-세액
+
 ["GS_TOTAL_TAX","Number"],  #가산세명세-합계-세액
+
 ["TAXFREE_BUS_TYPE_1","String"],    #면세사업수입금액-업태 1
 ["TAXFREE_BUS_ITEM_1","String"],    #면세사업수입금액-종목 1
 ["TAXFREE_BUS_AMT_1","Number"],     #면세사업수입금액-금액 1
