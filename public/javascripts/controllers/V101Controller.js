@@ -117,6 +117,9 @@ angular.module('V101Ctrl',[])
             - Number($scope.mg.REFUND_TAX) - Number($scope.mg.NOTICED_TAX) - Number($scope.mg.REPORTED_DAE_TAXED_TAX)
             - Number($scope.mg.REPORTED_SPE_TAXED_TAX) + Number($scope.mg.ADD_TAX_TOT_TAX);
 
+            //총괄 납부 사업자가 납부할 세액
+            $scope.mg.TOTAL_NAPBU_TAX = $scope.mg.RED_ADD_NAPBU_TAX;
+
             //과세표준 명세 - 기본 금액
             $scope.mg.TAX_STD_BUS_AMT_1 = $scope.mg.GS_STD_AMT;
 
@@ -227,6 +230,7 @@ angular.module('V101Ctrl',[])
                         $scope.status = 'Ok';
                         $scope.alertmessage = '성공적으로 생성되었습니다.!';
                         $scope.constants.EMPTY = 'false';
+
                         $scope.calc(); //재계산
                         $scope.progressValue = 100;
                         ngDialog.close('ngdialog1');

@@ -212,7 +212,8 @@ Entries = [
 "BSE_ETAX Complete issue",
 "BSE_Editable Tot Total Amount",
 "BSE_Editable Tot VAT Amount",
-"BSE_VAT Missing"
+"BSE_VAT Missing",
+"BSE_Buyer Issued"
 ]
 
 # NAV 쿼리를위한 조건을 입력합니다.
@@ -237,5 +238,6 @@ SELECT [BSE_VAT Date],
        [BSE_ETAX Complete issue],
        [BSE_Editable Tot Total Amount],
        [BSE_Editable Tot VAT Amount],
-       [BSE_VAT Missing]
+       [BSE_VAT Missing],
+       [BSE_Buyer Issued]
 "

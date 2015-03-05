@@ -1,10 +1,185 @@
+"GS_TAX_INVOICED_AMT" : "",       //1. 과세_세금계산서 발급분 금액
+"GS_TAX_INVOICED_TAX" : "",       //1. 과세_세금계산서 발급분 세액
+"GS_VEND_TAX_INV_AMT" : "",       // 과세_매입자발행 세금계산서 금액
+"GS_VEND_TAX_INV_TAX" : "",       // 과세_매입자발행 세금계산서 세액
+"GS_CR_CASH_AMT" : "",        //과세_신용카드.현금영수증 발행분 금액
+"GS_CR_CASH_TAX" : "",        //과세_신용카드.현금영수증 발행분 세액
+"GS_ETC_AMT" : "",        //과세_기타 금액
+"GS_ETC_TAX" : "",        //과세_기타 세액
+"GS_ZR_TAX_INV_AMT" : "",     //영세율_세금계산서 발급분 금액
+"GS_ZR_TAX_INV_TAX" : "",     //영세율_세금계산서 발급분 세액
+"GS_ZR_ETC_AMT" : "",     //영세율_기타 금액
+"GS_ZR_ETC_TAX" : "",     //영세율_기타 세액
+"GS_PREARG_SIN_AMT" : "",     //예정신고누락분 금액
+"GS_PREARG_SIN_TAX" : "",     //예정신고누락분 세액
+"GS_BADDEPT_AMT" : "",        //대손세액 가감 금액
+"GS_BADDEPT_TAX" : "",        //대손세액 가감 세액
+"GS_STD_AMT" : "",        //과세표준매출세액_합계 금액
+"GS_STD_TAX" : "",        //과세표준매출세액_합계 세액
 
-Number($scope.mg.GS_NOBUS_TAX) + Number($scope.mg.GS_TAXINV_DELYBAL_TAX) +Number($scope.mg.GS_TAXINV_DELYSUC_TAX)
- +Number($scope.mg.GS_TAXINV_NOBALGUP_TAX) +Number($scope.mg.GS_ETAX_DELYBAL_TAX) +Number($scope.mg.GS_ETAX_NOSEND_TAX)
- +Number($scope.mg.GS_TAXHAP_BADSEND_TAX) +Number($scope.mg.GS_TAXHAP_DELYSNED_TAX) +Number($scope.mg.GS_BADSINGO_NOSIN_GEN_TAX)
- +Number($scope.mg.GS_BADSINGO_NOSIN_BAD_TAX) +Number($scope.mg.GS_BADSINGO_GSCG_GEN_TAX) +Number($scope.mg.GS_BADSINGO_GSCG_BAD_TAX)
- +Number($scope.mg.GS_BADNAPBU_TAX) + Number($scope.mg.GS_ZEROGSSTDBADSINGO_TAX) + Number($scope.mg.GS_CASHSALEBAD_TAX)
- +Number($scope.mg.GS_BUDONGRENTBAD_TAX) +Number($scope.mg.GS_PURCHSPECIAL_KONTO_TAX) +Number($scope.mg.GS_PURCHSPECIAL_DELYKONTO_TAX)
+"PR_TAX_INV_GEN_AMT" : "",    //매입세액_세금계산서_일반매입 금액
+"PR_TAX_INV_GEN_TAX" : "",    //매입세액_세금계산서_일반매입 세액
+"PR_TAX_INV_FIXED_AMT" : "",  //매입세액_세금계산서_고정자산매입 금액
+"PR_TAX_INV_FIXED_TAX" : "",  //매입세액_세금계산서_고정자산매입 세액
+"PR_TAX_INV_MIN_AMT" : "",    //매입세액_예정신고누락분 금액
+"PR_TAX_INV_MIN_TAX" : "",    //매입세액_예정신고누락분 세액
+"PR_TAX_INVOICED_AMT" : "",   //매입세액_매입자발행세금계산서 금액
+"PR_TAX_INVOICED_TAX" : "",   //매입세액_매입자발행세금계산서 세액
 
-GS_NOBUS_AMT","Number"],
-GS_TAXINV_DELYBAL_AMT","Number"],
+"PR_TAX_ETC_AMT" : "",        //매입세액_그밖의공제매입세액 금액
+"PR_TAX_ETC_TAX" : "",        //매입세액_그밖의공제매입세액 세액
+"PR_TAX_TOT_AMT" : "",        //매입세액_합계 금액
+"PR_TAX_TOT_TAX" : "",        //매입세액_합계 세액
+
+"PR_TAX_BADGONJE_TOT_AMT" : "",        //매입세액_공제받지못할매입세액금액
+"PR_TAX_BADGONJE_TOT_TAX" : "",        //매입세액_공제받지못할매입세액세액
+
+"PR_TAX_CALC_AMT" : "",       //매입세액_차감계 금액
+"PR_TAX_CALC_TAX" : "",       //매입세액_차감계 세액
+"NAPBU_TAX" : "",             //납부세액
+"REDU_ETC_TAX" : "",          //경감공제세액_그밖의경감공제세액 세액
+"REDU_CREDIT_AMT" : "",       //경감공제세액_신용카드매출전표등발행공제 금액
+"REDU_CREDIT_TAX" : "",       //경감공제세액_신용카드매출전표등발행공제 세액
+"REDU_TOT_AMT" : "",          //경감공제세액_합계 금액
+"REDU_TOT_TAX" : "",          //경감공제세액_합계 세액
+"REFUND_AMT" : "",            //예정신고미환급세액 금액
+"REFUND_TAX" : "",            //예정신고미환급세액 세액
+"NOTICED_AMT" : "",           //예정고지세액 금액
+"NOTICED_TAX" : "",           //예정고지세액 세액
+"REPORTED_DAE_TAXED_TAX" : "",    //사업양수자의 대리납부 기납부세액
+"REPORTED_SPE_TAXED_TAX" : "",    //매입자납부특례 기납부 세액
+"ADD_TAX_TOT_AMT" : "",       //가산세액계 금액
+"ADD_TAX_TOT_TAX" : "",       //가산세액계 세액
+"RED_ADD_NAPBU_TAX" : "",     //차감.가감하여납부할 세액
+"TOTAL_NAPBU_TAX" : "",       //총괄납부사업자가납부할세액
+"BANK_NAME" : "",             //거래은행
+"BANK_SUBSI" : "",            //은행지점
+"BANK_KONTO" : "",            //계좌번호
+"CLOSE_DATE" : "Date"],            //폐업일
+"CLOSE_REPORT" : "",          //폐업사유
+"TAX_STD_BUS_NAME_1" : "",    //과세표준명세 업태 I - 업태명
+"TAX_STD_BUS_ITEM_1" : "",    //과세표준명세 업태 I - 업태종목
+"TAX_STD_BUS_PROD_1" : "",    //과세표준명세 업태 I - 생산요소
+"TAX_STD_BUS_CODE_1" : "",    //과세표준명세 업태 I - 업종코드
+"TAX_STD_BUS_AMT_1" : "",     //과세표준명세 업태 I - 금액
+"TAX_STD_BUS_NAME_2" : "",   //과세표준명세 업태 II - 업태명
+"TAX_STD_BUS_ITEM_2" : "",   //과세표준명세 업태 II - 업태종목
+"TAX_STD_BUS_PROD_2" : "",   //과세표준명세 업태 II - 생산요소
+"TAX_STD_BUS_CODE_2" : "",   //과세표준명세 업태 II - 업종코드
+"TAX_STD_BUS_AMT_2" : "",     //과세표준명세 업태 II - 금액
+"TAX_STD_BUS_NAME_3" : "",    //과세표준명세 업태 III - 업태명
+"TAX_STD_BUS_ITEM_3" : "",    //과세표준명세 업태 III - 업태종목
+"TAX_STD_BUS_PROD_3" : "",    //과세표준명세 업태 III - 생산요소
+"TAX_STD_BUS_CODE_3" : "",    //과세표준명세 업태 III - 업종코드
+"TAX_STD_BUS_AMT_3" : "",     //과세표준명세 업태 III - 금액
+"TAX_STD_BUS_ITEM_4" : "",    //과세표준명세 업태 IV - 업태종목
+"TAX_STD_BUS_PROD_4" : "",    //과세표준명세 업태 IV - 생산요소
+"TAX_STD_BUS_CODE_4" : "",    //과세표준명세 업태 IV - 업종코드
+"TAX_STD_BUS_AMT_4" : "",     //과세표준명세 업태 IV - 금액
+"TAX_STD_BUS_ITEM_5" : "",    //과세표준명세 업태 V - 업태종목
+"TAX_STD_BUS_PROD_5" : "",    //과세표준명세 업태 V - 생산요소
+"TAX_STD_BUS_CODE_5" : "",    //과세표준명세 업태 V - 업종코드
+"TAX_STD_BUS_AMT_5" : "",     //과세표준명세 업태 V - 금액
+
+"BADSINGO_SALES_GS_TAX_AMT" : "", //예정신고누락분 - 매출-과세-세금계산서-금액
+"BADSINGO_SALES_GS_TAX_TAX" : "", //예정신고누락분 - 매출-과세-세금계산서-세액
+
+"BADSINGO_SALES_GS_ETC_AMT" : "", //예정신고누락분 - 매출-과세-기타-금액
+"BADSINGO_SALES_GS_ETC_TAX" : "", //예정신고누락분 - 매출-과세-기타-세액
+
+"BADSINGO_SALES_ZR_AMT" : "", //예정신고누락분 - 매출-영세율-금액
+"BADSINGO_SALES_ZR_TAX" : "", //예정신고누락분 - 매출-영세율-세액
+
+"BADSINGO_SALES_ZR_ECT_AMT" : "",//예정신고누락분 - 매출-영세율-기타-금액
+"BADSINGO_SALES_ZR_ECT_TAX" : "", //예정신고누락분 - 매출-영세율-기타-세액
+
+"BADSINGO_SALES_ZR_TOT_AMT" : "", //예정신고누락분 - 매출-합계-금액
+"BADSINGO_SALES_ZR_TOT_TAX" : "", //예정신고누락분 - 매출-합계-세액
+
+"BADSINGO_PURCH_TAX_AMT" : "",    //예정신고누락분 - 매입-세금계산서-금액
+"BADSINGO_PURCH_TAX_TAX" : "",    //예정신고누락분 - 매입-세금계산서-세액
+
+"BADSINGO_PURCH_ETC_AMT" : "",    //예정신고누락분 - 매입-그밖의 공제-금액
+"BADSINGO_PURCH_ETC_TAX" : "",    //예정신고누락분 - 매입-그밖의 공제-세액
+"BADSINGO_PURCH_TOT_AMT" : "",    //예정신고누락분 - 매입-합계-금액
+"BADSINGO_PURCH_TOT_TAX" : "",    //예정신고누락분 - 매입-합계-세액
+"ETCGONJE_CRD_GEN_AMT" : "",  //그밖의 공제매입세액-신용카드매출수령-일반매입-금액
+"ETCGONJE_CRD_GEN_TAX" : "",  //그밖의 공제매입세액-신용카드매출수령-일반매입-세액
+"ETCGONJE_CRD_FIXED_AMT" : "",    //그밖의 공제매입세액-신용카드매출수령-고정자산-금액
+"ETCGONJE_CRD_FIXED_TAX" : "",    //그밖의 공제매입세액-신용카드매출수령-고정자산-세액
+"ETCGONJE_EJ_PURCH_AMT" : "", //그밖의 공제매입세액-의제매입세액-금액
+"ETCGONJE_EJ_PURCH_TAX" : "", //그밖의 공제매입세액-의제매입세액-세액
+"ETCGONJE_RECY_PURCH_AMT" : "",   //그밖의 공제매입세액-재활용폐저원매입-금액
+"ETCGONJE_RECY_PURCH_TAX" : "",   //그밖의 공제매입세액-재활용폐저원매입-세액
+"ETCGONJE_GJBUS_PURCH_TAX" : "",  //그밖의 공제매입세액-과세자업전환매입-세액
+"ETCGONJE_INV_PURCH_TAX" : "",    //그밖의 공제매입세액-재고매입-세액
+"ETCGONJE_BDS_PURCH_TAX" : "",    //그밖의 공제매입세액-변제대손-세액
+"ETCGONJE_FOREIGN_PURCH_TAX" : "",    //그밖의 공제매입세액-외국관광객환급-세액
+"ETCGONJE_TOTAL_AMT" : "",    //그밖의 공제매입세액-합계-금액
+"ETCGONJE_TOTAL_TAX" : "",    //그밖의 공제매입세액-합계-세액
+"BADGONJE_BAD_AMT" : "",  //공제받지못할매입-공제받지못할매입-금액
+"BADGONJE_BAD_TAX" : "",  //공제받지못할매입-공제받지못할매입-세액
+"BADGONJE_GEN_NOTAX_AMT" : "",    //공제받지못할매입-공통매입세액 면세사업-금액
+"BADGONJE_GEN_NOTAX_TAX" : "",    //공제받지못할매입-공통매입세액 면세사업-세액
+"BADGONJE_DAESON_AMT" : "",   //공제받지못할매입-대손처분받은세액-금액
+"BADGONJE_DAESON_TAX" : "",   //공제받지못할매입-대손처분받은세액-세액
+"BADGONJE_TOTAL_AMT" : "",    //공제받지못할매입-합계-금액
+"BADGONJE_TOTAL_TAX" : "",    //공제받지못할매입-합계-세액
+"ETCKG_ELECSINGO_TAX" : "",   //기타경감공제세액-전자신고세액공제-세액
+"ETCKG_ELECBALGUP_TAX" : "",  //기타경감공제세액-전자세금계산서발급세액-세액
+"ETCKG_TAXI_TAX" : "",    //기타경감공제세액-택시운송사업자경감세액-세액
+"ETCKG_CASH_TAX" : "",    //기타경감공제세액-현금영수증사업자세액공제-세액
+"ETCKG_ETC_TAX" : "", //기타경감공제세액-기타-세액
+"ETCKG_TOTAL_TAX" : "",   //기타경감공제세액-합계-세액
+
+"GS_NOBUS_AMT" : "",  //가산세명세-사업자미등록-금액
+"GS_NOBUS_TAX" : "",  //가산세명세-사업자미등록-세액
+"GS_TAXINV_DELYBAL_AMT" : "", //가산세명세-세금계산서-지연발급-금액
+"GS_TAXINV_DELYBAL_TAX" : "", //가산세명세-세금계산서-지연발급-세액
+"GS_TAXINV_DELYSUC_AMT" : "", //가산세명세-세금계산서-지연수취-금액
+"GS_TAXINV_DELYSUC_TAX" : "", //가산세명세-세금계산서-지연수취-세액
+"GS_TAXINV_NOBALGUP_AMT" : "",    //가산세명세-세금계산서-미발급-금액
+"GS_TAXINV_NOBALGUP_TAX" : "",    //가산세명세-세금계산서-미발급-세액
+"GS_ETAX_DELYBAL_AMT" : "",   //가산세명세-전자세금계산서-지연전송-금액
+"GS_ETAX_DELYBAL_TAX" : "",   //가산세명세-전자세금계산서-지연전송-세액
+"GS_ETAX_NOSEND_AMT" : "",    //가산세명세-전자세금계산서-미전송-금액
+"GS_ETAX_NOSEND_TAX" : "",    //가산세명세-전자세금계산서-미전송-세액
+"GS_TAXHAP_BADSEND_AMT" : "", //가산세명세-세금계산서합계표-제출불성실-금액
+"GS_TAXHAP_BADSEND_TAX" : "", //가산세명세-세금계산서합계표-제출불성실-세액
+"GS_TAXHAP_DELYSNED_AMT" : "",    //가산세명세-세금계산서합계표-지연제출-금액
+"GS_TAXHAP_DELYSNED_TAX" : "",    //가산세명세-세금계산서합계표-지연제출-세액
+"GS_BADSINGO_NOSIN_GEN_AMT" : "", //가산세명세-신고불성실-무신고-일반-금액
+"GS_BADSINGO_NOSIN_GEN_TAX" : "", //가산세명세-신고불성실-무신고-일반-세액
+"GS_BADSINGO_NOSIN_BAD_AMT" : "", //가산세명세-신고불성실-무신고-부당-금액
+"GS_BADSINGO_NOSIN_BAD_TAX" : "", //가산세명세-신고불성실-무신고-부당-세액
+"GS_BADSINGO_GSCG_GEN_AMT" : "",  //가산세명세-신고불성실-과소초과환급-일반-금액
+"GS_BADSINGO_GSCG_GEN_TAX" : "",  //가산세명세-신고불성실-과소초과환급-일반-세액
+"GS_BADSINGO_GSCG_BAD_AMT" : "",  //가산세명세-신고불성실-과소초과환급-부당-금액
+"GS_BADSINGO_GSCG_BAD_TAX" : "",  //가산세명세-신고불성실-과소초과환급-부당-세액
+"GS_BADNAPBU_AMT" : "",   //가산세명세-납부불성실-금액
+"GS_BADNAPBU_TAX" : "",   //가산세명세-납부불성실-세액
+"GS_ZEROGSSTDBADSINGO_AMT" : "",  //가산세명세-영세율과세표준신고불성실-금액
+"GS_ZEROGSSTDBADSINGO_TAX" : "",  //가산세명세-영세율과세표준신고불성실-세액
+"GS_CASHSALEBAD_AMT" : "",    //가산세명세-현금매출명세서불성실-금액
+"GS_CASHSALEBAD_TAX" : "",    //가산세명세-현금매출명세서불성실-세액
+"GS_BUDONGRENTBAD_AMT" : "",  //가산세명세-부동산임대송금가액명세서불성실-금액
+"GS_BUDONGRENTBAD_TAX" : "",  //가산세명세-부동산임대송금가액명세서불성실-세액
+"GS_PURCHSPECIAL_KONTO_AMT" : "", //가산세명세-매입자납부특례-거래계좌미사용-금액
+"GS_PURCHSPECIAL_KONTO_TAX" : "", //가산세명세-매입자납부특례-거래계좌미사용-세액
+"GS_PURCHSPECIAL_DELYKONTO_AMT" : "", //가산세명세-매입자납부특례-거래계좌지연입금-금액
+"GS_PURCHSPECIAL_DELYKONTO_TAX" : "", //가산세명세-매입자납부특례-거래계좌지연입금-세액
+
+"GS_TOTAL_TAX" : "",  //가산세명세-합계-세액
+
+"TAXFREE_BUS_TYPE_1" : "",    //면세사업수입금액-업태 1
+"TAXFREE_BUS_ITEM_1" : "",    //면세사업수입금액-종목 1
+"TAXFREE_BUS_AMT_1" : "",     //면세사업수입금액-금액 1
+"TAXFREE_BUS_TYPE_2" : "",    //면세사업수입금액-업태 2
+"TAXFREE_BUS_ITEM_2" : "",    //면세사업수입금액-종목 2
+"TAXFREE_BUS_AMT_2" : "",     //면세사업수입금액-금액 2
+"TAXFREE_BUS_ITEM_3" : "",    //면세사업수입금액-업태 3
+"TAXFREE_BUS_CODE_3" : "",    //면세사업수입금액-종목 3
+"TAXFREE_BUS_AMT_3" : "",     //면세사업수입금액-금액 3
+"TAXFREE_BUS_TOTAL_AMT" : "", //면세사업수입금액-세액합계
+"INVOICE_GYOBU_AMT" : "",     //계산서교부금액
+"INVOICE_SUCHI_AMT" : ""      //계산서수취금액
