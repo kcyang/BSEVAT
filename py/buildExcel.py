@@ -45,9 +45,9 @@ def stdout(a):
 '''
 
 def set_sub_sheet(workbook, sub_array, json_info, limit_number, one_page_number):
-    #print 'limit_number[%s] one_page_number[%s]' % (limit_number,one_page_number)
+    print 'limit_number[%s] one_page_number[%s]' % (limit_number,one_page_number)
     ws = workbook.worksheets[0]
-    curr_ws = workbook.worksheets[1]
+    curr_ws = None
     row_cnt = 0
     page_cnt = 1
     new_page = False
@@ -59,6 +59,7 @@ def set_sub_sheet(workbook, sub_array, json_info, limit_number, one_page_number)
 
         '''현재 행이 첫번째 장의 최대수에 도달하면, '''
         if row_cnt >= limit_number:
+
             '''현재 행의 수가 (첫번째 장 갯수 + 두번째 장의 갯수*시트갯수)보다 크면'''
             if row_cnt >= (limit_number+one_page_number*page_cnt):
                 page_cnt += 1
@@ -72,7 +73,10 @@ def set_sub_sheet(workbook, sub_array, json_info, limit_number, one_page_number)
                 curr_ws.title = ''.join(str(page_cnt))
                 new_page = False
 
-            print 'Worksheet_name[%s]' % curr_ws
+            if page_cnt == 1:
+                curr_ws = workbook.worksheets[1]
+
+            #print 'Worksheet_name[%s]' % curr_ws
 
             for sub_key in sub_items.keys():
                 if sub_key == '_id' or sub_key == '__v':
@@ -175,24 +179,18 @@ def build(filename, document_name, output_path, document_key, limit_no, page_no)
             #기본 Company 정보를 넣어준다.
 
             for citems in cjson_.keys():
-
                 if citems in json_:
                     ws[json_[citems]] = cjson_[citems]
 
             #일반과세자 신고서의 경우, 고정으로 한번 더 돌려준다.
             if document_name == 'V101':
                 ws = wb.worksheets[1]
-
                 for _items in result.keys():
-
                     if _items == '_id' or _items == '__v':
                         continue
-
                     ul_key = '!' + _items
-
                     if ul_key in json_:
                         ws[json_[ul_key]] = result[_items]
-
 
 
             #Output Path 에 결과 엑셀을 저장한다.
