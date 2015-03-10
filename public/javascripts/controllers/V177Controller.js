@@ -60,8 +60,6 @@ angular.module('V177Ctrl',[])
         //화면의 자동계산 되는 로직은 아래에 정의된 데로 실행된다.
 
     $scope.calc = function(){
-        /* $scope.mg.e_a = Number($scope.mg.a_a) + Number($scope.mg.a_b) + Number($scope.mg.a_c) + Number($scope.mg.a_d) + Number($scope.mg.a_e);
-  */
         $scope.mg.e_a = Number($scope.mg.a_a) + Number($scope.mg.a_b) + Number($scope.mg.a_d) + Number($scope.mg.a_e) +
                          Number($scope.mg.b_a) + Number($scope.mg.c_a) + Number($scope.mg.c_b) + Number($scope.mg.d_a) +
                          Number($scope.mg.d_b) + Number($scope.mg.d_c) + Number($scope.mg.d_d) + Number($scope.mg.d_e) +
@@ -70,13 +68,6 @@ angular.module('V177Ctrl',[])
                         Number($scope.mg.f_e) + Number($scope.mg.f_f) + Number($scope.mg.f_g);
         $scope.mg.h_a = Number($scope.mg.e_a) + Number($scope.mg.g_a);
 
-        /*
-           $scope.mg.TAX_TOTAL_AMOUNT = Number($scope.mg.TAX_CARD_AMOUNT) + Number($scope.mg.TAX_CASH_AMOUNT);
-        $scope.mg.NOTAX_TOTAL_AMOUNT = Number($scope.mg.NOTAX_CARD_AMOUNT) + Number($scope.mg.NOTAX_CASH_AMOUNT);
-        $scope.mg.SVC_TOTAL_AMOUNT = Number($scope.mg.SVC_CARD_AMOUNT) + Number($scope.mg.SVC_CASH_AMOUNT);
-
-        $scope.mg.TOTAL_AMOUNT = Number($scope.mg.CARD_TOTAL_AMOUNT) + Number($scope.mg.CASH_TOTAL_AMOUNT);
- */
     };
 
 

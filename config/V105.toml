@@ -68,7 +68,7 @@ Entries = [
 "BSE_VAT Category Code",
 "BSE_Pay_Bill CorpIndv Type",
 "BSE_ETAX Complete issue",
-"BSE_Editable Tot Total Amount",
+"BSE_Editable Tot Actual Amount",
 "BSE_Editable Tot VAT Amount",
 "BSE_VAT Registration No_",
 "BSE_VAT Name"
