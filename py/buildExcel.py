@@ -106,12 +106,19 @@ json 파일을 읽어서 객체를 넘겨주는 함수,
 
 
 def get_json_obj(document_name):
+    #os.chdir(os.path.dirname(os.getcwd()))
     file_path = ''.join([os.getcwd(), '\\config\\', document_name, '_XLS.json'])
+    try:
+        with open(file_path) as jsonObj:
+            json_data = json.load(jsonObj)
 
-    with open(file_path) as jsonObj:
-        json_data = json.load(jsonObj)
+        return json_data
+    except EnvironmentError as e:
+        print 'EnvironmentError >>>>> ', str(e)
+    except:
+        print 'Uncaught Error', sys.exc_info()[0]
 
-    return json_data
+    return 0
 
 
 '''
@@ -122,12 +129,17 @@ Company json 파일을 읽어서 객체를 넘겨주는 함수,
 
 def get_company_obj():
     file_path = ''.join([os.getcwd(), '\\config\\Company.json'])
+    try:
+        with open(file_path) as jsonObj:
+            json_data = json.load(jsonObj)
 
-    with open(file_path) as jsonObj:
-        json_data = json.load(jsonObj)
+        return json_data
+    except EnvironmentError as e:
+        print 'EnvironmentError >>>>> ', str(e)
+    except:
+        print 'Uncaught Error', sys.exc_info()[0]
 
-    return json_data
-
+    return 0
 
 '''
 Excel 파일을 만드는 함수,
@@ -152,7 +164,7 @@ def build(filename, document_name, output_path, document_key, limit_no, page_no)
         result = collection.find_one({"VATKEY": document_key})
 
         if result is None:
-            print u"결과 값이 없습니다.> [%s]" % document_key
+            print u'결과 값이 없습니다.> [%s]' % document_key
             return 1
         else:
 
@@ -173,7 +185,7 @@ def build(filename, document_name, output_path, document_key, limit_no, page_no)
                 if items == 'SUB':
                     sub_result = set_sub_sheet(wb, result[items], json_, int(limit_no), int(page_no))
                     if sub_result == 0:
-                        print u"SubSet 셋업 오류."
+                        print u'SubSet 셋업 오류.'
                         return 1
 
             #기본 Company 정보를 넣어준다.
@@ -201,7 +213,7 @@ def build(filename, document_name, output_path, document_key, limit_no, page_no)
     except OSError:
         pass
     except:
-        print u"의도되지 않은 오류입니다:", sys.exc_info()[0]
+        print u'의도되지 않은 오류입니다:', sys.exc_info()[0]
         return 1
 
     return 0

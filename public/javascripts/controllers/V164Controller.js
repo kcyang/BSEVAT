@@ -35,7 +35,7 @@ angular.module('V164Ctrl',['ngGrid'])
     //2-1.
     //화면상의 메시지 - 초기에는 안내 메시지를 전달 한다.
     $scope.status = 'Info';
-    $scope.alertmessage = '금액과 발행 건수등을 검토하세요!';
+    $scope.alertmessage = '자료를 조회중입니다. 잠시만 기다려 주세요.....!';
 
 
     //최상위 Global 에 현재 VAT 값을 셋팅해 놓는다.(불필요할 때 삭제할 것) @TODO
@@ -49,6 +49,8 @@ angular.module('V164Ctrl',['ngGrid'])
         //VAT / 상위 값들이 바뀌었을 때 //
         // 값에 자료를 다시 불러와야 함.
         $log.info('값이 바뀌었습니다.');
+        $scope.status = 'Info';
+        $scope.alertmessage = '자료를 조회중입니다. 잠시만 기다려 주세요.....!';
         $route.reload();
     });
 
@@ -245,32 +247,4 @@ angular.module('V164Ctrl',['ngGrid'])
             {field:'TAX_AMOUNT', displayName:'세액', cellFilter:'number:0', cellClass:'price', enableCellEdit: true}
         ]
     };
-
-    $scope.addItem = function() {
-        var dataLength = $scope.myData.push({
-            'CARD_NUMBER': $scope.N_CARD_NUMBER,
-            'BUSINESS_NO': $scope.N_BUSINESS_NO,
-            'BUSINESS_NAME': $scope.N_BUSINESS_NAME,
-            'CNT': $scope.N_CNT,
-            'SUPPLY_AMOUNT': $scope.N_SUPPLY_AMOUNT,
-            'TAX_AMOUNT': $scope.N_TAX_AMOUNT
-        });
-
-        $log.info('%s',dataLength);
-        //$scope.gridOptions.selectRow(20, true);
-        //$scope.gridOptions.ngGrid.focus();
-        //$scope.gridOptions.selectRow(dataLength-1, true);
-        //var grid = $scope.gridOptions.ngGrid;
-        //grid.focus();
-        //grid.$viewport.scrollTop(grid.rowMap[dataLength] * grid.config.rowHeight);
-        //$scope.gridOptions.selectedItems(dataLength-1, true);
-        //$scope.gridOptions.selectItem(dataLength-1, true);
-        $scope.N_CARD_NUMBER = '';
-        $scope.N_BUSINESS_NO = '';
-        $scope.N_BUSINESS_NAME = '';
-        $scope.N_CNT = '';
-        $scope.N_SUPPLY_AMOUNT = '';
-        $scope.N_TAX_AMOUNT = '';
-    };
-
 });

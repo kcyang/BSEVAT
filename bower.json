@@ -5,10 +5,11 @@
     "bootstrap": "latest",
     "font-awesome": "latest",
     "animate.css": "latest",
-    "angular": "latest",
+    "angular": "~1.2.25",
     "angular-route": "latest",
     "ngDialog": "~0.3.0",
-    "ng-grid" : "~2.0.14",
-    "angular-input-masks": "~1.2.4"
+    "ng-grid": "~2.0.14",
+    "angular-input-masks": "~1.2.4",
+    "angular-loading-bar": "~0.7.1"
   }
 }

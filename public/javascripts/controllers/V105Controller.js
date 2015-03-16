@@ -185,7 +185,7 @@ angular.module('V105Ctrl',['ngGrid'])
                  * Excel File 을 저장하는 곳, type 을 Excel 로 지정하여 저장합니다.
                  *
                  */
-                saveAs(new Blob([data],{type:"application/vnd.ms-excel;charset=euc-kr"}), "매출처별 세금계산서 합계표.xlsx");
+                saveAs(new Blob([data],{type:"application/vnd.ms-excel;charset=euc-kr"}), "매입처별 세금계산서 합계표.xlsx");
 
                 $scope.status = 'Ok';
                 $scope.alertmessage = '성공적으로 Excel 을 저장 했습니다.!';

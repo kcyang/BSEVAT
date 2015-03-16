@@ -17,82 +17,6 @@ var DocMap = {
 };
 
 angular.module('V106Ctrl',['ngGrid'])
-/*
-    .directive('categoryHeader', function() {
-        function link(scope, element, attrs) {
-
-            // create cols as soon as $gridscope is avavilable
-            // grids in tabs with lazy loading come later, so we need to
-            // setup a watcher
-            scope.$watch('categoryHeader.$gridScope', function(gridScope, oldVal) {
-                if (!gridScope) {
-                    return;
-                }
-                // setup listener for scroll events to sync categories with table
-                var viewPort = scope.categoryHeader.$gridScope.domAccessProvider.grid.$viewport[0];
-                var headerContainer = scope.categoryHeader.$gridScope.domAccessProvider.grid.$headerContainer[0];
-
-                // watch out, this line usually works, but not always, because under certains conditions
-                // headerContainer.clientHeight is 0
-                // unclear how to fix this. a workaround is to set a constant value that equals your row height
-                scope.headerRowHeight=  headerContainer.clientHeight;
-
-                angular.element(viewPort).bind("scroll", function() {
-                    // copy total width to compensate scrollbar width
-                    $(element).find(".categoryHeaderScroller")
-                        .width($(headerContainer).find(".ngHeaderScroller").width());
-                    $(element).find(".ngHeaderContainer")
-                        .scrollLeft($(this).scrollLeft());
-                });
-
-                // setup listener for table changes to update categories
-                scope.categoryHeader.$gridScope.$on('ngGridEventColumns', function(event, reorderedColumns) {
-                    createCategories(event, reorderedColumns);
-                });
-            });
-            var createCategories = function(event, cols) {
-                scope.categories = [];
-                var lastDisplayName = "";
-                var totalWidth = 0;
-                var left = 0;
-                angular.forEach(cols, function(col, key) {
-                    if (!col.visible) {
-                        return;
-                    }
-                    totalWidth += col.width;
-                    var displayName = (typeof(col.colDef.categoryDisplayName) === "undefined") ?
-                        "\u00A0" : col.colDef.categoryDisplayName;
-                    if (displayName !== lastDisplayName) {
-                        scope.categories.push({
-                            displayName: lastDisplayName,
-                            width: totalWidth - col.width,
-                            left: left
-                        });
-                        left += (totalWidth - col.width);
-                        totalWidth = col.width;
-                        lastDisplayName = displayName;
-                    }
-                });
-                if (totalWidth > 0) {
-                    scope.categories.push({
-                        displayName: lastDisplayName,
-                        width: totalWidth,
-                        left: left
-                    });
-                }
-            };
-            createCategories(null, scope.categoryHeader.$gridScope.columns);
-        }
-        return {
-            scope: {
-                categoryHeader: '='
-            },
-            restrict: 'EA',
-            templateUrl: '../../views/category_header.html',
-            link: link
-        };
-    })
-*/
     .controller('V106Controller',function($scope,$log,$window,VATService,$location,$route,ngDialog){
 
     //# 상수정의.
@@ -121,7 +45,7 @@ angular.module('V106Ctrl',['ngGrid'])
     //2-1.
     //화면상의 메시지 - 초기에는 안내 메시지를 전달 한다.
     $scope.status = 'Info';
-    $scope.alertmessage = '금액과 발행 건수등을 검토하시고 저장버튼을 눌러주세요!';
+    $scope.alertmessage = '자료를 조회중입니다. 잠시만 기다려 주세요.....!';
 
 
     //최상위 Global 에 현재 VAT 값을 셋팅해 놓는다.(불필요할 때 삭제할 것) @TODO
@@ -144,16 +68,7 @@ angular.module('V106Ctrl',['ngGrid'])
         //화면의 자동계산 되는 로직은 아래에 정의된 데로 실행된다.
 
     $scope.calc = function(){
-        /*
-        $scope.mg.CARD_TOTAL_AMOUNT = Number($scope.mg.TAX_CARD_AMOUNT) + Number($scope.mg.NOTAX_CARD_AMOUNT) + Number($scope.mg.SVC_CARD_AMOUNT);
-        $scope.mg.CASH_TOTAL_AMOUNT = Number($scope.mg.TAX_CASH_AMOUNT) + Number($scope.mg.NOTAX_CASH_AMOUNT) + Number($scope.mg.SVC_CASH_AMOUNT);
 
-        $scope.mg.TAX_TOTAL_AMOUNT = Number($scope.mg.TAX_CARD_AMOUNT) + Number($scope.mg.TAX_CASH_AMOUNT);
-        $scope.mg.NOTAX_TOTAL_AMOUNT = Number($scope.mg.NOTAX_CARD_AMOUNT) + Number($scope.mg.NOTAX_CASH_AMOUNT);
-        $scope.mg.SVC_TOTAL_AMOUNT = Number($scope.mg.SVC_CARD_AMOUNT) + Number($scope.mg.SVC_CASH_AMOUNT);
-
-        $scope.mg.TOTAL_AMOUNT = Number($scope.mg.CARD_TOTAL_AMOUNT) + Number($scope.mg.CASH_TOTAL_AMOUNT);
-        */
     };
 
         /**
