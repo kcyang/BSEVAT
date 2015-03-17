@@ -93,7 +93,7 @@ Entries = [
 "BSE_Pay_Bill CorpIndv Type",
 "BSE_ETAX Complete issue",
 "BSE_Credit Card Number",
-"BSE_Editable Tot Total Amount",
+"BSE_Editable Tot Actual Amount",
 "BSE_Editable Tot VAT Amount",
 "BSE_VAT Registration No_",
 "BSE_VAT Name"
