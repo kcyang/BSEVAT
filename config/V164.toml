@@ -93,7 +93,7 @@ Entries = [
 "BSE_Pay_Bill CorpIndv Type",
 "BSE_ETAX Complete issue",
 "BSE_Credit Card Number",
-"BSE_Editable Tot Actual Amount",
+"BSE_Editable Tot Total Amount",
 "BSE_Editable Tot VAT Amount",
 "BSE_VAT Registration No_",
 "BSE_VAT Name"
@@ -103,6 +103,11 @@ Entries = [
 [[V164.Condition]]
 key = "BSE_VAT Type"
 value = "0"
+value_type = "Integer"
+
+[[V64.Condition]]
+key = "BSE_Closing"
+value = "1"
 value_type = "Integer"
 
 [[V164.Condition]]

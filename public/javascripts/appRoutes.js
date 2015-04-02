@@ -65,10 +65,20 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
             templateUrl: 'views/V141.html',
             controller: 'V141Controller'
         })
+        // V149 - 건물등감가상각자산취득명세서
+        .when('/V149', {
+            templateUrl: 'views/V149.html',
+            controller: 'V149Controller'
+        })
         // V164 - 신용카드매출전표등수취명세서
         .when('/V164', {
             templateUrl: 'views/V164.html',
             controller: 'V164Controller'
+        })
+        // V174 - 내국신용장.구매확인서 전자발급명세서
+        .when('/V174', {
+            templateUrl: 'views/V174.html',
+            controller: 'V174Controller'
         })
         // V177 - 영세율매출명세서
         .when('/V177', {

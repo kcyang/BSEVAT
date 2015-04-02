@@ -10,6 +10,7 @@ schema = [
     ["VATQT","String"],              #신고분기
     ["VATRPTTYPE","String"],         #신고타입
 
+    ["DOC_CNT","Number"],            #건수
     ["TOT_INTRO_FOR_AMT","Number"],  #당기제출금액 합계 (외화)
     ["TOT_INTRO_WON_AMT","Number"],  #당기제출금액 합계 (원화)
     ["TOT_SINGO_FOR_AMT","Number"],  #당기신고해당분 합계 (외화)
@@ -63,23 +64,28 @@ Entries = [
 
 # NAV 쿼리를위한 조건을 입력합니다.
 [[V106.Condition]]
-key = "BSE_VAT Type"
-value = "1"
+key = "BSE_VAT Type"        #매입/매출 구분
+value = "1"                 #매출
 value_type = "Integer"
 
 [[V106.Condition]]
 key = "BSE_VAT Category Code"
-value = ["S130"]
+value = ["S130"]            #수출
 value_type = "String"
 
 [[V106.Condition]]
-key = "BSE_Closing"
-value = "1"
+key = "BSE_Closing"         #마감여부
+value = "1"                 #마감
 value_type = "Integer"
 
 [[V106.Condition]]
-key = "BSE_ZeroRating Type"
-value = "2"
+key = "BSE_ZeroRating Type" #영세율 유형
+value = "2"                 #영세율
+value_type = "Integer"
+
+[[V106.Condition]]
+key = "BSE_Document Name"       #서류명
+value = ["1","2","3"]           #수출신고필증,인보이스,외국환매입증명서
 value_type = "Integer"
 
 [[V106.Sub]]

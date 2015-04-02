@@ -235,6 +235,7 @@ angular.module('V106Ctrl',['ngGrid'])
         $scope.gridOptions = {
             data: 'myData',
             columnDefs: [
+                {field:'DOC_SEQ', displayName:'일련번호'},
                 {field:'DOC_NAME', displayName:'서류명'},
                 {field:'ISSUE_MAN', displayName:'발급자'},
                 {field:'ISSUE_DATE', displayName:'발급일자',cellFilter:'date:\'yyyy-MM-dd\''},

@@ -1,6 +1,6 @@
 /**
  * [Angularjs]
- * V104 화면을 읽어올 때 실행됨.
+ * V164 화면을 읽어올 때 실행됨.
  * 화면상의 컨트롤은 모두 여기서 진행됨.
  * 여기는 Client side 만 들어 있음.
  * 서버와 연관된 액션은 Service 를 호출하여 사용함.
@@ -239,6 +239,7 @@ angular.module('V164Ctrl',['ngGrid'])
         enableCellSelection: true,
         enableCellEdit: true,
         columnDefs: [
+            {field:'SEQN', displayName:'일련번호'},
             {field:'CARD_NUMBER', displayName:'카드회원번호'},
             {field:'BUSINESS_NO', displayName:'사업자등록번호'},
             {field:'BUSINESS_NAME', displayName:'사업자명'},

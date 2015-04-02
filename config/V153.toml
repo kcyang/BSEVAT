@@ -108,7 +108,7 @@ calc = [
 Entries = [
 "BSE_VAT Type",  ##부가세 유형
 "BSE_VAT Category Code", ##부가세 카테고리 코드
-"BSE_Editable Tot Actual Amount",    ##공급가액
+"BSE_Editable Tot Total Amount",    ##공급가액
 "BSE_Editable Tot VAT Amount"       ##세액
 ]
 

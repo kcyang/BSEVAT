@@ -1,12 +1,6 @@
 <div class="row">
     <div class="col-xs-12">
-        <div class="col-xs-1">
-            <a href="/">
-                <button class="btn btn-success" type="button">
-                    <span class="glyphicon glyphicon-home"></span>
-                </button>
-            </a>
-        </div>
+
         <div class="col-xs-11">
             <a ng-click="saveDocument()">
                 <button class="btn btn-primary" type="button">
@@ -19,7 +13,7 @@
                 </button>
             </a>
             <a target="_self" ng-click="getExcel()">
-                <button class="btn btn-primary" type="button">
+                <button class="btn btn-success" type="button">
                     <span class="glyphicon glyphicon-stats"> 엑셀내보내기</span>
                 </button>
             </a>
@@ -46,69 +40,7 @@
         <p class="text-primary lead">일반과세자 부가가치세 신고서 I</p>
     </div>
     <div ng-class="alert_class[status]" ng-bind="alertmessage"></div>
-<!--   <div class="row">
-        <table class="table">
-            <tbody>
-            <style>
-                td {text-align:center;}
-            </style>
-            <tr>
-                <td rowspan="4">사업자</td>
-                <td>상 호<br>(법인명)</td>
-                <td>
-                    <input type="text" class="form-control input-sm text-right" ng-model="mg." ui-number-mask="0"/>
-                </td>
-                <td>성 명<br>(대표자명)</td>
-                <td>
-                    <input type="text" class="form-control input-sm text-right" ng-model="mg." ui-number-mask="0"/>
-                </td>
-                <td>사업자<br>등록번호</td>
-                <td>
-                    <input type="text" class="form-control input-sm text-right" ng-model="mg." ui-number-mask="0"/>
-                </td>
-            </tr>
-            <tr>
-                <td rowspan="2">법인<br>등록번호</td>
-                <td rowspan="2">
-                    <input type="text" class="form-control input-sm text-right" ng-model="mg." ui-number-mask="0"/>
-                </td>
-                <td>전화번호</td>
-                <td>사업장</td>
-                <td>주소지</td>
-                <td>휴대전화</td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="text" class="form-control input-sm text-right" ng-model="mg." ui-number-mask="0"/>
-                </td>
-                <td>
-                    <input type="text" class="form-control input-sm text-right" ng-model="mg." ui-number-mask="0"/>
-                </td>
-                <td>
-                    <input type="text" class="form-control input-sm text-right" ng-model="mg." ui-number-mask="0"/>
-                </td>
-                <td>
-                    <input type="text" class="form-control input-sm text-right" ng-model="mg." ui-number-mask="0"/>
-                </td>
-            </tr>
-            <tr>
-                <td>사업장 주소</td>
-                <td>
-                    <input type="text" class="form-control input-sm text-right" ng-model="mg." ui-number-mask="0"/>
-                </td>
-                <td>전자우편 주소</td>
-                <td>
-                    <input type="text" class="form-control input-sm text-right" ng-model="mg." ui-number-mask="0"/>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
 
-    <div class="text-center">
-        <p class="text-primary lead">① 신       고       내       용</p>
-    </div>
-//-->
     <div class="row">
         <table class="table">
             <thead>
@@ -448,7 +380,7 @@
                 <td colspan="2">③폐   업   신   고</td>
                 <td>폐 업 일</td>
                 <td>
-                    <input type="text" class="form-control input-sm" ng-model="mg.CLOSE_DATE">
+                    <input type="text" class="form-control input-sm" ng-model="mg.CLOSE_DATE"placeholder="yyyy-mm-dd">
                 </td>
                 <td>폐업 사유</td>
                 <td colspan="2">
@@ -459,28 +391,25 @@
                 <td colspan="5">④과  세  표  준 명  세</td>
             </tr>
             <tr>
-                <td colspan="2">업태</td>
-                <td>종목</td>
-                <td>생산요소</td>
-                <td>업종코드</td>
-                <td>금액</td>
+                <td></td>
+                <td colspan="2" align="Center">업태</td>
+                <td colspan="2" align="Center">종목</td>
+                <td align="Center">업종코드</td>
+                <td align="Center">금액</td>
             </tr>
             <tr>
                 <td>(27)</td>
                 <td colspan="2">
                     <input type="text" class="form-control input-sm" ng-model="mg.TAX_STD_BUS_NAME_1">
                 </td>
-                <td>
+                <td colspan="2">
                     <input type="text" class="form-control input-sm" ng-model="mg.TAX_STD_BUS_ITEM_1">
-                </td>
-                <td>
-                    <input type="text" class="form-control input-sm" ng-model="mg.TAX_STD_BUS_PROD_1">
                 </td>
                 <td>
                     <input type="text" class="form-control input-sm" ng-model="mg.TAX_STD_BUS_CODE_1">
                 </td>
                 <td>
-                    <input type="text" class="form-control input-sm text-right" ng-model="mg.TAX_STD_BUS_AMT_1" readonly ui-number-mask="0"/>
+                    <input type="text" class="form-control input-sm text-right" ng-change = "calc()" ng-model="mg.TAX_STD_BUS_AMT_1"  ui-number-mask="0"/>
                 </td>
             </tr>
             <tr>
@@ -488,11 +417,8 @@
                 <td colspan="2">
                     <input type="text" class="form-control input-sm" ng-model="mg.TAX_STD_BUS_NAME_2">
                 </td>
-                <td>
+                <td colspan="2">
                     <input type="text" class="form-control input-sm" ng-model="mg.TAX_STD_BUS_ITEM_2">
-                </td>
-                <td>
-                    <input type="text" class="form-control input-sm" ng-model="mg.TAX_STD_BUS_PROD_2">
                 </td>
                 <td>
                     <input type="text" class="form-control input-sm" ng-model="mg.TAX_STD_BUS_CODE_2">
@@ -506,11 +432,8 @@
                 <td colspan="2">
                     <input type="text" class="form-control input-sm" ng-model="mg.TAX_STD_BUS_NAME_3">
                 </td>
-                <td>
+                <td colspan="2">
                     <input type="text" class="form-control input-sm" ng-model="mg.TAX_STD_BUS_ITEM_3">
-                </td>
-                <td>
-                    <input type="text" class="form-control input-sm" ng-model="mg.TAX_STD_BUS_PROD_3">
                 </td>
                 <td>
                     <input type="text" class="form-control input-sm" ng-model="mg.TAX_STD_BUS_CODE_3">
@@ -522,11 +445,8 @@
             <tr>
                 <td>(30)</td>
                 <td colspan="2">수입금액 제외</td>
-                <td>
+                <td colspan="2">
                     <input type="text" class="form-control input-sm" ng-model="mg.TAX_STD_BUS_ITEM_4">
-                </td>
-                <td>
-                    <input type="text" class="form-control input-sm" ng-model="mg.TAX_STD_BUS_PROD_4">
                 </td>
                 <td>
                     <input type="text" class="form-control input-sm" ng-model="mg.TAX_STD_BUS_CODE_4">
@@ -538,9 +458,7 @@
             <tr>
                 <td>(31)</td>
                 <td colspan="2">합 계</td>
-                <td>
-                </td>
-                <td>
+                <td colspan="2">
                 </td>
                 <td>
                 </td>

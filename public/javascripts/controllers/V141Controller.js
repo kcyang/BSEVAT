@@ -225,6 +225,7 @@ angular.module('V141Ctrl',['ngGrid'])
          footerVisible: false,
          showColumnMenu: false,
         columnDefs: [  //여기서, 필드명을 바꿔주고,
+            {field:'SEQN', displayName:'일련번호'},
             {field:'EXPORT REPORT NO', displayName:'수출신고번호'},
             {field:'SHIP_DATE', displayName:'선(기)적 일자',cellFilter:'date:\'yyyy-MM-dd\''},
             {field:'CURRENCY CODE', displayName:'통화코드'},

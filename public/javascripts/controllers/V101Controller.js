@@ -125,8 +125,7 @@ angular.module('V101Ctrl',[])
 
             //과세표준 명세 - 합계
             $scope.mg.TAX_STD_BUS_AMT_5 = Number($scope.mg.TAX_STD_BUS_AMT_1) + Number($scope.mg.TAX_STD_BUS_AMT_2)
-            + Number($scope.mg.TAX_STD_BUS_AMT_3) + Number($scope.mg.TAX_STD_BUS_AMT_4)
-            + Number($scope.mg.TAX_STD_BUS_AMT_5);
+            + Number($scope.mg.TAX_STD_BUS_AMT_3) + Number($scope.mg.TAX_STD_BUS_AMT_4);
 
             /**
              * 두번째 페이지 계산.
