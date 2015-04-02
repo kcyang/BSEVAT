@@ -106,7 +106,7 @@ json 파일을 읽어서 객체를 넘겨주는 함수,
 
 
 def get_json_obj(document_name):
-    os.chdir(os.path.dirname(os.getcwd()))
+    #os.chdir(os.path.dirname(os.getcwd()))
     file_path = ''.join([os.getcwd(), '\\config\\', document_name, '_XLS.json'])
     try:
         with open(file_path) as jsonObj:

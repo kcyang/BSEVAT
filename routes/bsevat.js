@@ -30,7 +30,7 @@ router.get('/', function(req, res) {
 router.get('/:KEY', function(req, res) {
 
 //    console.log('ROUTER [GET] KEY['+req.params.KEY+']');
-    console.error('ROUTER [GET] KEY['+req.query.VATKEY+']');
+//    console.error('ROUTER [GET] KEY['+req.query.VATKEY+']');
 
     if(req.params.KEY === null) {
 

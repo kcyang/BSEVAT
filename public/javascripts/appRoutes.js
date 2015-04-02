@@ -15,6 +15,10 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
         templateUrl: 'views/vathome.html',
         controller: 'BSEVATController'
     })
+        .when('/RUN', {
+            templateUrl: 'views/vathome.html',
+            controller: 'BSEVATController'
+        })
         // V101 - 일반 과세자 부가가치세 신고서
         .when('/V101', {
             templateUrl: 'views/V101.html',

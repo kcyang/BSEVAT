@@ -19,7 +19,7 @@ var bodyParser = require('body-parser');
 //CORS 모듈 로딩.
 var cors = require('cors');
 
-//generator 가 생성한 샘플 routes,
+//기본 홈 정의.
 var routes = require('./routes/index');
 
 //bsevat 라우트 파일 정의.
@@ -27,9 +27,12 @@ var bse_routes = require('./routes/bsevat');
 
 var app = express();
 
-//#TODO Mongoose 관련 내용은 추 후 또 정리
-mongoose.connect('mongodb://'+serverConfig.servers.mongo.ip+'/'+serverConfig.servers.mongo.instance,
-    {server: { poolSize: 3 }});
+/**
+ * 여기서는, Nav Company Instance 를 Change 할 수 없어, 첫 실행하는 곳에서,
+ * Company 이름을 Parameter 로 받아서, Instance 를 만들어 낸다.
+ */
+//mongoose.connect('mongodb://'+serverConfig.servers.mongo.ip+'/'+serverConfig.servers.mongo.instance,
+//    {server: { poolSize: 3 }});
 
 //CORS 기능 셋업. (로컬에서 XHR - Cross Http Requests 가능하게)
 //이는 로컬에서 AngularJS client 에서 express restful api 를 호출이 가능하게 하기 위함이다.
