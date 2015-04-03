@@ -42,7 +42,8 @@ angular.module('BSEVATApp',
             YEAR:'',
             VATQT:'',
             VATTYPE:'',
-            VATNO:''
+            VATNO:'',
+            VATCOMPANY:''
         }];
         /**
          * 회사 정보를 담아두는 JSON 선언,
@@ -99,6 +100,7 @@ angular.module('BSEVATApp',
         var curr_month = today.getMonth()+1;
 
         var year_options = [];
+        var company_options = [];
         var vatqt_options = [
             {name: '1기 예정', value: '11'},
             {name: '1기 확정', value: '12'},
@@ -149,10 +151,39 @@ angular.module('BSEVATApp',
             selectedVatqt = vatqt_options[2];
         }
 
+        /**
+         * VAT Company 를 Navision 으로 부터 가져오는 부분,
+         * #TODO 가져오는 부분은 되었으니까, 화면마다 넣는 걸 해야됨.2015-04-03
+         */
+        var serviceRoot = "http://nav.bsecamp.net:7448/BSE-LIVE7446/OData/Company('VAT TEST')/BSEVATCompanyList?format=json";
+        var req_option = {
+            requestUri : serviceRoot,
+            enableJsonpCallback: true,
+            method : 'GET',
+            user : 'Administrator',
+            password : 'aocnf100djr!'
+        };
+
+        OData.request(req_option, function (data){
+            var result = data.results;
+
+            for (var key in result){
+                if(result.hasOwnProperty(key)){
+                    $log.error(result[key]);
+                    var company = {};
+                    company['code'] = result[key].BSE_Company_Code;
+                    company['desc'] = result[key].BSE_Company_Name;
+                    company_options.push(company);
+                }
+            }
+        });
+
+
         //프로그램 내부의 값에 넣어주기.
         $scope.years = year_options;
         $scope.vatqts = vatqt_options;
         $scope.vattypes = vattype_options;
+        $scope.vatcps = company_options;
 
         //화면에 셋업하기.
         $scope.YEAR = selectedYear;
