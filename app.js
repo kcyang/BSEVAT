@@ -8,6 +8,10 @@
 global.serverConfig = require('./config/Server');
 global.companyConfig = require('./config/Company');
 global.models = require('./models');
+global.companyname = serverConfig.servers.nav.company;
+
+console.log('Default Company Name [%s]',global.companyname);
+
 var mongoose = require('mongoose');
 
 var express = require('express');

@@ -38,14 +38,22 @@ router.get('/:KEY', function(req, res) {
 
     }else{
 
-        main.get({KEY:req.params.KEY,VATKEY:req.query.VATKEY},function(err,data){
-            if(err){
-                res.send('ERROR');
-            }else{
-                res.json(data);
-            }
+        main.get({KEY:req.params.KEY,VATKEY:req.query.VATKEY},function(data){
+            res.json(data);
         });
     }
+});
+
+/**
+ * 목록을 요청하는 부분,
+ */
+router.get('/list/:KEY', function(req, res) {
+    console.error('ROUTER [GET] REQ Company List');
+
+    main.list(function(data){
+        res.json(data);
+    });
+
 });
 
 /**

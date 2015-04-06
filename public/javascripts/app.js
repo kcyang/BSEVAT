@@ -155,24 +155,23 @@ angular.module('BSEVATApp',
          * VAT Company 를 Navision 으로 부터 가져오는 부분,
          * #TODO 가져오는 부분은 되었으니까, 화면마다 넣는 걸 해야됨.2015-04-03
          */
-        var serviceRoot = "http://nav.bsecamp.net:7448/BSE-LIVE7446/OData/Company('VAT TEST')/BSEVATCompanyList?format=json";
+
+        var serviceRoot = "http://localhost:3000/api/list/XXXX";
         var req_option = {
             requestUri : serviceRoot,
             enableJsonpCallback: true,
-            method : 'GET',
-            user : 'Administrator',
-            password : 'aocnf100djr!'
+            method : 'GET'
         };
 
         OData.request(req_option, function (data){
-            var result = data.results;
+            var result = data;
 
             for (var key in result){
                 if(result.hasOwnProperty(key)){
                     $log.error(result[key]);
                     var company = {};
-                    company['code'] = result[key].BSE_Company_Code;
-                    company['desc'] = result[key].BSE_Company_Name;
+                    company['code'] = result[key].CODE;
+                    company['desc'] = result[key].NAME;
                     company_options.push(company);
                 }
             }

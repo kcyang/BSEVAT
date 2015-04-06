@@ -19,7 +19,10 @@ router.get('/RUN', function(req, res) {
 console.log('START VAT Application!!!!!');
 
     var company_name = req.query.COMPANY;
+    global.companyname = company_name;
     var mongoURI = '';
+
+    console.log('Company Name :: %s', global.companyname);
 
     /**
      * 기본 URI를 정의한다.
