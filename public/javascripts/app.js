@@ -45,6 +45,7 @@ angular.module('BSEVATApp',
             VATNO:'',
             VATCOMPANY:''
         }];
+        $rootScope.VATCompany = [];
         /**
          * 회사 정보를 담아두는 JSON 선언,
          * @type {{}}
@@ -61,6 +62,24 @@ angular.module('BSEVATApp',
                 $rootScope.COMPANY = data;
             }
         });
+
+        /**
+         * VAT Company 를 Navision 으로 부터 가져오는 부분,
+         * #TODO 가져오는 부분은 되었으니까, 화면마다 넣는 걸 해야됨.2015-04-03
+         */
+        VATService.getList(function(err,data){
+            if(err) throw err;
+
+            for (var i in data){
+                var company_ = {};
+                if(data.hasOwnProperty(i)){
+                    company_['value'] = data[i].CODE;
+                    company_['name'] = data[i].NAME;
+                    $rootScope.VATCompany.push(company_);
+                }
+            }
+        });
+
         //키값을 셋하는 펑션 // 값이 변하면, 모든 놈들에게 바뀌었다고 때린다.
         $rootScope.setKey = function(key){
 
@@ -100,7 +119,8 @@ angular.module('BSEVATApp',
         var curr_month = today.getMonth()+1;
 
         var year_options = [];
-        var company_options = [];
+        var company_options = $rootScope.VATCompany;
+
         var vatqt_options = [
             {name: '1기 예정', value: '11'},
             {name: '1기 확정', value: '12'},
@@ -151,32 +171,6 @@ angular.module('BSEVATApp',
             selectedVatqt = vatqt_options[2];
         }
 
-        /**
-         * VAT Company 를 Navision 으로 부터 가져오는 부분,
-         * #TODO 가져오는 부분은 되었으니까, 화면마다 넣는 걸 해야됨.2015-04-03
-         */
-
-        var serviceRoot = "http://localhost:3000/api/list/XXXX";
-        var req_option = {
-            requestUri : serviceRoot,
-            enableJsonpCallback: true,
-            method : 'GET'
-        };
-
-        OData.request(req_option, function (data){
-            var result = data;
-
-            for (var key in result){
-                if(result.hasOwnProperty(key)){
-                    $log.error(result[key]);
-                    var company = {};
-                    company['code'] = result[key].CODE;
-                    company['desc'] = result[key].NAME;
-                    company_options.push(company);
-                }
-            }
-        });
-
 
         //프로그램 내부의 값에 넣어주기.
         $scope.years = year_options;
@@ -188,11 +182,12 @@ angular.module('BSEVATApp',
         $scope.YEAR = selectedYear;
         $scope.VATQT = selectedVatqt;
         $scope.VATTYPE = vattype_options[0];
+        $scope.VATCP = company_options[1];
 
         //키값을 업데이트 // 화면상에 업데이트.
         $scope.updateVATKey = function(){
-            $scope.vatmessage = $scope.YEAR.name + '년 '+ $scope.VATQT.name+ ' '+$scope.VATTYPE.name;
-            $scope.setKey({YEAR: $scope.YEAR.value, VATQT: $scope.VATQT.value , VATTYPE: $scope.VATTYPE.value});
+            //$scope.vatmessage = $scope.YEAR.name + '년 '+ $scope.VATQT.name+ ' '+$scope.VATTYPE.name;
+//            $scope.setKey({YEAR: $scope.YEAR.value, VATQT: $scope.VATQT.value , VATTYPE: '', VATCP: $scope.VATCP });
         };
         $scope.updateVATKey();
     }]);

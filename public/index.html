@@ -24,7 +24,7 @@
     <script src="libs/ngDialog/js/ngDialog.min.js"></script>
     <script src="libs/jquery/dist/jquery.min.js"></script>
     <script src="libs/FileSaver.min.js"></script>
-    <script src="libs/datajs-1.1.2.min.js"></script>
+    <!--<script src="libs/datajs-1.1.2.min.js"></script>//-->
     <script src="libs/angular-input-masks/releases/masks.min.js"></script>
     <script src="libs/angular-loading-bar/build/loading-bar.min.js"></script>
     <!-- <script src="libs/ng-grid/ng-grid-1.3.6.js"></script> -->
@@ -69,7 +69,7 @@
                 </select>
             </div>
             <div class="col-xs-2">
-                <select ng-model="VATCP" class="form-control btn-primary" ng-options="vatcp.desc for vatcp in vatcps" ng-change="updateVATKey()">
+                <select ng-model="VATCP" class="form-control btn-primary" ng-options="vatcp.name for vatcp in vatcps" ng-change="updateVATKey()">
                     <option value="">신고회사</option>
                 </select>
             </div>

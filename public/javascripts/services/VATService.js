@@ -56,7 +56,6 @@ angular.module('VATService', []).factory('VATService', ['$http','$log', function
 
         getList : function(callback) {
 
-
             $http({method: 'GET', url: '/api/list/XXXX'}).
                 success(function(data,status/*,headers,config*/){
                     $log.info('[GET] 성공적으로 URL 로 부터 결과를 받았습니다.[%s]',status);
