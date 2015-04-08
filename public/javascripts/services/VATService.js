@@ -14,7 +14,7 @@ angular.module('VATService', []).factory('VATService', ['$http','$log', function
         // call to get
         get : function(VATROOTKEY,callback) {
 
-            var KEY = VATROOTKEY.YEAR+VATROOTKEY.VATQT+VATROOTKEY.VATTYPE+VATROOTKEY.VATNO;
+            var KEY = VATROOTKEY.YEAR+VATROOTKEY.VATQT+VATROOTKEY.VATTYPE+VATROOTKEY.VATNO+VATROOTKEY.VATCP;
 
 //            $log.info('GET>>> 요청 값 [%s]',KEY);
 //            $log.info('GET>>> /api/%s',VATROOTKEY.VATNO);
@@ -111,7 +111,7 @@ angular.module('VATService', []).factory('VATService', ['$http','$log', function
          * @param callback 콜백 함수
          */
         create : function(KEY,VATROOTKEY,callback) {
-
+$log.info('VAT ROOT KEY >>> '+VATROOTKEY);
             $http({method: 'POST', url: '/api/'+KEY, data: VATROOTKEY}).
                 success(function(data/*,status,headers,config*/){
                     $log.info('성공적으로 URL 로 부터 결과를 받았습니다.');

@@ -221,6 +221,7 @@ angular.module('V101Ctrl',[])
                 });
 
             }else{
+                $log.info($scope.VATROOTKEY);
                 VATService.create($scope.constants.VATNO,$scope.VATROOTKEY,function(err,data){
                     if(err) {
                         $log.error(data);

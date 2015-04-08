@@ -69,7 +69,7 @@
                 </select>
             </div>
             <div class="col-xs-2">
-                <select ng-model="VATCP" class="form-control btn-primary" ng-options="vatcp.name for vatcp in vatcps" ng-change="updateVATKey()">
+                <select ng-model="VATCP" class="form-control btn-primary" ng-options="vatcp.name for vatcp in vatcps" ng-change="updateVATCompany(VATCP)">
                     <option value="">신고회사</option>
                 </select>
             </div>

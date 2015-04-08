@@ -43,7 +43,7 @@ angular.module('BSEVATApp',
             VATQT:'',
             VATTYPE:'',
             VATNO:'',
-            VATCOMPANY:''
+            VATCP:''
         }];
         $rootScope.VATCompany = [];
         /**
@@ -67,6 +67,7 @@ angular.module('BSEVATApp',
          * VAT Company 를 Navision 으로 부터 가져오는 부분,
          * #TODO 가져오는 부분은 되었으니까, 화면마다 넣는 걸 해야됨.2015-04-03
          */
+
         VATService.getList(function(err,data){
             if(err) throw err;
 
@@ -86,7 +87,7 @@ angular.module('BSEVATApp',
             if(typeof key === 'undefined' || key === null) {return;}
 
             for (var keyitem in key){
-                $log.info('키값들>>>'+keyitem);
+                $log.info('키값들>>>'+key[keyitem]);
                 if(key.hasOwnProperty(keyitem)){
                     $rootScope.VATROOTKEY[0][keyitem] = key[keyitem];
                 }
@@ -107,7 +108,7 @@ angular.module('BSEVATApp',
         };
 
     })
-    .controller('VATMainController',['$rootScope','$scope','$log',function($rootScope,$scope,$log){
+    .controller('VATMainController',['$scope','$log',function($scope,$log){
 
         //세부/하부 화면과 별도로 글로벌하게 컨트롤 할 것들에 대한 정의.
 
@@ -119,8 +120,10 @@ angular.module('BSEVATApp',
         var curr_month = today.getMonth()+1;
 
         var year_options = [];
-        var company_options = $rootScope.VATCompany;
+        var company_options = $scope.VATCompany;
+        //var company_options = [];//JSON.parse(JSON.stringify($scope.VATCompany));
 
+//        $scope.getCompanyList(company_options);
         var vatqt_options = [
             {name: '1기 예정', value: '11'},
             {name: '1기 확정', value: '12'},
@@ -182,12 +185,19 @@ angular.module('BSEVATApp',
         $scope.YEAR = selectedYear;
         $scope.VATQT = selectedVatqt;
         $scope.VATTYPE = vattype_options[0];
-        $scope.VATCP = company_options[1];
+        //$scope.VATCP = company_options[1];
 
         //키값을 업데이트 // 화면상에 업데이트.
         $scope.updateVATKey = function(){
+            if($scope.YEAR === null || $scope.VATQT === null) return;
             //$scope.vatmessage = $scope.YEAR.name + '년 '+ $scope.VATQT.name+ ' '+$scope.VATTYPE.name;
-//            $scope.setKey({YEAR: $scope.YEAR.value, VATQT: $scope.VATQT.value , VATTYPE: '', VATCP: $scope.VATCP });
+            $scope.setKey({YEAR: $scope.YEAR.value, VATQT: $scope.VATQT.value , VATTYPE: ''});
         };
         $scope.updateVATKey();
+
+        $scope.updateVATCompany = function(VATCP){
+            //$scope.vatmessage = $scope.YEAR.name + '년 '+ $scope.VATQT.name+ ' '+$scope.VATTYPE.name;
+            if(VATCP === null) return;
+            $scope.setKey({YEAR: $scope.YEAR.value, VATQT: $scope.VATQT.value , VATTYPE: '', VATCP: VATCP.value });
+        };
     }]);
