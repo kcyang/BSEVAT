@@ -38,7 +38,10 @@ router.get('/:KEY', function(req, res) {
 
     }else{
 
-        main.get({KEY:req.params.KEY,VATKEY:req.query.VATKEY},function(data){
+        main.get({KEY:req.params.KEY,VATKEY:req.query.VATKEY},function(err,data){
+            if(err) {
+                res.send('값이 없습니다. ERROR');
+            }
             res.json(data);
         });
     }

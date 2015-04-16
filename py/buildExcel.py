@@ -148,8 +148,8 @@ openpyxl 모듈을 이용해서, template 을 읽은 후에 값을 넣고
 '''
 
 
-def build(filename, document_name, output_path, document_key, limit_no, page_no):
-    print filename, '::', document_name, '::', output_path, '::', document_key , '::', limit_no, '::', page_no
+def build(filename, document_name, output_path, document_key, limit_no, page_no, company_name):
+    print filename, '::', document_name, '::', output_path, '::', document_key , '::', limit_no, '::', page_no, '::', company_name
     try:
         # Excel 정보를 가지고 있는 Config 파일 읽어오기.
         json_ = get_json_obj(document_name)
@@ -158,7 +158,7 @@ def build(filename, document_name, output_path, document_key, limit_no, page_no)
         cjson_ = get_company_obj()
 
         #DB 연결에 대한 에러처리 Exception 처리
-        collection = db_connection(document_name.lower())
+        collection = db_connection(document_name.lower(),company_name)
 
         #Mongo 에서 데이터를 가져오는 구문.
         result = collection.find_one({"VATKEY": document_key})
@@ -219,14 +219,20 @@ def build(filename, document_name, output_path, document_key, limit_no, page_no)
     return 0
 
 
-def db_connection(document_name):
+def db_connection(document_name, company_name):
     try:
+        if company_name == '':
+            raise TypeError(u'Company name has not defined.')
+
         client = pymongo.MongoClient()
         # 현재는 기본으로 BSEVAT를 사용하도록 , 후에 값을 받아서 연결하도록 할 것.(#TODO)
-        db = client.BSEVAT
+        db = client[company_name]
         collection = db[document_name]
 
         return collection
+    except TypeError as e:
+        print 'Type Error', str(e)
+        return 1
     except pymongo.errors.ConnectionFailure, e:
         print 'Mongo Database Connection Error', str(e)
         return 1
@@ -239,7 +245,8 @@ if __name__ == "__main__":
     document_key = sys.argv[4]
     limit_no = sys.argv[5]
     page_no = sys.argv[6]
-    result = build(filename, document_name, output_path, document_key, limit_no, page_no)
+    company_name = sys.argv[7]
+    result = build(filename, document_name, output_path, document_key, limit_no, page_no, company_name)
     stdout(result)
     sys.exit(result)
 

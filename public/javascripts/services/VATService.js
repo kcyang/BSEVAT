@@ -16,12 +16,12 @@ angular.module('VATService', []).factory('VATService', ['$http','$log', function
 
             var KEY = VATROOTKEY.YEAR+VATROOTKEY.VATQT+VATROOTKEY.VATTYPE+VATROOTKEY.VATNO+VATROOTKEY.VATCP;
 
-//            $log.info('GET>>> 요청 값 [%s]',KEY);
-//            $log.info('GET>>> /api/%s',VATROOTKEY.VATNO);
+            $log.info('GET>>> 요청 값 [%s]',KEY);
+            $log.info('GET>>> /api/%s',VATROOTKEY.VATNO);
 
             $http({method: 'GET', url: '/api/'+VATROOTKEY.VATNO, params: {VATKEY: KEY}}).
                 success(function(data,status/*,headers,config*/){
-                    $log.info('[GET] 성공적으로 URL 로 부터 결과를 받았습니다.[%s]',status);
+                    $log.info('[GET] 성공적으로 URL 로 부터 결과를 받았습니다.[%s][%s]',status,data);
                     if(data === 'ERROR'){
                         callback(true,data);
                     }else{
