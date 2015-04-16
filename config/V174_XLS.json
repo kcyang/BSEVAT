@@ -1,0 +1,20 @@
+{
+
+    "TOT_COUNT" : "F16",
+    "TOT_AMOUNT" : "K16",
+    "TOT_REMARK" : "R16",
+
+    "LC_COUNT" : "F17",
+    "LC_AMOUNT" : "K17",
+    "LC_REMARK" : "R17",
+
+    "PUR_COUNT" : "F18",
+    "PUR_AMOUNT" : "K18",
+    "PUR_REMARK" : "R18",
+
+    "company_name":"F9",
+    "name":"F10",
+
+    "limit_no":"15",
+    "page_no":"25"
+}

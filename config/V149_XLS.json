@@ -1,0 +1,29 @@
+{
+
+    "TOT_COUNT" : "G14",
+    "TOT_AMOUNT" : "J14",
+    "TOT_TAX" : "N14",
+
+    "BID_COUNT" : "G15",
+    "BID_AMOUNT" : "J15",
+    "BID_TAX" : "N15",
+    "BID_REMARK" : "R15",
+
+    "MAC_COUNT" : "G16",
+    "MAC_AMOUNT" : "J16",
+    "MAC_TAX" : "N16",
+    "MAC_REMARK" : "R16",
+
+    "CAR_COUNT" : "G17",
+    "CAR_AMOUNT" : "J17",
+    "CAR_TAX" : "N17",
+    "CAR_REMARK" : "R17",
+
+    "ETC_COUNT" : "G18",
+    "ETC_AMOUNT" : "J18",
+    "ETC_TAX" : "N18",
+    "ETC_REMARK" : "R18",
+
+    "company_name":"F9"
+
+}
