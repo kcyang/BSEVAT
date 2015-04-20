@@ -1,4 +1,5 @@
 {
+    "DOC_SEQ" : "B15",
     "DOC_NAME":"C15",
     "ISSUE_MAN":"G15",
     "ISSUE_DATE":"J15",
@@ -11,6 +12,7 @@
     "THIS_SINGO_WON_AMT":"X15",
     "REMARK":"Z15",
 
+    "_DOC_SEQ" : "B15",
     "_DOC_NAME":"C15",
     "_ISSUE_MAN":"G15",
     "_ISSUE_DATE":"J15",
@@ -26,8 +28,10 @@
     "limit_no":"34",
     "page_no":"34",
 
-    "company_name":"Q5",
-    "name":"F6",
-    "company_address":"Q6",
-    "vat_code":"F5"
+    "BSE_Business No_" : "F5",
+    "BSE_Company Name" : "Q5",
+    "BSE_Owner Name" : "F6",
+    "BSE_Address" : "Q6",
+    "BSE_Business Type" : "F8"
+
 }

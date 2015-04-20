@@ -45,7 +45,7 @@ console.log('START VAT Application!!!!!');
     if(mongoose.connection.readyState === 1){
         mongoose.disconnect();
         mongoose.connect(mongoURI,{server: { poolSize: 3 }});
-    } else{
+    }else{
         mongoose.connect(mongoURI,{server: { poolSize: 3 }});
     }
 

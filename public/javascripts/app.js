@@ -7,7 +7,7 @@
  */
 'use strict';
 
-var INIT_YEAR = 2014;
+var INIT_YEAR = 2015;
 /* global angular */
 angular.module('BSEVATApp',
     [
@@ -121,9 +121,7 @@ angular.module('BSEVATApp',
 
         var year_options = [];
         var company_options = $scope.VATCompany;
-        //var company_options = [];//JSON.parse(JSON.stringify($scope.VATCompany));
 
-//        $scope.getCompanyList(company_options);
         var vatqt_options = [
             {name: '1기 예정', value: '11'},
             {name: '1기 확정', value: '12'},
@@ -136,13 +134,17 @@ angular.module('BSEVATApp',
             {name: '수정신고', value: '03'}
         ];
         var selectedYear = {};
+        var currentYear = {
+            name: curr_year,
+            value: curr_year
+        };
         var selectedVatqt = {};
 
         /**
          * 연도를 자동 생성하는 곳.
          * 초기 셋업 연도를 기준으로 6년간 셋업하도록 설정.
          */
-        for(var i = 0 ; i < 6 ; i++){
+        for(var i = 0 ; i < 3 ; i++){
             var year_item = {};
             year_item.name = INIT_YEAR+i;
             year_item.value = INIT_YEAR+i;
@@ -157,7 +159,7 @@ angular.module('BSEVATApp',
             selectedYear = tmp_preyear;
         }else{
             //나머지는 현재 년도를 선택하도록 한다.
-            selectedYear = year_item;
+            selectedYear = currentYear;
         }
 
         /**
@@ -184,8 +186,8 @@ angular.module('BSEVATApp',
         //화면에 셋업하기.
         $scope.YEAR = selectedYear;
         $scope.VATQT = selectedVatqt;
-        $scope.VATTYPE = vattype_options[0];
-        //$scope.VATCP = company_options[1];
+        //$scope.VATTYPE = vattype_options[0];
+        //$scope.VATCP = company_options[0];
 
         //키값을 업데이트 // 화면상에 업데이트.
         $scope.updateVATKey = function(){

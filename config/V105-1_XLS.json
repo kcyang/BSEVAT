@@ -24,10 +24,10 @@
     "_NON_ELEC_QTY" : "L8",
     "_NON_ELEC_ACT_AMT" : "N8",
 
-    "company_name":"Q7",
-    "name":"F8",
-    "company_address":"Q8",
-    "vat_code":"F7",
+  "BSE_Business No_":"F7",
+  "BSE_Company Name":"Q7",
+  "BSE_Owner Name":"F8",
+  "BSE_Address":"Q8",
 
     "limit_no":"10",
     "page_no":"18"

@@ -47,6 +47,27 @@ router.get('/:KEY', function(req, res) {
     }
 });
 
+
+//가져오는 요청처리  SELECT
+router.delete('/:KEY', function(req, res) {
+
+    if(req.params.KEY === null) {
+
+        res.json('ERROR');
+
+    }else{
+
+        main.delete({KEY:req.params.KEY,VATKEY:req.query.VATKEY},function(err,data){
+            if(err) {
+                res.send('값이 없습니다. ERROR');
+            }
+            res.json(data);
+        });
+    }
+});
+
+
+
 /**
  * 목록을 요청하는 부분,
  */
@@ -57,6 +78,23 @@ router.get('/list/:KEY', function(req, res) {
         res.json(data);
     });
 
+});
+
+/**
+ * 회사의 정보를 가져오는 부분,
+ */
+router.get('/co/:KEY', function(req, res) {
+    if(req.params.KEY === null) {
+        res.json('ERROR');
+    }else{
+        main.getCompany(req.params.KEY ,function(err,data){
+            if(err) {
+                res.status(status).send(err);
+            }else{
+                res.json(data);
+            }
+        });
+    }
 });
 
 /**

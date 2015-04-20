@@ -82,26 +82,6 @@ angular.module('V101Ctrl',[])
             $scope.mg.PR_TAX_INV_MIN_AMT = Number($scope.mg.BADSINGO_PURCH_TOT_AMT); //12
             $scope.mg.PR_TAX_INV_MIN_TAX = Number($scope.mg.BADSINGO_PURCH_TOT_TAX); //12
 
-            //매입세액 - 그 밖의 공제매입세액
-            $scope.mg.PR_TAX_ETC_AMT = Number($scope.mg.ETCGONJE_TOTAL_AMT); //14
-            $scope.mg.PR_TAX_ETC_TAX = Number($scope.mg.ETCGONJE_TOTAL_TAX); //14
-            //매입세액 - 합계
-            $scope.mg.PR_TAX_TOT_AMT = Number($scope.mg.PR_TAX_INV_GEN_AMT) + Number($scope.mg.PR_TAX_INV_FIXED_AMT)
-            + Number($scope.mg.PR_TAX_INV_MIN_AMT) + Number($scope.mg.PR_TAX_INVOICED_AMT) + Number($scope.mg.PR_TAX_ETC_AMT);
-            $scope.mg.PR_TAX_TOT_TAX = Number($scope.mg.PR_TAX_INV_GEN_TAX) + Number($scope.mg.PR_TAX_INV_FIXED_TAX)
-            + Number($scope.mg.PR_TAX_INV_MIN_TAX) + Number($scope.mg.PR_TAX_INVOICED_TAX) + Number($scope.mg.PR_TAX_ETC_TAX);
-
-            //매입세액 - 공제받지 못할 매입세액
-            $scope.mg.PR_TAX_BADGONJE_TOT_AMT = Number($scope.mg.BADGONJE_TOTAL_AMT);
-            $scope.mg.PR_TAX_BADGONJE_TOT_TAX = Number($scope.mg.BADGONJE_TOTAL_TAX);
-
-            //매입세액 - 차감계
-            $scope.mg.PR_TAX_CALC_AMT = Number($scope.mg.PR_TAX_TOT_AMT) - Number($scope.mg.PR_TAX_BADGONJE_TOT_AMT);
-            $scope.mg.PR_TAX_CALC_TAX = Number($scope.mg.PR_TAX_ETC_TAX) - Number($scope.mg.PR_TAX_BADGONJE_TOT_TAX);
-
-            //납부세액
-            $scope.mg.NAPBU_TAX = Number($scope.mg.GS_STD_TAX) - Number($scope.mg.PR_TAX_CALC_TAX);
-
             //그밖의 경감공제 세액
             $scope.mg.REDU_ETC_TAX = Number($scope.mg.ETCKG_TOTAL_TAX);
 
@@ -111,14 +91,6 @@ angular.module('V101Ctrl',[])
 
             //가산세액계
             $scope.mg.ADD_TAX_TOT_TAX = Number($scope.mg.GS_TOTAL_TAX);
-
-            //차감 . 가감하여 납부할 세액(환급받을 세액)
-            $scope.mg.RED_ADD_NAPBU_TAX = Number($scope.mg.NAPBU_TAX) - Number($scope.mg.REDU_TOT_TAX)
-            - Number($scope.mg.REFUND_TAX) - Number($scope.mg.NOTICED_TAX) - Number($scope.mg.REPORTED_DAE_TAXED_TAX)
-            - Number($scope.mg.REPORTED_SPE_TAXED_TAX) + Number($scope.mg.ADD_TAX_TOT_TAX);
-
-            //총괄 납부 사업자가 납부할 세액
-            $scope.mg.TOTAL_NAPBU_TAX = $scope.mg.RED_ADD_NAPBU_TAX;
 
             //과세표준 명세 - 기본 금액
             $scope.mg.TAX_STD_BUS_AMT_1 = $scope.mg.GS_STD_AMT;
@@ -169,6 +141,35 @@ angular.module('V101Ctrl',[])
             //면세사업수입금액 - 합계
             $scope.mg.TAXFREE_BUS_TOTAL_AMT = Number($scope.mg.TAXFREE_BUS_AMT_1) + Number($scope.mg.TAXFREE_BUS_AMT_2)
             + Number($scope.mg.TAXFREE_BUS_AMT_3);
+
+            //매입세액 - 공제받지 못할 매입세액
+            $scope.mg.PR_TAX_BADGONJE_TOT_AMT = Number($scope.mg.BADGONJE_TOTAL_AMT);
+            $scope.mg.PR_TAX_BADGONJE_TOT_TAX = Number($scope.mg.BADGONJE_TOTAL_TAX);
+
+            //매입세액 - 그 밖의 공제매입세액
+            $scope.mg.PR_TAX_ETC_AMT = Number($scope.mg.ETCGONJE_TOTAL_AMT); //14
+            $scope.mg.PR_TAX_ETC_TAX = Number($scope.mg.ETCGONJE_TOTAL_TAX); //14
+
+            //매입세액 - 합계
+            $scope.mg.PR_TAX_TOT_AMT = Number($scope.mg.PR_TAX_INV_GEN_AMT) + Number($scope.mg.PR_TAX_INV_FIXED_AMT)
+            + Number($scope.mg.PR_TAX_INV_MIN_AMT) + Number($scope.mg.PR_TAX_INVOICED_AMT) + Number($scope.mg.PR_TAX_ETC_AMT);
+            $scope.mg.PR_TAX_TOT_TAX = Number($scope.mg.PR_TAX_INV_GEN_TAX) + Number($scope.mg.PR_TAX_INV_FIXED_TAX)
+            + Number($scope.mg.PR_TAX_INV_MIN_TAX) + Number($scope.mg.PR_TAX_INVOICED_TAX) + Number($scope.mg.PR_TAX_ETC_TAX);
+
+            //매입세액 - 차감계
+            $scope.mg.PR_TAX_CALC_AMT = Number($scope.mg.PR_TAX_TOT_AMT) - Number($scope.mg.PR_TAX_BADGONJE_TOT_AMT);
+            $scope.mg.PR_TAX_CALC_TAX = Number($scope.mg.PR_TAX_TOT_TAX) - Number($scope.mg.PR_TAX_BADGONJE_TOT_TAX);
+
+            //납부세액
+            $scope.mg.NAPBU_TAX = Number($scope.mg.GS_STD_TAX) - Number($scope.mg.PR_TAX_CALC_TAX);
+
+            //차감 . 가감하여 납부할 세액(환급받을 세액)
+            $scope.mg.RED_ADD_NAPBU_TAX = Number($scope.mg.NAPBU_TAX) - Number($scope.mg.REDU_TOT_TAX)
+            - Number($scope.mg.REFUND_TAX) - Number($scope.mg.NOTICED_TAX) - Number($scope.mg.REPORTED_DAE_TAXED_TAX)
+            - Number($scope.mg.REPORTED_SPE_TAXED_TAX) + Number($scope.mg.ADD_TAX_TOT_TAX);
+
+            //총괄 납부 사업자가 납부할 세액
+            $scope.mg.TOTAL_NAPBU_TAX = $scope.mg.RED_ADD_NAPBU_TAX;
 
         };
         $scope.setVAT = function(viewKey){
@@ -233,7 +234,7 @@ angular.module('V101Ctrl',[])
 
                         $scope.calc(); //재계산
                         $scope.progressValue = 100;
-                        ngDialog.close('ngdialog1');
+                        ngDialog.closeAll();
                     }
 
                 });
@@ -258,6 +259,34 @@ angular.module('V101Ctrl',[])
                 $scope.alertmessage = '성공적으로 저장되었습니다.!';
             });
 
+        };
+        /**
+         * 데이터를 삭제하는 기능, RAW 데이터가 아니라, 조회된 데이터 자체를 삭제함.
+         *
+         */
+        $scope.deleteDocument = function(){
+            VATService.delete($scope.VATROOTKEY[0],function(err,data){
+
+                if(err) {
+
+                    $log.error(data);
+                    $scope.status = 'Error';
+                    $scope.alertmessage = '정상적으로 삭제되지 않았습니다. 관리자에게 연락주세요!';
+
+                }else{
+                    //화면 ng-model 에 값 Setting.
+
+                    if(data === 'null'){
+                        $scope.status = 'Warning';
+                        $scope.alertmessage = '해당 자료가 없습니다.';
+                    }else{
+                        $scope.status = 'Ok';
+                        $scope.alertmessage = '성공적으로 데이터를 하였습니다.! 다시 자료를 가져오세요.';
+                        $scope.constants.EMPTY = 'false';
+                    }
+                }
+                $route.reload();
+            });
         };
 /*
         //#다시 작성하기 버튼을 눌렀을 때 실행되는 function. #T*ODO @2014-10-14 다시 불러오기 기능 구현. DONE

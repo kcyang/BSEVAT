@@ -80,16 +80,16 @@ value_type = "Integer"
 
 [[V106.Condition]]
 key = "BSE_ZeroRating Type" #영세율 유형
-value = "2"                 #영세율
+value = ["1","2"]           #재화수출,영세율
 value_type = "Integer"
 
 [[V106.Condition]]
-key = "BSE_Document Name"       #서류명
-value = ["1","2","3"]           #수출신고필증,인보이스,외국환매입증명서
+key = "BSE_Document Name"   #서류명
+value = ["1","2","3"]       #수출신고필증,인보이스,외국환매입증명서
 value_type = "Integer"
 
-[[V106.Sub]]
-key = "BSE_VAT Category Code"
-query = "SELECT [BSE_Category Code]
-         FROM [#Company$B_VAT Category]
-         WHERE [BSE_ZeroRating Type] = 2"
+#[[V106.Sub]]
+#key = "BSE_VAT Category Code"
+#query = "SELECT [BSE_Category Code]
+#         FROM [#Company$B_VAT Category]
+#         WHERE [BSE_ZeroRating Type] IN (1, 2)"

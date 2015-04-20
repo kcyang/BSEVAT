@@ -87,3 +87,8 @@ value_type = "String"
 key = "BSE_ZeroRating Type"
 value = [1,2]               #수출재화/영세율
 value_type = "Integer"
+
+[[V141.Condition]]
+key = "BSE_Document Name"
+value = [1,2,3]            #수출신고필증/인보이스/외국환매입증명서
+value_type = "Integer"

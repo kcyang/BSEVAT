@@ -7,6 +7,7 @@ sys.path.append(r'C:\Python27\Lib\site-packages')
 
 import pymongo
 from openpyxl import load_workbook
+import urllib2
 import json
 import os
 import re
@@ -28,7 +29,7 @@ def get_next(orig_number, row_cnt):
 
     result_array = [string, str(number)]
 
-    next_number = ''.join(result_array)
+    next_number = u''.join(result_array)
     #print 'Next Number is [%s]' % next_number
     return next_number
 
@@ -38,6 +39,29 @@ def get_next(orig_number, row_cnt):
 
 def stdout(a):
     sys.stdout.write(str(a))
+
+
+'''
+회사정보를 가져오는 구문,
+'''
+
+def getCompany(company_code):
+    _company_config = get_config_obj('Server')
+    _config = _company_config['BSE']
+    _server_name = _config['server']
+    _server_port = _config['ports']
+
+    url = u''.join(['http://', _server_name, ':', _server_port, '/api/co/', company_code])
+    print url
+    try:
+        resp = urllib2.urlopen(url).read()
+
+    except:
+        pass
+
+    result = json.loads(resp.decode('utf8'))
+    return result[0]
+
 
 '''
 갑/을 복사하는 모듈. 서브 값이 특정 값 이상을 넘기면,
@@ -70,7 +94,7 @@ def set_sub_sheet(workbook, sub_array, json_info, limit_number, one_page_number)
                 ws_copy = copy.deepcopy(workbook.worksheets[1])
                 workbook.add_sheet(ws_copy, page_cnt)
                 curr_ws = workbook.worksheets[page_cnt]
-                curr_ws.title = ''.join(str(page_cnt))
+                curr_ws.title = u''.join(str(page_cnt))
                 new_page = False
 
             if page_cnt == 1:
@@ -82,7 +106,7 @@ def set_sub_sheet(workbook, sub_array, json_info, limit_number, one_page_number)
                 if sub_key == '_id' or sub_key == '__v':
                     continue
                 _sub_key = ['_', sub_key]
-                next_sub_key = ''.join(_sub_key)
+                next_sub_key = u''.join(_sub_key)
 
                 if next_sub_key in json_info:
                     curr_ws[get_next(json_info[next_sub_key], row_cnt-(limit_number+(one_page_number*(page_cnt-1))))] = sub_items[sub_key]
@@ -107,16 +131,16 @@ json 파일을 읽어서 객체를 넘겨주는 함수,
 
 def get_json_obj(document_name):
     #os.chdir(os.path.dirname(os.getcwd()))
-    file_path = ''.join([os.getcwd(), '\\config\\', document_name, '_XLS.json'])
+    file_path = u''.join([os.getcwd(), '\\config\\', document_name, '_XLS.json'])
     try:
         with open(file_path) as jsonObj:
             json_data = json.load(jsonObj)
 
         return json_data
     except EnvironmentError as e:
-        print 'EnvironmentError >>>>> ', str(e)
+        print u'EnvironmentError >>>>> ', str(e)
     except:
-        print 'Uncaught Error', sys.exc_info()[0]
+        print u'Uncaught Error', sys.exc_info()[0]
 
     return 0
 
@@ -127,17 +151,17 @@ Company json 파일을 읽어서 객체를 넘겨주는 함수,
 '''
 
 
-def get_company_obj():
-    file_path = ''.join([os.getcwd(), '\\config\\Company.json'])
+def get_config_obj(json_name):
+    file_path = u''.join([os.getcwd(), '\\config\\', json_name, '.json'])
     try:
         with open(file_path) as jsonObj:
             json_data = json.load(jsonObj)
 
         return json_data
     except EnvironmentError as e:
-        print 'EnvironmentError >>>>> ', str(e)
+        print u'EnvironmentError >>>>> ', str(e)
     except:
-        print 'Uncaught Error', sys.exc_info()[0]
+        print u'Uncaught Error', sys.exc_info()[0]
 
     return 0
 
@@ -155,7 +179,8 @@ def build(filename, document_name, output_path, document_key, limit_no, page_no,
         json_ = get_json_obj(document_name)
 
         #Company 정보를 가지고 있는 Config 파일 읽어오기.
-        cjson_ = get_company_obj()
+        #cjson_ = get_config_obj('Company')
+        cjson_ = getCompany(company_name)
 
         #DB 연결에 대한 에러처리 Exception 처리
         collection = db_connection(document_name.lower(),company_name)

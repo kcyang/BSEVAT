@@ -79,8 +79,8 @@
     "BJ_RGST_NO_5" : "P25",
     "BJ_REMARK_5" : "T25",
 
-    "company_name":"F8",
-    "name":"F9",
-    "company_address":"P9",
-    "vat_code":"P8"
+    "BSE_Business No_":"P8",
+    "BSE_Company Name":"F8",
+    "BSE_Owner Name":"F9",
+    "BSE_Address":"P9"
 }

@@ -16,12 +16,12 @@ angular.module('VATService', []).factory('VATService', ['$http','$log', function
 
             var KEY = VATROOTKEY.YEAR+VATROOTKEY.VATQT+VATROOTKEY.VATTYPE+VATROOTKEY.VATNO+VATROOTKEY.VATCP;
 
-            $log.info('GET>>> 요청 값 [%s]',KEY);
-            $log.info('GET>>> /api/%s',VATROOTKEY.VATNO);
+//            $log.info('GET>>> 요청 값 [%s]',KEY);
+//            $log.info('GET>>> /api/%s',VATROOTKEY.VATNO);
 
             $http({method: 'GET', url: '/api/'+VATROOTKEY.VATNO, params: {VATKEY: KEY}}).
                 success(function(data,status/*,headers,config*/){
-                    $log.info('[GET] 성공적으로 URL 로 부터 결과를 받았습니다.[%s][%s]',status,data);
+                    $log.info('[GET] 성공적으로 URL 로 부터 결과를 받았습니다.[%s]',status);
                     if(data === 'ERROR'){
                         callback(true,data);
                     }else{
@@ -35,12 +35,17 @@ angular.module('VATService', []).factory('VATService', ['$http','$log', function
             });
         },
 
-        getCompany : function(callback) {
+        // call to delete function
+        delete : function(VATROOTKEY,callback) {
 
+            var KEY = VATROOTKEY.YEAR+VATROOTKEY.VATQT+VATROOTKEY.VATTYPE+VATROOTKEY.VATNO+VATROOTKEY.VATCP;
 
-            $http({method: 'GET', url: '/api/'}).
+            $log.info('DELETE>>> 요청 값 [%s]',KEY);
+            $log.info('DELETE>>> /api/%s',VATROOTKEY.VATNO);
+
+            $http({method: 'DELETE', url: '/api/'+VATROOTKEY.VATNO, params: {VATKEY: KEY}}).
                 success(function(data,status/*,headers,config*/){
-                    $log.info('[GET] 성공적으로 URL 로 부터 결과를 받았습니다.[%s]',status);
+                    $log.info('[DELETE] 성공적으로 URL 로 부터 결과를 받았습니다.[%s][%s]',status,data);
                     if(data === 'ERROR'){
                         callback(true,data);
                     }else{
@@ -51,6 +56,23 @@ angular.module('VATService', []).factory('VATService', ['$http','$log', function
                     $log.error('통신 에러가 났습니다.[%s]',status);
                     callback(true,data);
 
+                });
+        },
+
+        getCompany : function(VATROOTKEY,callback) {
+
+            $http({method: 'GET', url: '/api/co/'+VATROOTKEY.VATCP}).
+                success(function(data,status){
+                    $log.info('[GET] 성공적으로 URL 로 부터 결과를 받았습니다.[%s]',status);
+                    if(data === 'ERROR'){
+                        callback(true,data);
+                    }else{
+                        callback(false,data);
+                    }
+                }).
+                error(function(data,status){
+                    $log.error('통신 에러가 났습니다.[%s]',status);
+                    callback(true,data);
                 });
         },
 
@@ -111,21 +133,16 @@ angular.module('VATService', []).factory('VATService', ['$http','$log', function
          * @param callback 콜백 함수
          */
         create : function(KEY,VATROOTKEY,callback) {
-$log.info('VAT ROOT KEY >>> '+VATROOTKEY);
             $http({method: 'POST', url: '/api/'+KEY, data: VATROOTKEY}).
                 success(function(data/*,status,headers,config*/){
                     $log.info('성공적으로 URL 로 부터 결과를 받았습니다.');
-                    $log.info(data);
                     callback(false,data);
-
                 }).
                 error(function(data/*,status,headers,config*/){
                     $log.error('통신 에러가 났습니다.[HTTP]');
                     $log.error(data);
                     callback(true,data);
-
                 });
-
         },
 
         // call to POST and create a new geek
@@ -141,17 +158,12 @@ $log.info('VAT ROOT KEY >>> '+VATROOTKEY);
                     }else{
                         callback(false,data);
                     }
-
                 }).
                 error(function(data/*,status,headers,config*/){
                     $log.error('통신 에러가 났습니다.[HTTP]');
                     $log.error(data);
                     callback(true,data);
-
                 });
-
         }
-
     };
-
 }]);

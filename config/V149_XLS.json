@@ -1,29 +1,32 @@
 {
 
-    "TOT_COUNT" : "G14",
-    "TOT_AMOUNT" : "J14",
-    "TOT_TAX" : "N14",
+    "TOT_COUNT" : "AG16",
+    "TOT_AMOUNT" : "AW16",
+    "TOT_TAX" : "BO16",
 
-    "BID_COUNT" : "G15",
-    "BID_AMOUNT" : "J15",
-    "BID_TAX" : "N15",
-    "BID_REMARK" : "R15",
+    "BID_COUNT" : "AG17",
+    "BID_AMOUNT" : "AW17",
+    "BID_TAX" : "BO17",
+    "BID_REMARK" : "CL17",
 
-    "MAC_COUNT" : "G16",
-    "MAC_AMOUNT" : "J16",
-    "MAC_TAX" : "N16",
-    "MAC_REMARK" : "R16",
+    "MAC_COUNT" : "AG18",
+    "MAC_AMOUNT" : "AW18",
+    "MAC_TAX" : "BO18",
+    "MAC_REMARK" : "CL18",
 
-    "CAR_COUNT" : "G17",
-    "CAR_AMOUNT" : "J17",
-    "CAR_TAX" : "N17",
-    "CAR_REMARK" : "R17",
+    "CAR_COUNT" : "AG19",
+    "CAR_AMOUNT" : "AW19",
+    "CAR_TAX" : "BO19",
+    "CAR_REMARK" : "CL19",
 
-    "ETC_COUNT" : "G18",
-    "ETC_AMOUNT" : "J18",
-    "ETC_TAX" : "N18",
-    "ETC_REMARK" : "R18",
+    "ETC_COUNT" : "AG20",
+    "ETC_AMOUNT" : "AW20",
+    "ETC_TAX" : "BO20",
+    "ETC_REMARK" : "CL20",
 
-    "company_name":"F9"
+    "BSE_Business No_":"CA10",
+    "BSE_Company Name":"Y10",
+    "BSE_Business Type":"Y11",
+    "BSE_Business Class" : "CA11"
 
 }

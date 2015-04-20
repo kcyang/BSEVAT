@@ -16,10 +16,11 @@
     "SVC_CASH_AMOUNT":"R14",
     "TAX_BILL_AMOUNT":"H16",
     "BILL_AMOUNT":"R16",
-    "company_name":"F7",
-    "name":"Q7",
-    "company_address":"F8",
-    "vat_code":"Q8",
+
+  "BSE_Business No_":"Q8",
+  "BSE_Company Name":"F7",
+  "BSE_Owner Name":"Q7",
+  "BSE_Address":"F8",
 
     "limit_no":"0",
     "page_no":"0"

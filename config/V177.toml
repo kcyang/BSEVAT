@@ -49,6 +49,8 @@ schema = [
 # V177에서 사용 할 MSSQL 컬럼명을 입력합니다.
 Entries = [
 "BSE_VAT Category Code",
+"BSE_ZeroRating Type",
+"BSE_Document Name",
 "BSE_Editable Tot Total Amount"
 ]
 
@@ -64,11 +66,16 @@ value = "1"
 value_type = "Integer"
 
 [[V177.Condition]]
+key = "BSE_ZeroRating Type" #영세율 유형
+value = ["1","2"]           #영세율
+value_type = "Integer"
+
+[[V177.Condition]]
 key = "BSE_VAT Category Code"
-value = ["S130"]
+value = ["S020","S130"]
 value_type = "String"
 
 [[V177.Condition]]
 key = "BSE_Document Name"
-value = [4, 5]
+value = [1,2,3,4,5]
 value_type = "Integer"
