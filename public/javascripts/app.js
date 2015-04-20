@@ -7,7 +7,7 @@
  */
 'use strict';
 
-var INIT_YEAR = 2015;
+var INIT_YEAR = 2014;
 /* global angular */
 angular.module('BSEVATApp',
     [
