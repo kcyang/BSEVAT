@@ -88,13 +88,15 @@ def set_sub_sheet(workbook, sub_array, json_info, limit_number, one_page_number)
             if row_cnt >= (limit_number+one_page_number*page_cnt):
                 page_cnt += 1
                 new_page = True
+                print 'Page...', page_cnt, 'new_page...', new_page
 
-            '''첫 페이지는 이미 만들어져 있음. 그 것은 그대로 가고, '''
+            '''첫 페이지는 이미 만들어져 있음. 그 것은 그대로 가고 '''
             if page_cnt > 1 and new_page:
+                print u'page copying.......'
                 ws_copy = copy.deepcopy(workbook.worksheets[1])
                 workbook.add_sheet(ws_copy, page_cnt)
                 curr_ws = workbook.worksheets[page_cnt]
-                curr_ws.title = u''.join(str(page_cnt))
+                #curr_ws.title = u''.join(str(page_cnt))
                 new_page = False
 
             if page_cnt == 1:
@@ -189,7 +191,7 @@ def build(filename, document_name, output_path, document_key, limit_no, page_no,
         result = collection.find_one({"VATKEY": document_key})
 
         if result is None:
-            print u'결과 값이 없습니다.> [%s]' % document_key
+            print u'No Result.> [%s]' % document_key
             return 1
         else:
 
@@ -209,12 +211,14 @@ def build(filename, document_name, output_path, document_key, limit_no, page_no,
 
                 if items == 'SUB':
                     sub_result = set_sub_sheet(wb, result[items], json_, int(limit_no), int(page_no))
+
+                    print 'sub_result....', sub_result
                     if sub_result == 0:
-                        print u'SubSet 셋업 오류.'
+                        print u'SubSet Setup Error.'
                         return 1
 
             #기본 Company 정보를 넣어준다.
-
+            ws = wb.worksheets[0]
             for citems in cjson_.keys():
                 if citems in json_:
                     ws[json_[citems]] = cjson_[citems]
@@ -237,8 +241,10 @@ def build(filename, document_name, output_path, document_key, limit_no, page_no,
 
     except OSError:
         pass
+    except IndexError as e:
+        print 'Index Error:', str(e)
     except:
-        print u'의도되지 않은 오류입니다:', sys.exc_info()[0]
+        print u'Unknown Error:', sys.exc_info()[0]
         return 1
 
     return 0
