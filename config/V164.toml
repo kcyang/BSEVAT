@@ -105,6 +105,11 @@ key = "BSE_VAT Type"
 value = "0"
 value_type = "Integer"
 
+[[V64.Condition]]
+key = "BSE_Closing"
+value = "1"
+value_type = "Integer"
+
 [[V164.Condition]]
 key = "BSE_VAT Category Code"
 value = [

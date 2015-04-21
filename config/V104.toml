@@ -75,8 +75,13 @@ Entries = [
 
 # NAV 쿼리를위한 조건을 입력합니다.
 [[V104.Condition]]
-key = "BSE_VAT Type"
-value = "1"
+key = "BSE_VAT Type"    #매입/매출 구분
+value = "1"             #매출
+value_type = "Integer"
+
+[[V104.Condition]]
+key = "BSE_Closing"     #마감여부
+value = "1"             #마감
 value_type = "Integer"
 
 [[V104.Sub]]

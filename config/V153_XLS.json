@@ -85,9 +85,11 @@
   "PURCH_GON_2_TAX" : "R39",
   "PURCH_GON_TOTAL_TAX" : "R40",
 
-  "vat_code" : "Q7",
-  "company_name":"B7",
-  "name":"J7",
+  "BSE_Business No_":"Q7",
+  "BSE_Company Name":"B7",
+  "BSE_Owner Name":"J7",
+
+
   "limit_no":"5",
   "page_no":"5"
 }

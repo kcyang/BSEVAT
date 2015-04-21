@@ -1,4 +1,11 @@
 {
+  "BSE_Company Name" : "G9",
+  "BSE_Owner Name" : "N9",
+  "BSE_Business No_" : "T9",
+  "BSE_Corporation No_" : "G10",
+  "BSE_Address" : "G12",
+  "BSE_Sup empemail" : "S12",
+
   "GS_TAX_INVOICED_AMT" : "N15",
   "GS_TAX_INVOICED_TAX" : "U15",
   "GS_VEND_TAX_INV_AMT" : "N16",

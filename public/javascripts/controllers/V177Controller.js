@@ -129,7 +129,7 @@ angular.module('V177Ctrl',[])
                     $scope.mg = data;
                     $scope.calc(); //재계산
                     $scope.progressValue = 100;
-                    ngDialog.close('ngdialog1');
+                    ngDialog.closeAll();
 
                 }
 
@@ -168,6 +168,35 @@ angular.module('V177Ctrl',[])
             scope: $scope
         });
 
+    };
+
+    /**
+     * 데이터를 삭제하는 기능, RAW 데이터가 아니라, 조회된 데이터 자체를 삭제함.
+     *
+     */
+    $scope.deleteDocument = function(){
+        VATService.delete($scope.VATROOTKEY[0],function(err,data){
+
+            if(err) {
+
+                $log.error(data);
+                $scope.status = 'Error';
+                $scope.alertmessage = '정상적으로 삭제되지 않았습니다. 관리자에게 연락주세요!';
+
+            }else{
+                //화면 ng-model 에 값 Setting.
+
+                if(data === 'null'){
+                    $scope.status = 'Warning';
+                    $scope.alertmessage = '해당 자료가 없습니다.';
+                }else{
+                    $scope.status = 'Ok';
+                    $scope.alertmessage = '성공적으로 데이터를 하였습니다.! 다시 자료를 가져오세요.';
+                    $scope.constants.EMPTY = 'false';
+                }
+            }
+            $route.reload();
+        });
     };
 
     $scope.getExcel = function(){

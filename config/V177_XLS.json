@@ -1,6 +1,7 @@
 {
     "a_a":"T14",
     "a_b":"T15",
+    "a_c":"T16",
     "a_d":"T17",
     "a_e":"T18",
     "b_a":"T19",
@@ -24,10 +25,14 @@
     "f_g":"T46",
     "g_a":"T48",
     "h_a":"T49",
-    "company_name":"F8",
-    "vat_code":"Q8",
-    "name":"F9",
-    "company_address":"Q9",
+
+    "BSE_Business No_":"Q8",
+    "BSE_Company Name":"F8",
+    "BSE_Owner Name":"F9",
+    "BSE_Address":"Q9",
+    "BSE_Business Type":"F10",
+    "BSE_Business Class" : "Q10",
+
     "limit_no":"0",
     "page_no":"0"
 }

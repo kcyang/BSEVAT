@@ -46,10 +46,10 @@
     "_NON_ELEC_ACT_AMT" : "K9",
     "_NON_ELEC_TAX_AMT":"R9",
 
-    "company_name":"F7",
-    "name":"Q7",
-    "company_address":"F8",
-    "vat_code":"Q8",
+    "BSE_Business No_":"F7",
+    "BSE_Company Name":"Q7",
+    "BSE_Owner Name":"F8",
+    "BSE_Address":"Q8",
 
     "limit_no":"6",
     "page_no":"16"

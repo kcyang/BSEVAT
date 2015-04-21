@@ -1,0 +1,31 @@
+{
+
+    "TOT_COUNT" : "F16",
+    "TOT_AMOUNT" : "K16",
+    "TOT_REMARK" : "R16",
+
+    "LC_COUNT" : "F17",
+    "LC_AMOUNT" : "K17",
+    "LC_REMARK" : "R17",
+
+    "PUR_COUNT" : "F18",
+    "PUR_AMOUNT" : "K18",
+    "PUR_REMARK" : "R18",
+
+    "LINE_SEQN" : "B23",
+    "LINE_TYPE" : "C23",
+    "LINE_DOC_NO" : "E23",
+    "LINE_ISSUE_DATE" : "I23",
+    "LINE_VAT_REG_NO" : "K23",
+    "LINE_AMOUNT" : "O23",
+    "LINE_REMARK" : "S23",
+
+    "BSE_Business No_":"P9",
+    "BSE_Company Name":"F9",
+    "BSE_Owner Name":"F10",
+    "BSE_Business Type":"F11",
+    "BSE_Business Class" : "P11",
+
+    "limit_no":"15",
+    "page_no":"25"
+}

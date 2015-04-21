@@ -128,13 +128,41 @@ angular.module('V105-1Ctrl',['ngGrid'])
                     $scope.myData = data.SUB;
                     $scope.calc(); //재계산
                     $scope.progressValue = 100;
-                    ngDialog.close('ngdialog1');
+                    ngDialog.closeAll();
 
                 }
 
             });
         }
 
+    };
+    /**
+     * 데이터를 삭제하는 기능, RAW 데이터가 아니라, 조회된 데이터 자체를 삭제함.
+     *
+     */
+    $scope.deleteDocument = function(){
+        VATService.delete($scope.VATROOTKEY[0],function(err,data){
+
+            if(err) {
+
+                $log.error(data);
+                $scope.status = 'Error';
+                $scope.alertmessage = '정상적으로 삭제되지 않았습니다. 관리자에게 연락주세요!';
+
+            }else{
+                //화면 ng-model 에 값 Setting.
+
+                if(data === 'null'){
+                    $scope.status = 'Warning';
+                    $scope.alertmessage = '해당 자료가 없습니다.';
+                }else{
+                    $scope.status = 'Ok';
+                    $scope.alertmessage = '성공적으로 데이터를 하였습니다.! 다시 자료를 가져오세요.';
+                    $scope.constants.EMPTY = 'false';
+                }
+            }
+            $route.reload();
+        });
     };
 /**
  * 저장하기 기능은 필요없음.
@@ -197,7 +225,7 @@ angular.module('V105-1Ctrl',['ngGrid'])
                  * Excel File 을 저장하는 곳, type 을 Excel 로 지정하여 저장합니다.
                  *
                  */
-                saveAs(new Blob([data],{type:"application/vnd.ms-excel;charset=euc-kr"}), "매출처별 세금계산서 합계표.xlsx");
+                saveAs(new Blob([data],{type:"application/vnd.ms-excel;charset=euc-kr"}), "매입처별 계산서 합계표.xlsx");
 
                 $scope.status = 'Ok';
                 $scope.alertmessage = '성공적으로 Excel 을 저장 했습니다.!';

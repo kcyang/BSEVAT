@@ -24,6 +24,7 @@
     <script src="libs/ngDialog/js/ngDialog.min.js"></script>
     <script src="libs/jquery/dist/jquery.min.js"></script>
     <script src="libs/FileSaver.min.js"></script>
+    <!--<script src="libs/datajs-1.1.2.min.js"></script>//-->
     <script src="libs/angular-input-masks/releases/masks.min.js"></script>
     <script src="libs/angular-loading-bar/build/loading-bar.min.js"></script>
     <!-- <script src="libs/ng-grid/ng-grid-1.3.6.js"></script> -->
@@ -40,9 +41,11 @@
     <script src="javascripts/controllers/V106Controller.js"></script>
     <script src="javascripts/controllers/V112Controller.js"></script>
     <script src="javascripts/controllers/V141Controller.js"></script>
-    <script src="javascripts/controllers/V164Controller.js"></script>
-    <script src="javascripts/controllers/V177Controller.js"></script>
+    <script src="javascripts/controllers/V149Controller.js"></script>
     <script src="javascripts/controllers/V153Controller.js"></script>
+    <script src="javascripts/controllers/V164Controller.js"></script>
+    <script src="javascripts/controllers/V174Controller.js"></script>
+    <script src="javascripts/controllers/V177Controller.js"></script>
     <script src="javascripts/controllers/dialogController.js"></script>
     <script src="javascripts/services/VATService.js"></script>
     <script src="javascripts/appRoutes.js"></script>
@@ -52,19 +55,8 @@
 
 <body ng-app="BSEVATApp">
 <div class="container">
-
     <!-- HEADER -->
-    <div class="header">
-        <ul class="nav nav-pills pull-right">
-            <li class="active"><a href="#">Home</a>
-            </li>
-        </ul>
-        <h3 class="text-muted">BSEVAT</h3>
-    </div>
-
     <div class="page-header" ng-controller="VATMainController">
-        <p class="lead"><span class="glyphicon glyphicon-book"></span> BSE VAT 1.0</p>
-        <!-- <p class="lead">BSE VAT 1.0 버전입니다. 아래 신고할 분기를 선택하세요.</p> //-->
         <div class="row">
             <div class="col-xs-2">
                 <select ng-model="YEAR" class="form-control btn-primary" ng-options="year.name for year in years" ng-change="updateVATKey()">
@@ -75,6 +67,18 @@
                 <select ng-model="VATQT" class="form-control btn-primary" ng-options="vatqt.name for vatqt in vatqts" ng-change="updateVATKey()">
                     <option value="">신고분기</option>
                 </select>
+            </div>
+            <div class="col-xs-2">
+                <select ng-model="VATCP" class="form-control btn-primary" ng-options="vatcp.name for vatcp in vatcps" ng-change="updateVATCompany(VATCP)">
+                    <option value="">신고회사</option>
+                </select>
+            </div>
+
+            <div class="header">
+                <ul class="nav nav-pills pull-right">
+                    <li class="active"><a href="#">Home</a>
+                    </li>
+                </ul>
             </div>
 <!-- 1차 정기신고로 시작. 2차 수정신고 반영 후 업데이트 할 것. #TODO
             <div class="col-xs-2">

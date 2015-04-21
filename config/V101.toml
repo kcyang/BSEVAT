@@ -210,17 +210,24 @@ Entries = [
 "BSE_VAT Type",
 "BSE_VAT Category Code",
 "BSE_ETAX Complete issue",
-"BSE_Editable Tot Total Amount",
+"BSE_Editable Tot Actual Amount",
 "BSE_Editable Tot VAT Amount",
 "BSE_VAT Missing",
 "BSE_Buyer Issued"
 ]
 
 # NAV 쿼리를위한 조건을 입력합니다.
+
 #[[V101.Condition]]
-#key = "BSE_VAT Type"
+#key = "BSE_VAT Type"   #매입/매출 구분
 #value = "0"
 #value_type = "Integer"
+
+[[V101.Condition]]
+key = "BSE_Closing"     #마감 여부
+value = "1"             #마감
+value_type = "Integer"
+
 
 #[[V101.Sub]]
 #key = "BSE_VAT Category Code"
@@ -236,7 +243,7 @@ SELECT [BSE_VAT Date],
        [BSE_VAT Type],
        [BSE_VAT Category Code],
        [BSE_ETAX Complete issue],
-       [BSE_Editable Tot Total Amount],
+       [BSE_Editable Tot Actual Amount],
        [BSE_Editable Tot VAT Amount],
        [BSE_VAT Missing],
        [BSE_Buyer Issued]

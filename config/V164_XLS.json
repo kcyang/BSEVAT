@@ -28,10 +28,10 @@
     "_SUPPLY_AMOUNT" : "O11",
     "_TAX_AMOUNT" : "S11",
 
-    "company_name":"F7",
-    "name":"Q7",
-    "company_address":"F8",
-    "vat_code":"Q8",
+    "BSE_Business No_":"Q8",
+    "BSE_Company Name":"F8",
+    "BSE_Owner Name":"F9",
+    "BSE_Address":"Q9",
 
     "limit_no":"15",
     "page_no":"25"

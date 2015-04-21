@@ -15,6 +15,7 @@
     "ETC_CURRENCY_AMOUNT_TOTAL" : "I15",
     "ETC_AMOUNT_TOTAL" : "P15",
 
+    "SEQN" : "B20",
     "EXPORT REPORT NO" : "D20",
     "SHIP_DATE" : "J20",
     "CURRENCY CODE" : "L20",
@@ -22,6 +23,7 @@
     "CURRENCY AMOUNT" : "Q20",
     "AMOUNT" : "V20",
 
+    "_SEQN" : "B9",
     "_EXPORT REPORT NO" : "D9",
     "_SHIP_DATE" : "J9",
     "_CURRENCY CODE" : "L9",
@@ -29,12 +31,13 @@
     "_CURRENCY AMOUNT" : "Q9",
     "_AMOUNT" : "V9",
 
-    "vat_code" : "F6",
-    "company_name":"S6",
-    "name":"F7",
-    "company_address":"S7",
-    "bus_type" : "F8",
-    "bus_class" : "S8",
+    "BSE_Business No_":"F6",
+    "BSE_Company Name":"S6",
+    "BSE_Owner Name":"F7",
+    "BSE_Address":"S7",
+    "BSE_Business Type":"F8",
+    "BSE_Business Class" : "S8",
+
     "limit_no":"28",
     "page_no":"37"
 }
