@@ -265,16 +265,16 @@ angular.module('V164Ctrl',['ngGrid'])
     $scope.gridOptions = {
         data: 'myData',
         multiSelect: false,
-        enableCellSelection: true,
-        enableCellEdit: true,
+        enableCellSelection: false,
+        enableCellEdit: false,
         columnDefs: [
             {field:'SEQN', displayName:'일련번호'},
             {field:'CARD_NUMBER', displayName:'카드회원번호'},
             {field:'BUSINESS_NO', displayName:'사업자등록번호'},
             {field:'BUSINESS_NAME', displayName:'사업자명'},
-            {field:'CNT', displayName:'거래건수',cellFilter:'number', cellClass:'price', enableCellEdit: true},
-            {field:'SUPPLY_AMOUNT', displayName:'공급가액',cellFilter:'number:0', cellClass:'price', enableCellEdit: true},
-            {field:'TAX_AMOUNT', displayName:'세액', cellFilter:'number:0', cellClass:'price', enableCellEdit: true}
+            {field:'CNT', displayName:'거래건수',cellFilter:'number', cellClass:'price'},
+            {field:'SUPPLY_AMOUNT', displayName:'공급가액',cellFilter:'number:0', cellClass:'price'},
+            {field:'TAX_AMOUNT', displayName:'세액', cellFilter:'number:0', cellClass:'price'}
         ]
     };
 });

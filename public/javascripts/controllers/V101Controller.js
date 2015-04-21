@@ -172,6 +172,7 @@ angular.module('V101Ctrl',[])
             $scope.mg.TOTAL_NAPBU_TAX = $scope.mg.RED_ADD_NAPBU_TAX;
 
         };
+
         $scope.setVAT = function(viewKey){
             $log.log(viewKey);
             $scope.setVATKey(viewKey);
@@ -204,7 +205,21 @@ angular.module('V101Ctrl',[])
 
         });
 
+        VATService.getCompany($scope.VATROOTKEY[0],function(err,data){
 
+            if(err) {
+                $log.error(data);
+            }else{
+                //화면 ng-model 에 값 Setting.
+                if(data === 'null'){
+                }else{
+                    $scope.mg.TAX_STD_BUS_NAME_1 = data[0]['BSE_Business Type'];
+                    $scope.mg.TAX_STD_BUS_ITEM_1 = data[0]['BSE_Business Class'];
+                    $scope.mg.TAX_STD_BUS_CODE_1 = data[0]['BSE_Bussiness Code'];
+                }
+            }
+
+        });
         //3. 화면 이벤트 발생 시,
         // 데이터가 없을 때, 데이터를 불러와서 새로운 값을 넣고, 다시 불러오는 Module.
         // 웹 화면에서 이벤트가 발생했을 때, 할 일을 아래에 정의한다.

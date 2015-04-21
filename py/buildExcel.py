@@ -96,7 +96,7 @@ def set_sub_sheet(workbook, sub_array, json_info, limit_number, one_page_number)
                 ws_copy = copy.deepcopy(workbook.worksheets[1])
                 workbook.add_sheet(ws_copy, page_cnt)
                 curr_ws = workbook.worksheets[page_cnt]
-                #curr_ws.title = u''.join(str(page_cnt))
+                curr_ws.title = u''.join('B',str(page_cnt))
                 new_page = False
 
             if page_cnt == 1:
