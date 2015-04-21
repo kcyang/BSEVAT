@@ -218,7 +218,7 @@ def build(filename, document_name, output_path, document_key, limit_no, page_no,
                         return 1
 
             #기본 Company 정보를 넣어준다.
-            ws = wb.worksheets[0]
+            #ws = wb.worksheets[0]
             for citems in cjson_.keys():
                 if citems in json_:
                     ws[json_[citems]] = cjson_[citems]
