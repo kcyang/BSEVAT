@@ -1,0 +1,164 @@
+{
+    "HEADER" : {
+        "001": {
+            "length": "2",
+            "value": "11",
+            "blank": "",
+            "table": "",
+            "field": "",
+            "multi": "",
+            "desc" : "기본 필드"
+        },
+        "002": {
+            "length": "7",
+            "value": "I103200",
+            "blank": "",
+            "table": "",
+            "field": "",
+            "multi": "",
+            "desc" : "부가세 신고 기본번호"
+        },
+        "003": {
+            "length": "13",
+            "value": "",
+            "blank": " ",
+            "table": "company",
+            "field": "BSE_Business No_",
+            "multi": "",
+            "desc" : "사업자등록번호"
+        },
+        "004": {
+            "length": "2",
+            "value": "41",
+            "blank": "",
+            "table": "",
+            "field": "",
+            "multi": "",
+            "desc" : "부가가치세번호"
+        },
+        "005": {
+            "length": "2",
+            "value": "",
+            "blank": "",
+            "table": "BSE",
+            "field": "VATQT",
+            "multi": "",
+            "desc":"신고구분"
+        },
+        "006": {
+            "length": "2",
+            "value": "01",
+            "blank": "",
+            "table": "",
+            "field": "",
+            "multi": "",
+            "desc" : "신고구분상세코드/01/정기신고"
+        },
+        "007": {
+            "length": "6",
+            "value": "",
+            "blank": "",
+            "table": "BSE",
+            "field": "YEAR_GISU",
+            "multi": "",
+            "desc":"년도+기수"
+        },
+        "008": {
+            "length": "2",
+            "value": "01",
+            "blank": "",
+            "table": "BSE",
+            "field": "CHASU",
+            "multi": "",
+            "desc":"신고차수"
+        },
+        "009": {
+            "length": "20",
+            "value": "",
+            "blank": " ",
+            "table": "company",
+            "field": "BSE_HomeTax ID",
+            "multi": "",
+            "desc" : "홈택스 ID"
+        },
+        "010": {
+            "length": "13",
+            "value": "",
+            "blank": " ",
+            "table": "company",
+            "field": "BSE_Corporation No_",
+            "multi": ""
+        },
+        "011": {
+            "length": "30",
+            "value": "",
+            "blank": " ",
+            "field": "",
+            "multi": "",
+            "desc":""
+        },
+        "012": {
+            "length": "4",
+            "value": "",
+            "blank": " ",
+            "field": "",
+            "multi": ""
+        },
+        "013": {
+            "length": "5",
+            "value": "",
+            "blank": " ",
+            "field": "",
+            "multi": ""
+        },
+        "014": {
+            "length": "5",
+            "value": "",
+            "blank": " ",
+            "field": "",
+            "multi": ""
+        }
+    },
+    "V101" : {
+        "001": {
+            "length": "4",
+            "value": "V101",
+            "blank": "",
+            "field": "",
+            "multi": ""
+        },
+        "002": {
+            "length": "13",
+            "value": "",
+            "blank": "0",
+            "table": "V101",
+            "field": "PR_TAX_INV_GEN_AMT",
+            "multi": ""
+        },
+        "003": {
+            "length": "13",
+            "value": "",
+            "blank": " ",
+            "table": "",
+            "field": "",
+            "multi": ""
+        }
+    },
+    "V104" : {
+        "001": {
+            "length": "4",
+            "value": "V104",
+            "blank": "",
+            "field": "",
+            "multi": ""
+        },
+        "002": {
+            "length": "13",
+            "value": "",
+            "blank": "0",
+            "table": "V104",
+            "field": "ELEC_BUS_SALES_TAX_AMT",
+            "multi": ""
+        }
+    }
+}

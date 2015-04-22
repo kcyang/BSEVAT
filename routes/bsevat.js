@@ -186,6 +186,31 @@ router.post('/:KEY', function(req, res) {
 
 });
 
+
+//파일 생성 요청 처리  INSERT
+router.post('/FILE/:KEY', function(req, res) {
+
+    //console.error('[파일생성] POST 요청을 받았습니다. KEY 값은 [%s]',req.body[0].VATNO);
+    console.log(req.body);
+
+    if(req.params.KEY === null) {
+
+        res.json('ERROR');
+
+    }else{
+
+        main.makefile(req.body,function(err,data){
+            if(err){
+                res.send('ERROR from Main function,');
+            }else{
+                res.json(data);
+            }
+        });
+    }
+
+});
+
+
 //삭제 요청 처리  DELETE
 router.delete('/:KEY', function(req, res) {
     res.send('[DELETE]DELETE 퐁퐁퐁['+req.params.KEY+']');

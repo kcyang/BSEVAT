@@ -145,6 +145,19 @@ angular.module('VATService', []).factory('VATService', ['$http','$log', function
                 });
         },
 
+        makefile : function(VATROOTKEY, callback) {
+            $http({method: 'POST', url: '/api/FILE/XXXX', data: VATROOTKEY}).
+                success(function(data){
+                    $log.info('성공적으로 URL 로 부터 결과를 받았습니다.');
+                    callback(false,data);
+                }).
+                error(function(data){
+                    $log.error('통신 에러가 났습니다.[HTTP]');
+                    $log.error(data);
+                    callback(true,data);
+                });
+        },
+
         // call to POST and create a new geek
         update : function(KEY,mg,callback) {
 

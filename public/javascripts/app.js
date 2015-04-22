@@ -32,6 +32,7 @@ angular.module('BSEVATApp',
         'V177Ctrl',
         'dialogCtrl',
         'VATService',
+        'fileCtrl',
         'ui.utils.masks'
     ])
     .run(function($rootScope,$log,VATService){
