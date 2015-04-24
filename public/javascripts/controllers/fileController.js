@@ -25,6 +25,20 @@ angular.module('fileCtrl',[])
             Info : 'alert alert-info pulse'
         };
 
+        $scope.fileReportCheck = {
+            V101 : true,
+            V104 : true,
+            V105 : true,
+            V109 : true,
+            V110 : true,
+            V106 : true,
+            V141 : true,
+            V153 : true,
+            V164 : true,
+            V112 : true,
+            V149 : true,
+            V174 : true
+        };
         //2-1.
         //화면상의 메시지 - 초기에는 안내 메시지를 전달 한다.
         $scope.status = 'Info';
@@ -104,20 +118,17 @@ angular.module('fileCtrl',[])
                     $scope.alertmessage = '저장하지 못했습니다. 관리자에게 문의하세요!';
                     return;
                 }
-                $log.info('총 %s 건이 저장되었습니다',data);
+                /**
+                 * Excel File 을 저장하는 곳, type 을 Excel 로 지정하여 저장합니다.
+                 *
+                 */
+                saveAs(new Blob([data],{type:"application/x-www-form-urlencoded;charset=euc-kr"}), parameter_for_file.KEY.VATCP+".101");
+
                 $scope.status = 'Ok';
-                $scope.alertmessage = '성공적으로 저장되었습니다.!';
+                $scope.alertmessage = '성공적으로 파일 을 저장 했습니다.!';
+
             });
 
-            /**
-             * Python 호출하는 부분, Excel 내려받기를 하기 위함.
-             */
-/*
-            var src = spawn('python',[
-                path.join(__dirname,'../py/_make_file.py'),
-                key_parameter
-            ]);
-*/
         };
 
     });

@@ -146,7 +146,7 @@ angular.module('VATService', []).factory('VATService', ['$http','$log', function
         },
 
         makefile : function(VATROOTKEY, callback) {
-            $http({method: 'POST', url: '/api/FILE/XXXX', data: VATROOTKEY}).
+            $http({method: 'POST', url: '/api/FILE/XXXX', responseType: 'blob', data: VATROOTKEY}).
                 success(function(data){
                     $log.info('성공적으로 URL 로 부터 결과를 받았습니다.');
                     callback(false,data);

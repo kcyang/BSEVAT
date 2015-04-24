@@ -203,7 +203,19 @@ router.post('/FILE/:KEY', function(req, res) {
             if(err){
                 res.send('ERROR from Main function,');
             }else{
-                res.json(data);
+                var options = {
+                    headers: {
+                        'x-timestamp' : Date.now(),
+                        'x-sent' : true
+                    }
+                };
+                res.sendFile(data, options, function(err){
+                    if(err){
+                        console.error('엑셀을 다운로드 하는 중에 에러 발생..',err);
+                    }else{
+                        console.info('엑셀파일이 내려갔어야 하는데..');
+                    }
+                });
             }
         });
     }

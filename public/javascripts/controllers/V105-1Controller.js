@@ -256,6 +256,7 @@ angular.module('V105-1Ctrl',['ngGrid'])
         footerVisible: false,
         showColumnMenu: false,
         columnDefs: [
+            {field:'NON_ELEC_NO', displayName:'일련번호'},
             {field:'NON_ELEC_BUS_NO', displayName:'사업자등록번호'},
             {field:'NON_ELEC_BUS_NAME', displayName:'상호(법인명)'},
             {field:'NON_ELEC_QTY', displayName:'매수',cellFilter:'number', cellClass:'price'},

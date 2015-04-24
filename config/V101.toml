@@ -9,6 +9,8 @@ schema = [
     ["YEAR","String"],               #년도
     ["VATQT","String"],              #신고분기
     ["VATRPTTYPE","String"],         #신고타입
+    ["VATGUBUN","String"],           #환급구분 /10일반환급/20영세율환급/30시설투자환급
+    ["VATJOGI","String"],            #조기환급최소구분 없음/취소
 
 ["GS_TAX_INVOICED_AMT","Number"],       #1. 과세_세금계산서 발급분 금액
 ["GS_TAX_INVOICED_TAX","Number"],       #1. 과세_세금계산서 발급분 세액
@@ -65,6 +67,7 @@ schema = [
 ["RED_ADD_NAPBU_TAX","Number"],     #차감.가감하여납부할 세액
 ["TOTAL_NAPBU_TAX","Number"],       #총괄납부사업자가납부할세액
 ["BANK_NAME","String"],             #거래은행
+["BANK_CODE","String"],             #거래은행
 ["BANK_SUBSI","String"],            #은행지점
 ["BANK_KONTO","String"],            #계좌번호
 ["CLOSE_DATE","Date"],            #폐업일

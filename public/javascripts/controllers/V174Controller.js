@@ -236,7 +236,7 @@ angular.module('V174Ctrl',['ngGrid'])
         enableCellEdit: false,
         columnDefs: [
             {field:'LINE_SEQN', displayName:'일련번호'},
-            {field:'LINE_TYPE', displayName:'구분'},
+            {field:'LINE_TYPE_NAME', displayName:'구분'},
             {field:'LINE_DOC_NO', displayName:'서류번호'},
             {field:'LINE_ISSUE_DATE', displayName:'발급일',cellFilter:'date:\'yyyy-MM-dd\''},
             {field:'LINE_VAT_REG_NO', displayName:'공급받는자의 사업자등록번호'},

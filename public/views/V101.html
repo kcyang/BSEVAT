@@ -36,6 +36,11 @@
                         <span class="glyphicon glyphicon-pencil"> 신고서 II</span>
                     </button>
                 </a></li>
+                <div class="col-xs-4">환급구분<br>
+                    <select class="form-control input-sm" ng-model="mg.VATGUBUN" tabindex="2" ng-options="obj.value as obj.text for obj in SINGO">
+                        <option value="">--선택하세요--</option>
+                    </select>
+                </div>
             </ul>
         </div>
     </div>
@@ -368,9 +373,11 @@
             </tr>
             <tr>
                 <td>②국세환급금 계좌신고</td>
-                <td>거래은행</td>
+                <td>거래은행/코드</td>
                 <td>
                     <input type="text" class="form-control input-sm" ng-model="mg.BANK_NAME"/>
+                    /
+                    <input type="text" class="form-control input-sm" ng-model="mg.BANK_CODE"/>
                 </td>
                 <td>은행/지점</td>
                 <td>
@@ -385,7 +392,7 @@
                 <td colspan="2">③폐   업   신   고</td>
                 <td>폐 업 일</td>
                 <td>
-                    <input type="text" class="form-control input-sm" ng-model="mg.CLOSE_DATE"placeholder="yyyy-mm-dd">
+                    <input type="text" class="form-control input-sm" ng-model="mg.CLOSE_DATE" placeholder="yyyy-mm-dd">
                 </td>
                 <td>폐업 사유</td>
                 <td colspan="2">

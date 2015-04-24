@@ -16,6 +16,11 @@ angular.module('V101Ctrl',[])
             'EMPTY' : 'true'
         };
 
+        $scope.SINGO = [
+            {'value': '10' , 'text': '일반환급'},
+            {'value': '20' , 'text': '영세율환급'},
+            {'value': '30' , 'text': '시설투자환급'}
+        ];
         $scope.progressValue = 0;
         //1. 개요
         //여기서 해당 Page 의 값을 가져와서, ng-model 에 집어 넣는다.

@@ -25,6 +25,7 @@ schema = [
     [
       ["LINE_SEQN","Number"],         #일련번호
       ["LINE_TYPE","String"],         #구분
+      ["LINE_TYPE_NAME","String"],         #구분
       ["LINE_DOC_NO","String"],       #서류번호
       ["LINE_ISSUE_DATE","Date"],     #발급일
       ["LINE_VAT_REG_NO","String"],   #공급받는 자의 사업자등록번호
