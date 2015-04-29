@@ -4139,5 +4139,309 @@
             "multi": ""
         }
 
+    },
+    "V141": {
+      "001": {
+        "length": "1",
+        "value": "A",
+        "blank": "",
+        "table": "",
+        "field": "",
+        "multi": ""
+      },
+      "002": {
+        "length": "6",
+        "value": "",
+        "blank": "",
+        "table": "BSE",
+        "field": "V141YEARMAN",
+        "multi": ""
+      },
+      "003": {
+        "length": "1",
+        "value": "",
+        "blank": "",
+        "table": "V141",
+        "field": "EXPORT_FLAG",
+        "multi": ""
+      },
+      "004": {
+        "length": "10",
+        "value": "",
+        "blank": " ",
+        "table": "company",
+        "field": "BSE_Business No_",
+        "multi": "",
+        "desc" : "사업자등록번호"
+      },
+      "005": {
+        "length": "30",
+        "value": "",
+        "blank": " ",
+        "table": "company",
+        "field": "BSE_Company Name",
+        "multi": ""
+      },
+      "006": {
+        "length": "15",
+        "value": "",
+        "blank": " ",
+        "table": "company",
+        "field": "BSE_Owner Name",
+        "multi": ""
+      },
+      "007": {
+        "length": "45",
+        "value": "",
+        "blank": " ",
+        "table": "company",
+        "field": "BSE_Address",
+        "multi": ""
+      },
+      "008": {
+        "length": "17",
+        "value": "",
+        "blank": " ",
+        "table": "company",
+        "field": "BSE_Business Type",
+        "multi": ""
+      },
+      "009": {
+        "length": "25",
+        "value": "",
+        "blank": " ",
+        "table": "company",
+        "field": "BSE_Business Class",
+        "multi": ""
+      },
+      "010": {
+        "length": "8",
+        "value": "",
+        "blank": " ",
+        "table": "BSE",
+        "field": "VATFROM",
+        "multi": "",
+        "desc" : "신고대상기간FROM"
+      },
+      "011": {
+        "length": "8",
+        "value": "",
+        "blank": " ",
+        "table": "BSE",
+        "field": "VATTO",
+        "multi": "",
+        "desc": "신고대상기간TO"
+      },
+      "012": {
+        "length": "8",
+        "value": "",
+        "blank": " ",
+        "table": "BSE",
+        "field": "REPORTDATE",
+        "multi": "",
+        "desc" : "신고Date"
+      },
+      "013": {
+        "length": "6",
+        "value": "",
+        "blank": " ",
+        "table": "",
+        "field": "",
+        "multi": ""
+      }
+    },
+    "_V141_1": {
+      "001": {
+        "length": "1",
+        "value": "B",
+        "blank": "",
+        "table": "",
+        "field": "",
+        "multi": ""
+      },
+      "002": {
+        "length": "6",
+        "value": "",
+        "blank": "",
+        "table": "BSE",
+        "field": "V141YEARMAN",
+        "multi": ""
+      },
+      "003": {
+        "length": "1",
+        "value": "",
+        "blank": "",
+        "table": "V141",
+        "field": "EXPORT_FLAG",
+        "multi": ""
+      },
+      "004": {
+        "length": "10",
+        "value": "",
+        "blank": " ",
+        "table": "company",
+        "field": "BSE_Business No_",
+        "multi": "",
+        "desc" : "사업자등록번호"
+      },
+      "005": {
+        "length": "7",
+        "value": "",
+        "blank": "0",
+        "table": "_V141_1",
+        "field": "TOTAL_CNT"
+      },
+      "006": {
+        "length": "15",
+        "value": "",
+        "blank": "0",
+        "table": "_V141_1",
+        "field": "TOTAL_CURRENCY_AMOUNT",
+        "dpoint" : "2"
+      },
+      "007": {
+        "length": "15",
+        "value": "",
+        "blank": "0",
+        "table": "_V141_1",
+        "field": "TOTAL_AMOUNT"
+      },
+      "008": {
+        "length": "7",
+        "value": "",
+        "blank": "0",
+        "table": "_V141_1",
+        "field": "JAE_CNT_TOTAL"
+      },
+      "009": {
+        "length": "15",
+        "value": "",
+        "blank": "0",
+        "table": "_V141_1",
+        "field": "JAE_CURRENCY_AMOUNT_TOTAL",
+        "dpoint" : "2"
+      },
+      "010": {
+        "length": "15",
+        "value": "",
+        "blank": "0",
+        "table": "_V141_1",
+        "field": "JAE_AMOUNT_TOTAL"
+      },
+      "011": {
+        "length": "7",
+        "value": "",
+        "blank": "0",
+        "table": "_V141_1",
+        "field": "ETC_CNT_TOTAL"
+      },
+      "012": {
+        "length": "15",
+        "value": "",
+        "blank": "0",
+        "table": "_V141_1",
+        "field": "ETC_CURRENCY_AMOUNT_TOTAL",
+        "dpoint" : "2"
+      },
+      "013": {
+        "length": "15",
+        "value": "",
+        "blank": "0",
+        "table": "_V141_1",
+        "field": "ETC_AMOUNT_TOTAL"
+      },
+      "014": {
+        "length": "51",
+        "value": "",
+        "blank": " ",
+        "table": "",
+        "field": ""
+      }
+    },
+    "_V141_2":{
+      "001": {
+        "length": "1",
+        "value": "C",
+        "blank": "",
+        "table": "",
+        "field": "",
+        "multi": ""
+      },
+      "002": {
+        "length": "6",
+        "value": "",
+        "blank": "",
+        "table": "BSE",
+        "field": "V141YEARMAN",
+        "multi": ""
+      },
+      "003": {
+        "length": "1",
+        "value": "",
+        "blank": "",
+        "table": "V141",
+        "field": "EXPORT_FLAG",
+        "multi": ""
+      },
+      "004": {
+        "length": "10",
+        "value": "",
+        "blank": " ",
+        "table": "company",
+        "field": "BSE_Business No_",
+        "multi": "",
+        "desc" : "사업자등록번호"
+      },
+      "005": {
+        "length": "7",
+        "value": "",
+        "blank": " ",
+        "table": "_V141_2",
+        "field": "SEQN"
+      },
+      "006": {
+        "length": "15",
+        "value": "",
+        "blank": " ",
+        "table": "_V141_2",
+        "field": "EXPORT REPORT NO"
+      },
+      "007": {
+        "length": "8",
+        "value": "",
+        "blank": " ",
+        "table": "_V141_2",
+        "field": "SHIP_DATE"
+      },
+      "008": {
+        "length": "3",
+        "value": "",
+        "blank": " ",
+        "table": "_V141_2",
+        "field": "CURRENCY CODE"
+      },
+      "009": {
+        "length": "9",
+        "value": "",
+        "blank": "0",
+        "table": "_V141_2",
+        "field": "EXCHANGE RATE",
+        "dpoint" : "4"
+      },
+      "010": {
+        "length": "15",
+        "value": "",
+        "blank": "0",
+        "table": "_V141_2",
+        "field": "CURRENCY AMOUNT",
+        "dpoint" : "2"
+      },
+      "011": {
+        "length": "15",
+        "value": "",
+        "blank": "0",
+        "table": "_V141_2",
+        "field": "AMOUNT"
+      }
     }
 }

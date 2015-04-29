@@ -11,6 +11,7 @@ import sys
 sys.path.append(r'C:\Python27\Lib')
 sys.path.append(r'C:\Python27\Lib\site-packages')
 
+#아래는 영문 OS의 경우, 주석을 해제해야 한다.
 #reload(sys)
 #sys.setdefaultencoding('utf-8')
 
@@ -36,7 +37,7 @@ _V110_3 = {}
 _V106 = {}
 _V164_1 = {}
 _V174_1 = {}
-
+_V141_2 = {}
 '''
 텍스트만 가져오는 구문,
 /[^a-z|^A-Z|^0-9]/gi,''
@@ -306,6 +307,7 @@ def make_line(_define):
     global _V106
     global _V164_1
     global _V174_1
+    global _V141_2
 
     # 넘어온 Parameter 를 체크한다.
     if _define is None or '':
@@ -390,6 +392,14 @@ def make_line(_define):
                 _db_field_value = get_only_text(_bse[_define['field']])
             elif _define['table'] == 'company':
                 _db_field_value = get_only_text(_company[_define['field']])
+            elif _define['table'] == '_V141_1':
+                _table = _mongo['V141']
+                _db_field_value = _table.get(_define['field'])
+            elif _define['table'] == '_V141_2':
+                _db_field_value = get_only_text(_V141_2[_define['field']])
+            elif _define['table'] == 'V141':
+                _table = _mongo['V141']
+                _db_field_value = _table.get(_define['field'])
             else:
                 _table = _mongo[_define['table']]
                 if _define['field'] in _table:
@@ -887,6 +897,33 @@ def make_v174(_define, _file_name, _v174):
             f.write(unicode(''.join(_report), 'cp949').encode('utf-8'))
 
 
+def make_v141_2(_define, _file_name, _v141):
+    global _V141_2
+
+    _V141_2 = {}
+
+    if _define is None or '':
+        raise ValueError('JSON Value is not defined..')
+
+    for _v141_item in _v141:
+        _V141_2 = _v141_item
+
+        #키 값을 Tuple 에 담아서 Sorting 한다.
+        _define_keys = tuple(_define.keys())
+        _sorted_keys = sorted(_define_keys)
+        _report = []
+
+        #Sorting 한 순서대로 라인을 만든다.
+        with open(_file_name, 'a') as f:
+            for define_items in _sorted_keys:
+                _line_define = _define[define_items]
+                _result = make_line(_line_define)
+                #print '[', _result, ']'
+                _report.append(str(_result))
+
+            _report.append('\n')
+            f.write(unicode(''.join(_report), 'cp949').encode('utf-8'))
+
 '''
 콘솔에 값을 찍어주는 함수
 '''
@@ -905,6 +942,7 @@ def make_vat_file(target_list, vat_key, company_code, output_path):
         make_bse(vat_key)
 
         print 'Document Name ::', _json_target_list, 'VATKEY ::', vat_key
+        # os.chdir(os.path.dirname(os.getcwd()))
         file_path = ''.join([os.getcwd(), '\\config\\_Report.json'])
 
         # Company 정보 가져오기
@@ -1000,10 +1038,11 @@ def make_vat_file(target_list, vat_key, company_code, output_path):
                     _v104_h = _mongo['V104']
 
                     # 매출세금계산서 계산서이외 매출목록
-                    if int(_v104_h['NON_ELEC_TOT_SALES_CNT']) > 0:
-                        _v104 = _v104_h['SUB']
-                        # 목록을 넘겨서 만들도록 한다.
-                        make_v104_1(_json.get('_V104_1'), output_path, _v104)
+                    if 'NON_ELEC_TOT_SALES_CNT' in _v104_h:
+                        if int(_v104_h['NON_ELEC_TOT_SALES_CNT']) > 0:
+                            _v104 = _v104_h['SUB']
+                            # 목록을 넘겨서 만들도록 한다.
+                            make_v104_1(_json.get('_V104_1'), output_path, _v104)
 
                     # 매출세금계산서 계산서이외 매출합계
                     make_one_record(_json.get('_V104_2'), output_path)
@@ -1012,10 +1051,11 @@ def make_vat_file(target_list, vat_key, company_code, output_path):
                     _v105_h = _mongo['V105']
 
                     # 매입세금계산서 계산서이외 매입목록
-                    if int(_v105_h['NON_ELEC_TOT_PURCH_CNT']) > 0:
-                        _v105 = _v105_h['SUB']
-                        # 목록을 넘겨서 만들도록 한다.
-                        make_v105_1(_json.get('_V105_1'), output_path, _v105)
+                    if 'NON_ELEC_TOT_PURCH_CNT' in _v105_h:
+                        if int(_v105_h.get('NON_ELEC_TOT_PURCH_CNT')) > 0:
+                            _v105 = _v105_h['SUB']
+                            # 목록을 넘겨서 만들도록 한다.
+                            make_v105_1(_json.get('_V105_1'), output_path, _v105)
 
                     # 매입세금계산서 계산서이외 매입합계
                     make_one_record(_json.get('_V105_2'), output_path)
@@ -1049,10 +1089,11 @@ def make_vat_file(target_list, vat_key, company_code, output_path):
                     _v110_h = _mongo['V105-1']
 
                     # 매입세금계산서 계산서이외 매입목록
-                    if int(_v110_h['ELEC_PSN_PURCH_CNT']) > 0:
-                        _v110 = _v110_h['SUB']
-                        # 목록을 넘겨서 만들도록 한다.
-                        make_v110_3(_json.get('_V110_3'), output_path, _v110)
+                    if 'ELEC_PSN_PURCH_CNT' in _v110_h:
+                        if int(_v110_h['ELEC_PSN_PURCH_CNT']) > 0:
+                            _v110 = _v110_h['SUB']
+                            # 목록을 넘겨서 만들도록 한다.
+                            make_v110_3(_json.get('_V110_3'), output_path, _v110)
 
                     # 제출의부자별집계레코드(매입/전자계산서발급외)
                     make_one_record(_json.get('_V110_4'), output_path)
@@ -1080,6 +1121,19 @@ def make_vat_file(target_list, vat_key, company_code, output_path):
                             _v174 = _v174_h['SUB']
                             # 목록을 넘겨서 만들도록 한다.
                             make_v174(_json.get('_V174_1'), output_path, _v174)
+                elif target_doc == 'V141':  # 수출실적 명세서
+                    # 헤더 B Record.
+                    write_line(_json['_V141_1'], output_path)
+
+                    # 매출세금계산서 합계표
+                    _v141_h = _mongo['V141']
+
+                    # 매출세금계산서 계산서이외 매출목록
+                    if 'JAE_CNT_TOTAL' in _v141_h:
+                        if int(_v141_h.get('JAE_CNT_TOTAL')) > 0:
+                            _v141 = _v141_h['SUB']
+                            # 목록을 넘겨서 만들도록 한다.
+                            make_v141_2(_json.get('_V141_2'), output_path, _v141)
                 else:
                     print u'아무것도 없음.'
 
