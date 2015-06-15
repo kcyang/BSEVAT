@@ -4297,6 +4297,7 @@
         "blank": "0",
         "table": "_V141_1",
         "field": "TOTAL_CURRENCY_AMOUNT",
+        "multi": "Y",
         "dpoint" : "2"
       },
       "007": {
@@ -4319,6 +4320,7 @@
         "blank": "0",
         "table": "_V141_1",
         "field": "JAE_CURRENCY_AMOUNT_TOTAL",
+        "multi": "Y",
         "dpoint" : "2"
       },
       "010": {
@@ -4341,6 +4343,7 @@
         "blank": "0",
         "table": "_V141_1",
         "field": "ETC_CURRENCY_AMOUNT_TOTAL",
+        "multi": "Y",
         "dpoint" : "2"
       },
       "013": {
@@ -4426,6 +4429,7 @@
         "blank": "0",
         "table": "_V141_2",
         "field": "EXCHANGE RATE",
+        "multi": "Y",
         "dpoint" : "4"
       },
       "010": {
@@ -4434,6 +4438,7 @@
         "blank": "0",
         "table": "_V141_2",
         "field": "CURRENCY AMOUNT",
+        "multi": "Y",
         "dpoint" : "2"
       },
       "011": {
