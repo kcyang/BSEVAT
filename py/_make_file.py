@@ -37,6 +37,7 @@ _V106 = {}
 _V164_1 = {}
 _V174_1 = {}
 _V141_2 = {}
+_V153 = {}
 '''
 텍스트만 가져오는 구문,
 /[^a-z|^A-Z|^0-9]/gi,''
@@ -198,11 +199,17 @@ def get_json_obj(file_path):
 '''
 
 
-def fill_line(_field_value, _len, _blank, _line):
-    if _field_value is None:
-        return
-    if _field_value == '':
-        return
+def fill_line(_field_value, _len, _blank):
+    # 0714 START
+    _line = []
+    for i in range(int(_len)):
+        _line.append(_blank)
+    # 0714 END
+
+    # if _field_value is None:
+    #     return
+    # if _field_value == '':
+    #     return
 
     # 필드의 길이를 잰다.
     if isinstance(_field_value, Number):
@@ -214,11 +221,13 @@ def fill_line(_field_value, _len, _blank, _line):
         else:
             _field_value = _field_value.strftime('%Y%m%d')
 
-    _len_value = len(_field_value)
+    # _len_value = len(_field_value)
+    _len_value = len(_field_value.encode('949'))  #0714
 
     # 값이 정의된 길이보다 길면, 에러...
     if _len_value > int(_len):
-        raise ValueError('bigger than pre defined value....')
+        _field_value = _field_value[:int(_len)]  #0714
+        # raise ValueError('bigger than pre defined value....')
 
     if not _len_value == 0:
         # 필드 값이 숫자형인 경우,
@@ -255,12 +264,22 @@ def fill_line(_field_value, _len, _blank, _line):
                     continue
                 _line[idx] = items
             '''
-            _temp_text = get_only_text(_field_value)
+            # _line[0:_len_value+1] = _field_value
+            # _line = _field_value.encode('utf-8').ljust(int(_len))
+            _line = list(_field_value)
+            if len(_line) < int(_len):
+                for i in range(_len_value, int(_len)):
+                    _line.append(' ')
+
+            # _temp_text = get_only_text(_field_value) //0707 TEST
+            # _temp_text = get_only_text(_field_value.encode('utf-8')) //0707 TEST
             # _temp_text = unicode(_temp_text).encode('cp949') //encoding#0615
 
-            _list_value = list(_temp_text)
-            for idx, items in enumerate(_list_value):
-                _line[idx] = items
+            # _list_value = list(_temp_text)  //0707 TEST
+            # _list_value = list(_field_value) //0707 TEST
+            # for idx, items in enumerate(_list_value): //0707 TEST
+            #     _line[idx] = items //0707 TEST
+    return _line
 
 '''
 필요한 값과, 구조를 받아서 Line 을 생성하는 Function
@@ -287,160 +306,171 @@ def make_line(_define):
         raise ValueError(u'넘겨온 값이 없습니다. make_line')
 
     # 리턴할 값 초기화
-    _line = []
+    # _line = []  $0714
     _len = _define['length']
 
-    try:
-        # 길이 값 점검.
-        if _len is None or int(_len) == 0:
-            raise ValueError(u'길이 값이 정의되지 않았습니다')
+    # 길이 값 점검.
+    if _len is None or int(_len) == 0:
+        raise ValueError(u'길이 값이 정의되지 않았습니다')
 
-        # 길이 만큼 공간을 넣어준다.
-        _blank = _define['blank']
-        if _blank == '':
-            _blank = ' '
+    # 길이 만큼 공간을 넣어준다.
+    _blank = _define['blank']
+    '''
+    if _blank == '':
+        _blank = ' '
+    '''
 
-        for i in range(int(_len)):
-            _line.append(_blank)
-            # _line.append(_blank.encode('utf-8'))  //encoding#0615
+    # for i in range(int(_len)):
+    #     _line.append(_blank)
+        # _line.append(_blank.encode('utf-8'))  //encoding#0615
 
-        # 값의 길이를 측정해서,
+    # 값의 길이를 측정해서,
 
-        _field_value = _define['value']
+    _field_value = _define['value']
 
-        fill_line(_field_value, _len, _blank, _line)
+    _line = fill_line(_field_value, _len, _blank)
 
-        if 'table' in _define:
-            if _define['table'] == '':
-                _db_field_value = None
-            elif _define['table'] == '_V101_1':
-                _db_field_value = get_only_text(_V101_1[_define['field']])
-            elif _define['table'] == '_V101_2':
-                _db_field_value = get_only_text(_V101_2[_define['field']])
-            elif _define['table'] == '_V101_3':
-                _db_field_value = get_only_text(_V101_3[_define['field']])
-            elif _define['table'] == '_V104_1':
-                _db_field_value = get_only_text(_V104_1[_define['field']])
-            elif _define['table'] == '_V104_2':
-                _table = _mongo['V104']
-                _db_field_value = _table.get(_define['field'])
-            elif _define['table'] == '_V104_3':
-                _table = _mongo['V104']
-                _db_field_value = _table.get(_define['field'])
-            elif _define['table'] == '_V105_1':
-                _db_field_value = get_only_text(_V105_1[_define['field']])
-            elif _define['table'] == '_V105_2':
-                _table = _mongo['V105']
-                _db_field_value = _table.get(_define['field'])
-            elif _define['table'] == '_V105_3':
-                _table = _mongo['V105']
-                _db_field_value = _table.get(_define['field'])
-            elif _define['table'] == '_V109_1':
-                _table = _mongo['V104-1']
-                _db_field_value = _table.get(_define['field'])
-            elif _define['table'] == '_V109_2':
-                _table = _mongo['V104-1']
-                _db_field_value = _table.get(_define['field'])
-            elif _define['table'] == '_V109_4':
-                _table = _mongo['V104-1']
-                _db_field_value = _table.get(_define['field'])
-            elif _define['table'] == '_V109_3':
-                _db_field_value = get_only_text(_V109_3[_define['field']])
-            elif _define['table'] == '_V110_2':
-                _table = _mongo['V105-1']
-                _db_field_value = _table.get(_define['field'])
-            elif _define['table'] == '_V110_4':
-                _table = _mongo['V105-1']
-                _db_field_value = _table.get(_define['field'])
-            elif _define['table'] == '_V110_3':
-                _db_field_value = get_only_text(_V110_3[_define['field']])
-            elif _define['table'] == 'V106':
-                _db_field_value = get_only_text(_V106[_define['field']])
-            elif _define['table'] == '_V164_1':
-                _db_field_value = get_only_text(_V164_1[_define['field']])
-            elif _define['table'] == '_V174_1':
-                _db_field_value = get_only_text(_V174_1[_define['field']])
-            elif _define['table'] == 'BSE':
-                _db_field_value = get_only_text(_bse[_define['field']])
-            elif _define['table'] == 'V104':
-                _db_field_value = get_only_text(_bse[_define['field']])
-            elif _define['table'] == 'company':
-                _db_field_value = get_only_text(_company[_define['field']])
-            elif _define['table'] == '_V141_1':
-                _table = _mongo['V141']
-                _db_field_value = _table.get(_define['field'])
-            elif _define['table'] == '_V141_2':
-                _db_field_value = get_only_text(_V141_2[_define['field']])
-            elif _define['table'] == 'V141':
-                _table = _mongo['V141']
-                _db_field_value = _table.get(_define['field'])
+    if 'table' in _define:
+        if _define['table'] == '':
+            _db_field_value = None
+        elif _define['table'] == '_V101_1':
+            _db_field_value = get_only_text(_V101_1[_define['field']])
+        elif _define['table'] == '_V101_2':
+            _db_field_value = get_only_text(_V101_2[_define['field']])
+        elif _define['table'] == '_V101_3':
+            _db_field_value = get_only_text(_V101_3[_define['field']])
+        elif _define['table'] == '_V104_1':
+            _db_field_value = get_only_text(_V104_1[_define['field']])
+        elif _define['table'] == '_V104_2':
+            _table = _mongo['V104']
+            _db_field_value = _table.get(_define['field'])
+        elif _define['table'] == '_V104_3':
+            _table = _mongo['V104']
+            _db_field_value = _table.get(_define['field'])
+        elif _define['table'] == '_V105_1':
+            _db_field_value = get_only_text(_V105_1[_define['field']])
+        elif _define['table'] == '_V105_2':
+            _table = _mongo['V105']
+            _db_field_value = _table.get(_define['field'])
+        elif _define['table'] == '_V105_3':
+            _table = _mongo['V105']
+            _db_field_value = _table.get(_define['field'])
+        elif _define['table'] == '_V109_1':
+            _table = _mongo['V104-1']
+            _db_field_value = _table.get(_define['field'])
+        elif _define['table'] == '_V109_2':
+            _table = _mongo['V104-1']
+            _db_field_value = _table.get(_define['field'])
+        elif _define['table'] == '_V109_4':
+            _table = _mongo['V104-1']
+            _db_field_value = _table.get(_define['field'])
+        elif _define['table'] == '_V109_3':
+            _db_field_value = get_only_text(_V109_3[_define['field']])
+        elif _define['table'] == '_V110_2':
+            _table = _mongo['V105-1']
+            _db_field_value = _table.get(_define['field'])
+        elif _define['table'] == '_V110_4':
+            _table = _mongo['V105-1']
+            _db_field_value = _table.get(_define['field'])
+        elif _define['table'] == '_V110_3':
+            _db_field_value = get_only_text(_V110_3[_define['field']])
+        elif _define['table'] == 'V106':
+            _db_field_value = get_only_text(_V106[_define['field']])
+        elif _define['table'] == '_V164_1':
+            _db_field_value = get_only_text(_V164_1[_define['field']])
+        elif _define['table'] == '_V164_2':
+            _db_field_value = get_only_text(_V164_1[_define['field']])
+        elif _define['table'] == '_V174_1':
+            _db_field_value = get_only_text(_V174_1[_define['field']])
+        elif _define['table'] == 'BSE':
+            _db_field_value = get_only_text(_bse[_define['field']])
+        elif _define['table'] == 'V104':
+            _db_field_value = get_only_text(_bse[_define['field']])
+        elif _define['table'] == 'company':
+            _db_field_value = get_only_text(_company[_define['field']])
+        elif _define['table'] == '_V141_1':
+            _table = _mongo['V141']
+            _db_field_value = _table.get(_define['field'])
+        elif _define['table'] == '_V141_2':
+            _db_field_value = get_only_text(_V141_2[_define['field']])
+        elif _define['table'] == 'V141':
+            _table = _mongo['V141']
+            _db_field_value = _table.get(_define['field'])
+        elif _define['table'] == '_V153_1':
+            _db_field_value = get_only_text(_V153[_define['field']])
+        elif _define['table'] == '_V153_2':
+            _db_field_value = get_only_text(_V153[_define['field']])
+        elif _define['table'] == '_V153_3':
+            _db_field_value = get_only_text(_V153[_define['field']])
+        elif _define['table'] == '_V153_4':
+            _db_field_value = get_only_text(_V153[_define['field']])
+        else:
+            _table = _mongo[_define['table']]
+            if _define['field'] in _table:
+                _db_field_value = _table[_define['field']]
             else:
-                _table = _mongo[_define['table']]
-                if _define['field'] in _table:
-                    _db_field_value = _table[_define['field']]
+                _db_field_value = None
+
+        # print 'Field Value..........>', _db_field_value
+
+        # 멀티키 / 소수점 처리필요
+        if 'multi' in _define:
+            if _define['multi'] == 'Y':
+                _temp = int(_db_field_value)
+                if _temp < 0:
+                    _temp_str = str(_temp)
+                    _temp_last = _temp_str[len(_temp_str)]
+
+                    if _temp_last == '0':
+                        _multi = '}'
+                    elif _temp_last == '1':
+                        _multi = 'J'
+                    elif _temp_last == '2':
+                        _multi = 'K'
+                    elif _temp_last == '3':
+                        _multi = 'L'
+                    elif _temp_last == '4':
+                        _multi = 'M'
+                    elif _temp_last == '5':
+                        _multi = 'N'
+                    elif _temp_last == '6':
+                        _multi = 'O'
+                    elif _temp_last == '7':
+                        _multi = 'P'
+                    elif _temp_last == '8':
+                        _multi = 'Q'
+                    elif _temp_last == '9':
+                        _multi = 'R'
+
+                    _multi_str = _temp_str[:len(_temp_str)] + _multi
                 else:
-                    _db_field_value = None
+                    _multi_str = str(_temp)
 
-            # print 'Field Value..........>', _db_field_value
+                if 'dpoint' in _define:
+                    # dpoint 만큼 0 으로 채워넣는다.
 
-            # 멀티키 / 소수점 처리필요
-            if 'multi' in _define:
-                if _define['multi'] == 'Y':
-                    _temp = int(_db_field_value)
-                    if _temp < 0:
-                        _temp_str = str(_temp)
-                        _temp_last = _temp_str[len(_temp_str)]
+                    if int(_define.get('dpoint')) > 0:
+                        _result = ['0'] * int(_define['dpoint'])
 
-                        if _temp_last == '0':
-                            _multi = '}'
-                        elif _temp_last == '1':
-                            _multi = 'J'
-                        elif _temp_last == '2':
-                            _multi = 'K'
-                        elif _temp_last == '3':
-                            _multi = 'L'
-                        elif _temp_last == '4':
-                            _multi = 'M'
-                        elif _temp_last == '5':
-                            _multi = 'N'
-                        elif _temp_last == '6':
-                            _multi = 'O'
-                        elif _temp_last == '7':
-                            _multi = 'P'
-                        elif _temp_last == '8':
-                            _multi = 'Q'
-                        elif _temp_last == '9':
-                            _multi = 'R'
+                        _temp = _db_field_value - int(_db_field_value)
+                        if _temp != 0:
+                            _temp = str(abs(round(_temp, int(_define['dpoint']))))[2:]
+                            _temp_l = list(_temp)
+                            for i in range(len(_temp)):
+                                _result[i] = _temp_l[i]
 
-                        _multi_str = _temp_str[:len(_temp_str)] + _multi
-                    else:
-                        _multi_str = str(_temp)
+                        _dpoint_str = ''.join(_result)
+                        _db_field_value = _multi_str + _dpoint_str
 
-                    if 'dpoint' in _define:
-                        # dpoint 만큼 0 으로 채워넣는다.
+                else:
+                    _db_field_value = _multi_str
 
-                        if int(_define.get('dpoint')) > 0:
-                            _result = ['0'] * int(_define['dpoint'])
-
-                            _temp = _db_field_value - int(_db_field_value)
-                            if _temp != 0:
-                                _temp = str(abs(round(_temp, int(_define['dpoint']))))[2:]
-                                _temp_l = list(_temp)
-                                for i in range(len(_temp)):
-                                    _result[i] = _temp_l[i]
-
-                            _dpoint_str = ''.join(_result)
-                            _db_field_value = _multi_str + _dpoint_str
-
-                    else:
-                        _db_field_value = _multi_str
-
-            fill_line(_db_field_value, _len, _blank, _line)
-
-    except ValueError as e:
-        print 'Value Error :', str(e)
-    except TypeError as e:
-        print 'Type Error : ', str(e)
+        if _db_field_value is None:
+            pass
+        elif _db_field_value == '':
+            pass
+        else:
+            _line = fill_line(_db_field_value, _len, _blank)
 
     return ''.join(_line)
 
@@ -712,6 +742,31 @@ def make_v164(_define, _file_name, _v164):
         make_one_record(_define, _file_name)
 
 
+def make_v164_1(_define, _file_name, _v164):
+    global _V164_1
+
+    _V164_1 = {}
+
+    if _define is None or '':
+        raise ValueError('JSON Value is not defined..')
+    sign_1 = ' '
+    sign_2 = ' '
+    if(long(_v164.get('TOTAL_AMOUNT'))) < 0:
+        sign_1 = '-'
+    if(long(_v164.get('TOTAL_TAX'))) < 0:
+        sign_2 = '-'
+
+    _V164_1 = {
+        "DATA_CNT": str(len(_v164['SUB'])),
+        "RPT_CNT": _v164.get('TOTAL_COUNT'),
+        "TOT_AMT": _v164.get('TOTAL_AMOUNT'),
+        "TOT_TAX": _v164.get('TOTAL_TAX'),
+        "SIGN_1": sign_1,
+        "SIGN_2": sign_2
+    }
+    make_one_record(_define, _file_name)
+
+
 def make_v174(_define, _file_name, _v174):
     global _V174_1
 
@@ -738,6 +793,78 @@ def make_v141_2(_define, _file_name, _v141):
         make_one_record(_define, _file_name)
 
 
+def make_v153(_define, _gubun, _file_name, _cnt, _amt, _tax):
+    global _V153
+
+    _V153 = {}
+
+    if _define is None or '':
+        raise ValueError('JSON Value is not defined..')
+
+    _V153 = {
+        "GUBUN": _gubun,
+        "CNT": _cnt,
+        "AMT": _amt,
+        "TAX": _tax
+    }
+    make_one_record(_define, _file_name)
+
+def make_v153_1(_define, _seq, _file_name, _act, _tax, _amt, _notax, _bultax):
+    global _V153
+
+    _V153 = {}
+
+    if _define is None or '':
+        raise ValueError('JSON Value is not defined..')
+
+    if long(_act) > 0:
+        _V153 = {
+            "SEQNO": _seq,
+            "AMT": _act,
+            "TAX": _tax,
+            "TOT_TAX": _amt,
+            "FREE_TAX": _notax,
+            "NO_TAX": _bultax
+        }
+        make_one_record(_define, _file_name)
+
+def make_v153_2(_define, _seq, _file_name, _act, _tax, _amt, _notax, _bultax):
+    global _V153
+
+    _V153 = {}
+
+    if _define is None or '':
+        raise ValueError('JSON Value is not defined..')
+
+    if long(_act) > 0:
+        _V153 = {
+            "SEQNO": _seq,
+            "TOT_AMT": _act,
+            "FREE_TAX_RATE": _tax,
+            "NO_TAX": _amt,
+            "GINO_TAX": _notax,
+            "GA_TAX": _bultax
+        }
+        make_one_record(_define, _file_name)
+
+
+def make_v153_3(_define, _seq, _file_name, _act, _tax, _amt, _notax):
+    global _V153
+
+    _V153 = {}
+
+    if _define is None or '':
+        raise ValueError('JSON Value is not defined..')
+
+    if long(_act) > 0:
+        _V153 = {
+            "SEQNO": _seq,
+            "JAE_TAX": _act,
+            "KG_RE_TAX": _tax,
+            "UP_DOWN_TAX": _amt,
+            "GA_TAX": _notax
+        }
+        make_one_record(_define, _file_name)
 '''
 콘솔에 값을 찍어주는 함수
 '''
@@ -927,6 +1054,7 @@ def make_vat_file(target_list, vat_key, company_code, output_path):
                             _v164 = _v164_h['SUB']
                             # 목록을 넘겨서 만들도록 한다.
                             make_v164(_json.get('_V164_1'), output_path, _v164)
+                            make_v164_1(_json.get('_V164_2'), output_path, _v164_h)
 
                 elif target_doc == 'V174':  # 내국신용장.구매확인서
                     _v174_h = _mongo['V174']
@@ -948,6 +1076,37 @@ def make_vat_file(target_list, vat_key, company_code, output_path):
                             _v141 = _v141_h['SUB']
                             # 목록을 넘겨서 만들도록 한다.
                             make_v141_2(_json.get('_V141_2'), output_path, _v141)
+                elif target_doc == 'V153':  # 공제받지 못할 매입세액 명세서
+                    _v153_h = _mongo['V153']
+                    if int(_v153_h.get('PURCH_TAX_1_CNT')) > 0:
+                        make_v153(_json.get('_V153_1'), '01', output_path, _v153_h.get('PURCH_TAX_1_CNT'), _v153_h.get('PURCH_TAX_1_AMT'), _v153_h.get('PURCH_TAX_1_TAX'))
+                    elif int(_v153_h.get('PURCH_TAX_2_CNT')) > 0:
+                        make_v153(_json.get('_V153_1'), '02', output_path, _v153_h.get('PURCH_TAX_2_CNT'), _v153_h.get('PURCH_TAX_2_AMT'), _v153_h.get('PURCH_TAX_2_TAX'))
+                    elif int(_v153_h.get('PURCH_TAX_3_CNT')) > 0:
+                        make_v153(_json.get('_V153_1'), '03', output_path, _v153_h.get('PURCH_TAX_3_CNT'), _v153_h.get('PURCH_TAX_3_AMT'), _v153_h.get('PURCH_TAX_3_TAX'))
+                    elif int(_v153_h.get('PURCH_TAX_4_CNT')) > 0:
+                        make_v153(_json.get('_V153_1'), '04', output_path, _v153_h.get('PURCH_TAX_4_CNT'), _v153_h.get('PURCH_TAX_4_AMT'), _v153_h.get('PURCH_TAX_4_TAX'))
+                    elif int(_v153_h.get('PURCH_TAX_5_CNT')) > 0:
+                        make_v153(_json.get('_V153_1'), '05', output_path, _v153_h.get('PURCH_TAX_5_CNT'), _v153_h.get('PURCH_TAX_5_AMT'), _v153_h.get('PURCH_TAX_5_TAX'))
+                    elif int(_v153_h.get('PURCH_TAX_6_CNT')) > 0:
+                        make_v153(_json.get('_V153_1'), '06', output_path, _v153_h.get('PURCH_TAX_6_CNT'), _v153_h.get('PURCH_TAX_6_AMT'), _v153_h.get('PURCH_TAX_6_TAX'))
+                    elif int(_v153_h.get('PURCH_TAX_7_CNT')) > 0:
+                        make_v153(_json.get('_V153_1'), '07', output_path, _v153_h.get('PURCH_TAX_7_CNT'), _v153_h.get('PURCH_TAX_7_AMT'), _v153_h.get('PURCH_TAX_7_TAX'))
+                    elif int(_v153_h.get('PURCH_TAX_8_CNT')) > 0:
+                        make_v153(_json.get('_V153_1'), '08', output_path, _v153_h.get('PURCH_TAX_8_CNT'), _v153_h.get('PURCH_TAX_8_AMT'), _v153_h.get('PURCH_TAX_8_TAX'))
+
+                    make_v153_1(_json.get('_V153_2'), '000001', output_path, _v153_h.get('PURCH_AN_1_ACT'), _v153_h.get('PURCH_AN_1_TAX'), _v153_h.get('PURCH_AN_1_AMT'), _v153_h.get('PURCH_AN_1_NOTAX'), _v153_h.get('PURCH_AN_1_BULTAX'))
+                    make_v153_1(_json.get('_V153_2'), '000002', output_path, _v153_h.get('PURCH_AN_2_ACT'), _v153_h.get('PURCH_AN_2_TAX'), _v153_h.get('PURCH_AN_2_AMT'), _v153_h.get('PURCH_AN_2_NOTAX'), _v153_h.get('PURCH_AN_2_BULTAX'))
+                    make_v153_1(_json.get('_V153_2'), '000003', output_path, _v153_h.get('PURCH_AN_3_ACT'), _v153_h.get('PURCH_AN_3_TAX'), _v153_h.get('PURCH_AN_3_AMT'), _v153_h.get('PURCH_AN_3_NOTAX'), _v153_h.get('PURCH_AN_3_BULTAX'))
+                    make_v153_1(_json.get('_V153_2'), '000004', output_path, _v153_h.get('PURCH_AN_4_ACT'), _v153_h.get('PURCH_AN_4_TAX'), _v153_h.get('PURCH_AN_4_AMT'), _v153_h.get('PURCH_AN_4_NOTAX'), _v153_h.get('PURCH_AN_4_BULTAX'))
+                    make_v153_1(_json.get('_V153_2'), '000005', output_path, _v153_h.get('PURCH_AN_5_ACT'), _v153_h.get('PURCH_AN_5_TAX'), _v153_h.get('PURCH_AN_5_AMT'), _v153_h.get('PURCH_AN_5_NOTAX'), _v153_h.get('PURCH_AN_5_BULTAX'))
+
+                    make_v153_2(_json.get('_V153_3'), '000001', output_path, _v153_h.get('PURCH_COM_1_TAX'), _v153_h.get('PURCH_COM_1_RATE'), _v153_h.get('PURCH_COM_1_BULTOT'), _v153_h.get('PURCH_COM_1_BULTAX'), _v153_h.get('PURCH_COM_1_GONTAX'))
+                    make_v153_2(_json.get('_V153_3'), '000002', output_path, _v153_h.get('PURCH_COM_2_TAX'), _v153_h.get('PURCH_COM_2_RATE'), _v153_h.get('PURCH_COM_2_BULTOT'), _v153_h.get('PURCH_COM_2_BULTAX'), _v153_h.get('PURCH_COM_2_GONTAX'))
+
+                    make_v153_3(_json.get('_V153_4'), '000001', output_path, _v153_h.get('PURCH_ASST_1_TAX'), _v153_h.get('PURCH_NEG_1_RATE'), _v153_h.get('PURCH_POS_1_RATE'), _v153_h.get('PURCH_GON_1_TAX'))
+                    make_v153_3(_json.get('_V153_4'), '000002', output_path, _v153_h.get('PURCH_ASST_2_TAX'), _v153_h.get('PURCH_NEG_2_RATE'), _v153_h.get('PURCH_POS_2_RATE'), _v153_h.get('PURCH_GON_2_TAX'))
+
                 else:
                     print u'아무것도 없음.'
 

@@ -923,7 +923,7 @@
         },
         "083": {
             "length": "1",
-            "value": "5",
+            "value": "0",
             "blank": " ",
             "table": "",
             "field": "",
@@ -932,7 +932,7 @@
         },
         "084": {
             "length": "1",
-            "value": "1",
+            "value": "0",
             "blank": " ",
             "table": "",
             "field": "",
@@ -1040,7 +1040,7 @@
         "004": {
             "length": "12",
             "value": "",
-            "blank": "1",
+            "blank": "0",
             "table": "",
             "field": "",
             "multi": ""
@@ -1704,7 +1704,7 @@
         },
         "013": {
             "length": "1",
-            "value": " ",
+            "value": "0",
             "blank": "",
             "table": "",
             "field": "",
@@ -3086,7 +3086,7 @@
         },
         "004": {
             "length": "60",
-            "value": "",
+            "value": "개별소비세신고증빙서류제출",
             "blank": " ",
             "table": "",
             "field": "",
@@ -3412,6 +3412,273 @@
         }
 
     },
+
+    "_V153_1": {
+        "001": {
+            "length": "2",
+            "value": "18",
+            "blank": "",
+            "table": "",
+            "field": ""
+        },
+        "002": {
+            "length": "7",
+            "value": "I103300",
+            "blank": "",
+            "table": "",
+            "field": "",
+            "multi": ""
+        },
+        "003": {
+            "length": "2",
+            "value": "",
+            "blank": "",
+            "table": "_V153_1",
+            "field": "GUBUN"
+        },
+        "004": {
+            "length": "11",
+            "value": "",
+            "blank": "0",
+            "table": "_V153_1",
+            "field": "CNT",
+            "multi": ""
+        },
+        "005": {
+            "length": "13",
+            "value": "",
+            "blank": "0",
+            "table": "_V153_1",
+            "field": "AMT",
+            "multi": ""
+        },
+        "006": {
+            "length": "13",
+            "value": "",
+            "blank": "0",
+            "table": "_V153_1",
+            "field": "TAX",
+            "multi": ""
+        },
+        "007": {
+            "length": "52",
+            "value": "",
+            "blank": " ",
+            "table": "",
+            "field": ""
+        }
+    },
+    "_V153_2": {
+        "001": {
+            "length": "2",
+            "value": "19",
+            "blank": "",
+            "table": "",
+            "field": ""
+        },
+        "002": {
+            "length": "7",
+            "value": "I103300",
+            "blank": "",
+            "table": "",
+            "field": "",
+            "multi": ""
+        },
+        "003": {
+            "length": "6",
+            "value": "",
+            "blank": "",
+            "table": "_V153_2",
+            "field": "SEQNO"
+        },
+        "004": {
+            "length": "13",
+            "value": "",
+            "blank": "0",
+            "table": "_V153_2",
+            "field": "AMT",
+            "multi": ""
+        },
+        "005": {
+            "length": "13",
+            "value": "",
+            "blank": "0",
+            "table": "_V153_2",
+            "field": "TAX",
+            "multi": ""
+        },
+        "006": {
+            "length": "15",
+            "value": "",
+            "blank": "0",
+            "table": "_V153_2",
+            "field": "TOT_TAX",
+            "multi": "Y",
+            "dpoint": "2"
+        },
+        "007": {
+            "length": "15",
+            "value": "",
+            "blank": "0",
+            "table": "_V153_2",
+            "field": "FREE_TAX",
+            "multi": "Y",
+            "dpoint": "2"
+        },
+        "008": {
+            "length": "13",
+            "value": "",
+            "blank": "0",
+            "table": "_V153_2",
+            "field": "NO_TAX",
+            "multi": ""
+        },
+        "007": {
+            "length": "16",
+            "value": "",
+            "blank": " ",
+            "table": "",
+            "field": ""
+        }
+    },
+    "_V153_3": {
+        "001": {
+            "length": "2",
+            "value": "20",
+            "blank": "",
+            "table": "",
+            "field": ""
+        },
+        "002": {
+            "length": "7",
+            "value": "I103300",
+            "blank": "",
+            "table": "",
+            "field": "",
+            "multi": ""
+        },
+        "003": {
+            "length": "6",
+            "value": "",
+            "blank": "",
+            "table": "_V153_3",
+            "field": "SEQNO"
+        },
+        "004": {
+            "length": "13",
+            "value": "",
+            "blank": "0",
+            "table": "_V153_3",
+            "field": "TOT_AMT",
+            "multi": ""
+        },
+        "005": {
+            "length": "11",
+            "value": "",
+            "blank": "0",
+            "table": "_V153_3",
+            "field": "FREE_TAX_RATE",
+            "multi": "Y",
+            "dpoint": "6"
+        },
+        "006": {
+            "length": "13",
+            "value": "",
+            "blank": "0",
+            "table": "_V153_3",
+            "field": "NO_TAX",
+            "multi": ""
+        },
+        "007": {
+            "length": "13",
+            "value": "",
+            "blank": "0",
+            "table": "_V153_3",
+            "field": "GINO_TAX",
+            "multi": ""
+        },
+        "008": {
+            "length": "13",
+            "value": "",
+            "blank": "0",
+            "table": "_V153_3",
+            "field": "GA_TAX",
+            "multi": ""
+        },
+        "009": {
+            "length": "22",
+            "value": "",
+            "blank": " ",
+            "table": "",
+            "field": ""
+        }
+    },
+
+    "_V153_4": {
+        "001": {
+            "length": "2",
+            "value": "21",
+            "blank": "",
+            "table": "",
+            "field": ""
+        },
+        "002": {
+            "length": "7",
+            "value": "I103300",
+            "blank": "",
+            "table": "",
+            "field": "",
+            "multi": ""
+        },
+        "003": {
+            "length": "6",
+            "value": "",
+            "blank": "",
+            "table": "_V153_4",
+            "field": "SEQNO"
+        },
+        "004": {
+            "length": "13",
+            "value": "",
+            "blank": "0",
+            "table": "_V153_4",
+            "field": "JAE_TAX",
+            "multi": ""
+        },
+        "005": {
+            "length": "7",
+            "value": "",
+            "blank": "0",
+            "table": "_V153_4",
+            "field": "KG_RE_TAX",
+            "multi": "Y",
+            "dpoint": "4"
+        },
+        "006": {
+            "length": "11",
+            "value": "",
+            "blank": "0",
+            "table": "_V153_3",
+            "field": "UP_DOWN_TAX",
+            "multi": "Y",
+            "dpoint": "6"
+        },
+        "007": {
+            "length": "13",
+            "value": "",
+            "blank": "0",
+            "table": "_V153_3",
+            "field": "GA_TAX",
+            "multi": ""
+        },
+        "008": {
+            "length": "41",
+            "value": "",
+            "blank": " ",
+            "table": "",
+            "field": ""
+        }
+    },
     "V164":{
         "001": {
             "length": "2",
@@ -3601,6 +3868,105 @@
         },
         "014": {
             "length": "54",
+            "value": "",
+            "blank": " ",
+            "table": "",
+            "field": "",
+            "multi": ""
+        }
+    },
+
+    "_V164_2":{
+        "001": {
+            "length": "2",
+            "value": "TL",
+            "blank": "",
+            "table": "",
+            "field": "",
+            "multi": ""
+        },
+        "002": {
+            "length": "4",
+            "value": "",
+            "blank": "",
+            "table": "BSE",
+            "field": "YEAR",
+            "multi": ""
+        },
+        "003": {
+            "length": "1",
+            "value": "",
+            "blank": "",
+            "table": "BSE",
+            "field": "V164_GISU",
+            "multi": ""
+        },
+        "004": {
+            "length": "1",
+            "value": "",
+            "blank": "",
+            "table": "BSE",
+            "field": "V164_SINGO",
+            "multi": ""
+        },
+        "005": {
+            "length": "10",
+            "value": "",
+            "blank": " ",
+            "table": "company",
+            "field": "BSE_Business No_",
+            "multi": ""
+        },
+        "006": {
+            "length": "7",
+            "value": "",
+            "blank": "0",
+            "table": "_V164_2",
+            "field": "DATA_CNT",
+            "multi": ""
+        },
+        "007": {
+            "length": "9",
+            "value": "",
+            "blank": "0",
+            "table": "_V164_2",
+            "field": "RPT_CNT",
+            "multi": ""
+        },
+        "008": {
+            "length": "1",
+            "value": "",
+            "blank": " ",
+            "table": "_V164_2",
+            "field": "SIGN_1",
+            "multi": ""
+        },
+        "009": {
+            "length": "15",
+            "value": "",
+            "blank": "0",
+            "table": "_V164_2",
+            "field": "TOT_AMT",
+            "multi": ""
+        },
+        "010": {
+            "length": "1",
+            "value": "",
+            "blank": " ",
+            "table": "_V164_2",
+            "field": "SIGN_2",
+            "multi": ""
+        },
+        "011": {
+            "length": "15",
+            "value": "",
+            "blank": "0",
+            "table": "_V164_2",
+            "field": "TOT_TAX",
+            "multi": ""
+        },
+        "012": {
+            "length": "74",
             "value": "",
             "blank": " ",
             "table": "",
@@ -4398,7 +4764,7 @@
       "005": {
         "length": "7",
         "value": "",
-        "blank": " ",
+        "blank": "0",
         "table": "_V141_2",
         "field": "SEQN"
       },
@@ -4447,6 +4813,13 @@
         "blank": "0",
         "table": "_V141_2",
         "field": "AMOUNT"
+      },
+      "012": {
+          "length": "90",
+          "value": "",
+          "blank": " ",
+          "table": "",
+          "field": ""
       }
     }
 }
