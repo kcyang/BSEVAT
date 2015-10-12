@@ -142,6 +142,20 @@ angular.module('V104Ctrl',['ngGrid'])
 
                 }
 
+            //20151012 - 새로 데이터 생성 후에, 자동으로 한번 더 저장하는 부분. (화면 Update후에)ST
+                VATService.update($scope.constants.VATNO,$scope.mg,function(err,data){
+
+                    if(err) {
+                        $log.error(data);
+
+                        $scope.status = 'Error';
+                        $scope.alertmessage = '저장하지 못했습니다. 관리자에게 문의하세요!';
+                        return;
+                    }
+                    $log.info('총 %s 건이 저장되었습니다',data);
+                    $scope.status = 'Ok';
+                });
+            //20151012 - 새로 데이터 생성 후에, 자동으로 한번 더 저장하는 부분. (화면 Update후에)END
             });
         }
 

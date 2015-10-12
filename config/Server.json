@@ -9,11 +9,11 @@
         "nav":{
             "ip" : "nav.bsecamp.net",
             "port" : "1433",
-            "instance" : "KIMEX150417",
+            "instance" : "david-KIMAX-20150909",
             "company" : "KIMEX",
             "vat_table" : "B_KoreanVAT Entry",
             "user" : "sa",
-            "password": "bse0706!@#$"
+            "password": "aocnf100djr!"
         },
         "mongo":{
             "ip" : "127.0.0.1",
