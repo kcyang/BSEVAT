@@ -1,0 +1,63 @@
+# V129 부동산임대공급가액명세
+title = "VAT120"
+[V120]
+# 대손세액공제(변제)신고서의 화면을 위한 테이블 정의
+# 화면을 구성하게되는 입력폼이나 출력되는 대상을 정하는 것과 동일합니다.
+schema = [
+    ["VATKEY","String","true"],             #Main Key. << 모든 정의에 들어 있어야 함. 세번째 항목은 Key 값 유무.
+    ["COMPANY_CODE","String"],       #회사코드
+    ["YEAR","String"],               #년도
+    ["VATQT","String"],              #신고분기
+    ["VATRPTTYPE","String"],         #신고타입
+
+
+    ["RE_CONT_BO_TOT_AMT","Number"],       #계약 보증금 합계
+    ["RE_CONT_MONT_TOT_AMT","Number"],     #계약 월임대료 합계
+
+    ["RE_IM_TOT_AMT","Number"],            #임대수입 합계
+    ["RE_IM_BO_TOT_AMT","Number"],         #임대수입 보증금 이자수익
+    ["RE_IM_MONT_TOT_AMT","Number"],       #임대수입 월임대료 수익
+
+    ["RE_ADDRESS","String"],               #부동산 소재지
+
+    ["RE_DONG","String"],                  #동
+    ["RE_STAIR","String"],                 #층
+    ["RE_HO","String"],                    #호
+    ["RE_IM_SIZE","Number"],               #임대면적
+    ["RE_IM_SANGHO","String"],             #임차인 상호
+    ["RE_IM_BUS_NO","String"],             #임차인 사업자등록번호
+    ["RE_IM_IN_DATE","Date"],            #임대 입주일
+    ["RE_IM_UP_DATE","Date"],            #임대 갱신일
+    ["RE_IM_OUT_DATE","Date"],           #임대 퇴거일
+
+    ["RE_CONT_BO_AMT","Number"],           #임대계약 보증금
+    ["RE_CONT_MONT_AMT","Number"],         #임대계약 월임대료
+
+    ["RE_IM_AMT","Number"],                #임대수입 합계
+    ["RE_IM_BO_AMT","Number"],             #임대수입 보증금
+    ["RE_IM_MONT_AMT","Number"],           #임대수입 월임대료
+
+]
+
+# 화면상의 계산 식을 위한 공간 / 자동화 하기 위해 고민이 필요함.
+calc = [
+["TOTAL_AMOUNT","(CARD_TOTAL_AMOUNT+CASH_TOTAL_AMOUNT-XXX)/YYY*ZZZ"]
+]
+
+# MSSQL의 NAV Table DocumentVATEntry 에서 가져올 대상을 지정합니다. (SQL 컬럼명을 지정합니다.)
+# V112 (대손세액공제(변제)신고서)에서 사용 할 MSSQL 컬럼명을 입력합니다.
+Entries = [
+"BSE_VAT Name"
+]
+
+# NAV 쿼리를위한 조건을 입력합니다.
+#[[V120.Condition]]
+#key = "BSE_VAT Type"
+#value = "1"
+#value_type = "Integer"
+
+#[[V120.Sub]]
+#key = "BSE_VAT Category Code"
+#query = "SELECT [BSE_Category Code]
+#         FROM [#Company$B_VAT Category]
+#         WHERE [BSE_VAT Total Report] = 1"

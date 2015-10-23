@@ -38,6 +38,7 @@ _V164_1 = {}
 _V174_1 = {}
 _V141_2 = {}
 _V153 = {}
+_V120 = {}
 '''
 텍스트만 가져오는 구문,
 /[^a-z|^A-Z|^0-9]/gi,''
@@ -404,6 +405,9 @@ def make_line(_define):
             _db_field_value = get_only_text(_V153[_define['field']])
         elif _define['table'] == '_V153_4':
             _db_field_value = get_only_text(_V153[_define['field']])
+        elif _define['table'] == '_V120':
+            _table = _mongo['V120']
+            _db_field_value = _table.get(_define['field'])
         else:
             _table = _mongo[_define['table']]
             if _define['field'] in _table:
@@ -1106,6 +1110,9 @@ def make_vat_file(target_list, vat_key, company_code, output_path):
 
                     make_v153_3(_json.get('_V153_4'), '000001', output_path, _v153_h.get('PURCH_ASST_1_TAX'), _v153_h.get('PURCH_NEG_1_RATE'), _v153_h.get('PURCH_POS_1_RATE'), _v153_h.get('PURCH_GON_1_TAX'))
                     make_v153_3(_json.get('_V153_4'), '000002', output_path, _v153_h.get('PURCH_ASST_2_TAX'), _v153_h.get('PURCH_NEG_2_RATE'), _v153_h.get('PURCH_POS_2_RATE'), _v153_h.get('PURCH_GON_2_TAX'))
+                    
+                elif target_doc == 'V120':
+                    make_one_record(_json['_V120'], output_path)
 
                 else:
                     print u'아무것도 없음.'
@@ -1131,8 +1138,6 @@ if __name__ == "__main__":
     _companycode = sys.argv[3]
     _output_path = sys.argv[4] + _companycode +'.101'
     result = make_vat_file(_targetlist, _key, _companycode, _output_path)
-    # result = make_vat_file(['V101', 'V104', 'V105', 'V109', 'V110', 'V106', 'V141', 'V153', 'V177', 'V149', 'V174'], '201411', 'KIMEX')
-    # result = make_vat_file(['V106'], '201411', 'KIMEX')
     stdout(result)
     sys.exit(result)
 

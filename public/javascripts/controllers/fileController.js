@@ -37,7 +37,8 @@ angular.module('fileCtrl',[])
             V164 : true,
             V112 : true,
             V149 : true,
-            V174 : true
+            V174 : true,
+            V120 : true
         };
         //2-1.
         //화면상의 메시지 - 초기에는 안내 메시지를 전달 한다.

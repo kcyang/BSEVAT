@@ -4821,5 +4821,261 @@
           "table": "",
           "field": ""
       }
+    },
+    "V120":{
+        "001": {
+            "length": "2",
+            "value": "17",
+            "blank": "",
+            "table": "",
+            "field": "",
+            "multi": ""
+        },
+        "002": {
+            "length": "7",
+            "value": "I103600",
+            "blank": "",
+            "table": "",
+            "field": "",
+            "multi": ""
+        },
+        "003": {
+            "length": "6",
+            "value": "000001",
+            "blank": "0",
+            "table": "",
+            "field": "",
+            "multi": ""
+        },
+        "004": {
+            "length": "70",
+            "value": "",
+            "blank": " ",
+            "table": "V120",
+            "field": "RE_ADDRESS",
+            "multi": ""
+        },
+        "005": {
+            "length": "15",
+            "value": "",
+            "blank": "0",
+            "table": "V120",
+            "field": "RE_CONT_BO_TOT_AMT",
+            "multi": ""
+        },
+        "006": {
+            "length": "15",
+            "value": "",
+            "blank": "0",
+            "table": "V120",
+            "field": "RE_CONT_MONT_TOT_AMT",
+            "multi": ""
+        },
+        "007": {
+            "length": "15",
+            "value": "",
+            "blank": "0",
+            "table": "V120",
+            "field": "RE_IM_TOT_AMT",
+            "multi": ""
+        },
+        "008": {
+            "length": "15",
+            "value": "",
+            "blank": "0",
+            "table": "V120",
+            "field": "RE_IM_BO_TOT_AMT",
+            "multi": ""
+        },
+        "009": {
+            "length": "15",
+            "value": "",
+            "blank": "0",
+            "table": "V120",
+            "field": "RE_IM_MONT_TOT_AMT",
+            "multi": ""
+        },
+        "010": {
+            "length": "10",
+            "value": "",
+            "blank": " ",
+            "table": "company",
+            "field": "BSE_Business No_",
+            "multi": "",
+            "desc" : "사업자등록번호"
+        },
+        "011": {
+            "length": "6",
+            "value": "000001",
+            "blank": "0",
+            "table": "",
+            "field": "",
+            "multi": ""
+        },
+        "012": {
+            "length": "4",
+            "value": "",
+            "blank": " ",
+            "table": "",
+            "field": "",
+            "multi": ""
+        },
+        "013": {
+            "length": "70",
+            "value": "",
+            "blank": " ",
+            "table": "",
+            "field": "",
+            "multi": ""
+        }
+
+    },
+
+    "_V120": {
+        "001": {
+            "length": "2",
+            "value": "18",
+            "blank": "",
+            "table": "",
+            "field": ""
+        },
+        "002": {
+            "length": "7",
+            "value": "I103600",
+            "blank": "",
+            "table": "",
+            "field": "",
+            "multi": ""
+        },
+        "003": {
+            "length": "6",
+            "value": "000001",
+            "blank": "0",
+            "table": "",
+            "field": ""
+        },
+        "004": {
+            "length": "6",
+            "value": "000001",
+            "blank": "0",
+            "table": "",
+            "field": "",
+            "multi": ""
+        },
+        "005": {
+            "length": "10",
+            "value": "",
+            "blank": " ",
+            "table": "_V120",
+            "field": "RE_STAIR",
+            "multi": ""
+        },
+        "006": {
+            "length": "30",
+            "value": "",
+            "blank": " ",
+            "table": "_V120",
+            "field": "RE_DONG",
+            "multi": ""
+        },
+        "007": {
+            "length": "10",
+            "value": "",
+            "blank": " ",
+            "table": "_V120",
+            "field": "RE_HO"
+        },
+        "008": {
+            "length": "10",
+            "value": "",
+            "blank": "0",
+            "table": "_V120",
+            "field": "RE_IM_SIZE"
+        },
+        "009": {
+            "length": "30",
+            "value": "",
+            "blank": " ",
+            "table": "_V120",
+            "field": "RE_IM_SANGHO"
+        },
+        "010": {
+            "length": "13",
+            "value": "",
+            "blank": " ",
+            "table": "_V120",
+            "field": "RE_IM_BUS_NO"
+        },
+        "011": {
+            "length": "8",
+            "value": "",
+            "blank": " ",
+            "table": "_V120",
+            "field": "RE_IM_IN_DATE"
+        },
+        "012": {
+            "length": "8",
+            "value": "",
+            "blank": " ",
+            "table": "_V120",
+            "field": "RE_IM_OUT_DATE"
+        },
+        "013": {
+            "length": "13",
+            "value": "",
+            "blank": "0",
+            "table": "_V120",
+            "field": "RE_CONT_BO_AMT"
+        },
+        "014": {
+            "length": "13",
+            "value": "",
+            "blank": "0",
+            "table": "_V120",
+            "field": "RE_CONT_MONT_AMT"
+        },
+        "015": {
+            "length": "13",
+            "value": "",
+            "blank": "0",
+            "table": "_V120",
+            "field": "RE_IM_AMT"
+        },
+        "016": {
+            "length": "13",
+            "value": "",
+            "blank": "0",
+            "table": "_V120",
+            "field": "RE_IM_BO_AMT"
+        },
+        "017": {
+            "length": "13",
+            "value": "",
+            "blank": "0",
+            "table": "_V120",
+            "field": "RE_IM_MONT_AMT"
+        },
+        "018": {
+            "length": "4",
+            "value": "0000",
+            "blank": "0",
+            "table": "",
+            "field": ""
+        },
+        "019": {
+            "length": "8",
+            "value": "",
+            "blank": " ",
+            "table": "",
+            "field": ""
+        },
+        "020": {
+            "length": "33",
+            "value": "",
+            "blank": " ",
+            "table": "",
+            "field": ""
+        }
     }
+
 }

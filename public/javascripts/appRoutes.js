@@ -94,6 +94,11 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
             templateUrl: 'views/V177.html',
             controller: 'V177Controller'
         })
+        // V120 - 부동산공급가액명세서
+        .when('/V120', {
+            templateUrl: 'views/V120.html',
+            controller: 'V120Controller'
+        })
         // V117
         .when('/V117', {
             templateUrl: 'views/V117.html',

@@ -70,6 +70,7 @@ angular.module('V101Ctrl',[])
              *
              */
             //매출세액 - 예정신고 누락분
+            $scope.mg.GS_ETC_TAX = Number($scope.mg.GS_ETC_AMT) * 0.1;
             $scope.mg.GS_PREARG_SIN_AMT = Number($scope.mg.BADSINGO_SALES_ZR_TOT_AMT); // 7
             $scope.mg.GS_PREARG_SIN_TAX = Number($scope.mg.BADSINGO_SALES_ZR_TOT_TAX); // 7
 
